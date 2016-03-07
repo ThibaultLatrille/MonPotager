@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.node {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+.link {
+  stroke: #999;
+  stroke-opacity: .6;
+}
+
+</style>
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+<script>
+var graph = {
+  "nodes":[
+    {"name":"Carotte","group":1},
+	{"name":"Poireau","group":1},
+	{"name":"Ail","group":1},
+	{"name":"Haricot","group":1},
+	{"name":"Panais","group":1},
+	{"name":"Tomate","group":1},
+	{"name":"Pois","group":1},
+	{"name":"Poivron","group":1},
+	{"name":"Mâche","group":1},
+	{"name":"Concombre","group":1},
+	{"name":"Aneth","group":1},
+	{"name":"Pomme de terre","group":1},
+	{"name":"Oignon","group":1},
+	{"name":"Chou-fleur","group":1},
+	{"name":"Chou-rave","group":1},
+	{"name":"Chou-rouge","group":1},
+	{"name":"Céleri","group":1},
+	{"name":"Betterave","group":1},
+	{"name":"Radis","group":1},
+	{"name":"Laitue","group":1},
+	{"name":"Radis","group":1},
+	{"name":"Courgette","group":1},
+	{"name":"Fenouil","group":1},
+	{"name":"Fraisier","group":2},
+	{"name":"Aneth","group":3},
+	{"name":"Persil","group":3},
+	{"name":"Sarriette","group":3},
+	{"name":"Ciboulette","group":3},
+	{"name":"Cerfeuil","group":3},
+	{"name":"Basilic","group":3},
+	{"name":"Moutarde","group":3},
+	{"name":"Menthe","group":3},
+	{"name":"Mélisse citronnelle","group":3},
+	{"name":"Tanaisie","group":4},
+	{"name":"Trèfle blanc","group":4},
+	{"name":"Bourrache","group":4},
+	{"name":"Soucis","group":4},
+	{"name":"Oeillets d'Inde","group":4},
+	{"name":"Limaces","group":5},
+	{"name":"Altises","group":5},
+	{"name":"Pucerons","group":5},
+	{"name":"Nématodes","group":5},
+	{"name":"Cochenilles","group":5},
+	{"name":"Mildiou","group":5},
+	{"name":"Coccinelles","group":6},
+	{"name":"Carabe doré","group":6},
+	{"name":"Perce-oreille","group":6},
+	{"name":"Achillée millefeuille","group":4},
+	{"name":"Echalote","group":1},
+	{"name":"Roquette","group":1},
+	{"name":"Salsifis","group":1},
+	{"name":"Piment","group":3},
+	{"name":"Lin","group":7},
+	{"name":"Romarin","group":3},
+	{"name":"Sauge","group":3},
+	{"name":"Absinthe","group":3},
+	{"name":"Coriandre","group":3},
+	{"name":"Maïs","group":1},
+	{"name":"Carotte sauvage","group":4},
+	{"name":"Choux","group":1},
+	{"name":"Asperge","group":1},
+	{"name":"Artichaut","group":1},
+	{"name":"Cresson","group":1},
+	{"name":"Bette","group":1}
+  ],
+  "links":[
+	{"source":1,"target":2,"value":1},
+	{"source":1,"target":3,"value":1},
+	{"source":1,"target":13,"value":1},
+	{"source":1,"target":49,"value":1},
+	{"source":1,"target":28,"value":1},
+	{"source":1,"target":18,"value":1},
+	{"source":1,"target":7,"value":1},
+	{"source":1,"target":19,"value":1},
+	{"source":1,"target":20,"value":1},
+	{"source":1,"target":50,"value":1},
+	{"source":1,"target":5,"value":1},
+	{"source":1,"target":6,"value":1},
+	{"source":1,"target":4,"value":1},
+	{"source":1,"target":50,"value":1},
+	{"source":1,"target":52,"value":1},
+	{"source":1,"target":53,"value":1},
+	{"source":1,"target":54,"value":1},
+	{"source":1,"target":55,"value":1},
+	{"source":1,"target":56,"value":1},
+	{"source":1,"target":57,"value":1},
+	{"source":1,"target":25,"value":-1},
+	{"source":1,"target":58,"value":-1},
+	{"source":1,"target":64,"value":-1},
+	{"source":1,"target":46,"value":1},
+	{"source":1,"target":59,"value":-1},
+	{"source":59,"target":60,"value":1},
+	{"source":2,"target":1,"value":1},
+	{"source":2,"target":17,"value":1},
+	{"source":2,"target":61,"value":1},
+	{"source":2,"target":20,"value":1},
+	{"source":2,"target":9,"value":1},
+	{"source":2,"target":6,"value":1},
+	{"source":2,"target":23,"value":1},
+	{"source":2,"target":62,"value":1},
+	{"source":2,"target":31,"value":1},
+	{"source":2,"target":63,"value":1},
+	{"source":2,"target":64,"value":-1},
+	{"source":2,"target":18,"value":-1},
+	{"source":2,"target":60,"value":-1},
+	{"source":2,"target":4,"value":-1},
+	{"source":2,"target":26,"value":-1},
+	{"source":2,"target":7,"value":-1},
+	{"source":2,"target":24,"value":1}
+  ]
+}
+var width = 960,
+    height = 500;
+
+var color = d3.scale.category20();
+
+var force = d3.layout.force()
+    .charge(-120)
+    .linkDistance(30)
+    .size([width, height]);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+
+  force.nodes(graph.nodes)
+      .links(graph.links)
+      .start();
+
+  var link = svg.selectAll(".link")
+      .data(graph.links)
+    .enter().append("line")
+      .attr("class", "link")
+      .style("fill", function(d) { return color(d.value); });
+
+  var node = svg.selectAll(".node")
+      .data(graph.nodes)
+    .enter().append("circle")
+      .attr("class", "node")
+      .attr("r", 5)
+      .style("fill", function(d) { return color(d.group); })
+      .call(force.drag);
+
+  node.append("title")
+      .text(function(d) { return d.name; });
+
+  force.on("tick", function() {
+    link.attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+
+    node.attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; });
+  });
+
+</script>
