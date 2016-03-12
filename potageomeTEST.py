@@ -556,312 +556,145 @@ interaction_plante = [(1,2,1), #carotte-poireau
 (31,60,1), #moutarde-choux
 (31,20,1), #moutarde-laitue
 (31,108,-1), #moutarde-tournesol
-(31,110,2)] #moutarde-syrphes
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
-# (,,), #
+(31,110,2), #moutarde-syrphes
+(32,66,1), #menthe-pommier
+(32,67,1), #menthe-poirier
+(32,86,1), #menthe-camomille
+(32,23,-1), #menthe-fenouil
+(32,61,-1), #menthe-asperge
+(32,59,-1), #menthe-carotte sauvage
+(32,114,2), #menthe-bourdon
+(32,45,2), #menthe-coccinelles
+(32,111,2), #menthe-papillons
+(32,41,-2), #menthe-pucerons
+(33,60,1), #mélisse-choux
+(33,55,-1), #mélisse-sauge
+(33,139,-1), #mélisse-lavande
+(54,60,1), #romarin-choux
+(54,1,1), #romarin-carotte
+(54,48,1), #romarin-achillée millefeuille
+(54,55,-1), #romarin-sauge
+(55,60,1), #sauge-choux
+(55,98,-1), #sauge-thym
+(55,54,-1), #sauge-romarin
+(55,33,-1), #sauge-mélisse
+(55,80,-1), #sauge-sarriette
+(55,57,-1), #sauge-coriandre
+(55,56,-1), #sauge-absinthe
+(55,60,1), #absinthe-choux
+(55,107,1), #absinthe-navet
+(55,4,1), #absinthe-haricot
+(55,1,1), #absinthe-carotte
+(55,21,1), #absinthe-radis
+(55,136,1), #absinthe-groseillier
+(55,140,1), #absinthe-agrumes
+(140,139,1), #agrumes-lavande
+(140,34,1), #agrumes-tanaisie
+(140,56,1), #agrumes-absinthe
+(140,38,1), #agrumes-oeillet
+(140,83,1), #agrumes-rosier d'inde
+(57,60,1), #coriandre-choux
+(57,1,1), #coriandre-carotte
+(57,7,1), #coriandre-pois
+(57,18,1), #coriandre-betterave
+(57,10,1), #coriandre-concombre
+(57,12,1), #coriandre-pomme de terre
+(57,141,1), #coriandre-anis
+(57,23,-1), #coriandre-fenouil
+(57,55,-1), #coriandre-sauge
+(141,57,1), #anis-coriandre
+(141,56,-1), #anis-absinthe
+(80,7,1), #sarriette-pois
+(80,4,1), #sarriette-haricot
+(80,77,1), #sarriette-fève
+(80,55,-1), #sarriette-sauge
+(80,107,-1), #sarriette-navet
+(80,21,-1), #sarriette-radis
+(93,6,1), #ciboulette chinoise-tomate
+(93,12,1), #ciboulette chinoise-pomme de terre
+(97,105,1), #origan-courge
+(97,10,1), #origan-concombre
+(97,52,1), #origan-piment
+(97,142,1), #origan-vigne
+(97,60,-1), #origan-choux
+(142,97,1), #vigne-origan
+(142,65,1), #vigne-pêcher
+(142,66,1), #vigne-pommier
+(142,73,1), #vigne-rosier
+(142,35,1), #vigne-trèfle
+(142,143,-1), #vigne-laurier sauce
+(98,60,1), #thym-choux
+(98,73,1), #thym-rosier
+(98,24,1), #thym-fraisier
+(98,55,-1), #thym-sauge
+(98,39,-2), #thym-limaces
+(98,115,-2), #thym-escargots
+(98,41,-2), #thym-pucerons
+(99,60,1), #cumin-choux
+(99,7,1), #cumin-pois
+(99,23,1), #cumin-fenouil
+(99,56,1), #cumin-absinthe
+(99,6,1), #cumin-tomate
+(133,132,1), #rue-cerisier
+(133,73,1), #rue-rosier
+(133,72,1), #rue-framboisier
+(133,144,-2), #rue-rats
+(133,39,-2), #rue-limaces
+(133,41,-2), #rue-pucerons
+(133,42,-2), #rue-nématodes
+(133,30,-1), #rue-basilic
+(133,86,-1), #rue-camomille
+(133,48,-1), #rue-achillée millefeuille
+(34,65,1), #tanaisie-pêcher
+(34,73,1), #tanaisie-rosier
+(34,41,-2), #tanaisie-pucerons
+(34,110,2), #tanaisie-syrphes
+(34,45,2), #tanaisie-coccinelles
+(35,60,1), #trèfle-choux
+(35,24,1), #trèfle-fraisier
+(35,9,1), #trèfle-mâche
+(35,67,1), #trèfle-poirier
+(35,58,1), #trèfle-maïs
+(35,66,1), #trèfle-pommier
+(35,142,1), #trèfle-vigne
+(35,136,-1), #trèfle-groseillier
+(36,110,2), #bourrache-syrphes
+(36,114,2), #bourrache-bourdons
+(36,138,-2), #bourrache-limaces
+(36,24,1), #bourrache-fraisiers
+(36,4,1), #bourrache-haricots
+(37,24,1), #soucis-fraisier
+(37,69,1), #soucis-chicorée
+(37,4,1), #soucis-haricot
+(37,12,1), #soucis-pomme de terre
+(37,6,1), #soucis-tomate
+(37,73,1), #soucis-rosier
+(37,23,-1), #soucis-fenouil
+(37,3,-1), #soucis-ail
+(37,104,-1), #soucis-sarrasin
+(37,72,1), #soucis-framboisier
+(37,42,-2), #soucis-nématodes
+(37,45,2), #soucis-coccinelles
+(37,145,2), #soucis-punaises
+(48,72,1), #achillée millefeuille-framboisier
+(48,54,1), #achillée millefeuille-romarin
+(48,58,1), #achillée millefeuille-maïs
+(48,133,-1), #achillée millefeuille-rue
+(59,60,1), #carotte sauvage-choux
+(59,1,-1), #carotte sauvage-carotte
+(70,3,1), #pissenlit-ail
+(73,139,1), #rosier-lavande
+(73,26,1), #rosier-persil
+(73,133,1), #rosier-rue
+(73,34,1), #rosier-tanaisie
+(73,37,1), #rosier-soucis
+(73,98,1), #rosier-thym
+(73,6,1), #rosier-tomates
+(73,78,1), #rosier-épinard
+(73,3,1), #rosier-ail
+(73,28,1), #rosier-ciboulette
+(73,13,1), #rosier-oignon
+(73,49,1)] #rosier-échalote
 # (,,), #
 # (,,), #
 
@@ -928,6 +761,8 @@ plantes = {
  135:"Ronce",
  136:"Groseillier",
  137:"Cassis",
+ 140:"Agrumes",
+ 142:"Vigne",
  #aromates
  25:"Aneth",
  26:"Persil",
@@ -942,6 +777,7 @@ plantes = {
  55:"Sauge",
  56:"Absinthe",
  57:"Coriandre",
+ 141:"Anis",
  80:"Sarriette",
  93:"Ciboulette chinoise",
  97:"Origan",
@@ -981,6 +817,7 @@ plantes = {
  121:"Verge d'or",
  128:"Potentille",
  129:"Panicaut",
+ 139:"Lavande",
  #nuisibles
  39:"Limaces",
  40:"Altises",
@@ -995,6 +832,7 @@ plantes = {
  117:"Chenilles",
  118:"Fourmis",
  138:"Limaces",
+ 144:"Rats",
  #auxiliaires
  45:"Coccinelles",
  46:"Carabe doré",
@@ -1003,6 +841,7 @@ plantes = {
  110:"Syrphes",
  111:"Papillons",
  114:"Bourdons",
+ 145:"Punaises",
  #céréales
  53:"Lin",
  104:"Sarrasin",
@@ -1012,7 +851,8 @@ plantes = {
  125:"Fusain d'Europe",
  126:"Nerprun alaterne",
  130:"Baguenaudier",
- 131:"Genévrier"} 
+ 131:"Genévrier",
+ 143:"Laurier-sauce"} 
 
 appartenance = {
  #legumes
@@ -1076,6 +916,8 @@ appartenance = {
  135:2,
  136:2,
  137:2,
+ 140:2,
+ 142:2,
  #aromates
  25:3,
  26:3,
@@ -1096,6 +938,7 @@ appartenance = {
  98:3,
  99:3,
  133:3,
+ 141:3,
  #fleurs
  34:4,
  35:4,
@@ -1129,6 +972,7 @@ appartenance = {
  121:4,
  128:4,
  129:4,
+ 139:4,
  #nuisibles
  39:5,
  40:5,
@@ -1143,6 +987,7 @@ appartenance = {
  117:5,
  118:5,
  138:5,
+ 144:5,
  #auxiliaires
  45:6,
  46:6,
@@ -1151,6 +996,7 @@ appartenance = {
  110:6,
  111:6,
  114:6,
+ 145:6,
  #céréales
  53:7,
  104:7,
@@ -1160,9 +1006,8 @@ appartenance = {
  125:8,
  126:8,
  130:8,
- 131:8}
-
-
+ 131:8,
+ 143:8}
 
 
 categorie = {1: "Légume", 2: "Fruit", 3:"Arômate", 4:"Fleur", 5:"Nuisible", 6:"Auxiliaire", 7:"Céréale", 8:"Arbres"}
@@ -1176,13 +1021,13 @@ for key, values in appartenance.items():
 	#print(plantes[key] + " est un/une " + categorie[values])
 
 
-# 
-# interaction_categorie = []
-# for plante_1, plante_2, bla in interaction_plante:
-#     interaction_categorie.append((appartenance[plante_1], appartenance[plante_2], bla ))
-# 
-# 
-# #links for html file
-# for plante_1, plante_2, bla in interaction_plante:
-# 	print('{"source":'+str(plante_1)+',"target":'+str(plante_2)+',"value":'+str(bla)+'},')
-# 
+
+interaction_categorie = []
+for plante_1, plante_2, bla in interaction_plante:
+    interaction_categorie.append((appartenance[plante_1], appartenance[plante_2], bla ))
+
+
+#links for html file
+for plante_1, plante_2, bla in interaction_plante:
+	print('{"source":'+str(plante_1)+',"target":'+str(plante_2)+',"value":'+str(bla)+'},')
+

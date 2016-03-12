@@ -60,6 +60,8 @@ plantes = {
  135:"Ronce",
  136:"Groseillier",
  137:"Cassis",
+ 140:"Agrumes",
+ 142:"Vigne",
  #aromates
  25:"Aneth",
  26:"Persil",
@@ -74,6 +76,7 @@ plantes = {
  55:"Sauge",
  56:"Absinthe",
  57:"Coriandre",
+ 141:"Anis",
  80:"Sarriette",
  93:"Ciboulette chinoise",
  97:"Origan",
@@ -113,6 +116,7 @@ plantes = {
  121:"Verge d'or",
  128:"Potentille",
  129:"Panicaut",
+ 139:"Lavande",
  #nuisibles
  39:"Limaces",
  40:"Altises",
@@ -127,6 +131,7 @@ plantes = {
  117:"Chenilles",
  118:"Fourmis",
  138:"Limaces",
+ 144:"Rats",
  #auxiliaires
  45:"Coccinelles",
  46:"Carabe doré",
@@ -135,6 +140,7 @@ plantes = {
  110:"Syrphes",
  111:"Papillons",
  114:"Bourdons",
+ 145:"Punaises",
  #céréales
  53:"Lin",
  104:"Sarrasin",
@@ -144,4 +150,5 @@ plantes = {
  125:"Fusain d'Europe",
  126:"Nerprun alaterne",
  130:"Baguenaudier",
- 131:"Genévrier"} 
+ 131:"Genévrier",
+ 143:"Laurier-sauce"} 
