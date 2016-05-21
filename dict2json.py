@@ -8,7 +8,7 @@ from dico_plantes_categories import categorie
 
 
 
-json = open("test.json","w")
+json = open("potageome.json","w")
 
 json.write("{\n")
 json.write(' "nodes":[\n')
