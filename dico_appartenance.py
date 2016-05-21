@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 appartenance = {
  #legumes
  1: 1,

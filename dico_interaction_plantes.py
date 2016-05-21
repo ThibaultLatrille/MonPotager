@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 interaction_plante = [(1,2,1), #carotte-poireau
 (1,3,1), #carotte-ail
 (1,13,1), #carotte-oignon

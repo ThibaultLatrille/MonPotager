@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 plantes = {
  #legumes
  1:"Carotte",
