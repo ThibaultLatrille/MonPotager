@@ -152,3 +152,5 @@ plantes = {
  130:"Baguenaudier",
  131:"Genévrier",
  143:"Laurier-sauce"} 
+ 
+categorie = {1: "Légume", 2: "Fruit", 3:"Arômate", 4:"Fleur", 5:"Nuisible", 6:"Auxiliaire", 7:"Céréale", 8:"Arbres"}
