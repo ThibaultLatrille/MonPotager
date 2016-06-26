@@ -1,0 +1,1 @@
+(1,6,30,4,21,12,80) #carotte-tomate-basiclic-haricot-radis-pomme de terre-sarriette

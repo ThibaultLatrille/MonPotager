@@ -92,7 +92,7 @@ interaction_plante = [(1,2,1), #carotte-poireau
 (5,13,1), #panais-oignon
 (5,20,-1), #panais-laitue
 (6,83,1), #tomate-rosier d'inde
-(6,84,1), #tomate-oeillets d'Inde
+(6,38,1), #tomate-oeillets d'Inde
 (6,85,1), #tomate-cosmos
 (6,86,1), #tomate-camomille allemande
 (6,60,1), #tomate-choux
@@ -272,7 +272,7 @@ interaction_plante = [(1,2,1), #carotte-poireau
 (20,53,1), #laitue-lin
 (20,26,-1), #laitue-persil
 (20,17,-1), #laitue-céleri
-(20,108,-1), #laitue-tournesol
+(20,81,-1), #laitue-tournesol
 (20,5,-1), #laitue-panais
 (22,58,-1), #courgette-maïs
 (22,4,-1), #courgette-haricot
@@ -374,7 +374,7 @@ interaction_plante = [(1,2,1), #carotte-poireau
 (74,97,1), #potiron-origan
 (74,79,1), #potiron-capucine
 (74,34,1), #potiron-tanaisie
-(74,108,1), #potiron-tournesol
+(74,81,1), #potiron-tournesol
 (74,21,-1), #potiron-radis
 (74,23,-1), #potiron-fenouil
 (105,4,1), #courges-haricot
@@ -391,7 +391,7 @@ interaction_plante = [(1,2,1), #carotte-poireau
 (105,97,1), #courges-origan
 (105,79,1), #courges-capucine
 (105,34,1), #courges-tanaisie
-(105,108,1), #courges-tournesol
+(105,81,1), #courges-tournesol
 (105,21,-1), #courges-radis
 (105,23,-1), #courges-fenouil
 (77,60,1), #fève-choux
@@ -555,7 +555,7 @@ interaction_plante = [(1,2,1), #carotte-poireau
 (136,58,-1), #groseillier-maïs
 (31,60,1), #moutarde-choux
 (31,20,1), #moutarde-laitue
-(31,108,-1), #moutarde-tournesol
+(31,81,-1), #moutarde-tournesol
 (31,110,2), #moutarde-syrphes
 (32,66,1), #menthe-pommier
 (32,67,1), #menthe-poirier
@@ -694,7 +694,116 @@ interaction_plante = [(1,2,1), #carotte-poireau
 (73,3,1), #rosier-ail
 (73,28,1), #rosier-ciboulette
 (73,13,1), #rosier-oignon
-(73,49,1)] #rosier-échalote
-# (,,), #
-# (,,), #
-
+(73,49,1), #rosier-échalote
+(74,66,1), #capucine-pommier
+(74,21,1), #capucine-radis
+(74,146,1), #capucine-brocoli
+(74,4,1), #capucine-haricot
+(74,62,1), #capucine-artichaut
+(81,105,1), #tournesol-courge
+(81,4,1), #tournesol-haricot
+(81,58,1), #tournesol-mais
+(81,21,-1), #tournesol-radis
+(81,31,-1), #tournesol-moutarde
+(81,6,-1), #tournesol-tomate
+(81,20,-1), #tournesol-laitue
+(81,10,-1), #tournesol-concombre
+# (,,1), #brocoli- PAS DANS LE LEFRANCOIS et THOREZ
+(85,60,1), #cosmos-choux
+(85,6,1), #cosmos-tomates
+(85,42,-2), #cosmos-nématodes
+(85,109,2), #cosmos-araignées
+(85,45,2), #cosmos-coccinelles
+(86,45,2), #camomille allemande-coccinelles
+(86,60,1), #camomille allemande-choux
+(86,13,1), #camomille allemande-oignons
+(86,7,1), #camomille allemande-pois
+(86,12,1), #camomille allemande-pomme de terre
+(86,133,-1), #camomille allemande-rue
+(87,145,2), #géranium-punaises
+(88,147,1), #inule-olivier
+(88,145,2), #inule-punaises
+(89,42,-2), #ricin-nématodes
+(89,41,-2), #ricin-pucerons
+(89,90,-2), #ricin-doryphores
+(91,46,2), #amarante-carabes
+(91,9,-1), #amarante-mâche
+(91,46,2), #amarante-carabes
+(92,148,-2), #chanvre-courtilières
+(95,12,1), #morelle de balbis-pomme de terre
+(95,42,-2), #morelle de balbis-nématodes
+(95,90,-2), #morelle de balbis-doryphores
+(96,21,1), #genêt-radis
+(96,40,-2), #genet-altises
+(101,149,1), #phacélie-abeilles
+(101,114,1), #phacélie-bourdons
+(101,41,-2), #phacélie-pucerons
+(101,145,2), #phacélie-punaises
+(101,45,2), #phacélie-coccinelles
+(101,110,2), #phacélie-syrphes
+(101,37,1), #phacélie-soucis
+(106,150,2), #angélique-chrysope
+(106,45,2), #angélique-coccinelles
+(106,25,-1), #angélique-aneth
+(106,17,-1), #angélique-céleri
+(106,18,-1), #angélique-betterave
+(128,66,-1), #potentille-pommier
+(139,73,1), #lavande-rosier
+(139,140,1), #lavande-agrumes
+(139,118,-2), #lavande-fourmis
+(139,41,-2), #lavande-pucerons
+(139,33,-1), #lavande-mélisse
+(56,39,-2), #absinthe-limaces
+(56,40,-2), #absinthe-altises
+(6,40,-2), #tomate-altises
+(151,40,-2), #sureau-altises
+(54,40,-2), #romarin-altises
+(20,40,-2), #laitue-altises
+(79,41,-2), #capucine-pucerons
+(63,41,-2), #cresson-pucerons
+(139,41,-2), #lavande-pucerons
+(35,41,-2), #trèfle blanc-pucerons
+(38,41,-2), #oeillets d'inde-pucerons
+(116,69,-2), #campagnols-chicorée
+(116,70,-2), #campagnols-pissenlit
+(116,1,-2), #campagnols-carotte
+(116,5,-2), #campagnols-panais
+(116,3,-2), #ail-campagnols
+(152,116,-2), #narcisse-campagnols
+(154,116,-2), #buis-campagnols
+(155,116,-2), #noyer-campagnols
+(153,116,-2), #mélilot-campagnols
+(139,118,-2), #lavande-fourmis
+(156,118,-2), #marjolaine-fourmis
+(34,118,-2), #tanaisie-fourmis
+(151,118,-2), #sureau-fourmis
+(6,118,-2), #tomates-fourmis
+(153,110,2), #mélilot-syrphes
+(156,52,1), #marjolaine-piment
+(156,52,1), #marjolaine-piment
+(109,41,-2), #araignées-pucerons
+(110,41,-2), #syrphes-pucerons
+(150,41,-2), #chrysopes-pucerons
+(53,1,1), #lin-carotte
+(53,20,1), #lin-laitue
+(104,110,1), #sarrasin-syrphes
+(104,111,1), #sarrasin-papillons
+(124,41,2), #orme-pucerons
+(125,45,2), #fusain-coccinelles
+(125,150,2), #fusain-chrysopes
+(130,66,-1), #baguenaudier-pommier
+(131,45,2), #genévrier-coccinelles
+(143,142,-1), #laurier-sauce-vigne
+(143,26,1), #laurier-sauce-persil
+(143,29,-1), #laurier-sauce-cerfeuil
+(151,116,-2), #sureau-campagnols
+(155,6,-1), #noyer-tomate
+(155,137,-1), #noyer-cassis
+(155,60,-1), #noyer-choux
+(155,158,-1), #noyer-rhubarbe
+(155,12,-1), #noyer-pomme de terre
+(155,110,2), #noyer-syrphes
+(157,110,2), #noisetier-syrphes
+(159,145,2), #ortie-punaises
+(159,45,2), #ortie-coccinelles
+(159,46,2)] #ortie-carabes 

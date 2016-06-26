@@ -16,8 +16,8 @@ json.write('    {"name":"Null","group":1},\n')
 
 #nodes for json file
 for key, values in appartenance.items():
-	#print(key)
-	#print(values)
+# 	print(key)
+# 	print(values)
 	json.write(('\t{"name":"'+plantes[key]+'","group":'+str(values)+'},\n'))
 	#print(plantes[key] + " est un/une " + categorie[values])
 
