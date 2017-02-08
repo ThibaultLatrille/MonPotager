@@ -14,55 +14,77 @@
 
 </style>
 <body>
-<script src="d3v3.5.js"></script>
+<svg width="640" height="480"></svg>
+<script src="d3v4.5.js"></script>
 <script src="data.js"></script>
 
 <script>
-  var colors = {0: "rgb(214, 39, 40)", 2: "rgb(174, 199, 232)"};
-var width = 960,
-    height = 500;
+var svg = d3.select("svg"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height"),
+    color = d3.scaleOrdinal(d3.schemeCategory10);
 
-var color = d3.scale.category20();
+var nodes = [], index_nodes =[];
+    links = [];
 
-var force = d3.layout.force()
-    .charge(-120)
-    .linkDistance(30)
-    .size([width, height]);
+var simulation = d3.forceSimulation(nodes)
+    .force("charge", d3.forceManyBody().strength(-1000))
+    .force("link", d3.forceLink(links).distance(200))
+    .force("x", d3.forceX())
+    .force("y", d3.forceY())
+    .alphaTarget(1)
+    .on("tick", ticked);
 
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+var g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")"),
+    link = g.append("g").attr("stroke", "#000").attr("stroke-width", 1.5).selectAll(".link"),
+    node = g.append("g").attr("stroke", "#fff").attr("stroke-width", 1.5).selectAll(".node");
 
 
-  force.nodes(graph.nodes)
-      .links(graph.links)
-      .start();
 
-  var link = svg.selectAll(".link")
-      .data(graph.links)
-    .enter().append("line")
-      .attr("class", "link")
-      .style("stroke", function(d) { return colors[1+d.value]; });
+for(var i = 0; i < list_favorable.length; i++) {
+    var cur_index = list_favorable[i];
+    index_nodes.push(cur_index);
+    var cur_node = graph.nodes[cur_index];
+    nodes.push(cur_node);
+    for(var j = 0; j < graph.links.length; j++) {
+        var cur_link = graph.links[j];
+        if (cur_link.source==cur_index && index_nodes.indexOf(cur_link.target) > -1){
+            links.push({"source": cur_node, "target": graph.nodes[cur_link.target], "value": cur_link.value});
+        } else if (cur_link.target==cur_index && index_nodes.indexOf(cur_link.source) > -1){
+            links.push({"source": cur_node, "target": graph.nodes[cur_link.target], "value": cur_link.value});
+        }
+    }
+    restart();
+}
 
-  var node = svg.selectAll(".node")
-      .data(graph.nodes)
-    .enter().append("circle")
-      .attr("class", "node")
-      .attr("r", 5)
-      .style("fill", function(d) { return color(d.group); })
-      .call(force.drag);
 
-  node.append("title")
-      .text(function(d) { return d.name; });
+function restart() {
 
-  force.on("tick", function() {
-    link.attr("x1", function(d) { return d.source.x; })
-        .attr("y1", function(d) { return d.source.y; })
-        .attr("x2", function(d) { return d.target.x; })
-        .attr("y2", function(d) { return d.target.y; });
+  // Apply the general update pattern to the nodes.
+  node = node.data(nodes, function(d) { return d.id;});
+  node.exit().remove();
+  node = node.enter().append("circle").attr("fill", function(d) { return color(d.id); }).attr("r", 8).merge(node);
 
-    node.attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; });
-  });
+  // Apply the general update pattern to the links.
+  link = link.data(links, function(d) { return d.source.id + "-" + d.target.id; });
+  link.exit().remove();
+  link = link.enter().append("line").merge(link);
 
+  // Update and restart the simulation.
+  simulation.nodes(nodes);
+  simulation.force("link").links(links);
+  simulation.alpha(1).restart();
+}
+
+function ticked() {
+  node.attr("cx", function(d) { return d.x; })
+      .attr("cy", function(d) { return d.y; });
+
+  link.attr("x1", function(d) { return d.source.x; })
+      .attr("y1", function(d) { return d.source.y; })
+      .attr("x2", function(d) { return d.target.x; })
+      .attr("y2", function(d) { return d.target.y; });
+}
 </script>
+
+
