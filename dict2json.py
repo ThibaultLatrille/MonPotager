@@ -4,6 +4,7 @@ from dico_appartenance import appartenance
 from dico_interaction_plantes import interaction_plante
 from dico_plantes_categories import plantes
 from dico_plantes_categories import categories
+from exemple_association import list_defavorable, list_favorable
 
 javascript = open("data.js", "w")
 
@@ -20,6 +21,9 @@ javascript.write('\n\t]\n};')
 javascript.write("\nvar groups = {\n")
 javascript.write(",\n".join(['\t'+str(key)+':"'+str(values)+'"' for key, values in categories.items()]))
 javascript.write('\n};')
+
+javascript.write("\nvar list_defavorable = [" + ",".join(map(str, list_defavorable)) + "];")
+javascript.write("\nvar list_favorable = [" + ",".join(map(str, list_favorable)) + "];")
 
 javascript.close()
 

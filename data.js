@@ -974,3 +974,5 @@ var groups = {
 	7:"Céréale",
 	8:"Arbres"
 };
+var list_defavorable = [1,6,30,4,21,12,80];
+var list_favorable = [13,4,3,62,6];

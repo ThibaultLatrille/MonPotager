@@ -1,1 +1,0 @@
-(13,4,3,62,6) #oignon-haricot-ail-artichaut-tomate
