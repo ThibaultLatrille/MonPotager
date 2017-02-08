@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css">
+<style>
+.node {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+.link {
+  stroke: #999;
+  stroke-opacity: .6;
+}
+</style>
+
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-xs-12 col-md-10 col-md-offset-2">
+      <svg width="640" height="480"></svg>
+      </div>
+      <div class="col-xs-12 col-md-2">
+        <ul>
+          
+            <li>Null</li>
+          
+            <li>Carotte</li>
+          
+            <li>Poireau</li>
+          
+            <li>Ail</li>
+          
+            <li>Haricot</li>
+          
+            <li>Panais</li>
+          
+            <li>Tomate</li>
+          
+            <li>Pois</li>
+          
+            <li>Poivron</li>
+          
+            <li>Mâche</li>
+          
+            <li>Concombre</li>
+          
+            <li>Cornichon</li>
+          
+            <li>Pomme de terre</li>
+          
+            <li>Oignon</li>
+          
+            <li>Chou-fleur</li>
+          
+            <li>Chou-rave</li>
+          
+            <li>Chou-rouge</li>
+          
+            <li>Céleri</li>
+          
+            <li>Betterave</li>
+          
+            <li>Cardon</li>
+          
+            <li>Laitue</li>
+          
+            <li>Radis</li>
+          
+            <li>Courgette</li>
+          
+            <li>Fenouil</li>
+          
+            <li>Fraisier</li>
+          
+            <li>Aneth</li>
+          
+            <li>Persil</li>
+          
+            <li>Sarriette</li>
+          
+            <li>Ciboulette</li>
+          
+            <li>Cerfeuil</li>
+          
+            <li>Basilic</li>
+          
+            <li>Moutarde</li>
+          
+            <li>Menthe</li>
+          
+            <li>Mélisse citronnelle</li>
+          
+            <li>Tanaisie</li>
+          
+            <li>Trèfle blanc</li>
+          
+            <li>Bourrache</li>
+          
+            <li>Soucis</li>
+          
+            <li>Oeillets d'Inde</li>
+          
+            <li>Limaces</li>
+          
+            <li>Altises</li>
+          
+            <li>Pucerons</li>
+          
+            <li>Nématodes</li>
+          
+            <li>Cochenilles</li>
+          
+            <li>Mildiou</li>
+          
+            <li>Coccinelles</li>
+          
+            <li>Carabes</li>
+          
+            <li>Perce-oreille</li>
+          
+            <li>Achillée millefeuille</li>
+          
+            <li>Echalote</li>
+          
+            <li>Roquette</li>
+          
+            <li>Salsifis</li>
+          
+            <li>Piment</li>
+          
+            <li>Lin</li>
+          
+            <li>Romarin</li>
+          
+            <li>Sauge</li>
+          
+            <li>Absinthe</li>
+          
+            <li>Coriandre</li>
+          
+            <li>Maïs</li>
+          
+            <li>Carotte sauvage</li>
+          
+            <li>Choux</li>
+          
+            <li>Asperge</li>
+          
+            <li>Artichaut</li>
+          
+            <li>Cresson</li>
+          
+            <li>Bette</li>
+          
+            <li>Pêcher</li>
+          
+            <li>Pommier</li>
+          
+            <li>Poirier</li>
+          
+            <li>Prunier</li>
+          
+            <li>Chicorée</li>
+          
+            <li>Pissenlit</li>
+          
+            <li>Topinambour</li>
+          
+            <li>Framboisier</li>
+          
+            <li>Rosier</li>
+          
+            <li>Potiron</li>
+          
+            <li>Melon</li>
+          
+            <li>Pastèque</li>
+          
+            <li>Fève</li>
+          
+            <li>Epinard</li>
+          
+            <li>Capucine</li>
+          
+            <li>Sarriette</li>
+          
+            <li>Tournesol</li>
+          
+            <li>Kiwi</li>
+          
+            <li>Rosier d'Inde</li>
+          
+            <li>Null</li>
+          
+            <li>Cosmos</li>
+          
+            <li>Camomille allemande</li>
+          
+            <li>Géranium</li>
+          
+            <li>Inule visqueuse</li>
+          
+            <li>Ricin</li>
+          
+            <li>Doryphores</li>
+          
+            <li>Amarante</li>
+          
+            <li>Chanvre</li>
+          
+            <li>Ciboulette chinoise</li>
+          
+            <li>Féverole</li>
+          
+            <li>Morelle de Balbis</li>
+          
+            <li>Genêt</li>
+          
+            <li>Origan</li>
+          
+            <li>Thym</li>
+          
+            <li>Cumin</li>
+          
+            <li>Coquelicot</li>
+          
+            <li>Phacélie</li>
+          
+            <li>Matricaire inodore</li>
+          
+            <li>Ray-grass</li>
+          
+            <li>Sarrasin</li>
+          
+            <li>Courges</li>
+          
+            <li>Angélique</li>
+          
+            <li>Navet</li>
+          
+            <li>Null</li>
+          
+            <li>Araignées</li>
+          
+            <li>Syrphes</li>
+          
+            <li>Papillons</li>
+          
+            <li>Lièvres</li>
+          
+            <li>Patate douce</li>
+          
+            <li>Bourdons</li>
+          
+            <li>Escargots</li>
+          
+            <li>Campagnols</li>
+          
+            <li>Chenilles</li>
+          
+            <li>Fourmis</li>
+          
+            <li>Raifort</li>
+          
+            <li>Chénopode blanc</li>
+          
+            <li>Verge d'or</li>
+          
+            <li>Noisetier</li>
+          
+            <li>Erable</li>
+          
+            <li>Orme</li>
+          
+            <li>Fusain d'Europe</li>
+          
+            <li>Nerprun alaterne</li>
+          
+            <li>Noyer</li>
+          
+            <li>Potentille</li>
+          
+            <li>Panicaut</li>
+          
+            <li>Baguenaudier</li>
+          
+            <li>Genévrier</li>
+          
+            <li>Cerisier</li>
+          
+            <li>Rue</li>
+          
+            <li>Myrtille</li>
+          
+            <li>Ronce</li>
+          
+            <li>Groseillier</li>
+          
+            <li>Cassis</li>
+          
+            <li>Limaces</li>
+          
+            <li>Lavande</li>
+          
+            <li>Agrumes</li>
+          
+            <li>Anis</li>
+          
+            <li>Vigne</li>
+          
+            <li>Laurier-sauce</li>
+          
+            <li>Rats</li>
+          
+            <li>Punaises</li>
+          
+            <li>Brocoli</li>
+          
+            <li>Olivier</li>
+          
+            <li>Courtilières</li>
+          
+            <li>Abeilles</li>
+          
+            <li>Chrysopes</li>
+          
+            <li>Sureau</li>
+          
+            <li>Narcisse</li>
+          
+            <li>Mélilot</li>
+          
+            <li>Buis</li>
+          
+            <li>Noyer</li>
+          
+            <li>Marjolaine</li>
+          
+            <li>Noisetier</li>
+          
+            <li>Rhubarbe</li>
+          
+            <li>Ortie</li>
+          
+        </ul>
+      </div>
+  </div>
+</div>
+</body>
+</html>
+
+<script src="d3v4.5.js"></script>
+<script src="data.js"></script>
+<script>
+var svg = d3.select("svg"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height"),
+    color = d3.scaleOrdinal(d3.schemeCategory10);
+
+var nodes = [], index_nodes =[];
+    links = [];
+
+var simulation = d3.forceSimulation(nodes)
+    .force("charge", d3.forceManyBody().strength(-1000))
+    .force("link", d3.forceLink(links).distance(200))
+    .force("x", d3.forceX())
+    .force("y", d3.forceY())
+    .alphaTarget(1)
+    .on("tick", ticked);
+
+var g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")"),
+    link = g.append("g").attr("stroke", "#000").attr("stroke-width", 1.5).selectAll(".link"),
+    node = g.append("g").attr("stroke", "#fff").attr("stroke-width", 1.5).selectAll(".node");
+
+
+
+for(var i = 0; i < list_favorable.length; i++) {
+    var cur_index = list_favorable[i];
+    index_nodes.push(cur_index);
+    var cur_node = graph.nodes[cur_index];
+    nodes.push(cur_node);
+    for(var j = 0; j < graph.links.length; j++) {
+        var cur_link = graph.links[j];
+        if (cur_link.source==cur_index && index_nodes.indexOf(cur_link.target) > -1){
+            links.push({"source": cur_node, "target": graph.nodes[cur_link.target], "value": cur_link.value});
+        } else if (cur_link.target==cur_index && index_nodes.indexOf(cur_link.source) > -1){
+            links.push({"source": cur_node, "target": graph.nodes[cur_link.target], "value": cur_link.value});
+        }
+    }
+    restart();
+}
+
+
+function restart() {
+
+  // Apply the general update pattern to the nodes.
+  node = node.data(nodes, function(d) { return d.id;});
+  node.exit().remove();
+  node = node.enter().append("circle").attr("fill", function(d) { return color(d.id); }).attr("r", 8).merge(node);
+
+  // Apply the general update pattern to the links.
+  link = link.data(links, function(d) { return d.source.id + "-" + d.target.id; });
+  link.exit().remove();
+  link = link.enter().append("line").merge(link);
+
+  // Update and restart the simulation.
+  simulation.nodes(nodes);
+  simulation.force("link").links(links);
+  simulation.alpha(1).restart();
+}
+
+function ticked() {
+  node.attr("cx", function(d) { return d.x; })
+      .attr("cy", function(d) { return d.y; });
+
+  link.attr("x1", function(d) { return d.source.x; })
+      .attr("y1", function(d) { return d.source.y; })
+      .attr("x2", function(d) { return d.target.x; })
+      .attr("y2", function(d) { return d.target.y; });
+}
+</script>
+

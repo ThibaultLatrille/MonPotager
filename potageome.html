@@ -21,6 +21,13 @@
       <div class="col-xs-12 col-md-10 col-md-offset-2">
       <svg width="640" height="480"></svg>
       </div>
+      <div class="col-xs-12 col-md-2">
+        <ul>
+          {% for key, values in appartenance.items() %}
+            <li>{{ plantes[key] }}</li>
+          {% endfor %}
+        </ul>
+      </div>
   </div>
 </div>
 </body>
