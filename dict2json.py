@@ -1,41 +1,26 @@
 # -*- coding: utf-8 -*-
 
-
 from dico_appartenance import appartenance
 from dico_interaction_plantes import interaction_plante
 from dico_plantes_categories import plantes
-from dico_plantes_categories import categorie
+from dico_plantes_categories import categories
 
+javascript = open("data.js", "w")
 
+javascript.write("var graph = {\n")
+# nodes for javascript file
+javascript.write('\t"nodes":[\n')
+javascript.write(",\n".join(['\t\t{"name":"'+plantes[key]+'","group":'+str(values)+'}' for key, values in appartenance.items()]))
+javascript.write('\n\t],\n')
+# links for html file
+javascript.write('\t"links":[\n')
+javascript.write(",\n".join(['\t\t{"source":'+str(plante_1)+',"target":'+str(plante_2)+',"value":'+str(inter)+'}' for plante_1, plante_2, inter in interaction_plante]))
+javascript.write('\n\t]\n};')
 
-json = open("potageome.json","w")
+javascript.write("\nvar groups = {\n")
+javascript.write(",\n".join(['\t'+str(key)+':"'+str(values)+'"' for key, values in categories.items()]))
+javascript.write('\n};')
 
-json.write("{\n")
-json.write(' "nodes":[\n')
-json.write('    {"name":"Null","group":1},\n')
+javascript.close()
 
-#nodes for json file
-for key, values in appartenance.items():
-# 	print(key)
-# 	print(values)
-	json.write(('\t{"name":"'+plantes[key]+'","group":'+str(values)+'},\n'))
-	#print(plantes[key] + " est un/une " + categorie[values])
-
-
-json.write('  ],\n')
-json.write('  "links":[\n')
-    
-
-
-interaction_categorie = []
-for plante_1, plante_2, bla in interaction_plante:
-    interaction_categorie.append((appartenance[plante_1], appartenance[plante_2], bla ))
-
-
-#links for html file
-for plante_1, plante_2, bla in interaction_plante:
-	json.write('\t{"source":'+str(plante_1)+',"target":'+str(plante_2)+',"value":'+str(bla)+'},\n')
-
-
-json.write('  ]\n')
-json.write('}')
+print("Javascript data file successfully written !")
