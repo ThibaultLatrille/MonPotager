@@ -1,23 +1,33 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
+<html>
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css">
 <style>
-
 .node {
   stroke: #fff;
   stroke-width: 1.5px;
 }
-
 .link {
   stroke: #999;
   stroke-opacity: .6;
 }
-
 </style>
+
+</head>
 <body>
-<svg width="640" height="480"></svg>
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-xs-12 col-md-10 col-md-offset-2">
+      <svg width="640" height="480"></svg>
+      </div>
+  </div>
+</div>
+</body>
+</html>
+
 <script src="d3v4.5.js"></script>
 <script src="data.js"></script>
-
 <script>
 var svg = d3.select("svg"),
     width = +svg.attr("width"),
