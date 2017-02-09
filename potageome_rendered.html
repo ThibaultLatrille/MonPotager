@@ -1,352 +1,1272 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css">
-<style>
-.node {
-  stroke: #fff;
-  stroke-width: 1.5px;
-}
-.link {
-  stroke: #999;
-  stroke-opacity: .6;
-}
-</style>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css">
+    <script src="jquery-3.1.1.js"></script>
+    <script src="jets.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+
+    <style>
+        .node {
+            stroke: #fff;
+            stroke-width: 1.5px;
+        }
+
+        .link {
+            stroke: #999;
+            stroke-opacity: .6;
+        }
+        .btn:focus {
+          outline: none;
+        }
+    </style>
 
 </head>
 <body>
 <div class="container-fluid">
-  <div class="row">
-      <div class="col-xs-12 col-md-10 col-md-offset-2">
-      <svg width="640" height="480"></svg>
-      </div>
-      <div class="col-xs-12 col-md-2">
-        <ul>
-          
-            <li>Null</li>
-          
-            <li>Carotte</li>
-          
-            <li>Poireau</li>
-          
-            <li>Ail</li>
-          
-            <li>Haricot</li>
-          
-            <li>Panais</li>
-          
-            <li>Tomate</li>
-          
-            <li>Pois</li>
-          
-            <li>Poivron</li>
-          
-            <li>Mâche</li>
-          
-            <li>Concombre</li>
-          
-            <li>Cornichon</li>
-          
-            <li>Pomme de terre</li>
-          
-            <li>Oignon</li>
-          
-            <li>Chou-fleur</li>
-          
-            <li>Chou-rave</li>
-          
-            <li>Chou-rouge</li>
-          
-            <li>Céleri</li>
-          
-            <li>Betterave</li>
-          
-            <li>Cardon</li>
-          
-            <li>Laitue</li>
-          
-            <li>Radis</li>
-          
-            <li>Courgette</li>
-          
-            <li>Fenouil</li>
-          
-            <li>Fraisier</li>
-          
-            <li>Aneth</li>
-          
-            <li>Persil</li>
-          
-            <li>Sarriette</li>
-          
-            <li>Ciboulette</li>
-          
-            <li>Cerfeuil</li>
-          
-            <li>Basilic</li>
-          
-            <li>Moutarde</li>
-          
-            <li>Menthe</li>
-          
-            <li>Mélisse citronnelle</li>
-          
-            <li>Tanaisie</li>
-          
-            <li>Trèfle blanc</li>
-          
-            <li>Bourrache</li>
-          
-            <li>Soucis</li>
-          
-            <li>Oeillets d'Inde</li>
-          
-            <li>Limaces</li>
-          
-            <li>Altises</li>
-          
-            <li>Pucerons</li>
-          
-            <li>Nématodes</li>
-          
-            <li>Cochenilles</li>
-          
-            <li>Mildiou</li>
-          
-            <li>Coccinelles</li>
-          
-            <li>Carabes</li>
-          
-            <li>Perce-oreille</li>
-          
-            <li>Achillée millefeuille</li>
-          
-            <li>Echalote</li>
-          
-            <li>Roquette</li>
-          
-            <li>Salsifis</li>
-          
-            <li>Piment</li>
-          
-            <li>Lin</li>
-          
-            <li>Romarin</li>
-          
-            <li>Sauge</li>
-          
-            <li>Absinthe</li>
-          
-            <li>Coriandre</li>
-          
-            <li>Maïs</li>
-          
-            <li>Carotte sauvage</li>
-          
-            <li>Choux</li>
-          
-            <li>Asperge</li>
-          
-            <li>Artichaut</li>
-          
-            <li>Cresson</li>
-          
-            <li>Bette</li>
-          
-            <li>Pêcher</li>
-          
-            <li>Pommier</li>
-          
-            <li>Poirier</li>
-          
-            <li>Prunier</li>
-          
-            <li>Chicorée</li>
-          
-            <li>Pissenlit</li>
-          
-            <li>Topinambour</li>
-          
-            <li>Framboisier</li>
-          
-            <li>Rosier</li>
-          
-            <li>Potiron</li>
-          
-            <li>Melon</li>
-          
-            <li>Pastèque</li>
-          
-            <li>Fève</li>
-          
-            <li>Epinard</li>
-          
-            <li>Capucine</li>
-          
-            <li>Sarriette</li>
-          
-            <li>Tournesol</li>
-          
-            <li>Kiwi</li>
-          
-            <li>Rosier d'Inde</li>
-          
-            <li>Null</li>
-          
-            <li>Cosmos</li>
-          
-            <li>Camomille allemande</li>
-          
-            <li>Géranium</li>
-          
-            <li>Inule visqueuse</li>
-          
-            <li>Ricin</li>
-          
-            <li>Doryphores</li>
-          
-            <li>Amarante</li>
-          
-            <li>Chanvre</li>
-          
-            <li>Ciboulette chinoise</li>
-          
-            <li>Féverole</li>
-          
-            <li>Morelle de Balbis</li>
-          
-            <li>Genêt</li>
-          
-            <li>Origan</li>
-          
-            <li>Thym</li>
-          
-            <li>Cumin</li>
-          
-            <li>Coquelicot</li>
-          
-            <li>Phacélie</li>
-          
-            <li>Matricaire inodore</li>
-          
-            <li>Ray-grass</li>
-          
-            <li>Sarrasin</li>
-          
-            <li>Courges</li>
-          
-            <li>Angélique</li>
-          
-            <li>Navet</li>
-          
-            <li>Null</li>
-          
-            <li>Araignées</li>
-          
-            <li>Syrphes</li>
-          
-            <li>Papillons</li>
-          
-            <li>Lièvres</li>
-          
-            <li>Patate douce</li>
-          
-            <li>Bourdons</li>
-          
-            <li>Escargots</li>
-          
-            <li>Campagnols</li>
-          
-            <li>Chenilles</li>
-          
-            <li>Fourmis</li>
-          
-            <li>Raifort</li>
-          
-            <li>Chénopode blanc</li>
-          
-            <li>Verge d'or</li>
-          
-            <li>Noisetier</li>
-          
-            <li>Erable</li>
-          
-            <li>Orme</li>
-          
-            <li>Fusain d'Europe</li>
-          
-            <li>Nerprun alaterne</li>
-          
-            <li>Noyer</li>
-          
-            <li>Potentille</li>
-          
-            <li>Panicaut</li>
-          
-            <li>Baguenaudier</li>
-          
-            <li>Genévrier</li>
-          
-            <li>Cerisier</li>
-          
-            <li>Rue</li>
-          
-            <li>Myrtille</li>
-          
-            <li>Ronce</li>
-          
-            <li>Groseillier</li>
-          
-            <li>Cassis</li>
-          
-            <li>Limaces</li>
-          
-            <li>Lavande</li>
-          
-            <li>Agrumes</li>
-          
-            <li>Anis</li>
-          
-            <li>Vigne</li>
-          
-            <li>Laurier-sauce</li>
-          
-            <li>Rats</li>
-          
-            <li>Punaises</li>
-          
-            <li>Brocoli</li>
-          
-            <li>Olivier</li>
-          
-            <li>Courtilières</li>
-          
-            <li>Abeilles</li>
-          
-            <li>Chrysopes</li>
-          
-            <li>Sureau</li>
-          
-            <li>Narcisse</li>
-          
-            <li>Mélilot</li>
-          
-            <li>Buis</li>
-          
-            <li>Noyer</li>
-          
-            <li>Marjolaine</li>
-          
-            <li>Noisetier</li>
-          
-            <li>Rhubarbe</li>
-          
-            <li>Ortie</li>
-          
-        </ul>
-      </div>
-  </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-2">
+            <div id="jetsMyPotageomeContent" data-toggle="buttons">
+                
+                <div id="planteSelected_1" data-value="1"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Carotte
+                </div>
+                
+                <div id="planteSelected_2" data-value="2"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Poireau
+                </div>
+                
+                <div id="planteSelected_3" data-value="3"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Ail
+                </div>
+                
+                <div id="planteSelected_4" data-value="4"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Haricot
+                </div>
+                
+                <div id="planteSelected_5" data-value="5"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Panais
+                </div>
+                
+                <div id="planteSelected_6" data-value="6"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Tomate
+                </div>
+                
+                <div id="planteSelected_7" data-value="7"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Pois
+                </div>
+                
+                <div id="planteSelected_8" data-value="8"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Poivron
+                </div>
+                
+                <div id="planteSelected_9" data-value="9"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Mâche
+                </div>
+                
+                <div id="planteSelected_10" data-value="10"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Concombre
+                </div>
+                
+                <div id="planteSelected_11" data-value="11"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Cornichon
+                </div>
+                
+                <div id="planteSelected_12" data-value="12"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Pomme de terre
+                </div>
+                
+                <div id="planteSelected_13" data-value="13"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Oignon
+                </div>
+                
+                <div id="planteSelected_14" data-value="14"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Chou-fleur
+                </div>
+                
+                <div id="planteSelected_15" data-value="15"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Chou-rave
+                </div>
+                
+                <div id="planteSelected_16" data-value="16"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Chou-rouge
+                </div>
+                
+                <div id="planteSelected_17" data-value="17"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Céleri
+                </div>
+                
+                <div id="planteSelected_18" data-value="18"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Betterave
+                </div>
+                
+                <div id="planteSelected_19" data-value="19"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Cardon
+                </div>
+                
+                <div id="planteSelected_20" data-value="20"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Laitue
+                </div>
+                
+                <div id="planteSelected_21" data-value="21"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Radis
+                </div>
+                
+                <div id="planteSelected_22" data-value="22"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Courgette
+                </div>
+                
+                <div id="planteSelected_23" data-value="23"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Fenouil
+                </div>
+                
+                <div id="planteSelected_24" data-value="24"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Fraisier
+                </div>
+                
+                <div id="planteSelected_25" data-value="25"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Aneth
+                </div>
+                
+                <div id="planteSelected_26" data-value="26"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Persil
+                </div>
+                
+                <div id="planteSelected_27" data-value="27"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Sarriette
+                </div>
+                
+                <div id="planteSelected_28" data-value="28"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Ciboulette
+                </div>
+                
+                <div id="planteSelected_29" data-value="29"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Cerfeuil
+                </div>
+                
+                <div id="planteSelected_30" data-value="30"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Basilic
+                </div>
+                
+                <div id="planteSelected_31" data-value="31"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Moutarde
+                </div>
+                
+                <div id="planteSelected_32" data-value="32"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Menthe
+                </div>
+                
+                <div id="planteSelected_33" data-value="33"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Mélisse citronnelle
+                </div>
+                
+                <div id="planteSelected_34" data-value="34"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Tanaisie
+                </div>
+                
+                <div id="planteSelected_35" data-value="35"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Trèfle blanc
+                </div>
+                
+                <div id="planteSelected_36" data-value="36"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Bourrache
+                </div>
+                
+                <div id="planteSelected_37" data-value="37"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Soucis
+                </div>
+                
+                <div id="planteSelected_38" data-value="38"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Oeillets d'Inde
+                </div>
+                
+                <div id="planteSelected_48" data-value="48"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Achillée millefeuille
+                </div>
+                
+                <div id="planteSelected_49" data-value="49"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Echalote
+                </div>
+                
+                <div id="planteSelected_50" data-value="50"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Roquette
+                </div>
+                
+                <div id="planteSelected_51" data-value="51"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Salsifis
+                </div>
+                
+                <div id="planteSelected_52" data-value="52"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Piment
+                </div>
+                
+                <div id="planteSelected_53" data-value="53"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Lin
+                </div>
+                
+                <div id="planteSelected_54" data-value="54"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Romarin
+                </div>
+                
+                <div id="planteSelected_55" data-value="55"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Sauge
+                </div>
+                
+                <div id="planteSelected_56" data-value="56"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Absinthe
+                </div>
+                
+                <div id="planteSelected_57" data-value="57"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Coriandre
+                </div>
+                
+                <div id="planteSelected_58" data-value="58"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Maïs
+                </div>
+                
+                <div id="planteSelected_59" data-value="59"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Carotte sauvage
+                </div>
+                
+                <div id="planteSelected_60" data-value="60"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Choux
+                </div>
+                
+                <div id="planteSelected_61" data-value="61"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Asperge
+                </div>
+                
+                <div id="planteSelected_62" data-value="62"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Artichaut
+                </div>
+                
+                <div id="planteSelected_63" data-value="63"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Cresson
+                </div>
+                
+                <div id="planteSelected_64" data-value="64"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Bette
+                </div>
+                
+                <div id="planteSelected_65" data-value="65"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Pêcher
+                </div>
+                
+                <div id="planteSelected_66" data-value="66"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Pommier
+                </div>
+                
+                <div id="planteSelected_67" data-value="67"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Poirier
+                </div>
+                
+                <div id="planteSelected_68" data-value="68"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Prunier
+                </div>
+                
+                <div id="planteSelected_69" data-value="69"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Chicorée
+                </div>
+                
+                <div id="planteSelected_70" data-value="70"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Pissenlit
+                </div>
+                
+                <div id="planteSelected_71" data-value="71"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Topinambour
+                </div>
+                
+                <div id="planteSelected_72" data-value="72"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Framboisier
+                </div>
+                
+                <div id="planteSelected_73" data-value="73"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Rosier
+                </div>
+                
+                <div id="planteSelected_74" data-value="74"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Potiron
+                </div>
+                
+                <div id="planteSelected_75" data-value="75"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Melon
+                </div>
+                
+                <div id="planteSelected_76" data-value="76"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Pastèque
+                </div>
+                
+                <div id="planteSelected_77" data-value="77"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Fève
+                </div>
+                
+                <div id="planteSelected_78" data-value="78"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Epinard
+                </div>
+                
+                <div id="planteSelected_79" data-value="79"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Capucine
+                </div>
+                
+                <div id="planteSelected_80" data-value="80"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Sarriette
+                </div>
+                
+                <div id="planteSelected_81" data-value="81"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Tournesol
+                </div>
+                
+                <div id="planteSelected_82" data-value="82"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Kiwi
+                </div>
+                
+                <div id="planteSelected_83" data-value="83"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Rosier d'Inde
+                </div>
+                
+                <div id="planteSelected_85" data-value="85"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Cosmos
+                </div>
+                
+                <div id="planteSelected_86" data-value="86"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Camomille allemande
+                </div>
+                
+                <div id="planteSelected_87" data-value="87"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Géranium
+                </div>
+                
+                <div id="planteSelected_88" data-value="88"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Inule visqueuse
+                </div>
+                
+                <div id="planteSelected_89" data-value="89"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Ricin
+                </div>
+                
+                <div id="planteSelected_91" data-value="91"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Amarante
+                </div>
+                
+                <div id="planteSelected_92" data-value="92"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Chanvre
+                </div>
+                
+                <div id="planteSelected_93" data-value="93"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Ciboulette chinoise
+                </div>
+                
+                <div id="planteSelected_94" data-value="94"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Féverole
+                </div>
+                
+                <div id="planteSelected_95" data-value="95"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Morelle de Balbis
+                </div>
+                
+                <div id="planteSelected_96" data-value="96"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Genêt
+                </div>
+                
+                <div id="planteSelected_97" data-value="97"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Origan
+                </div>
+                
+                <div id="planteSelected_98" data-value="98"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Thym
+                </div>
+                
+                <div id="planteSelected_99" data-value="99"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Cumin
+                </div>
+                
+                <div id="planteSelected_100" data-value="100"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Coquelicot
+                </div>
+                
+                <div id="planteSelected_101" data-value="101"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Phacélie
+                </div>
+                
+                <div id="planteSelected_102" data-value="102"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Matricaire inodore
+                </div>
+                
+                <div id="planteSelected_103" data-value="103"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Ray-grass
+                </div>
+                
+                <div id="planteSelected_104" data-value="104"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Sarrasin
+                </div>
+                
+                <div id="planteSelected_105" data-value="105"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Courges
+                </div>
+                
+                <div id="planteSelected_106" data-value="106"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Angélique
+                </div>
+                
+                <div id="planteSelected_107" data-value="107"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Navet
+                </div>
+                
+                <div id="planteSelected_113" data-value="113"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Patate douce
+                </div>
+                
+                <div id="planteSelected_119" data-value="119"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Raifort
+                </div>
+                
+                <div id="planteSelected_120" data-value="120"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Chénopode blanc
+                </div>
+                
+                <div id="planteSelected_121" data-value="121"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Verge d'or
+                </div>
+                
+                <div id="planteSelected_122" data-value="122"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Noisetier
+                </div>
+                
+                <div id="planteSelected_127" data-value="127"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Noyer
+                </div>
+                
+                <div id="planteSelected_128" data-value="128"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Potentille
+                </div>
+                
+                <div id="planteSelected_129" data-value="129"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Panicaut
+                </div>
+                
+                <div id="planteSelected_132" data-value="132"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Cerisier
+                </div>
+                
+                <div id="planteSelected_133" data-value="133"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Rue
+                </div>
+                
+                <div id="planteSelected_134" data-value="134"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Myrtille
+                </div>
+                
+                <div id="planteSelected_135" data-value="135"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Ronce
+                </div>
+                
+                <div id="planteSelected_136" data-value="136"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Groseillier
+                </div>
+                
+                <div id="planteSelected_137" data-value="137"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Cassis
+                </div>
+                
+                <div id="planteSelected_139" data-value="139"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Lavande
+                </div>
+                
+                <div id="planteSelected_140" data-value="140"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Agrumes
+                </div>
+                
+                <div id="planteSelected_141" data-value="141"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Anis
+                </div>
+                
+                <div id="planteSelected_142" data-value="142"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Vigne
+                </div>
+                
+                <div id="planteSelected_146" data-value="146"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Brocoli
+                </div>
+                
+                <div id="planteSelected_152" data-value="152"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Narcisse
+                </div>
+                
+                <div id="planteSelected_153" data-value="153"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Mélilot
+                </div>
+                
+                <div id="planteSelected_156" data-value="156"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Marjolaine
+                </div>
+                
+                <div id="planteSelected_158" data-value="158"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Rhubarbe
+                </div>
+                
+                <div id="planteSelected_159" data-value="159"
+                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                    Ortie
+                </div>
+                
+                <script type="text/javascript">
+                    $(".planteSelected").click(function (e) {
+                        var value = parseInt($(this).data("value"));
+                        remove_node(value);
+                    });
+                </script>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-8">
+            <svg width="640" height="480"></svg>
+        </div>
+        <div class="col-xs-12 col-md-2">
+            <div class="box">
+                <div class="container-jets">
+                    <span class="icon glyphicon glyphicon-filter"></span>
+                    <input type="search" id="jetsPotageomeSearch" placeholder="Filtrer"/>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    var refJets = new Jets({
+                        searchTag: '#jetsPotageomeSearch',
+                        contentTag: '#jetsPotageomeContent'
+                    });
+                });
+            </script>
+            <div id="jetsPotageomeContent" data-toggle="buttons">
+                
+                <div id="plante_1"  data-value="1"
+                     class="btn btn-default plante btn-block text-left">
+                    Carotte
+                </div>
+                
+                <div id="plante_2"  data-value="2"
+                     class="btn btn-default plante btn-block text-left">
+                    Poireau
+                </div>
+                
+                <div id="plante_3"  data-value="3"
+                     class="btn btn-default plante btn-block text-left">
+                    Ail
+                </div>
+                
+                <div id="plante_4"  data-value="4"
+                     class="btn btn-default plante btn-block text-left">
+                    Haricot
+                </div>
+                
+                <div id="plante_5"  data-value="5"
+                     class="btn btn-default plante btn-block text-left">
+                    Panais
+                </div>
+                
+                <div id="plante_6"  data-value="6"
+                     class="btn btn-default plante btn-block text-left">
+                    Tomate
+                </div>
+                
+                <div id="plante_7"  data-value="7"
+                     class="btn btn-default plante btn-block text-left">
+                    Pois
+                </div>
+                
+                <div id="plante_8"  data-value="8"
+                     class="btn btn-default plante btn-block text-left">
+                    Poivron
+                </div>
+                
+                <div id="plante_9"  data-value="9"
+                     class="btn btn-default plante btn-block text-left">
+                    Mâche
+                </div>
+                
+                <div id="plante_10"  data-value="10"
+                     class="btn btn-default plante btn-block text-left">
+                    Concombre
+                </div>
+                
+                <div id="plante_11"  data-value="11"
+                     class="btn btn-default plante btn-block text-left">
+                    Cornichon
+                </div>
+                
+                <div id="plante_12"  data-value="12"
+                     class="btn btn-default plante btn-block text-left">
+                    Pomme de terre
+                </div>
+                
+                <div id="plante_13"  data-value="13"
+                     class="btn btn-default plante btn-block text-left">
+                    Oignon
+                </div>
+                
+                <div id="plante_14"  data-value="14"
+                     class="btn btn-default plante btn-block text-left">
+                    Chou-fleur
+                </div>
+                
+                <div id="plante_15"  data-value="15"
+                     class="btn btn-default plante btn-block text-left">
+                    Chou-rave
+                </div>
+                
+                <div id="plante_16"  data-value="16"
+                     class="btn btn-default plante btn-block text-left">
+                    Chou-rouge
+                </div>
+                
+                <div id="plante_17"  data-value="17"
+                     class="btn btn-default plante btn-block text-left">
+                    Céleri
+                </div>
+                
+                <div id="plante_18"  data-value="18"
+                     class="btn btn-default plante btn-block text-left">
+                    Betterave
+                </div>
+                
+                <div id="plante_19"  data-value="19"
+                     class="btn btn-default plante btn-block text-left">
+                    Cardon
+                </div>
+                
+                <div id="plante_20"  data-value="20"
+                     class="btn btn-default plante btn-block text-left">
+                    Laitue
+                </div>
+                
+                <div id="plante_21"  data-value="21"
+                     class="btn btn-default plante btn-block text-left">
+                    Radis
+                </div>
+                
+                <div id="plante_22"  data-value="22"
+                     class="btn btn-default plante btn-block text-left">
+                    Courgette
+                </div>
+                
+                <div id="plante_23"  data-value="23"
+                     class="btn btn-default plante btn-block text-left">
+                    Fenouil
+                </div>
+                
+                <div id="plante_24"  data-value="24"
+                     class="btn btn-default plante btn-block text-left">
+                    Fraisier
+                </div>
+                
+                <div id="plante_25"  data-value="25"
+                     class="btn btn-default plante btn-block text-left">
+                    Aneth
+                </div>
+                
+                <div id="plante_26"  data-value="26"
+                     class="btn btn-default plante btn-block text-left">
+                    Persil
+                </div>
+                
+                <div id="plante_27"  data-value="27"
+                     class="btn btn-default plante btn-block text-left">
+                    Sarriette
+                </div>
+                
+                <div id="plante_28"  data-value="28"
+                     class="btn btn-default plante btn-block text-left">
+                    Ciboulette
+                </div>
+                
+                <div id="plante_29"  data-value="29"
+                     class="btn btn-default plante btn-block text-left">
+                    Cerfeuil
+                </div>
+                
+                <div id="plante_30"  data-value="30"
+                     class="btn btn-default plante btn-block text-left">
+                    Basilic
+                </div>
+                
+                <div id="plante_31"  data-value="31"
+                     class="btn btn-default plante btn-block text-left">
+                    Moutarde
+                </div>
+                
+                <div id="plante_32"  data-value="32"
+                     class="btn btn-default plante btn-block text-left">
+                    Menthe
+                </div>
+                
+                <div id="plante_33"  data-value="33"
+                     class="btn btn-default plante btn-block text-left">
+                    Mélisse citronnelle
+                </div>
+                
+                <div id="plante_34"  data-value="34"
+                     class="btn btn-default plante btn-block text-left">
+                    Tanaisie
+                </div>
+                
+                <div id="plante_35"  data-value="35"
+                     class="btn btn-default plante btn-block text-left">
+                    Trèfle blanc
+                </div>
+                
+                <div id="plante_36"  data-value="36"
+                     class="btn btn-default plante btn-block text-left">
+                    Bourrache
+                </div>
+                
+                <div id="plante_37"  data-value="37"
+                     class="btn btn-default plante btn-block text-left">
+                    Soucis
+                </div>
+                
+                <div id="plante_38"  data-value="38"
+                     class="btn btn-default plante btn-block text-left">
+                    Oeillets d'Inde
+                </div>
+                
+                <div id="plante_48"  data-value="48"
+                     class="btn btn-default plante btn-block text-left">
+                    Achillée millefeuille
+                </div>
+                
+                <div id="plante_49"  data-value="49"
+                     class="btn btn-default plante btn-block text-left">
+                    Echalote
+                </div>
+                
+                <div id="plante_50"  data-value="50"
+                     class="btn btn-default plante btn-block text-left">
+                    Roquette
+                </div>
+                
+                <div id="plante_51"  data-value="51"
+                     class="btn btn-default plante btn-block text-left">
+                    Salsifis
+                </div>
+                
+                <div id="plante_52"  data-value="52"
+                     class="btn btn-default plante btn-block text-left">
+                    Piment
+                </div>
+                
+                <div id="plante_53"  data-value="53"
+                     class="btn btn-default plante btn-block text-left">
+                    Lin
+                </div>
+                
+                <div id="plante_54"  data-value="54"
+                     class="btn btn-default plante btn-block text-left">
+                    Romarin
+                </div>
+                
+                <div id="plante_55"  data-value="55"
+                     class="btn btn-default plante btn-block text-left">
+                    Sauge
+                </div>
+                
+                <div id="plante_56"  data-value="56"
+                     class="btn btn-default plante btn-block text-left">
+                    Absinthe
+                </div>
+                
+                <div id="plante_57"  data-value="57"
+                     class="btn btn-default plante btn-block text-left">
+                    Coriandre
+                </div>
+                
+                <div id="plante_58"  data-value="58"
+                     class="btn btn-default plante btn-block text-left">
+                    Maïs
+                </div>
+                
+                <div id="plante_59"  data-value="59"
+                     class="btn btn-default plante btn-block text-left">
+                    Carotte sauvage
+                </div>
+                
+                <div id="plante_60"  data-value="60"
+                     class="btn btn-default plante btn-block text-left">
+                    Choux
+                </div>
+                
+                <div id="plante_61"  data-value="61"
+                     class="btn btn-default plante btn-block text-left">
+                    Asperge
+                </div>
+                
+                <div id="plante_62"  data-value="62"
+                     class="btn btn-default plante btn-block text-left">
+                    Artichaut
+                </div>
+                
+                <div id="plante_63"  data-value="63"
+                     class="btn btn-default plante btn-block text-left">
+                    Cresson
+                </div>
+                
+                <div id="plante_64"  data-value="64"
+                     class="btn btn-default plante btn-block text-left">
+                    Bette
+                </div>
+                
+                <div id="plante_65"  data-value="65"
+                     class="btn btn-default plante btn-block text-left">
+                    Pêcher
+                </div>
+                
+                <div id="plante_66"  data-value="66"
+                     class="btn btn-default plante btn-block text-left">
+                    Pommier
+                </div>
+                
+                <div id="plante_67"  data-value="67"
+                     class="btn btn-default plante btn-block text-left">
+                    Poirier
+                </div>
+                
+                <div id="plante_68"  data-value="68"
+                     class="btn btn-default plante btn-block text-left">
+                    Prunier
+                </div>
+                
+                <div id="plante_69"  data-value="69"
+                     class="btn btn-default plante btn-block text-left">
+                    Chicorée
+                </div>
+                
+                <div id="plante_70"  data-value="70"
+                     class="btn btn-default plante btn-block text-left">
+                    Pissenlit
+                </div>
+                
+                <div id="plante_71"  data-value="71"
+                     class="btn btn-default plante btn-block text-left">
+                    Topinambour
+                </div>
+                
+                <div id="plante_72"  data-value="72"
+                     class="btn btn-default plante btn-block text-left">
+                    Framboisier
+                </div>
+                
+                <div id="plante_73"  data-value="73"
+                     class="btn btn-default plante btn-block text-left">
+                    Rosier
+                </div>
+                
+                <div id="plante_74"  data-value="74"
+                     class="btn btn-default plante btn-block text-left">
+                    Potiron
+                </div>
+                
+                <div id="plante_75"  data-value="75"
+                     class="btn btn-default plante btn-block text-left">
+                    Melon
+                </div>
+                
+                <div id="plante_76"  data-value="76"
+                     class="btn btn-default plante btn-block text-left">
+                    Pastèque
+                </div>
+                
+                <div id="plante_77"  data-value="77"
+                     class="btn btn-default plante btn-block text-left">
+                    Fève
+                </div>
+                
+                <div id="plante_78"  data-value="78"
+                     class="btn btn-default plante btn-block text-left">
+                    Epinard
+                </div>
+                
+                <div id="plante_79"  data-value="79"
+                     class="btn btn-default plante btn-block text-left">
+                    Capucine
+                </div>
+                
+                <div id="plante_80"  data-value="80"
+                     class="btn btn-default plante btn-block text-left">
+                    Sarriette
+                </div>
+                
+                <div id="plante_81"  data-value="81"
+                     class="btn btn-default plante btn-block text-left">
+                    Tournesol
+                </div>
+                
+                <div id="plante_82"  data-value="82"
+                     class="btn btn-default plante btn-block text-left">
+                    Kiwi
+                </div>
+                
+                <div id="plante_83"  data-value="83"
+                     class="btn btn-default plante btn-block text-left">
+                    Rosier d'Inde
+                </div>
+                
+                <div id="plante_85"  data-value="85"
+                     class="btn btn-default plante btn-block text-left">
+                    Cosmos
+                </div>
+                
+                <div id="plante_86"  data-value="86"
+                     class="btn btn-default plante btn-block text-left">
+                    Camomille allemande
+                </div>
+                
+                <div id="plante_87"  data-value="87"
+                     class="btn btn-default plante btn-block text-left">
+                    Géranium
+                </div>
+                
+                <div id="plante_88"  data-value="88"
+                     class="btn btn-default plante btn-block text-left">
+                    Inule visqueuse
+                </div>
+                
+                <div id="plante_89"  data-value="89"
+                     class="btn btn-default plante btn-block text-left">
+                    Ricin
+                </div>
+                
+                <div id="plante_91"  data-value="91"
+                     class="btn btn-default plante btn-block text-left">
+                    Amarante
+                </div>
+                
+                <div id="plante_92"  data-value="92"
+                     class="btn btn-default plante btn-block text-left">
+                    Chanvre
+                </div>
+                
+                <div id="plante_93"  data-value="93"
+                     class="btn btn-default plante btn-block text-left">
+                    Ciboulette chinoise
+                </div>
+                
+                <div id="plante_94"  data-value="94"
+                     class="btn btn-default plante btn-block text-left">
+                    Féverole
+                </div>
+                
+                <div id="plante_95"  data-value="95"
+                     class="btn btn-default plante btn-block text-left">
+                    Morelle de Balbis
+                </div>
+                
+                <div id="plante_96"  data-value="96"
+                     class="btn btn-default plante btn-block text-left">
+                    Genêt
+                </div>
+                
+                <div id="plante_97"  data-value="97"
+                     class="btn btn-default plante btn-block text-left">
+                    Origan
+                </div>
+                
+                <div id="plante_98"  data-value="98"
+                     class="btn btn-default plante btn-block text-left">
+                    Thym
+                </div>
+                
+                <div id="plante_99"  data-value="99"
+                     class="btn btn-default plante btn-block text-left">
+                    Cumin
+                </div>
+                
+                <div id="plante_100"  data-value="100"
+                     class="btn btn-default plante btn-block text-left">
+                    Coquelicot
+                </div>
+                
+                <div id="plante_101"  data-value="101"
+                     class="btn btn-default plante btn-block text-left">
+                    Phacélie
+                </div>
+                
+                <div id="plante_102"  data-value="102"
+                     class="btn btn-default plante btn-block text-left">
+                    Matricaire inodore
+                </div>
+                
+                <div id="plante_103"  data-value="103"
+                     class="btn btn-default plante btn-block text-left">
+                    Ray-grass
+                </div>
+                
+                <div id="plante_104"  data-value="104"
+                     class="btn btn-default plante btn-block text-left">
+                    Sarrasin
+                </div>
+                
+                <div id="plante_105"  data-value="105"
+                     class="btn btn-default plante btn-block text-left">
+                    Courges
+                </div>
+                
+                <div id="plante_106"  data-value="106"
+                     class="btn btn-default plante btn-block text-left">
+                    Angélique
+                </div>
+                
+                <div id="plante_107"  data-value="107"
+                     class="btn btn-default plante btn-block text-left">
+                    Navet
+                </div>
+                
+                <div id="plante_113"  data-value="113"
+                     class="btn btn-default plante btn-block text-left">
+                    Patate douce
+                </div>
+                
+                <div id="plante_119"  data-value="119"
+                     class="btn btn-default plante btn-block text-left">
+                    Raifort
+                </div>
+                
+                <div id="plante_120"  data-value="120"
+                     class="btn btn-default plante btn-block text-left">
+                    Chénopode blanc
+                </div>
+                
+                <div id="plante_121"  data-value="121"
+                     class="btn btn-default plante btn-block text-left">
+                    Verge d'or
+                </div>
+                
+                <div id="plante_122"  data-value="122"
+                     class="btn btn-default plante btn-block text-left">
+                    Noisetier
+                </div>
+                
+                <div id="plante_127"  data-value="127"
+                     class="btn btn-default plante btn-block text-left">
+                    Noyer
+                </div>
+                
+                <div id="plante_128"  data-value="128"
+                     class="btn btn-default plante btn-block text-left">
+                    Potentille
+                </div>
+                
+                <div id="plante_129"  data-value="129"
+                     class="btn btn-default plante btn-block text-left">
+                    Panicaut
+                </div>
+                
+                <div id="plante_132"  data-value="132"
+                     class="btn btn-default plante btn-block text-left">
+                    Cerisier
+                </div>
+                
+                <div id="plante_133"  data-value="133"
+                     class="btn btn-default plante btn-block text-left">
+                    Rue
+                </div>
+                
+                <div id="plante_134"  data-value="134"
+                     class="btn btn-default plante btn-block text-left">
+                    Myrtille
+                </div>
+                
+                <div id="plante_135"  data-value="135"
+                     class="btn btn-default plante btn-block text-left">
+                    Ronce
+                </div>
+                
+                <div id="plante_136"  data-value="136"
+                     class="btn btn-default plante btn-block text-left">
+                    Groseillier
+                </div>
+                
+                <div id="plante_137"  data-value="137"
+                     class="btn btn-default plante btn-block text-left">
+                    Cassis
+                </div>
+                
+                <div id="plante_139"  data-value="139"
+                     class="btn btn-default plante btn-block text-left">
+                    Lavande
+                </div>
+                
+                <div id="plante_140"  data-value="140"
+                     class="btn btn-default plante btn-block text-left">
+                    Agrumes
+                </div>
+                
+                <div id="plante_141"  data-value="141"
+                     class="btn btn-default plante btn-block text-left">
+                    Anis
+                </div>
+                
+                <div id="plante_142"  data-value="142"
+                     class="btn btn-default plante btn-block text-left">
+                    Vigne
+                </div>
+                
+                <div id="plante_146"  data-value="146"
+                     class="btn btn-default plante btn-block text-left">
+                    Brocoli
+                </div>
+                
+                <div id="plante_152"  data-value="152"
+                     class="btn btn-default plante btn-block text-left">
+                    Narcisse
+                </div>
+                
+                <div id="plante_153"  data-value="153"
+                     class="btn btn-default plante btn-block text-left">
+                    Mélilot
+                </div>
+                
+                <div id="plante_156"  data-value="156"
+                     class="btn btn-default plante btn-block text-left">
+                    Marjolaine
+                </div>
+                
+                <div id="plante_158"  data-value="158"
+                     class="btn btn-default plante btn-block text-left">
+                    Rhubarbe
+                </div>
+                
+                <div id="plante_159"  data-value="159"
+                     class="btn btn-default plante btn-block text-left">
+                    Ortie
+                </div>
+                
+                <script type="text/javascript">
+                    $(".plante").click(function (e) {
+                        var value = parseInt($(this).data("value"));
+                        add_node(value);
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
@@ -354,71 +1274,106 @@
 <script src="d3v4.5.js"></script>
 <script src="data.js"></script>
 <script>
-var svg = d3.select("svg"),
-    width = +svg.attr("width"),
-    height = +svg.attr("height"),
-    color = d3.scaleOrdinal(d3.schemeCategory10);
+    var svg = d3.select("svg"),
+            width = +svg.attr("width"),
+            height = +svg.attr("height"),
+            color = d3.scaleOrdinal(d3.schemeCategory10);
 
-var nodes = [], index_nodes =[];
+    var nodes = [], index_nodes = [];
     links = [];
 
-var simulation = d3.forceSimulation(nodes)
-    .force("charge", d3.forceManyBody().strength(-1000))
-    .force("link", d3.forceLink(links).distance(200))
-    .force("x", d3.forceX())
-    .force("y", d3.forceY())
-    .alphaTarget(1)
-    .on("tick", ticked);
+    var simulation = d3.forceSimulation(nodes)
+            .force("charge", d3.forceManyBody().strength(-1000))
+            .force("link", d3.forceLink(links).distance(200))
+            .force("x", d3.forceX())
+            .force("y", d3.forceY())
+            .alphaTarget(1)
+            .on("tick", ticked);
 
-var g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")"),
-    link = g.append("g").attr("stroke", "#000").attr("stroke-width", 1.5).selectAll(".link"),
-    node = g.append("g").attr("stroke", "#fff").attr("stroke-width", 1.5).selectAll(".node");
+    var g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")"),
+            link = g.append("g").attr("stroke", "#000").attr("stroke-width", 1.5).selectAll(".link"),
+            node = g.append("g").attr("stroke", "#fff").attr("stroke-width", 1.5).selectAll(".node");
 
-
-
-for(var i = 0; i < list_favorable.length; i++) {
-    var cur_index = list_favorable[i];
-    index_nodes.push(cur_index);
-    var cur_node = graph.nodes[cur_index];
-    nodes.push(cur_node);
-    for(var j = 0; j < graph.links.length; j++) {
-        var cur_link = graph.links[j];
-        if (cur_link.source==cur_index && index_nodes.indexOf(cur_link.target) > -1){
-            links.push({"source": cur_node, "target": graph.nodes[cur_link.target], "value": cur_link.value});
-        } else if (cur_link.target==cur_index && index_nodes.indexOf(cur_link.source) > -1){
-            links.push({"source": cur_node, "target": graph.nodes[cur_link.target], "value": cur_link.value});
-        }
+    function remove_node(cur_index){
+        $("#planteSelected_"+String(cur_index), "#jetsMyPotageomeContent").hide().addClass('active');
+        $("#plante_"+String(cur_index), "#jetsPotageomeContent").show().removeClass('active');
+        i = index_nodes.indexOf(cur_index);
+        index_nodes.splice(i, 1);
+        nodes.splice(i, 1);
+        var cur_node = graph.nodes[cur_index];
+        links = links.filter(function(l) {
+            return l.source !== cur_node && l.target !== cur_node;
+          });
+        restart();
     }
-    restart();
-}
+
+    function add_node(cur_index){
+        $("#plante_"+String(cur_index), "#jetsPotageomeContent").hide().removeClass('active');
+        $("#planteSelected_"+String(cur_index), "#jetsMyPotageomeContent").show().addClass('active');
+        index_nodes.push(cur_index);
+        var cur_node = graph.nodes[cur_index];
+        nodes.push(cur_node);
+        for (var j = 0; j < graph.links.length; j++) {
+            var cur_link = graph.links[j];
+            if (cur_link.source == cur_index && index_nodes.indexOf(cur_link.target) > -1) {
+                links.push({"source": cur_node, "target": graph.nodes[cur_link.target], "value": cur_link.value});
+            } else if (cur_link.target == cur_index && index_nodes.indexOf(cur_link.source) > -1) {
+                links.push({"source": cur_node, "target": graph.nodes[cur_link.target], "value": cur_link.value});
+            }
+        }
+        restart();
+    }
+
+    for (var i = 0; i < list_favorable.length; i++) {
+        var cur_index = list_favorable[i];
+        add_node(cur_index)
+    }
 
 
-function restart() {
+    function restart() {
 
-  // Apply the general update pattern to the nodes.
-  node = node.data(nodes, function(d) { return d.id;});
-  node.exit().remove();
-  node = node.enter().append("circle").attr("fill", function(d) { return color(d.id); }).attr("r", 8).merge(node);
+        // Apply the general update pattern to the nodes.
+        node = node.data(nodes, function (d) {
+            return d.id;
+        });
+        node.exit().remove();
+        node = node.enter().append("circle").attr("fill", function (d) {
+            return color(d.group);
+        }).attr("r", 8).merge(node);
 
-  // Apply the general update pattern to the links.
-  link = link.data(links, function(d) { return d.source.id + "-" + d.target.id; });
-  link.exit().remove();
-  link = link.enter().append("line").merge(link);
+        // Apply the general update pattern to the links.
+        link = link.data(links, function (d) {
+            return d.source.id + "-" + d.target.id;
+        });
+        link.exit().remove();
+        link = link.enter().append("line").merge(link);
 
-  // Update and restart the simulation.
-  simulation.nodes(nodes);
-  simulation.force("link").links(links);
-  simulation.alpha(1).restart();
-}
+        // Update and restart the simulation.
+        simulation.nodes(nodes);
+        simulation.force("link").links(links);
+        simulation.alpha(1).restart();
+    }
 
-function ticked() {
-  node.attr("cx", function(d) { return d.x; })
-      .attr("cy", function(d) { return d.y; });
+    function ticked() {
+        node.attr("cx", function (d) {
+            return d.x;
+        })
+                .attr("cy", function (d) {
+                    return d.y;
+                });
 
-  link.attr("x1", function(d) { return d.source.x; })
-      .attr("y1", function(d) { return d.source.y; })
-      .attr("x2", function(d) { return d.target.x; })
-      .attr("y2", function(d) { return d.target.y; });
-}
+        link.attr("x1", function (d) {
+            return d.source.x;
+        })
+                .attr("y1", function (d) {
+                    return d.source.y;
+                })
+                .attr("x2", function (d) {
+                    return d.target.x;
+                })
+                .attr("y2", function (d) {
+                    return d.target.y;
+                });
+    }
 </script>
 
