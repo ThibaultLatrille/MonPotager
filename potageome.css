@@ -60,3 +60,6 @@
 .box .container-jets input:focus:-ms-input-placeholder {
 	color: #fdfdfd;}
 
+.btn:focus {
+	outline: none;}
+
