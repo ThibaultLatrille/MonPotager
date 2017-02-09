@@ -42,8 +42,8 @@ var simulation = d3.forceSimulation(nodes)
     .on("tick", tick);
 
 var g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")"),
-    link = g.append("g").attr("stroke", "#000").attr("stroke-width", 1.5).selectAll(".link"),
-    node = g.append("g").attr("stroke", "#fff").attr("stroke-width", 1.5).selectAll(".node");
+    link = g.append("g").selectAll(".link"),
+    node = g.append("g").selectAll(".node");
 
 function remove_node(cur_index) {
     $("#planteSelected_" + String(cur_index), "#jetsMyPotageomeContent").hide().addClass('active');
@@ -87,9 +87,14 @@ function restart() {
         return d.id;
     });
     node.exit().remove();
-    node = node.enter().append("circle").attr("fill", function (d) {
-        return color(d.group);
-    }).attr("r", 8).merge(node);
+    node = node.enter().append("g").each(function(d) {
+        d3.select(this).insert("circle").attr("fill", function (d) {
+            return color(d.group);
+        }).attr("r", 10);
+        d3.select(this).insert("text")
+          .attr("x", 11).attr("y", -4)
+            .text(function(d) { return d.name; })
+    }).merge(node);
 
     // Apply the general update pattern to the links.
     link = link.data(links, function (d) {
@@ -112,10 +117,8 @@ function restart() {
 
 
 function tick() {
-    node.attr("cx", function (d) {
-        return d.x;
-    }).attr("cy", function (d) {
-        return d.y;
+    node.attr("transform", function (d) {
+        return "translate("+d.x +"," + d.y + ")";
     });
 
     link.attr("d", function (d) {

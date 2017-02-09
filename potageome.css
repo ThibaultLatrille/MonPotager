@@ -65,8 +65,7 @@
 
 .link {
 	fill: none;
-	stroke: #666;
-	stroke-width: 1.5px;}
+	stroke-width: 2px;}
 
 .link.pos {
 	stroke: #5cb85c;}
@@ -94,7 +93,17 @@
 #rep {
 	fill: #d9534f;}
 
+g {
+	fill: #0f0f0f;}
+
 circle {
 	stroke: #333;
-	stroke-width: 1.5px;}
+	stroke-width: 2px;}
+
+text {
+	text-shadow: 0 1px 0 #fff , 1px 0 0 #fff , 0 -1px 0 #fff , -1px 0 0 #fff;
+	font: 14px sans-serif;
+	font-weight: bold;
+	fill: #0f0f0f;
+	pointer-events: none;}
 
