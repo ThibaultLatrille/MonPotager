@@ -107,3 +107,8 @@ text {
 	fill: #0f0f0f;
 	pointer-events: none;}
 
+#graph {
+	width: 100%;
+	max-width: 100%;
+	min-width: 100%;}
+
