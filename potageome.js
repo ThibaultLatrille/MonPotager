@@ -17,8 +17,22 @@ var svg = d3.select("svg"),
     height = +svg.attr("height"),
     color = d3.scaleOrdinal(d3.schemeCategory10);
 
-var nodes = [], index_nodes = [];
-links = [];
+var nodes = [], index_nodes = [], links = [];
+
+svg.append("defs").selectAll("marker")
+    .data(associations)
+    .enter().append("marker")
+    .attr("id", function (d) {
+        return d;
+    })
+    .attr("viewBox", "0 -5 10 10")
+    .attr("refX", 15)
+    .attr("refY", -1.5)
+    .attr("markerWidth", 6)
+    .attr("markerHeight", 6)
+    .attr("orient", "auto")
+    .append("path")
+    .attr("d", "M0,-5L10,0L0,5");
 
 var simulation = d3.forceSimulation(nodes)
     .force("link", d3.forceLink(links).distance(200).strength(0.2))
@@ -82,7 +96,13 @@ function restart() {
         return d.source.id + "-" + d.target.id;
     });
     link.exit().remove();
-    link = link.enter().append("line").merge(link);
+    link = link.enter().append("path")
+        .attr("class", function (d) {
+            return "link " + d.value;
+        })
+        .attr("marker-end", function (d) {
+            return "url(#" + d.value + ")";
+        }).merge(link);
 
     // Update and restart the simulation.
     simulation.nodes(nodes);
@@ -90,24 +110,18 @@ function restart() {
     simulation.alpha(1).restart();
 }
 
+
 function tick() {
     node.attr("cx", function (d) {
         return d.x;
-    })
-        .attr("cy", function (d) {
-            return d.y;
-        });
+    }).attr("cy", function (d) {
+        return d.y;
+    });
 
-    link.attr("x1", function (d) {
-        return d.source.x;
+    link.attr("d", function (d) {
+        var dx = d.target.x - d.source.x,
+            dy = d.target.y - d.source.y,
+            dr = Math.sqrt(dx * dx + dy * dy);
+        return "M" + d.source.x + "," + d.source.y + "A" + dr + "," + dr + " 0 0,1 " + d.target.x + "," + d.target.y;
     })
-        .attr("y1", function (d) {
-            return d.source.y;
-        })
-        .attr("x2", function (d) {
-            return d.target.x;
-        })
-        .attr("y2", function (d) {
-            return d.target.y;
-        });
 }

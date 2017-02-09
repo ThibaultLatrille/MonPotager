@@ -63,3 +63,38 @@
 .btn:focus {
 	outline: none;}
 
+.link {
+	fill: none;
+	stroke: #666;
+	stroke-width: 1.5px;}
+
+.link.pos {
+	stroke: #5cb85c;}
+
+#pos {
+	fill: #5cb85c;}
+
+.link.neg {
+	stroke: #d9534f;}
+
+#neg {
+	fill: #d9534f;}
+
+.link.atr {
+	stroke: #5cb85c;
+	stroke-dasharray: 0 , 2 1;}
+
+#atr {
+	fill: #5cb85c;}
+
+.link.rep {
+	stroke: #d9534f;
+	stroke-dasharray: 0 , 2 1;}
+
+#rep {
+	fill: #d9534f;}
+
+circle {
+	stroke: #333;
+	stroke-width: 1.5px;}
+

@@ -172,3 +172,5 @@ plantes = {
 
 categories = {1: "Légume", 2: "Fruit", 3: "Arômate", 4: "Fleur", 5: "Nuisible", 6: "Auxiliaire", 7: "Céréale",
              8: "Arbres", 0: "Null"}
+
+associations = {-1: "neg", 1: "pos", -2: "rep", 2: "atr"}
