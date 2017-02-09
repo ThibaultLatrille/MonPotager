@@ -21,12 +21,11 @@ var nodes = [], index_nodes = [];
 links = [];
 
 var simulation = d3.forceSimulation(nodes)
-    .force("charge", d3.forceManyBody().strength(-1000))
-    .force("link", d3.forceLink(links).distance(200))
+    .force("link", d3.forceLink(links).distance(200).strength(0.2))
+    .force("charge", d3.forceManyBody().strength(-600))
     .force("x", d3.forceX())
     .force("y", d3.forceY())
-    .alphaTarget(1)
-    .on("tick", ticked);
+    .on("tick", tick);
 
 var g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")"),
     link = g.append("g").attr("stroke", "#000").attr("stroke-width", 1.5).selectAll(".link"),
@@ -56,15 +55,14 @@ function add_node(cur_index) {
         if (cur_link.source == cur_index && index_nodes.indexOf(cur_link.target) > -1) {
             links.push({"source": cur_node, "target": graph.nodes[cur_link.target], "value": cur_link.value});
         } else if (cur_link.target == cur_index && index_nodes.indexOf(cur_link.source) > -1) {
-            links.push({"source": cur_node, "target": graph.nodes[cur_link.target], "value": cur_link.value});
+            links.push({"source": graph.nodes[cur_link.source], "target": cur_node, "value": cur_link.value});
         }
     }
     restart();
 }
 
 for (var i = 0; i < list_favorable.length; i++) {
-    var cur_index = list_favorable[i];
-    add_node(cur_index)
+    add_node(list_favorable[i])
 }
 
 
@@ -92,7 +90,7 @@ function restart() {
     simulation.alpha(1).restart();
 }
 
-function ticked() {
+function tick() {
     node.attr("cx", function (d) {
         return d.x;
     })
