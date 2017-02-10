@@ -67,7 +67,6 @@ function add_node(cur_index) {
 
     for (var f = 0; f < graph.forward[cur_index].length; f++) {
         var f_link = graph.forward[cur_index][f];
-        console.log(f_link);
         if (index_nodes.indexOf(f_link.target) > -1) {
             links.push({"source": cur_node, "target": graph.nodes[f_link.target], "value": f_link.value});
         }
@@ -78,7 +77,6 @@ function add_node(cur_index) {
             links.push({"source": graph.nodes[b_link.source], "target": cur_node, "value": b_link.value});
         }
     }
-    console.log(links);
     restart();
 }
 
