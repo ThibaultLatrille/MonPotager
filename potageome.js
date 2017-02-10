@@ -1,6 +1,7 @@
 $(".planteSelected").click(function (e) {
     var value = parseInt($(this).data("value"));
     remove_node(value);
+    restart();
 });
 $(document).ready(function () {
     new Jets({
@@ -11,6 +12,7 @@ $(document).ready(function () {
 $(".plante").click(function (e) {
     var value = parseInt($(this).data("value"));
     add_node(value);
+    restart();
 });
 var svg = d3.select("svg"),
     width = +svg.attr("width"),
@@ -68,7 +70,6 @@ function remove_node(cur_index) {
     links = links.filter(function (l) {
         return l.source !== cur_node && l.target !== cur_node;
     });
-    restart();
 }
 
 function add_node(cur_index) {
@@ -94,13 +95,12 @@ function add_node(cur_index) {
             links.push({"source": graph.nodes[b_link.source], "target": cur_node, "value": b_link.value});
         }
     }
-    restart();
 }
 
 for (var i = 0; i < list_favorable.length; i++) {
     add_node(list_favorable[i])
 }
-
+restart();
 
 function restart() {
 
