@@ -10,17 +10,26 @@ javascript = open("data.js", "w")
 javascript.write("var graph = {\n")
 # nodes for javascript file
 javascript.write('\t"nodes":[\n')
-javascript.write(",\n".join(['\t\t{"name":"'+plantes[key]+'","group":'+
-                             str(value)+'}' for key, value in appartenance.items()]))
+javascript.write(",\n".join(['\t\t{"name":"' + plantes[key] + '","group":' +
+                             str(value) + '}' for key, value in appartenance.items()]))
 javascript.write('\n\t],\n')
-# links for html file
-javascript.write('\t"links":[\n')
-javascript.write(",\n".join(['\t\t{"source":'+str(plante_1)+',"target":'+str(plante_2)+',"value":"'+
-                             str(associations[inter])+'"}' for plante_1, plante_2, inter in interaction_plante]))
+# Forward list
+javascript.write('\t"forward":[\n')
+javascript.write(",\n".join(['\t\t[' + ','.join(
+    ['{{"target":{0},"value":"{1}","group":{2}}}'.format(plante_2, associations[inter], appartenance[plante_2])
+     for plante_1, plante_2, inter
+     in interaction_plante if plante_1 == plante_id]) + ']' for plante_id, _ in plantes.items()]))
+javascript.write('\n\t],\n')
+# Backward list
+javascript.write('\t"backward":[\n')
+javascript.write(",\n".join(['\t\t[' + ','.join(
+    ['{{"source":{0},"value":"{1}","group":{2}}}'.format(plante_1, associations[inter], appartenance[plante_1])
+     for plante_1, plante_2, inter
+     in interaction_plante if plante_2 == plante_id]) + ']' for plante_id, _ in plantes.items()]))
 javascript.write('\n\t]\n};')
 
 javascript.write("\nvar groups = {\n")
-javascript.write(",\n".join(['\t'+str(key)+':"'+str(value)+'"' for key, value in categories.items()]))
+javascript.write(",\n".join(['\t' + str(key) + ':"' + str(value) + '"' for key, value in categories.items()]))
 javascript.write('\n};')
 
 javascript.write("\nvar list_defavorable = [" + ",".join(map(str, list_defavorable)) + "];")

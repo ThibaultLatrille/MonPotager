@@ -64,14 +64,21 @@ function add_node(cur_index) {
     index_nodes.push(cur_index);
     var cur_node = graph.nodes[cur_index];
     nodes.push(cur_node);
-    for (var j = 0; j < graph.links.length; j++) {
-        var cur_link = graph.links[j];
-        if (cur_link.source == cur_index && index_nodes.indexOf(cur_link.target) > -1) {
-            links.push({"source": cur_node, "target": graph.nodes[cur_link.target], "value": cur_link.value});
-        } else if (cur_link.target == cur_index && index_nodes.indexOf(cur_link.source) > -1) {
-            links.push({"source": graph.nodes[cur_link.source], "target": cur_node, "value": cur_link.value});
+
+    for (var f = 0; f < graph.forward[cur_index].length; f++) {
+        var f_link = graph.forward[cur_index][f];
+        console.log(f_link);
+        if (index_nodes.indexOf(f_link.target) > -1) {
+            links.push({"source": cur_node, "target": graph.nodes[f_link.target], "value": f_link.value});
         }
     }
+    for (var b = 0; b < graph.backward[cur_index].length; b++) {
+        var b_link = graph.backward[cur_index][b];
+        if (index_nodes.indexOf(b_link.source) > -1) {
+            links.push({"source": graph.nodes[b_link.source], "target": cur_node, "value": b_link.value});
+        }
+    }
+    console.log(links);
     restart();
 }
 
