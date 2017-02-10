@@ -52,6 +52,19 @@ function remove_node(cur_index) {
     index_nodes.splice(i, 1);
     nodes.splice(i, 1);
     var cur_node = graph.nodes[cur_index];
+    for (var f = 0; f < graph.forward[cur_index].length; f++) {
+        var f_link = graph.forward[cur_index][f];
+        if (f_link.group==5 || f_link.group==6){
+            var inter = $(index_nodes).filter($.map(graph.backward[f_link.target], function( val, i ) {
+              return val.source
+            }));
+            if (inter.length == 0) {
+                i = index_nodes.indexOf(f_link.target);
+                index_nodes.splice(i, 1);
+                nodes.splice(i, 1);
+            }
+        }
+    }
     links = links.filter(function (l) {
         return l.source !== cur_node && l.target !== cur_node;
     });
@@ -68,6 +81,10 @@ function add_node(cur_index) {
     for (var f = 0; f < graph.forward[cur_index].length; f++) {
         var f_link = graph.forward[cur_index][f];
         if (index_nodes.indexOf(f_link.target) > -1) {
+            links.push({"source": cur_node, "target": graph.nodes[f_link.target], "value": f_link.value});
+        } else if (f_link.group==5 || f_link.group==6){
+            index_nodes.push(f_link.target);
+            nodes.push(graph.nodes[f_link.target]);
             links.push({"source": cur_node, "target": graph.nodes[f_link.target], "value": f_link.value});
         }
     }
