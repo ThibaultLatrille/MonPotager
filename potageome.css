@@ -107,6 +107,12 @@ text {
 	fill: #0f0f0f;
 	pointer-events: none;}
 
+.green {
+	color: #5cb85c;}
+
+.red {
+	color: #d9534f;}
+
 #graph {
 	width: 100%;
 	max-width: 100%;
