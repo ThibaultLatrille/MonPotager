@@ -133,9 +133,22 @@ function restart() {
     $(".plante").each(function() {
         var $this =  $(this);
         var value = $this.data("value");
-        $(".plus", $this).text(String(graph.forward[value].filter(function (l) {
-            return index_nodes.indexOf(l.target) == -1 && l.value == 1;
-        }).length))
+        $(".plus", $this).text(String(
+            graph.forward[value].filter(function (l) {
+                return index_nodes.indexOf(l.target) == -1 && l.value == "pos"
+            }).length +
+            graph.backward[value].filter(function (l) {
+                return index_nodes.indexOf(l.source) == -1 && l.value == "pos"
+            }).length
+        ));
+        $(".minus", $this).text(String(
+            graph.forward[value].filter(function (l) {
+                return index_nodes.indexOf(l.target) == -1 && l.value == "neg"
+            }).length +
+            graph.backward[value].filter(function (l) {
+                return index_nodes.indexOf(l.source) == -1 && l.value == "neg"
+            }).length
+        ))
     });
     // Update and restart the simulation.
     simulation.nodes(nodes);
