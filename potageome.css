@@ -1,22 +1,22 @@
 .box {
 	margin-bottom: 10px;
-	width: 250px;
-	height: 50px;}
+	width: 100%;
+	max-width: 100%;}
 
 .box .container-jets {
 	position: relative;
-	width: 200px;
-	vertical-align: middle;
+	width: 100%;
+	max-width: 100%;
+	border-bottom: 4px solid #26a69a;
 	white-space: nowrap;}
 
 .box .container-jets input {
-	float: left;
-	padding: 5px 0 5px 40px;
-	width: 150px;
+	padding: 5px 0 5px 0;
+	width: 80%;
+	max-width: 80%;
 	border: none;
-	border-bottom: 4px solid #26a69a;
 	color: #65737e;
-	font-size: 1.5em;
+	font-size: 1.2em;
 	transition: background .55s ease;
 	-webkit-transition: background .55s ease;
 	-moz-transition: background .55s ease;
@@ -35,14 +35,8 @@
 .box .container-jets input:-ms-input-placeholder {
 	color: #65737e;}
 
-.box .container-jets .icon {
-	position: absolute;
-	top: 50%;
-	z-index: 1;
-	margin-top: 8px;
-	margin-left: 6px;
-	color: #4f5b66;
-	font-size: 1.6em;}
+.box .container-jets .glyphicon {
+	color: #65737e;}
 
 .box .container-jets input:hover, .box .container-jets input:focus, .box .container-jets input:active {
 	outline: none;
@@ -100,6 +94,9 @@ circle {
 	stroke: #333;
 	stroke-width: 2px;}
 
+circle:hover {
+	cursor: pointer;}
+
 text {
 	text-shadow: 0 1px 0 #fff , 1px 0 0 #fff , 0 -1px 0 #fff , -1px 0 0 #fff;
 	font: 14px sans-serif;
@@ -117,4 +114,7 @@ text {
 	width: 100%;
 	max-width: 100%;
 	min-width: 100%;}
+
+.filtered {
+	display: none;}
 

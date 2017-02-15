@@ -5,23 +5,23 @@ $altgreen: #aed688;
 $altred: #ca472f;
 
 .box {
-  width: 250px;
-  height: 50px;
+  width: 100%;
+  max-width: 100%;
   margin-bottom: 10px;
   .container-jets {
-    width: 200px;
-    vertical-align: middle;
+    width: 100%;
+    max-width: 100%;
     white-space: nowrap;
     position: relative;
+    border-bottom: 4px solid #26a69a;
   }
   .container-jets input {
-    width: 150px;
+    width: 80%;
+    max-width: 80%;
     border: none;
-    border-bottom: 4px solid #26a69a;
-    font-size: 1.5em;
-    float: left;
+    font-size: 1.2em;
     color: #65737e;
-    padding: 5px 0 5px 40px;
+    padding: 5px 0 5px 0;
     -webkit-transition: background .55s ease;
     -moz-transition: background .55s ease;
     -ms-transition: background .55s ease;
@@ -42,14 +42,8 @@ $altred: #ca472f;
   .container-jets input:-ms-input-placeholder {
     color: #65737e;
   }
-  .container-jets .icon {
-    position: absolute;
-    top: 50%;
-    margin-left: 6px;
-    margin-top: 8px;
-    font-size: 1.6em;
-    z-index: 1;
-    color: #4f5b66;
+  .container-jets .glyphicon {
+    color: #65737e;
   }
   .container-jets input:hover, .container-jets input:focus, .container-jets input:active {
     outline: none;
@@ -109,6 +103,9 @@ circle {
   stroke: #333;
   stroke-width: 2px;
 }
+circle:hover{
+  cursor: pointer;
+}
 text {
   fill: #0f0f0f;
   font: 14px sans-serif;
@@ -126,4 +123,7 @@ text {
   width: 100%;
   min-width: 100%;
   max-width: 100%;
+}
+.filtered{
+  display: none;
 }

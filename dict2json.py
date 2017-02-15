@@ -10,8 +10,8 @@ javascript = open("data.js", "w")
 javascript.write("var graph = {\n")
 # nodes for javascript file
 javascript.write('\t"nodes":[\n')
-javascript.write(",\n".join(['\t\t{"name":"' + plantes[key] + '","group":' +
-                             str(value) + '}' for key, value in appartenance.items()]))
+javascript.write(",\n".join(['\t\t{{"name":"{0}","group":"{1}","value":{2}}}'.format(plantes[key], value, plante_id)
+                             for plante_id, (key, value) in enumerate(appartenance.items())]))
 javascript.write('\n\t],\n')
 # Forward list
 javascript.write('\t"forward":[\n')
@@ -29,7 +29,7 @@ javascript.write(",\n".join(['\t\t[' + ','.join(
 javascript.write('\n\t]\n};')
 
 javascript.write("\nvar groups = {\n")
-javascript.write(",\n".join(['\t' + str(key) + ':"' + str(value) + '"' for key, value in categories.items()]))
+javascript.write(",\n".join(['\t{0}:"{1}"'.format(key, value) for key, value in categories.items()]))
 javascript.write('\n};')
 
 javascript.write("\nvar list_defavorable = [" + ",".join(map(str, list_defavorable)) + "];")
