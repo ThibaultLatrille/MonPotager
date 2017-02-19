@@ -1,0 +1,7 @@
+Quelques bugs :
+
+1. la sarriette y est deux fois je crois ? --> Oui, j'ai changé
+
+2. Pourquoi quand je tape "pomme" pour chercher la pomme de terre j'ai une liste plus longue qui sort ? (valable aussi pour autre chose que pomme :p )
+
+3. Toujours ce bug de carotte qui chie, mais c'est pas la seule

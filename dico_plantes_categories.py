@@ -83,7 +83,6 @@ plantes = {
     55: "Sauge",
     56: "Absinthe",
     57: "Coriandre",
-    80: "Sarriette",
     93: "Ciboulette chinoise",
     97: "Origan",
     98: "Thym",

@@ -75,7 +75,7 @@ interaction_plante = [
     (4, 20, 1),  # haricot-laitue
     (4, 36, 1),  # haricot-bourrache
     (4, 79, 1),  # haricot-capucine
-    (4, 80, 1),  # haricot-sarriette annuelle
+    (4, 27, 1),  # haricot-sarriette annuelle
     (4, 81, 1),  # haricot-tournesol
     (4, 56, 1),  # haricot-absinthe
     (4, 2, -1),  # haricot-poireau
@@ -112,14 +112,16 @@ interaction_plante = [
     (6, 12, -1),  # tomate-pomme de terre
     (6, 81, -1),  # tomate-tournesol
     (6, 44, -1),  # tomate-mildiou
+    (12, 44, -1),  # pomme de terre-mildiou
     (6, 18, -1),  # tomate-betterave
     (6, 23, -1),  # tomate-fenouil
     (6, 24, -1),  # tomate-fraisier
-    (89, 42, -2),  # ricin-nématodes
-    (89, 90, -2),  # ricin-doryphores
+    (89, 42, -3),  # ricin-nématodes
+    (89, 90, -3),  # ricin-doryphores
     (7, 89, 1),  # pois-ricin
     (7, 12, 1),  # pois-pomme de terre
     (7, 57, 1),  # pois-coriandre
+    (7, 27, 1),  # pois-sarriette
     (7, 13, -1),  # pois-oignon
     (7, 3, -1),  # pois-ail
     (7, 49, -1),  # pois-échalote
@@ -141,7 +143,7 @@ interaction_plante = [
     (12, 61, 1),  # pomme de terre-asperge
     (12, 86, 1),  # pomme de terre-camomille allemande
     (86, 45, 2),  # camomille allemande-coccinelles
-    (86, 42, -2),  # camomille allemande-nématodes
+    (86, 42, -3),  # camomille allemande-nématodes
     (12, 79, 1),  # pomme de terre-capucine
     (12, 17, 1),  # pomme de terre-céleri
     (12, 92, 1),  # pomme de terre-chanvre
@@ -155,8 +157,8 @@ interaction_plante = [
     (12, 7, 1),  # pomme de terre-pois
     (12, 21, 1),  # pomme de terre-radis
     (12, 37, 1),  # pomme de terre-souci
-    (95, 90, -2),  # morelle de balbis-doryphores
-    (95, 42, -2),  # morelle de balbis-nématodes
+    (95, 90, -3),  # morelle de balbis-doryphores
+    (95, 42, -3),  # morelle de balbis-nématodes
     (21, 63, 1),  # radis-cresson
     (21, 96, 1),  # radis-genêt
     (21, 29, 1),  # radis-cerfeuil
@@ -181,7 +183,7 @@ interaction_plante = [
     (13, 4, -1),  # oignon-haricot
     (13, 7, -1),  # oignon-pois
     (13, 82, -1),  # oignon-kiwi
-    (13, 41, -2),  # oignon-pucerons
+    (13, 41, -3),  # oignon-pucerons
     (13, 13, -1),  # oignon-oignon       ATTENTION, AUTOINTERACTION
     (60, 69, -1),  # choux-chicorée
     (60, 24, -1),  # choux-fraisier
@@ -275,7 +277,7 @@ interaction_plante = [
     (20, 17, -1),  # laitue-céleri
     (20, 81, -1),  # laitue-tournesol
     (20, 5, -1),  # laitue-panais
-    (22, 58, -1),  # courgette-maïs
+    (58, 22, -1),  # courgette-maïs
     (22, 4, -1),  # courgette-haricot
     (23, 17, 1),  # fenouil-céleri
     (23, 2, 1),  # fenouil-poireau
@@ -295,8 +297,8 @@ interaction_plante = [
     (23, 109, 2),  # fenouil-araignées
     (23, 110, 2),  # fenouil-syrphes
     (23, 111, 2),  # fenouil-papillons
-    (23, 41, -2),  # fenouil-pucerons
-    (23, 112, -2),  # fenouil-lièvres
+    (23, 41, -3),  # fenouil-pucerons
+    (23, 112, -3),  # fenouil-lièvres
     (49, 60, -1),  # échalote-choux
     (49, 4, -1),  # échalote-haricot
     (49, 7, -1),  # échalote-pois
@@ -306,17 +308,17 @@ interaction_plante = [
     (50, 69, 1),  # roquette-chicorée
     # (51,,), # SALSIFIS INFOS PEU SURES
     # (52,,), # PIMENT INFOS PEU SURES
-    (58, 18, -1),  # maïs-betterave
+    (18, 58, -1),  # maïs-betterave
     (58, 4, 1),  # maïs-haricot
     (58, 7, 1),  # maïs-pois
     (58, 74, 1),  # maïs-potiron
     (58, 58, 1),  # maïs-achillée millefeuille
-    (58, 20, -1),  # maïs-laitue
+    (20, 58, -1),  # maïs-laitue
     (58, 13, -1),  # maïs-oignon
     (58, 1, -1),  # maïs-carotte
     (58, 17, -1),  # maïs-céleri
     (58, 60, -1),  # maïs-choux
-    (58, 41, -2),  # maïs-pucerons
+    (58, 41, -3),  # maïs-pucerons
     (61, 61, -1),  # asperge-asperge AUTOINTERACTION
     (61, 12, 1),  # asperge-pomme de terre
     (61, 10, 1),  # asperge-concombre
@@ -347,11 +349,11 @@ interaction_plante = [
     (63, 2, 1),  # cresson-poireau
     (63, 21, 1),  # cresson-radis
     (63, 60, -1),  # cresson-choux
-    (63, 116, -2),  # cresson-campagnols
-    (63, 41, -2),  # cresson-pucerons
-    (63, 117, -2),  # cresson-chenilles
-    (63, 118, -2),  # cresson-fourmis
-    (63, 115, -2),  # cresson-escargots
+    (63, 116, -3),  # cresson-campagnols
+    (63, 41, -3),  # cresson-pucerons
+    (63, 117, -3),  # cresson-chenilles
+    (63, 118, -3),  # cresson-fourmis
+    (63, 115, -3),  # cresson-escargots
     # (64,,1), #PEU D'INFOS : MAUVAISE COMPAGNE EN GENERAL
     (69, 78, 1),  # chicorée-épinard
     (69, 50, 1),  # chicorée-roquette
@@ -399,7 +401,7 @@ interaction_plante = [
     (77, 12, 1),  # fève-pomme de terre
     (77, 58, 1),  # fève-maïs
     (77, 20, 1),  # fève-laitue
-    (77, 80, 1),  # fève-sarriette annuelle
+    (77, 27, 1),  # fève-sarriette annuelle
     (77, 30, 1),  # fève-basilic
     (77, 13, -1),  # fève-oignon
     (78, 78, -1),  # épinard-épinard AUTOINTERACTION
@@ -416,7 +418,7 @@ interaction_plante = [
     (107, 78, 1),  # navet-épinard
     (107, 24, 1),  # navet-fraisier
     (107, 82, -1),  # navet-kiwi
-    (107, 80, -1),  # navet-sarriette
+    (107, 27, -1),  # navet-sarriette
     (107, 23, -1),  # navet-fenouil
     (107, 69, -1),  # navet-chicorée
     (113, 4, 1),  # patate douce-haricot
@@ -490,6 +492,7 @@ interaction_plante = [
     (25, 20, 1),  # aneth-laitue
     (25, 13, 1),  # aneth-oignon
     (25, 1, -1),  # aneth-carotte
+    (25, 41, -3),  # aneth-pucerons
     (26, 6, 1),  # persil-tomate
     (26, 13, 1),  # persil-oignon
     (26, 62, 1),  # persil-artichaut
@@ -502,7 +505,7 @@ interaction_plante = [
     (27, 77, 1),  # sarriette-fève
     (27, 4, 1),  # sarriette-haricot
     (27, 55, -1),  # sarriette-sauge
-    (27, 41, -2),  # sarriette-pucerons
+    (27, 41, -3),  # sarriette-pucerons
     (28, 1, 1),  # ciboulette-carotte
     (28, 66, 1),  # ciboulette-pommier
     (28, 65, 1),  # ciboulette-pêcher
@@ -519,10 +522,10 @@ interaction_plante = [
     (29, 20, 1),  # cerfeuil-laitue
     (29, 60, 1),  # cerfeuil-choux
     (29, 69, 1),  # cerfeuil-chicorée
-    (29, 118, -2),  # cerfeuil-fourmis
-    (29, 138, -2),  # cerfeuil-limaces
-    (29, 115, -2),  # cerfeuil-escargots
-    (29, 41, -2),  # cerfeuil-pucerons
+    (29, 118, -3),  # cerfeuil-fourmis
+    (29, 138, -3),  # cerfeuil-limaces
+    (29, 115, -3),  # cerfeuil-escargots
+    (29, 41, -3),  # cerfeuil-pucerons
     (30, 6, 1),  # basilic-tomate
     (30, 52, 1),  # basilic-piment
     (30, 10, 1),  # basilic-concombre
@@ -536,8 +539,8 @@ interaction_plante = [
     (30, 61, 1),  # basilic-asperge
     (30, 133, -1),  # basilic-rue
     (30, 56, -1),  # basilic-absinthe
-    (30, 42, -2),  # basilic-nématodes
-    (30, 41, -2),  # basilic-pucerons
+    (30, 42, -3),  # basilic-nématodes
+    (30, 41, -3),  # basilic-pucerons
     (137, 28, 1),  # cassis-ciboulette
     (137, 56, 1),  # cassis-absinthe
     # (137,,1), #cassis-haricot FAVORABLE SI HARICOT NAIN, DEFAV SI HARICOT A RAMES
@@ -567,7 +570,7 @@ interaction_plante = [
     (32, 114, 2),  # menthe-bourdon
     (32, 45, 2),  # menthe-coccinelles
     (32, 111, 2),  # menthe-papillons
-    (32, 41, -2),  # menthe-pucerons
+    (32, 41, -3),  # menthe-pucerons
     (33, 60, 1),  # mélisse-choux
     (33, 55, -1),  # mélisse-sauge
     (33, 139, -1),  # mélisse-lavande
@@ -579,7 +582,7 @@ interaction_plante = [
     (55, 98, -1),  # sauge-thym
     (55, 54, -1),  # sauge-romarin
     (55, 33, -1),  # sauge-mélisse
-    (55, 80, -1),  # sauge-sarriette
+    (55, 27, -1),  # sauge-sarriette
     (55, 57, -1),  # sauge-coriandre
     (55, 56, -1),  # sauge-absinthe
     (55, 60, 1),  # absinthe-choux
@@ -603,14 +606,15 @@ interaction_plante = [
     (57, 141, 1),  # coriandre-anis
     (57, 23, -1),  # coriandre-fenouil
     (57, 55, -1),  # coriandre-sauge
+    (57, 41, -3),  # coriandre-pucerons
     (141, 57, 1),  # anis-coriandre
     (141, 56, -1),  # anis-absinthe
-    (80, 7, 1),  # sarriette-pois
-    (80, 4, 1),  # sarriette-haricot
-    (80, 77, 1),  # sarriette-fève
-    (80, 55, -1),  # sarriette-sauge
-    (80, 107, -1),  # sarriette-navet
-    (80, 21, -1),  # sarriette-radis
+    (27, 7, 1),  # sarriette-pois
+    (27, 4, 1),  # sarriette-haricot
+    (27, 77, 1),  # sarriette-fève
+    (27, 55, -1),  # sarriette-sauge
+    (27, 107, -1),  # sarriette-navet
+    (27, 21, -1),  # sarriette-radis
     (93, 6, 1),  # ciboulette chinoise-tomate
     (93, 12, 1),  # ciboulette chinoise-pomme de terre
     (97, 105, 1),  # origan-courge
@@ -628,9 +632,9 @@ interaction_plante = [
     (98, 73, 1),  # thym-rosier
     (98, 24, 1),  # thym-fraisier
     (98, 55, -1),  # thym-sauge
-    (98, 39, -2),  # thym-limaces
-    (98, 115, -2),  # thym-escargots
-    (98, 41, -2),  # thym-pucerons
+    (98, 39, -3),  # thym-limaces
+    (98, 115, -3),  # thym-escargots
+    (98, 41, -3),  # thym-pucerons
     (99, 60, 1),  # cumin-choux
     (99, 7, 1),  # cumin-pois
     (99, 23, 1),  # cumin-fenouil
@@ -639,16 +643,16 @@ interaction_plante = [
     (133, 132, 1),  # rue-cerisier
     (133, 73, 1),  # rue-rosier
     (133, 72, 1),  # rue-framboisier
-    (133, 144, -2),  # rue-rats
-    (133, 39, -2),  # rue-limaces
-    (133, 41, -2),  # rue-pucerons
-    (133, 42, -2),  # rue-nématodes
+    (133, 144, -3),  # rue-rats
+    (133, 39, -3),  # rue-limaces
+    (133, 41, -3),  # rue-pucerons
+    (133, 42, -3),  # rue-nématodes
     (133, 30, -1),  # rue-basilic
     (133, 86, -1),  # rue-camomille
     (133, 48, -1),  # rue-achillée millefeuille
     (34, 65, 1),  # tanaisie-pêcher
     (34, 73, 1),  # tanaisie-rosier
-    (34, 41, -2),  # tanaisie-pucerons
+    (34, 41, -3),  # tanaisie-pucerons
     (34, 110, 2),  # tanaisie-syrphes
     (34, 45, 2),  # tanaisie-coccinelles
     (35, 60, 1),  # trèfle-choux
@@ -661,7 +665,7 @@ interaction_plante = [
     (35, 136, -1),  # trèfle-groseillier
     (36, 110, 2),  # bourrache-syrphes
     (36, 114, 2),  # bourrache-bourdons
-    (36, 138, -2),  # bourrache-limaces
+    (36, 138, -3),  # bourrache-limaces
     (36, 24, 1),  # bourrache-fraisiers
     (36, 4, 1),  # bourrache-haricots
     (37, 24, 1),  # soucis-fraisier
@@ -674,7 +678,7 @@ interaction_plante = [
     (37, 3, -1),  # soucis-ail
     (37, 104, -1),  # soucis-sarrasin
     (37, 72, 1),  # soucis-framboisier
-    (37, 42, -2),  # soucis-nématodes
+    (37, 42, -3),  # soucis-nématodes
     (37, 45, 2),  # soucis-coccinelles
     (37, 145, 2),  # soucis-punaises
     (48, 72, 1),  # achillée millefeuille-framboisier
@@ -712,7 +716,7 @@ interaction_plante = [
     # (,,1), #brocoli- PAS DANS LE LEFRANCOIS et THOREZ
     (85, 60, 1),  # cosmos-choux
     (85, 6, 1),  # cosmos-tomates
-    (85, 42, -2),  # cosmos-nématodes
+    (85, 42, -3),  # cosmos-nématodes
     (85, 109, 2),  # cosmos-araignées
     (85, 45, 2),  # cosmos-coccinelles
     (86, 45, 2),  # camomille allemande-coccinelles
@@ -721,24 +725,26 @@ interaction_plante = [
     (86, 7, 1),  # camomille allemande-pois
     (86, 12, 1),  # camomille allemande-pomme de terre
     (86, 133, -1),  # camomille allemande-rue
+    (86, 41, -1),  # camomille allemande-pucerons
     (87, 145, 2),  # géranium-punaises
     (88, 147, 1),  # inule-olivier
     (88, 145, 2),  # inule-punaises
-    (89, 42, -2),  # ricin-nématodes
-    (89, 41, -2),  # ricin-pucerons
-    (89, 90, -2),  # ricin-doryphores
+    (89, 42, -3),  # ricin-nématodes
+    (89, 41, -3),  # ricin-pucerons
+    (89, 90, -3),  # ricin-doryphores
     (91, 46, 2),  # amarante-carabes
     (91, 9, -1),  # amarante-mâche
     (91, 46, 2),  # amarante-carabes
-    (92, 148, -2),  # chanvre-courtilières
+    (92, 148, -3),  # chanvre-courtilières
     (95, 12, 1),  # morelle de balbis-pomme de terre
-    (95, 42, -2),  # morelle de balbis-nématodes
-    (95, 90, -2),  # morelle de balbis-doryphores
+    (95, 42, -3),  # morelle de balbis-nématodes
+    (95, 90, -3),  # morelle de balbis-doryphores
     (96, 21, 1),  # genêt-radis
-    (96, 40, -2),  # genet-altises
+    (96, 40, -3),  # genet-altises
     (101, 149, 1),  # phacélie-abeilles
     (101, 114, 1),  # phacélie-bourdons
-    (101, 41, -2),  # phacélie-pucerons
+    (101, 41, -3),  # phacélie-pucerons
+    (101, 42, -3),  # phacélie-nématodes
     (101, 145, 2),  # phacélie-punaises
     (101, 45, 2),  # phacélie-coccinelles
     (101, 110, 2),  # phacélie-syrphes
@@ -751,44 +757,44 @@ interaction_plante = [
     (128, 66, -1),  # potentille-pommier
     (139, 73, 1),  # lavande-rosier
     (139, 140, 1),  # lavande-agrumes
-    (139, 118, -2),  # lavande-fourmis
-    (139, 41, -2),  # lavande-pucerons
+    (139, 118, -3),  # lavande-fourmis
+    (139, 41, -3),  # lavande-pucerons
     (139, 33, -1),  # lavande-mélisse
-    (56, 39, -2),  # absinthe-limaces
-    (56, 40, -2),  # absinthe-altises
-    (6, 40, -2),  # tomate-altises
-    (151, 40, -2),  # sureau-altises
-    (54, 40, -2),  # romarin-altises
-    (20, 40, -2),  # laitue-altises
-    (79, 41, -2),  # capucine-pucerons
-    (63, 41, -2),  # cresson-pucerons
-    (139, 41, -2),  # lavande-pucerons
-    (35, 41, -2),  # trèfle blanc-pucerons
-    (38, 41, -2),  # oeillets d'inde-pucerons
+    (56, 39, -3),  # absinthe-limaces
+    (56, 40, -3),  # absinthe-altises
+    (6, 40, -3),  # tomate-altises
+    (151, 40, -3),  # sureau-altises
+    (54, 40, -3),  # romarin-altises
+    (20, 40, -3),  # laitue-altises
+    (79, 41, -3),  # capucine-pucerons
+    (63, 41, -3),  # cresson-pucerons
+    (139, 41, -3),  # lavande-pucerons
+    (35, 41, -3),  # trèfle blanc-pucerons
+    (38, 41, -3),  # oeillets d'inde-pucerons
     (116, 69, -2),  # campagnols-chicorée
     (116, 70, -2),  # campagnols-pissenlit
     (116, 1, -2),  # campagnols-carotte
     (116, 5, -2),  # campagnols-panais
-    (116, 3, -2),  # ail-campagnols
-    (152, 116, -2),  # narcisse-campagnols
-    (154, 116, -2),  # buis-campagnols
-    (155, 116, -2),  # noyer-campagnols
-    (153, 116, -2),  # mélilot-campagnols
-    (139, 118, -2),  # lavande-fourmis
-    (156, 118, -2),  # marjolaine-fourmis
-    (34, 118, -2),  # tanaisie-fourmis
-    (151, 118, -2),  # sureau-fourmis
-    (6, 118, -2),  # tomates-fourmis
+    (116, 3, -3),  # ail-campagnols
+    (152, 116, -3),  # narcisse-campagnols
+    (154, 116, -3),  # buis-campagnols
+    (155, 116, -3),  # noyer-campagnols
+    (153, 116, -3),  # mélilot-campagnols
+    (139, 118, -3),  # lavande-fourmis
+    (156, 118, -3),  # marjolaine-fourmis
+    (34, 118, -3),  # tanaisie-fourmis
+    (151, 118, -3),  # sureau-fourmis
+    (6, 118, -3),  # tomates-fourmis
     (153, 110, 2),  # mélilot-syrphes
     (156, 52, 1),  # marjolaine-piment
     (156, 52, 1),  # marjolaine-piment
-    (109, 41, -2),  # araignées-pucerons
-    (110, 41, -2),  # syrphes-pucerons
-    (150, 41, -2),  # chrysopes-pucerons
+    (109, 41, -3),  # araignées-pucerons
+    (110, 41, -3),  # syrphes-pucerons
+    (150, 41, -3),  # chrysopes-pucerons
     (53, 1, 1),  # lin-carotte
     (53, 20, 1),  # lin-laitue
-    (104, 110, 1),  # sarrasin-syrphes
-    (104, 111, 1),  # sarrasin-papillons
+    (104, 110, 2),  # sarrasin-syrphes
+    (104, 111, 2),  # sarrasin-papillons
     (124, 41, 2),  # orme-pucerons
     (125, 45, 2),  # fusain-coccinelles
     (125, 150, 2),  # fusain-chrysopes
@@ -797,7 +803,7 @@ interaction_plante = [
     (143, 142, -1),  # laurier-sauce-vigne
     (143, 26, 1),  # laurier-sauce-persil
     (143, 29, -1),  # laurier-sauce-cerfeuil
-    (151, 116, -2),  # sureau-campagnols
+    (151, 116, -3),  # sureau-campagnols
     (155, 6, -1),  # noyer-tomate
     (155, 137, -1),  # noyer-cassis
     (155, 60, -1),  # noyer-choux
@@ -807,4 +813,28 @@ interaction_plante = [
     (157, 110, 2),  # noisetier-syrphes
     (159, 145, 2),  # ortie-punaises
     (159, 45, 2),  # ortie-coccinelles
-    (159, 46, 2)]  # ortie-carabes
+    (159, 46, 2),  # ortie-carabes
+	(41, 66, -2),  # pucerons-pommiers
+	(41, 73, -2),  # pucerons-rosiers
+	(40, 60, -2),  # altises-choux
+	(40, 14, -2),  # altises-chou fleur
+	(40, 15, -2),  # altises-chou rave
+	(40, 16, -2),  # altises-chou rouge
+	(40, 21, -2),  # altises-radis
+	(40, 107, -2),  # altises-navet
+	(40, 31, -2),  # altises-moutarde
+	(42, 24, -2),  # nematodes-fraisier
+	(42, 62, -2),  # nematodes-artichaut
+	(42, 1, -2),  # nematodes-carotte
+	(42, 7, -2),  # nematodes-pois
+	(42, 78, -2),  # nematodes-epinard
+	(42, 18, -2),  # nematodes-betterave
+	(42, 60, -2),  # nematodes-
+	(42, 14, -2),  # nematodes-
+	(42, 15, -2),  # nematodes-
+	(42, 16, -2),  # nematodes-
+	(90, 12, -2),  # doryphores-pomme de terre
+	(46, 138, -2),  # carabe-limaces
+	(109, 41, -2),  # araignee-pucerons
+	(110, 41, -2),  # araignee-pucerons
+	]
