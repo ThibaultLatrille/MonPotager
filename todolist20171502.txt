@@ -11,18 +11,8 @@ Qu'est-ce qu'on affiche comme texte ?
 2. Menu déroulant à droite en 2 étapes avec 2 boutons "N asso défavorables" et "P interactions défav" puis drop-down
 3. "Dans mon potager il y a N inter fav et P inter defav"
 4. Rajouter légende en bas à gauche
-5. Rajouter texte en haut à gauche : "Liste des espèces présentes dans mon potager"
-6. Rajouter texte en haut au milieu : "Les interactions au sein de mon potager"
-
-
-
-Rajouter les références :
-1. Plantes compagnes au potager bio, de S. Lefrançois et Jean-Paul Thorez
-http://boutique.terrevivante.org/librairie/livres/119/jardin-bio/conseils-d-expert/458-plantes-compagnes-au-potager-bio.htm
-
-2. Le poireau préfère les fraises, de Hans Wagner
-http://boutique.terrevivante.org/librairie/livres/31/jardin-bio/facile-et-bio/458-le-poireau-prefere-les-fraises.htm
-
+5. Rajouter texte en haut à gauche : "Liste des espèces présentes dans mon potager (cliquer sur une espèce pour l'enlever)"
+6. Rajouter texte en haut au milieu : "Mon potagramme"
 
 
 Créer un espace de discussion ou permettre aux gens de suggérer des nouvelles interactions en nous contactant ? :)

@@ -1,0 +1,42 @@
+# La façon dont je vois ça, c'est 
+# 1. On va sur le site
+# 2. Le message ci-dessous s'affiche en pop-up avec le potagramme en arrière-plan
+# 3. Ca force les gens à lire, et quand ils ont fini ils cliquent sur un bouton du genre "J'ai compris"
+# 4. La pop-up se ferme, l'arrière-plan apparaît
+
+
+
+Cette année, vous voulez commencer un potager avec quatre espèces, par exemple carotte, radis, tomate et pomme 
+de terre, mais vous ne savez pas s'il vaut mieux planter la pomme de terre à côté des pieds de tomate ou au contraire 
+le plus loin possible ? Et est-ce que la carotte ne risque pas d'attirer des parasites du radis ? Que de questions...
+
+Ainsi, les plantes font parfois bon ménage : l'une favorise le développement de l'autre (interaction positive) ; 
+au contraire, l'une peut attirer les parasites de l'autre ou sécréter des composés chimiques défavorables au
+développement de sa voisine (interaction défavorable). 
+
+Rarement prises en compte dans la planification d'un potager, les interactions végétales entre plantes compagnes 
+peuvent souvent aider à limiter l'apparition des maladies ou même à augmenter la productivité du potager.
+
+Potagramme est une application permettant de simuler son potager en insérant les diverses espèces de fruits et légumes, 
+et de savoir si les interactions seront favorables ou défavorables. Potagramme permet également d'obtenir facilement des 
+informations sur la façon dont un parasite peut être éliminé par des plantes compagnes.  
+
+
+(Et à un bouton central avec écrit "J'ai compris" ou "Simuler mon potager")
+
+
+
+(En plus petit, plus bas ?)
+
+Potagramme a été développé par Thibault Latrille et Thibault Lorin, deux comparses intéressés par les interactions
+végétales au sein du potager. Les références que nous avons utilisées sont :
+
+
+1. Plantes compagnes au potager bio, de S. Lefrançois et Jean-Paul Thorez
+http://boutique.terrevivante.org/librairie/livres/119/jardin-bio/conseils-d-expert/458-plantes-compagnes-au-potager-bio.htm
+
+2. Le poireau préfère les fraises, de Hans Wagner
+http://boutique.terrevivante.org/librairie/livres/31/jardin-bio/facile-et-bio/458-le-poireau-prefere-les-fraises.htm
+
+N'hésitez pas à nous contacter à l'adresse contact@potagramme.com pour nous signaler des erreurs, nous proposer des
+améliorations possibles, partager des bons plans, ou simplement pour en savoir plus !
