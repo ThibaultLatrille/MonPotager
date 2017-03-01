@@ -15,7 +15,7 @@
         <div class="col-xs-12 col-md-2">
             <br><br>
             <div id="jetsMyPotageomeContent" data-toggle="buttons">
-                {% for key, value in appartenance.items() if value in [1,2,3,4,7,9] %}
+                {% for key, value in appartenance if value in [1,2,3,4,7,9] %}
                 <div id="planteSelected_{{ key }}" data-value="{{ key }}"
                      class="btn btn-default planteSelected btn-block text-left" style="display: none;">
                     {{ plantes[key] }}
@@ -38,7 +38,7 @@
                 <span class="glyphicon glyphicon-remove"></span>
             </div>
             <div id="jetsPotageomeContent" data-toggle="buttons">
-                {% for key, value in appartenance.items() if value in [1,2,3,4,7,9] %}
+                {% for key, value in appartenance if value in [1,2,3,4,7,9] %}
                 <div id="plante_{{ key }}"  data-value="{{ key }}"
                      class="btn btn-default plante btn-block text-left">
                     {{ plantes[key] }}

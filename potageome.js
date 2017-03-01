@@ -86,17 +86,17 @@ function add_node(cur_index) {
     for (var f = 0; f < graph.forward[cur_index].length; f++) {
         var f_link = graph.forward[cur_index][f];
         if (index_nodes.indexOf(f_link.target) > -1) {
-            links.push({"source": graph.nodes[f_link.target], "target": cur_node, "value": f_link.value});
+            links.push({"source": cur_node, "target": graph.nodes[f_link.target], "value": f_link.value});
         } else if (f_link.group == 5 || f_link.group == 6) {
             index_nodes.push(f_link.target);
             nodes.push(graph.nodes[f_link.target]);
-            links.push({"source": graph.nodes[f_link.target], "target": cur_node, "value": f_link.value});
+            links.push({"source": cur_node, "target": graph.nodes[f_link.target], "value": f_link.value});
         }
     }
     for (var b = 0; b < graph.backward[cur_index].length; b++) {
         var b_link = graph.backward[cur_index][b];
         if (index_nodes.indexOf(b_link.source) > -1) {
-            links.push({"source": cur_node, "target": graph.nodes[b_link.source], "value": b_link.value});
+            links.push({"source": graph.nodes[b_link.source], "target": cur_node, "value": b_link.value});
         }
     }
 }
@@ -110,7 +110,7 @@ function restart() {
 
     // Apply the general update pattern to the nodes.
     node = node.data(nodes, function (d) {
-        return d.id;
+        return d.value;
     });
     node.exit().remove();
     node = node.enter().append("g").each(function () {
@@ -136,7 +136,7 @@ function restart() {
 
     // Apply the general update pattern to the links.
     link = link.data(links, function (d) {
-        return d.source.id + "-" + d.target.id;
+        return d.source.value + "-" + d.target.value;
     });
     link.exit().remove();
     link = link.enter().append("path")

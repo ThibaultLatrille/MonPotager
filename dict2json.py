@@ -7,6 +7,9 @@ from exemple_association import list_defavorable, list_favorable
 
 
 def generate_js():
+    interactions = [(i, j, v) for i, j, v in interaction_plante if abs(v) == 3]
+    interactions.extend([(j, i, v) for i, j, v in interaction_plante if abs(v) != 3])
+
     javascript = open("data.js", "w")
 
     javascript.write("var graph = {\n")
@@ -20,14 +23,14 @@ def generate_js():
     javascript.write(",\n".join(['\t\t[' + ','.join(
         ['{{"target":{0},"value":"{1}","group":{2}}}'.format(plante_2, associations[inter], appartenance[plante_2])
          for plante_1, plante_2, inter
-         in interaction_plante if plante_1 == plante_id]) + ']' for plante_id, _ in plantes.items()]))
+         in interactions if plante_1 == plante_id]) + ']' for plante_id, _ in plantes.items()]))
     javascript.write('\n\t],\n')
     # Backward list
     javascript.write('\t"backward":[\n')
     javascript.write(",\n".join(['\t\t[' + ','.join(
         ['{{"source":{0},"value":"{1}","group":{2}}}'.format(plante_1, associations[inter], appartenance[plante_1])
          for plante_1, plante_2, inter
-         in interaction_plante if plante_2 == plante_id]) + ']' for plante_id, _ in plantes.items()]))
+         in interactions if plante_2 == plante_id]) + ']' for plante_id, _ in plantes.items()]))
     javascript.write('\n\t]\n};')
 
     javascript.write("\nvar groups = {\n")
