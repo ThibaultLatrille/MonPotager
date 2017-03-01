@@ -3,6 +3,7 @@
 plantes = {
     # legumes
     0: "Null",
+    80: "Null",
     84: "Null",
     108: "Null",
     1: "Carotte",
@@ -172,4 +173,4 @@ plantes = {
 categories = {1: "Légume", 2: "Fruit", 3: "Arômate", 4: "Fleur", 5: "Nuisible", 6: "Auxiliaire", 7: "Céréale",
              8: "Arbres", 0: "Null"}
 
-associations = {-1: "neg", 1: "pos", -2: "rep", 2: "atr"}
+associations = {-1: "neg", 1: "pos", -2: "neg", 2: "pos", -3: "rep", 3: "atr"}

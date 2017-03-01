@@ -5,36 +5,38 @@ from dico_interaction_plantes import interaction_plante
 from dico_plantes_categories import plantes, categories, associations
 from exemple_association import list_defavorable, list_favorable
 
-javascript = open("data.js", "w")
 
-javascript.write("var graph = {\n")
-# nodes for javascript file
-javascript.write('\t"nodes":[\n')
-javascript.write(",\n".join(['\t\t{{"name":"{0}","group":"{1}","value":{2}}}'.format(plantes[key], value, plante_id)
-                             for plante_id, (key, value) in enumerate(appartenance.items())]))
-javascript.write('\n\t],\n')
-# Forward list
-javascript.write('\t"forward":[\n')
-javascript.write(",\n".join(['\t\t[' + ','.join(
-    ['{{"target":{0},"value":"{1}","group":{2}}}'.format(plante_2, associations[inter], appartenance[plante_2])
-     for plante_1, plante_2, inter
-     in interaction_plante if plante_1 == plante_id]) + ']' for plante_id, _ in plantes.items()]))
-javascript.write('\n\t],\n')
-# Backward list
-javascript.write('\t"backward":[\n')
-javascript.write(",\n".join(['\t\t[' + ','.join(
-    ['{{"source":{0},"value":"{1}","group":{2}}}'.format(plante_1, associations[inter], appartenance[plante_1])
-     for plante_1, plante_2, inter
-     in interaction_plante if plante_2 == plante_id]) + ']' for plante_id, _ in plantes.items()]))
-javascript.write('\n\t]\n};')
+def generate_js():
+    javascript = open("data.js", "w")
 
-javascript.write("\nvar groups = {\n")
-javascript.write(",\n".join(['\t{0}:"{1}"'.format(key, value) for key, value in categories.items()]))
-javascript.write('\n};')
+    javascript.write("var graph = {\n")
+    # nodes for javascript file
+    javascript.write('\t"nodes":[\n')
+    javascript.write(",\n".join(['\t\t{{"name":"{0}","group":"{1}","value":{2}}}'.format(plantes[key], value, plante_id)
+                                 for plante_id, (key, value) in enumerate(appartenance.items())]))
+    javascript.write('\n\t],\n')
+    # Forward list
+    javascript.write('\t"forward":[\n')
+    javascript.write(",\n".join(['\t\t[' + ','.join(
+        ['{{"target":{0},"value":"{1}","group":{2}}}'.format(plante_2, associations[inter], appartenance[plante_2])
+         for plante_1, plante_2, inter
+         in interaction_plante if plante_1 == plante_id]) + ']' for plante_id, _ in plantes.items()]))
+    javascript.write('\n\t],\n')
+    # Backward list
+    javascript.write('\t"backward":[\n')
+    javascript.write(",\n".join(['\t\t[' + ','.join(
+        ['{{"source":{0},"value":"{1}","group":{2}}}'.format(plante_1, associations[inter], appartenance[plante_1])
+         for plante_1, plante_2, inter
+         in interaction_plante if plante_2 == plante_id]) + ']' for plante_id, _ in plantes.items()]))
+    javascript.write('\n\t]\n};')
 
-javascript.write("\nvar list_defavorable = [" + ",".join(map(str, list_defavorable)) + "];")
-javascript.write("\nvar list_favorable = [" + ",".join(map(str, list_favorable)) + "];")
-javascript.write('\nvar associations = ["' + '","'.join(associations.values()) + '"];')
-javascript.close()
+    javascript.write("\nvar groups = {\n")
+    javascript.write(",\n".join(['\t{0}:"{1}"'.format(key, value) for key, value in categories.items()]))
+    javascript.write('\n};')
 
-print("Javascript data file successfully written !")
+    javascript.write("\nvar list_defavorable = [" + ",".join(map(str, list_defavorable)) + "];")
+    javascript.write("\nvar list_favorable = [" + ",".join(map(str, list_favorable)) + "];")
+    javascript.write('\nvar associations = ["' + '","'.join(set(associations.values())) + '"];')
+    javascript.close()
+
+    print("Javascript data file successfully written !")

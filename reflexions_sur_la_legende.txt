@@ -62,9 +62,9 @@ a. Les carabes attirent la carotte
 Ce qu'il faudrait : 
 
 1. Tomate :
-a. Les fourmis SONT NUISIBLES à la tomate : pas OK
-b. Le mildiou est défavorable au développement de la tomate : OK
-a. Les altises SONT NUISIBLES à la tomate : pas OK
+a. Les fourmis SONT NUISIBLES à la tomate
+b. Le mildiou est défavorable au développement de la tomate
+a. Les altises SONT NUISIBLES à la tomate
 
 2. Oignon :
 a. L'oignon repousse les pucerons

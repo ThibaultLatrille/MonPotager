@@ -184,7 +184,6 @@ interaction_plante = [
     (13, 7, -1),  # oignon-pois
     (13, 82, -1),  # oignon-kiwi
     (13, 41, -3),  # oignon-pucerons
-    (13, 13, -1),  # oignon-oignon       ATTENTION, AUTOINTERACTION
     (60, 69, -1),  # choux-chicorée
     (60, 24, -1),  # choux-fraisier
     (60, 2, -1),  # choux-poireau
@@ -814,27 +813,27 @@ interaction_plante = [
     (159, 145, 2),  # ortie-punaises
     (159, 45, 2),  # ortie-coccinelles
     (159, 46, 2),  # ortie-carabes
-	(41, 66, -2),  # pucerons-pommiers
-	(41, 73, -2),  # pucerons-rosiers
-	(40, 60, -2),  # altises-choux
-	(40, 14, -2),  # altises-chou fleur
-	(40, 15, -2),  # altises-chou rave
-	(40, 16, -2),  # altises-chou rouge
-	(40, 21, -2),  # altises-radis
-	(40, 107, -2),  # altises-navet
-	(40, 31, -2),  # altises-moutarde
-	(42, 24, -2),  # nematodes-fraisier
-	(42, 62, -2),  # nematodes-artichaut
-	(42, 1, -2),  # nematodes-carotte
-	(42, 7, -2),  # nematodes-pois
-	(42, 78, -2),  # nematodes-epinard
-	(42, 18, -2),  # nematodes-betterave
-	(42, 60, -2),  # nematodes-
-	(42, 14, -2),  # nematodes-
-	(42, 15, -2),  # nematodes-
-	(42, 16, -2),  # nematodes-
-	(90, 12, -2),  # doryphores-pomme de terre
-	(46, 138, -2),  # carabe-limaces
-	(109, 41, -2),  # araignee-pucerons
-	(110, 41, -2),  # araignee-pucerons
-	]
+    (41, 66, -2),  # pucerons-pommiers
+    (41, 73, -2),  # pucerons-rosiers
+    (40, 60, -2),  # altises-choux
+    (40, 14, -2),  # altises-chou fleur
+    (40, 15, -2),  # altises-chou rave
+    (40, 16, -2),  # altises-chou rouge
+    (40, 21, -2),  # altises-radis
+    (40, 107, -2),  # altises-navet
+    (40, 31, -2),  # altises-moutarde
+    (42, 24, -2),  # nematodes-fraisier
+    (42, 62, -2),  # nematodes-artichaut
+    (42, 1, -2),  # nematodes-carotte
+    (42, 7, -2),  # nematodes-pois
+    (42, 78, -2),  # nematodes-epinard
+    (42, 18, -2),  # nematodes-betterave
+    (42, 60, -2),  # nematodes-
+    (42, 14, -2),  # nematodes-
+    (42, 15, -2),  # nematodes-
+    (42, 16, -2),  # nematodes-
+    (90, 12, -2),  # doryphores-pomme de terre
+    (46, 138, -2),  # carabe-limaces
+    (109, 41, -2),  # araignee-pucerons
+    (110, 41, -2),  # araignee-pucerons
+]
