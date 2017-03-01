@@ -141,6 +141,7 @@ plantes = {
     138: "Limaces",
     144: "Rats",
     148: "Courtilières",
+    160: "Mouche de la carotte",
     # auxiliaires
     45: "Coccinelles",
     46: "Carabes",
