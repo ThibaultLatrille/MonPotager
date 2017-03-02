@@ -772,9 +772,9 @@ interaction_plante = [
     (38, 41, -3),  # oeillets d'inde-pucerons
     (116, 69, -2),  # campagnols-chicorée
     (116, 70, -2),  # campagnols-pissenlit
-    (116, 1, -2),  # campagnols-carotte
-    (116, 5, -2),  # campagnols-panais
-    (116, 3, -3),  # ail-campagnols
+    (1, 116, -2),  # campagnols-carotte
+    (5, 116, -2),  # campagnols-panais
+    (3, 116, -3),  # ail-campagnols
     (152, 116, -3),  # narcisse-campagnols
     (154, 116, -3),  # buis-campagnols
     (155, 116, -3),  # noyer-campagnols
@@ -813,27 +813,30 @@ interaction_plante = [
     (159, 145, 2),  # ortie-punaises
     (159, 45, 2),  # ortie-coccinelles
     (159, 46, 2),  # ortie-carabes
-    (41, 66, -2),  # pucerons-pommiers
-    (41, 73, -2),  # pucerons-rosiers
-    (40, 60, -2),  # altises-choux
-    (40, 14, -2),  # altises-chou fleur
-    (40, 15, -2),  # altises-chou rave
-    (40, 16, -2),  # altises-chou rouge
-    (40, 21, -2),  # altises-radis
-    (40, 107, -2),  # altises-navet
-    (40, 31, -2),  # altises-moutarde
-    (42, 24, -2),  # nematodes-fraisier
-    (42, 62, -2),  # nematodes-artichaut
-    (42, 1, -2),  # nematodes-carotte
-    (42, 7, -2),  # nematodes-pois
-    (42, 78, -2),  # nematodes-epinard
-    (42, 18, -2),  # nematodes-betterave
-    (42, 60, -2),  # nematodes-
-    (42, 14, -2),  # nematodes-
-    (42, 15, -2),  # nematodes-
-    (42, 16, -2),  # nematodes-
-    (90, 12, -2),  # doryphores-pomme de terre
+    (66, 41, -2),  # pucerons-pommiers
+    (73, 41, -2),  # pucerons-rosiers
+    (60, 40, -2),  # altises-choux
+    (14, 40, -2),  # altises-chou fleur
+    (15, 40, -2),  # altises-chou rave
+    (16, 40, -2),  # altises-chou rouge
+    (21, 40, -2),  # altises-radis
+    (107, 40, -2),  # altises-navet
+    (31, 40, -2),  # altises-moutarde
+    (24, 42, -2),  # nematodes-fraisier
+    (62, 42, -2),  # nematodes-artichaut
+    (1, 42, -2),  # nematodes-carotte
+    (7, 42, -2),  # nematodes-pois
+    (78, 42, -2),  # nematodes-epinard
+    (18, 42, -2),  # nematodes-betterave
+    (60, 42, -2),  # nematodes-
+    (14, 42, -2),  # nematodes-
+    (15, 42, -2),  # nematodes-
+    (16, 42, -2),  # nematodes-
+    (12, 90, -2),  # doryphores-pomme de terre
     (46, 138, -2),  # carabe-limaces
     (109, 41, -2),  # araignee-pucerons
     (110, 41, -2),  # araignee-pucerons
+    (6, 160, -3),  # tomate-mouche de la carotte
+    (2, 160, -3),  # poireau-mouche de la carotte
+    (1, 160, -2)  # carotte - mouche de la carotte
 ]

@@ -63,8 +63,8 @@ Ce qu'il faudrait :
 
 1. Tomate :
 a. Les fourmis SONT NUISIBLES à la tomate
-b. Le mildiou est défavorable au développement de la tomate
-a. Les altises SONT NUISIBLES à la tomate
+b. Le mildiou est défavorable au développement de la tomate : OK
+a. La Tomate REPOUSSE les altises
 
 2. Oignon :
 a. L'oignon repousse les pucerons
