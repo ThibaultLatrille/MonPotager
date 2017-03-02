@@ -5,6 +5,7 @@ $altgreen: #aed688;
 $altred: #ca472f;
 
 .box {
+  margin-top: -10px;
   width: 100%;
   max-width: 100%;
   margin-bottom: 10px;
@@ -126,4 +127,10 @@ text {
 }
 .filtered{
   display: none;
+}
+.btn-plante{
+  word-break: break-all;
+  word-wrap: break-word;
+  margin: -1px -1px 0 0;
+  border-radius: 0;
 }

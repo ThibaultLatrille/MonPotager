@@ -1,3 +1,8 @@
+$(".plante").click(function () {
+    var value = parseInt($(this).data("value"));
+    add_node(value);
+    restart();
+});
 $(".planteSelected").on( "click", function() {
     var value = parseInt($(this).data("value"));
     remove_node(value);
@@ -5,7 +10,27 @@ $(".planteSelected").on( "click", function() {
 });
 $("#filter").on( "click", function() {
     $(this).addClass("hidden");
-    $(".plante").removeClass("btn-success").removeClass("btn-danger").removeClass("filtered").addClass("btn-default")
+    $(".plante").removeClass("filtered")
+});
+$(".btn-filter").on( "click", function() {
+    var index = $(this).data("value");
+    var direction = $(this).data("direction");
+    var association = $(this).data("association");
+    var cur_node = graph.nodes[index];
+    var $plantes =  $(".plante");
+    $plantes.removeClass("filtered");
+    $("#filter-name").text(cur_node.name + " " + direction + " " + association);
+    $("#filter").removeClass("hidden");
+    $plantes.each(function () {
+        var $this = $(this);
+        var thisIndex = parseInt($this.data("value"));
+        var connected = graph[direction][index].filter(function (l) {
+            return (l.target ? l.target : l.source) == thisIndex && l.value == association
+        });
+        if (connected.length == 0){
+            $this.addClass("filtered")
+        }
+    });
 });
 $(document).ready(function () {
     new Jets({
@@ -13,11 +38,7 @@ $(document).ready(function () {
         contentTag: "#jetsPotageomeContent"
     });
 });
-$(".plante").click(function () {
-    var value = parseInt($(this).data("value"));
-    add_node(value);
-    restart();
-});
+
 var svg = d3.select("svg"),
     width = +svg.attr("width"),
     height = +svg.attr("height"),
@@ -178,19 +199,17 @@ function restart() {
             var cur_node = graph.nodes[index];
             link.filter(function (l) {
                 return l.source !== cur_node && l.target !== cur_node;
-            }).transition()
-                .style("opacity", "0.10").style("filter", "alpha(opacity=10)");
+            }).transition().style("opacity", "0.10");
             node.filter(function(d){ return d !== cur_node & graph.forward[index].filter(function (l) {
                     return l.target == d.value
                 }).length !== 1 & graph.backward[index].filter(function (l) {
                     return l.source == d.value
                 }).length !== 1})
-                .transition()
-                .style("opacity", "0.10").style("filter", "alpha(opacity=10)");
+                .transition().style("opacity", "0.10");
         },
         mouseleave: function () {
-            link.transition().style("opacity", "1").style("filter", "alpha(opacity=100)");
-            node.transition().style("opacity", "1").style("filter", "alpha(opacity=100)");
+            link.transition().style("opacity", "1");
+            node.transition().style("opacity", "1");
         },
         click: function () {
             var index = $(this).attr("value");
@@ -199,18 +218,54 @@ function restart() {
             $plantes.removeClass("filtered");
             $("#filter-name").text(cur_node.name);
             $("#filter").removeClass("hidden");
+            $("#info-name").text(cur_node.name);
+            $("#info").removeClass("hidden");
+            if (cur_node.group == 5 || cur_node.group == 6){
+                $("#table-plant").addClass("hidden")
+            } else {
+                $("#table-bug").addClass("hidden")
+            }
+            ["forward", "backward"].forEach(function (direction) {
+                associations.forEach(function (association) {
+                    var list_ids = $.map(graph[direction][index].filter(function (l) {
+                        return l.value == association
+                        }), function (val) {
+                            return val.source ? val.source : val.target
+                    });
+                    var graph_list_ids = list_ids.filter(function (val) {
+                        return index_nodes.indexOf(val) > -1
+                        });
+                    $(".text", "#"+direction+"-"+association).text($.map(graph_list_ids, function (val) {
+                            return " " + graph.nodes[val].name
+                    }));
+                    var $button = $(".btn", "#"+direction+"-"+association);
+                    var other_associations = list_ids.filter(function(x) {
+                            return graph_list_ids.indexOf(x) < 0
+                        }).length;
+                    if (other_associations > 0 ){
+                        $button.data('direction', direction);
+                        $button.data('association', association);
+                        $button.data('value', index);
+                        if (other_associations == 1) {
+                            $button.text("1 autre espèce");
+                        } else {
+                            $button.text(String(other_associations) + " autres espèces");
+                        }
+                    } else {
+                        $button.addClass("hidden")
+                    }
+                });
+            });
             $plantes.each(function () {
                 var $this = $(this);
-                var thisIndex = parseInt($this.data("value"));
+                var thisIndex = parseInt($this.data("value")+ " all interactions");
                 var connected = graph.forward[index].filter(function (l) {
                     return l.target == thisIndex
-                });
+                }).concat(graph.backward[index].filter(function (l) {
+                    return l.source == thisIndex
+                }));
                 if (connected.length == 0){
                     $this.addClass("filtered")
-                } else if (connected[0].value == "pos") {
-                    $this.removeClass("btn-default").addClass("btn-success")
-                } else if (connected[0].value == "neg") {
-                    $this.removeClass("btn-default").addClass("btn-danger")
                 }
             });
         }

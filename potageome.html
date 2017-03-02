@@ -12,21 +12,96 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xs-12 col-md-2">
-            <br><br>
-            <div id="jetsMyPotageomeContent" data-toggle="buttons">
+        <div class="col-xs-12 col-md-3">
+            <br>
+            <div class="panel panel-default">
+            <div class="panel-heading">Dans mon potager</div>
+            <div class="panel-body">
+            <div id="jetsMyPotageomeContent" data-toggle="buttons" style="padding: 0 5px 0 5px">
                 {% for key, value in appartenance if value in [1,2,3,4,7,9] %}
                 <div id="planteSelected_{{ key }}" data-value="{{ key }}"
-                     class="btn btn-default planteSelected btn-block text-left hidden">
+                     class="btn btn-default btn-sm planteSelected btn-plante hidden
+                            col-xs-12 col-sm-6 col-md-4 col-lg-3">
                     {{ plantes[key] }}
                 </div>
                 {% endfor %}
             </div>
+            </div>
+            </div>
+            <div id="info" class="panel panel-default hidden">
+            <div class="panel-heading">
+                <span id="info-name">
+
+                </span>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th class="col-xs-6">Favorise</th>
+                        <th class="col-xs-6">Défavorise</th>
+                    </tr>
+                    <tr>
+                        <td id="forward-pos"><span class="text"></span>
+                            <button class="btn btn-sm btn-primary btn-filter"></button>
+                        </td>
+                        <td id="forward-neg"><span class="text"></span>
+                            <button class="btn btn-sm btn-primary btn-filter"></button>
+                        </td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" id="table-plant">
+                    <tr>
+                        <th class="col-xs-6">Favorisé par</th>
+                        <th class="col-xs-6">Défavorisé par</th>
+                    </tr>
+                    <tr>
+                        <td id="backward-pos"><span class="text"></span>
+                            <button class="btn btn-sm btn-primary btn-filter"></button>
+                        </td>
+                        <td id="backward-neg"><span class="text"></span>
+                            <button class="btn btn-sm btn-primary btn-filter"></button>
+                        </td>
+                    </tr>
+                </table>
+                <table class="table table-bordered">
+                    <tr>
+                        <th class="col-xs-6">Attire</th>
+                        <th class="col-xs-6">Repousse</th>
+                    </tr>
+                    <tr>
+                        <td id="forward-atr"><span class="text"></span>
+                            <button class="btn btn-sm btn-primary btn-filter"></button>
+                        </td>
+                        <td id="forward-rep"><span class="text"></span>
+                            <button class="btn btn-sm btn-primary btn-filter"></button>
+                        </td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" id="table-bug">
+                    <tr>
+                        <th class="col-xs-6">Attiré par</th>
+                        <th class="col-xs-6">Repoussé par</th>
+                    </tr>
+                    <tr>
+                        <td id="backward-atr"><span class="text"></span>
+                            <button class="btn btn-sm btn-primary btn-filter"></button>
+                        </td>
+                        <td id="backward-rep"><span class="text"></span>
+                            <button class="btn btn-sm btn-primary btn-filter"></button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            </div>
         </div>
-        <div class="col-xs-12 col-md-8">
-            <svg id="graph" width="1024" height="1024"></svg>
+        <div class="col-xs-12 col-md-6">
+            <svg id="graph" width="700" height="900"></svg>
         </div>
-        <div class="col-xs-12 col-md-2">
+        <div class="col-xs-12 col-md-3">
+            <br>
+            <div class="panel panel-default">
+            <div class="panel-heading">Rajouter une plante</div>
+            <div class="panel-body">
             <div class="box">
                 <div class="container-jets">
                     <span class="glyphicon glyphicon-search"></span>
@@ -40,12 +115,15 @@
             <div id="jetsPotageomeContent" data-toggle="buttons">
                 {% for key, value in appartenance if value in [1,2,3,4,7,9] %}
                 <div id="plante_{{ key }}"  data-value="{{ key }}"
-                     class="btn btn-default plante btn-block text-left">
+                     class="btn btn-default btn-sm plante btn-plante
+                            col-xs-12 col-sm-6">
                     {{ plantes[key] }}
-                    (<span class="plus"></span><span class="">&#8593;</span>/
-                    <span class="minus"></span><span class="">&#8595;</span>)
+                    (<span class="plus"></span><span class="green">&#8593;</span>/
+                    <span class="minus"></span><span class="red">&#8595;</span>)
                 </div>
                 {% endfor %}
+            </div>
+            </div>
             </div>
         </div>
     </div>
