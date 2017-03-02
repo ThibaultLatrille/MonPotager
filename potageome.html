@@ -17,7 +17,7 @@
             <div id="jetsMyPotageomeContent" data-toggle="buttons">
                 {% for key, value in appartenance if value in [1,2,3,4,7,9] %}
                 <div id="planteSelected_{{ key }}" data-value="{{ key }}"
-                     class="btn btn-default planteSelected btn-block text-left" style="display: none;">
+                     class="btn btn-default planteSelected btn-block text-left hidden">
                     {{ plantes[key] }}
                 </div>
                 {% endfor %}
@@ -33,7 +33,7 @@
                     <input type="search" id="jetsPotageomeSearch" placeholder="Chercher"/>
                 </div>
             </div>
-            <div id="filter" class="btn btn-primary btn-sm" style="display: none">
+            <div id="filter" class="btn btn-primary btn-sm hidden">
                 <span id="filter-name"></span>
                 <span class="glyphicon glyphicon-remove"></span>
             </div>

@@ -4,7 +4,7 @@ $(".planteSelected").on( "click", function() {
     restart();
 });
 $("#filter").on( "click", function() {
-    $(this).hide();
+    $(this).addClass("hidden");
     $(".plante").removeClass("btn-success").removeClass("btn-danger").removeClass("filtered").addClass("btn-default")
 });
 $(document).ready(function () {
@@ -48,12 +48,12 @@ var simulation = d3.forceSimulation(nodes)
     .on("tick", tick);
 
 var g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")"),
-    link = g.append("g").selectAll(".link"),
-    node = g.append("g").selectAll(".node");
+    link = g.append("g").attr("class", "links").selectAll(".link"),
+    node = g.append("g").attr("class", "nodes").selectAll(".node");
 
 function remove_node(cur_index) {
-    $("#planteSelected_" + String(cur_index), "#jetsMyPotageomeContent").hide().addClass("active");
-    $("#plante_" + String(cur_index), "#jetsPotageomeContent").show().removeClass("active");
+    $("#planteSelected_" + String(cur_index), "#jetsMyPotageomeContent").addClass("hidden");
+    $("#plante_" + String(cur_index), "#jetsPotageomeContent").removeClass("hidden");
     i = index_nodes.indexOf(cur_index);
     index_nodes.splice(i, 1);
     nodes.splice(i, 1);
@@ -77,8 +77,8 @@ function remove_node(cur_index) {
 }
 
 function add_node(cur_index) {
-    $("#plante_" + String(cur_index), "#jetsPotageomeContent").hide().removeClass("active");
-    $("#planteSelected_" + String(cur_index), "#jetsMyPotageomeContent").show().addClass("active");
+    $("#plante_" + String(cur_index), "#jetsPotageomeContent").addClass("hidden");
+    $("#planteSelected_" + String(cur_index), "#jetsMyPotageomeContent").removeClass("hidden");
     index_nodes.push(cur_index);
     var cur_node = graph.nodes[cur_index];
     nodes.push(cur_node);
@@ -97,6 +97,10 @@ function add_node(cur_index) {
         var b_link = graph.backward[cur_index][b];
         if (index_nodes.indexOf(b_link.source) > -1) {
             links.push({"source": graph.nodes[b_link.source], "target": cur_node, "value": b_link.value});
+        } else if (b_link.group == 5 || b_link.group == 6) {
+            index_nodes.push(b_link.source);
+            nodes.push(graph.nodes[b_link.source]);
+            links.push({"source": graph.nodes[b_link.source], "target": cur_node, "value": b_link.value});
         }
     }
 }
@@ -113,7 +117,7 @@ function restart() {
         return d.value;
     });
     node.exit().remove();
-    node = node.enter().append("g").each(function () {
+    node = node.enter().append("g").attr("class", "node").each(function () {
         d3.select(this).insert("circle")
             .attr("fill", function (d) {
                 return color(d.group)
@@ -168,27 +172,49 @@ function restart() {
         ))
     });
     $('[data-toggle="tooltip"]').tooltip({container: "body"});
-    $("circle").on( "click", function() {
-        var index = $(this).attr("value");
-        var $plantes =  $(".plante");
-        $plantes.removeClass("filtered");
-        $("#filter-name").text(graph.nodes[index].name);
-        $("#filter").show();
-        $plantes.each(function () {
-            var $this = $(this);
-            var thisIndex = parseInt($this.data("value"));
-            var connected = graph.forward[index].filter(function (l) {
-                return l.target == thisIndex
+     $("circle").on( {
+        mouseenter: function () {
+            var index = $(this).attr("value");
+            var cur_node = graph.nodes[index];
+            link.filter(function (l) {
+                return l.source !== cur_node && l.target !== cur_node;
+            }).transition()
+                .style("opacity", "0.10").style("filter", "alpha(opacity=10)");
+            node.filter(function(d){ return d !== cur_node & graph.forward[index].filter(function (l) {
+                    return l.target == d.value
+                }).length !== 1 & graph.backward[index].filter(function (l) {
+                    return l.source == d.value
+                }).length !== 1})
+                .transition()
+                .style("opacity", "0.10").style("filter", "alpha(opacity=10)");
+        },
+        mouseleave: function () {
+            link.transition().style("opacity", "1").style("filter", "alpha(opacity=100)");
+            node.transition().style("opacity", "1").style("filter", "alpha(opacity=100)");
+        },
+        click: function () {
+            var index = $(this).attr("value");
+            var cur_node = graph.nodes[index];
+            var $plantes =  $(".plante");
+            $plantes.removeClass("filtered");
+            $("#filter-name").text(cur_node.name);
+            $("#filter").removeClass("hidden");
+            $plantes.each(function () {
+                var $this = $(this);
+                var thisIndex = parseInt($this.data("value"));
+                var connected = graph.forward[index].filter(function (l) {
+                    return l.target == thisIndex
+                });
+                if (connected.length == 0){
+                    $this.addClass("filtered")
+                } else if (connected[0].value == "pos") {
+                    $this.removeClass("btn-default").addClass("btn-success")
+                } else if (connected[0].value == "neg") {
+                    $this.removeClass("btn-default").addClass("btn-danger")
+                }
             });
-            if (connected.length == 0){
-                $this.addClass("filtered")
-            } else if (connected[0].value == "pos") {
-                $this.removeClass("btn-default").addClass("btn-success")
-            } else if (connected[0].value == "neg") {
-                $this.removeClass("btn-default").addClass("btn-danger")
-            }
-        });
-    });
+        }
+     });
     // Update and restart the simulation.
     simulation.nodes(nodes);
     simulation.force("link").links(links);
