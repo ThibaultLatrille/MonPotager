@@ -5,6 +5,10 @@ $(".plante").click(function () {
 });
 $(".planteSelected").on( "click", function() {
     var value = parseInt($(this).data("value"));
+    select_node(value);
+});
+$("#removeSelected").on( "click", function() {
+    var value = parseInt($(this).data("value"));
     remove_node(value);
     restart();
 });
@@ -32,6 +36,73 @@ $(".btn-filter").on( "click", function() {
         }
     });
 });
+function select_node(index) {
+    $(".planteSelected").removeClass("active").each(function () {
+        var $this = $(this);
+        if ($this.data("value") == index) {
+            $this.addClass('active')
+        }
+    });
+    is_selected = true;
+    no_transparence();
+    transparent(index);
+    var cur_node = graph.nodes[index];
+    var $plantes =  $(".plante");
+    $plantes.removeClass("filtered");
+    $("#filter-name").text(cur_node.name);
+    $("#filter").removeClass("hidden");
+    $("#info-name").text(cur_node.name);
+    $("#info").removeClass("hidden");
+    $("#removeSelected").data("value",index);
+    if (cur_node.group == 5 || cur_node.group == 6){
+        $("#table-plant").addClass("hidden")
+    } else {
+        $("#table-bug").addClass("hidden")
+    }
+    ["forward", "backward"].forEach(function (direction) {
+        associations.forEach(function (association) {
+            var list_ids = $.map(graph[direction][index].filter(function (l) {
+                return l.value == association
+                }), function (val) {
+                    return val.source ? val.source : val.target
+            });
+            var graph_list_ids = list_ids.filter(function (val) {
+                return index_nodes.indexOf(val) > -1
+                });
+            $(".text", "#"+direction+"-"+association).text($.map(graph_list_ids, function (val) {
+                    return " " + graph.nodes[val].name
+            }));
+            var $button = $(".btn", "#"+direction+"-"+association);
+            var other_associations = list_ids.filter(function(x) {
+                    return graph_list_ids.indexOf(x) < 0
+                }).length;
+            if (other_associations > 0 ){
+                $button.data('direction', direction);
+                $button.data('association', association);
+                $button.data('value', index);
+                if (other_associations == 1) {
+                    $button.text("1 autre espèce");
+                } else {
+                    $button.text(String(other_associations) + " autres espèces");
+                }
+            } else {
+                $button.addClass("hidden")
+            }
+        });
+    });
+    $plantes.each(function () {
+        var $this = $(this);
+        var thisIndex = parseInt($this.data("value")+ " all interactions");
+        var connected = graph.forward[index].filter(function (l) {
+            return l.target == thisIndex
+        }).concat(graph.backward[index].filter(function (l) {
+            return l.source == thisIndex
+        }));
+        if (connected.length == 0){
+            $this.addClass("filtered")
+        }
+    });
+}
 $(document).ready(function () {
     new Jets({
         searchTag: "#jetsPotageomeSearch",
@@ -45,7 +116,7 @@ var svg = d3.select("svg"),
     color = d3.scaleOrdinal(d3.schemeCategory10);
 
 var nodes = [], index_nodes = [], links = [];
-
+var is_selected = false;
 svg.append("defs").selectAll("marker")
     .data(associations)
     .enter().append("marker")
@@ -82,11 +153,24 @@ function remove_node(cur_index) {
     for (var f = 0; f < graph.forward[cur_index].length; f++) {
         var f_link = graph.forward[cur_index][f];
         if (f_link.group == 5 || f_link.group == 6) {
-            var inter = $(index_nodes).filter($.map(graph.backward[f_link.target], function (val) {
+            var inter_f = $(index_nodes).filter($.map(graph.backward[f_link.target], function (val) {
                 return val.source
             }));
-            if (inter.length == 0) {
+            if (inter_f.length == 0) {
                 i = index_nodes.indexOf(f_link.target);
+                index_nodes.splice(i, 1);
+                nodes.splice(i, 1);
+            }
+        }
+    }
+    for (var b = 0; b < graph.backward[cur_index].length; b++) {
+        var b_link = graph.backward[cur_index][b];
+        if (b_link.group == 5 || b_link.group == 6) {
+            var inter_b = $(index_nodes).filter($.map(graph.forward[b_link.source], function (val) {
+                return val.target
+            }));
+            if (inter_b.length == 0) {
+                i = index_nodes.indexOf(b_link.source);
                 index_nodes.splice(i, 1);
                 nodes.splice(i, 1);
             }
@@ -159,11 +243,11 @@ function restart() {
             })
     }).merge(node);
 
+    link.exit().remove();
     // Apply the general update pattern to the links.
     link = link.data(links, function (d) {
         return d.source.value + "-" + d.target.value;
     });
-    link.exit().remove();
     link = link.enter().append("path")
         .attr("class", function (d) {
             return "link " + d.value;
@@ -172,6 +256,7 @@ function restart() {
             return "url(#" + d.value + ")";
         })
         .merge(link);
+    
     $(".plante").each(function () {
         var $this = $(this);
         var value = $this.data("value");
@@ -195,87 +280,47 @@ function restart() {
     $('[data-toggle="tooltip"]').tooltip({container: "body"});
      $("circle").on( {
         mouseenter: function () {
-            var index = $(this).attr("value");
-            var cur_node = graph.nodes[index];
-            link.filter(function (l) {
-                return l.source !== cur_node && l.target !== cur_node;
-            }).transition().style("opacity", "0.10");
-            node.filter(function(d){ return d !== cur_node & graph.forward[index].filter(function (l) {
-                    return l.target == d.value
-                }).length !== 1 & graph.backward[index].filter(function (l) {
-                    return l.source == d.value
-                }).length !== 1})
-                .transition().style("opacity", "0.10");
+            if (!is_selected) {
+                transparent($(this).attr("value"))
+            }
         },
         mouseleave: function () {
-            link.transition().style("opacity", "1");
-            node.transition().style("opacity", "1");
+            if (!is_selected) {
+                no_transparence()
+            }
         },
         click: function () {
-            var index = $(this).attr("value");
-            var cur_node = graph.nodes[index];
-            var $plantes =  $(".plante");
-            $plantes.removeClass("filtered");
-            $("#filter-name").text(cur_node.name);
-            $("#filter").removeClass("hidden");
-            $("#info-name").text(cur_node.name);
-            $("#info").removeClass("hidden");
-            if (cur_node.group == 5 || cur_node.group == 6){
-                $("#table-plant").addClass("hidden")
-            } else {
-                $("#table-bug").addClass("hidden")
-            }
-            ["forward", "backward"].forEach(function (direction) {
-                associations.forEach(function (association) {
-                    var list_ids = $.map(graph[direction][index].filter(function (l) {
-                        return l.value == association
-                        }), function (val) {
-                            return val.source ? val.source : val.target
-                    });
-                    var graph_list_ids = list_ids.filter(function (val) {
-                        return index_nodes.indexOf(val) > -1
-                        });
-                    $(".text", "#"+direction+"-"+association).text($.map(graph_list_ids, function (val) {
-                            return " " + graph.nodes[val].name
-                    }));
-                    var $button = $(".btn", "#"+direction+"-"+association);
-                    var other_associations = list_ids.filter(function(x) {
-                            return graph_list_ids.indexOf(x) < 0
-                        }).length;
-                    if (other_associations > 0 ){
-                        $button.data('direction', direction);
-                        $button.data('association', association);
-                        $button.data('value', index);
-                        if (other_associations == 1) {
-                            $button.text("1 autre espèce");
-                        } else {
-                            $button.text(String(other_associations) + " autres espèces");
-                        }
-                    } else {
-                        $button.addClass("hidden")
-                    }
-                });
-            });
-            $plantes.each(function () {
-                var $this = $(this);
-                var thisIndex = parseInt($this.data("value")+ " all interactions");
-                var connected = graph.forward[index].filter(function (l) {
-                    return l.target == thisIndex
-                }).concat(graph.backward[index].filter(function (l) {
-                    return l.source == thisIndex
-                }));
-                if (connected.length == 0){
-                    $this.addClass("filtered")
-                }
-            });
+            select_node($(this).attr("value"))
         }
      });
+    $("#filter").click();
+    $("#info").addClass("hidden");
+    is_selected = false;
+    no_transparence();
+
     // Update and restart the simulation.
     simulation.nodes(nodes);
     simulation.force("link").links(links);
     simulation.alpha(1).restart();
 }
 
+function transparent(index) {
+    var cur_node = graph.nodes[index];
+    link.filter(function (l) {
+        return l.source !== cur_node && l.target !== cur_node;
+    }).transition().style("opacity", "0.10");
+    node.filter(function(d){ return d !== cur_node & graph.forward[index].filter(function (l) {
+            return l.target == d.value
+        }).length !== 1 & graph.backward[index].filter(function (l) {
+            return l.source == d.value
+        }).length !== 1})
+        .transition().style("opacity", "0.10");
+}
+
+function no_transparence() {
+    link.transition().style("opacity", "1");
+    node.transition().style("opacity", "1");
+}
 
 function tick() {
     node.attr("transform", function (d) {

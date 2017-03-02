@@ -502,4 +502,4 @@ var groups = {
 };
 var list_defavorable = [1,6,30,4,21,12,80];
 var list_favorable = [1,13,4,3,62,6];
-var associations = ["pos","rep","neg","atr"];
+var associations = ["neg","rep","atr","pos"];

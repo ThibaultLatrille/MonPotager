@@ -125,8 +125,14 @@ text {
   min-width: 100%;
   max-width: 100%;
 }
+#filter{
+  margin-bottom: 10px;
+}
 .filtered{
   display: none;
+}
+.btn-filter{
+  margin-top: 5px;
 }
 .btn-plante{
   word-break: break-all;

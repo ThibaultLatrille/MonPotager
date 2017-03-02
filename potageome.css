@@ -116,8 +116,14 @@ text {
 	max-width: 100%;
 	min-width: 100%;}
 
+#filter {
+	margin-bottom: 10px;}
+
 .filtered {
 	display: none;}
+
+.btn-filter {
+	margin-top: 5px;}
 
 .btn-plante {
 	margin: -1px -1px 0 0;
