@@ -47,18 +47,24 @@ function select_node(index) {
     no_transparence();
     transparent(index);
     var cur_node = graph.nodes[index];
+    var $removeSelected = $("#removeSelected");
+    if (cur_node.group == 5 || cur_node.group == 6 ){
+        $removeSelected.addClass("hidden");
+        $("#table-bug").removeClass("hidden");
+        $("#table-plant").addClass("hidden")
+    } else {
+        $("#table-plant").removeClass("hidden");
+        $("#table-bug").addClass("hidden");
+        $removeSelected.removeClass("hidden");
+        $removeSelected.data("value",index);
+    }
     var $plantes =  $(".plante");
     $plantes.removeClass("filtered");
     $("#filter-name").text(cur_node.name);
     $("#filter").removeClass("hidden");
     $("#info-name").text(cur_node.name);
     $("#info").removeClass("hidden");
-    $("#removeSelected").data("value",index);
-    if (cur_node.group == 5 || cur_node.group == 6){
-        $("#table-plant").addClass("hidden")
-    } else {
-        $("#table-bug").addClass("hidden")
-    }
+
     ["forward", "backward"].forEach(function (direction) {
         associations.forEach(function (association) {
             var list_ids = $.map(graph[direction][index].filter(function (l) {
@@ -73,6 +79,7 @@ function select_node(index) {
                     return " " + graph.nodes[val].name
             }));
             var $button = $(".btn", "#"+direction+"-"+association);
+            $button.removeClass("hidden");
             var other_associations = list_ids.filter(function(x) {
                     return graph_list_ids.indexOf(x) < 0
                 }).length;
@@ -89,18 +96,6 @@ function select_node(index) {
                 $button.addClass("hidden")
             }
         });
-    });
-    $plantes.each(function () {
-        var $this = $(this);
-        var thisIndex = parseInt($this.data("value")+ " all interactions");
-        var connected = graph.forward[index].filter(function (l) {
-            return l.target == thisIndex
-        }).concat(graph.backward[index].filter(function (l) {
-            return l.source == thisIndex
-        }));
-        if (connected.length == 0){
-            $this.addClass("filtered")
-        }
     });
 }
 $(document).ready(function () {
@@ -150,35 +145,22 @@ function remove_node(cur_index) {
     index_nodes.splice(i, 1);
     nodes.splice(i, 1);
     var cur_node = graph.nodes[cur_index];
-    for (var f = 0; f < graph.forward[cur_index].length; f++) {
-        var f_link = graph.forward[cur_index][f];
-        if (f_link.group == 5 || f_link.group == 6) {
-            var inter_f = $(index_nodes).filter($.map(graph.backward[f_link.target], function (val) {
-                return val.source
-            }));
-            if (inter_f.length == 0) {
-                i = index_nodes.indexOf(f_link.target);
-                index_nodes.splice(i, 1);
-                nodes.splice(i, 1);
-            }
-        }
-    }
-    for (var b = 0; b < graph.backward[cur_index].length; b++) {
-        var b_link = graph.backward[cur_index][b];
-        if (b_link.group == 5 || b_link.group == 6) {
-            var inter_b = $(index_nodes).filter($.map(graph.forward[b_link.source], function (val) {
-                return val.target
-            }));
-            if (inter_b.length == 0) {
-                i = index_nodes.indexOf(b_link.source);
-                index_nodes.splice(i, 1);
-                nodes.splice(i, 1);
-            }
-        }
-    }
     links = links.filter(function (l) {
-        return l.source !== cur_node && l.target !== cur_node;
+        return l.source.value !== cur_node.value && l.target.value !== cur_node.value;
     });
+    var to_drop = [];
+    nodes.forEach(function (tmp_node) {
+        if (tmp_node.group == 5 || tmp_node.group == 6) {
+            if (links.filter(function (l) {
+                return l.source.value == tmp_node.value || l.target.value == tmp_node.value;
+            }).length == 0) {to_drop.push(tmp_node)}
+        }
+    });
+    to_drop.forEach(function (tmp_node) {
+        i = index_nodes.indexOf(tmp_node.value);
+        index_nodes.splice(i, 1);
+        nodes.splice(i, 1);
+    })
 }
 
 function add_node(cur_index) {
@@ -243,11 +225,11 @@ function restart() {
             })
     }).merge(node);
 
-    link.exit().remove();
     // Apply the general update pattern to the links.
     link = link.data(links, function (d) {
         return d.source.value + "-" + d.target.value;
     });
+    link.exit().remove();
     link = link.enter().append("path")
         .attr("class", function (d) {
             return "link " + d.value;
@@ -256,7 +238,9 @@ function restart() {
             return "url(#" + d.value + ")";
         })
         .merge(link);
-    
+
+
+
     $(".plante").each(function () {
         var $this = $(this);
         var value = $this.data("value");
