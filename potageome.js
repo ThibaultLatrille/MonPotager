@@ -2,6 +2,7 @@ $(".plante").click(function () {
     var value = parseInt($(this).data("value"));
     add_node(value);
     restart();
+    select_node(value);
 });
 $(".planteSelected").on( "click", function() {
     var value = parseInt($(this).data("value"));
@@ -60,8 +61,6 @@ function select_node(index) {
     }
     var $plantes =  $(".plante");
     $plantes.removeClass("filtered");
-    $("#filter-name").text(cur_node.name);
-    $("#filter").removeClass("hidden");
     $("#info-name").text(cur_node.name);
     $("#info").removeClass("hidden");
 
@@ -107,8 +106,18 @@ $(document).ready(function () {
 
 var svg = d3.select("svg"),
     width = +svg.attr("width"),
-    height = +svg.attr("height"),
-    color = d3.scaleOrdinal(d3.schemeCategory10);
+    height = +svg.attr("height");
+
+var color = {
+    0: "#000",
+    1: "#1776b6",
+    2: "#ff7f0e",
+    3: "#9564bf",
+    4: "#f7b6d2",
+    5: "#d62728",
+    6: "#24a221",
+    7: "#ffe778",
+    8: "#8d5649"};
 
 var nodes = [], index_nodes = [], links = [];
 var is_selected = false;
@@ -207,7 +216,7 @@ function restart() {
     node = node.enter().append("g").attr("class", "node").each(function () {
         d3.select(this).insert("circle")
             .attr("fill", function (d) {
-                return color(d.group)
+                return color[d.group]
             })
             .attr("r", 10)
             .attr("value", function (d) {
@@ -291,14 +300,14 @@ function restart() {
 function transparent(index) {
     var cur_node = graph.nodes[index];
     link.filter(function (l) {
-        return l.source !== cur_node && l.target !== cur_node;
-    }).transition().style("opacity", "0.10");
+        return l.source.value !== cur_node.value && l.target.value !== cur_node.value;
+    }).transition().style("opacity", "0.12");
     node.filter(function(d){ return d !== cur_node & graph.forward[index].filter(function (l) {
             return l.target == d.value
         }).length !== 1 & graph.backward[index].filter(function (l) {
             return l.source == d.value
         }).length !== 1})
-        .transition().style("opacity", "0.10");
+        .transition().style("opacity", "0.12");
 }
 
 function no_transparence() {

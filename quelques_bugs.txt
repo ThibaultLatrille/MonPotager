@@ -2,25 +2,9 @@ Quelques bugs et réflexions de style :
 
 1. Quand on n'a pas un grand écran ou qu'on est un peu trop zoomé certaines espèces sortent de l'écran ^^
 
-2. Quand je clique sur "Carotte" puis "Enlever une espèce" ça l'enlève et il refait un nouveau graphe mais en laissant les connexions de l'ancien graphe ! Du coup y'a des flèches qui n'ont plus de bout ^^
-
 3. La transparence des espèces non choisies est un poil trop transparente non ?
 
 4. Quand je clique sur "Carotte" puis sur "Défavorise", "3 autres espèces", il affiche "Carotte forward neg" dans la barre à droite --> mettre juste "Carotte" ?
-
-5. Si justement je clique sur une des trois espèces, genre "Aneth", le graphe se refait et la fenêtre de gauche de la carotte se ferme, pour la faire réapparaître il faut cliquer de nouveau sur carotte : il y a aurait moyen de laisser ça ?
-
-6. Un truc dont on n'a pas discuté : la couleur des points.
-- en rouge les nuisibles ?
-- en bleu les légumes (déjà OK)
-- en vert les auxiliaires
-- en rose les fleurs ?
-- en violet les arômates (déjà OK)
-- en marron les arbres ?
-- en jaune les céréales ?
-- en orange les fruits ?
-
-7. Pas moyen de mettre les arbres pour l'instant ? Si je cherche "Sureau" y'a rien qui vient :'( :'(     ^.^
 
 8. Pour "attire" et "repousse", si je mets le Cosmos, ça attire araignées et coccinelles, et ça devrait être dans la case ?
 De manière plus générale (et je sens que si tu dis oui va falloir que je retourne dans le dictionnaire haha ;) ),
@@ -30,4 +14,3 @@ Avec une flèche verte pointillée associée ? :)
 En gros on aurait une case "Les autres plantes" avec  "Favorise, défavorise, favorisé par, défavorisé par"
 Et une case "Auxiliaires et nuisibles" avec "Attire les auxiliaires suivants" et "Repousse les nuisibles suivants"
 
-9. Tu connais l'expression "Seul comme un cardon" ? Haha ;)
