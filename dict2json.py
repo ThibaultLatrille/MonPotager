@@ -7,8 +7,9 @@ from exemple_association import list_defavorable, list_favorable
 
 
 def generate_js():
-    interactions = [(i, j, v) for i, j, v in interaction_plante if abs(v) == 3]
-    interactions.extend([(j, i, v) for i, j, v in interaction_plante if abs(v) != 3])
+    interactions_set = set(interaction_plante)
+    interactions = [(i, j, v) for i, j, v in interactions_set if abs(v) == 3]
+    interactions.extend([(j, i, v) for i, j, v in interactions_set if abs(v) != 3])
 
     javascript = open("data.js", "w")
 

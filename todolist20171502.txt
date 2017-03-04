@@ -1,32 +1,12 @@
-La carotte elle chie et se fait remplacer par l'oignon
-Changer la transparence quand on passe la souris sur une espèce
-Ordre alphabétique noms d'espèces
-
 Auxiliaires : faire une petite phrase et afficher truc textuel à côté
 
 Qu'est-ce qu'on affiche comme texte ?
 
 1. "Chercher" --> "rajouter une espèce"
-2. Menu déroulant à droite en 2 étapes avec 2 boutons "N asso défavorables" et "P interactions défav" puis drop-down
 3. "Dans mon potager il y a N inter fav et P inter defav"
 4. Rajouter légende en bas à gauche
-5. Rajouter texte en haut à gauche : "Liste des espèces présentes dans mon potager (cliquer sur une espèce pour l'enlever)"
 6. Rajouter texte en haut au milieu : "Mon potagramme"
 
 
 Créer un espace de discussion ou permettre aux gens de suggérer des nouvelles interactions en nous contactant ? :)
 (ou au moins un bouton "signaler une erreur") ?
-
-Permettre à l'utilisateur :
-- pour un nuisible donné, de savoir comment le repousser
-- pour un auxiliaire donné, de savoir comment l'attirer
-
-Regarder pour qui les 
-- cochenilles 
-- escargots
-- doryphores (autre que PdT)
-- limaces
-- courtiliere
-- rats
-- lievres
-sont nuisibles

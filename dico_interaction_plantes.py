@@ -718,7 +718,6 @@ interaction_plante = [
     (85, 42, -3),  # cosmos-nématodes
     (85, 109, 2),  # cosmos-araignées
     (85, 45, 2),  # cosmos-coccinelles
-    (86, 45, 2),  # camomille allemande-coccinelles
     (86, 60, 1),  # camomille allemande-choux
     (86, 13, 1),  # camomille allemande-oignons
     (86, 7, 1),  # camomille allemande-pois

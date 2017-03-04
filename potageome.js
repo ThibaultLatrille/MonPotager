@@ -89,7 +89,7 @@ function select_node(index) {
                 if (other_associations == 1) {
                     $button.text("1 autre espèce");
                 } else {
-                    $button.text(String(other_associations) + " autres espèces");
+                    $button.text(String(other_associations) + " en réserve");
                 }
             } else {
                 $button.addClass("hidden")
@@ -304,9 +304,9 @@ function transparent(index) {
     }).transition().style("opacity", "0.12");
     node.filter(function(d){ return d !== cur_node & graph.forward[index].filter(function (l) {
             return l.target == d.value
-        }).length !== 1 & graph.backward[index].filter(function (l) {
+        }).length == 0 & graph.backward[index].filter(function (l) {
             return l.source == d.value
-        }).length !== 1})
+        }).length == 0})
         .transition().style("opacity", "0.12");
 }
 
