@@ -84,6 +84,7 @@ $altred: #ca472f;
       border: none;
       font-size: 1.2em;
       color: #65737e;
+      background-color: #FAFAFA;
       padding: 5px 0 5px 0;
       -webkit-transition: background .55s ease;
       -moz-transition: background .55s ease;
@@ -110,19 +111,19 @@ $altred: #ca472f;
     }
     .container-jets input:hover, .container-jets input:focus, .container-jets input:active {
       outline: none;
-      background: #ffffff;
+      background: #FAFAFA;
     }
     .container-jets input:focus::-webkit-input-placeholder {
-      color: #FDFDFD;
+      color: #FAFAFA;
     }
     .container-jets input:focus:-moz-placeholder {
-      color: #FDFDFD;
+      color: #FAFAFA;
     }
     .container-jets input:focus::-moz-placeholder {
-      color: #FDFDFD;
+      color: #FAFAFA;
     }
     .container-jets input:focus:-ms-input-placeholder {
-      color: #FDFDFD;
+      color: #FAFAFA;
     }
   }
 }
@@ -172,8 +173,14 @@ $altred: #ca472f;
   }
 }
 
-.panel-heading{
-  font-size: 1.4em;
-  line-height: 1.6em;
+.panel-default {
+  .panel-heading {
+    background-color: #31627F;
+    color: white;
+    font-size: 1.4em;
+    line-height: 1.6em;
+  }
+  .panel-body {
+    background-color: #FAFAFA;
+  }
 }
-

@@ -1,41 +1,52 @@
-$(".plante").click(function () {
+$(".plante").on("click", function (event) {
     var value = parseInt($(this).data("value"));
     add_node(value);
     restart();
     select_node(value);
+    event.stopPropagation();
 });
-$(".planteSelected").on( "click", function() {
+$(".planteSelected").on("click", function (event) {
     var value = parseInt($(this).data("value"));
     select_node(value);
+    event.stopPropagation();
 });
-$("#removeSelected").on( "click", function() {
+$("#removeSelected").on("click", function (event) {
     var value = parseInt($(this).data("value"));
     remove_node(value);
     restart();
+    event.stopPropagation();
 });
-$("#filter").on( "click", function() {
+$("#filter").on("click", function (event) {
     $(this).addClass("hidden");
-    $(".plante").removeClass("filtered")
+    $(".plante").removeClass("filtered");
+    event.stopPropagation();
 });
-$(".btn-filter").on( "click", function() {
+$(".btn-filter").on("click", function (event) {
     var index = $(this).data("value");
     var direction = $(this).data("direction");
     var association = $(this).data("association");
     var cur_node = graph.nodes[index];
-    var $plantes =  $(".plante");
+    var $plantes = $(".plante");
     $plantes.removeClass("filtered");
-    $("#filter-name").text(cur_node.name + " " + filter_name_dico[direction][association]+ " :");
-    $("#filter").removeClass("hidden");
+    var $filter = $("#filter");
+    if (association == 'pos' || association == 'atr') {
+        $filter.removeClass('btn-danger').addClass('btn-success')
+    } else {
+        $filter.addClass('btn-danger').removeClass('btn-success')
+    }
+    $("#filter-name").html(filter_name_dico[direction][association] + " " + cur_node.name.toLowerCase() + " ");
+    $filter.removeClass("hidden");
     $plantes.each(function () {
         var $this = $(this);
         var thisIndex = parseInt($this.data("value"));
         var connected = graph[direction][index].filter(function (l) {
             return (l.target ? l.target : l.source) == thisIndex && l.value == association
         });
-        if (connected.length == 0){
+        if (connected.length == 0) {
             $this.addClass("filtered")
         }
     });
+    event.stopPropagation();
 });
 function select_node(index) {
     $(".planteSelected").removeClass("active").each(function () {
@@ -49,7 +60,7 @@ function select_node(index) {
     transparent(index);
     var cur_node = graph.nodes[index];
     var $removeSelected = $("#removeSelected");
-    if (cur_node.group == 5 || cur_node.group == 6 ){
+    if (cur_node.group == 5 || cur_node.group == 6) {
         $removeSelected.addClass("hidden");
         $("#table-bug").removeClass("hidden");
         $("#table-plant").addClass("hidden")
@@ -57,37 +68,37 @@ function select_node(index) {
         $("#table-plant").removeClass("hidden");
         $("#table-bug").addClass("hidden");
         $removeSelected.removeClass("hidden");
-        $removeSelected.data("value",index);
+        $removeSelected.data("value", index);
     }
-    var $plantes =  $(".plante");
+    var $plantes = $(".plante");
     $plantes.removeClass("filtered");
-    $("#info-name").text(cur_node.name+ " (" + groups[cur_node.group] + ")");
+    $("#info-name").text(cur_node.name + " (" + groups[cur_node.group].toLowerCase() + ")");
     $("#info").removeClass("hidden");
 
     ["forward", "backward"].forEach(function (direction) {
         associations.forEach(function (association) {
             var list_ids = $.map(graph[direction][index].filter(function (l) {
                 return l.value == association
-                }), function (val) {
-                    return val.source ? val.source : val.target
+            }), function (val) {
+                return val.source ? val.source : val.target
             });
             var graph_list_ids = list_ids.filter(function (val) {
                 return index_nodes.indexOf(val) > -1
-                });
-            if (graph_list_ids.length > 0 ){
-                $(".text", "#"+direction+"-"+association).text($.map(graph_list_ids, function (val) {
+            });
+            if (graph_list_ids.length > 0) {
+                $(".text", "#" + direction + "-" + association).text($.map(graph_list_ids, function (val) {
                     return " " + graph.nodes[val].name
                 }));
             } else {
-                $(".text", "#"+direction+"-"+association).html("&#8709;")
+                $(".text", "#" + direction + "-" + association).html("&#8709;")
             }
 
-            var $button = $(".btn", "#"+direction+"-"+association);
+            var $button = $(".btn", "#" + direction + "-" + association);
             $button.removeClass("hidden");
-            var other_associations = list_ids.filter(function(x) {
-                    return graph_list_ids.indexOf(x) < 0
-                }).length;
-            if (other_associations > 0 ){
+            var other_associations = list_ids.filter(function (x) {
+                return graph_list_ids.indexOf(x) < 0
+            }).length;
+            if (other_associations > 0) {
                 $button.data('direction', direction);
                 $button.data('association', association);
                 $button.data('value', index);
@@ -118,7 +129,8 @@ var color = {
     5: "#d62728",
     6: "#24a221",
     7: "#ffe778",
-    8: "#8d5649"};
+    8: "#8d5649"
+};
 
 var nodes = [], index_nodes = [], links = [];
 var is_selected = false;
@@ -149,7 +161,7 @@ var g = svg.append("g"),
     link = g.append("g").attr("class", "links").selectAll(".link"),
     node = g.append("g").attr("class", "nodes").selectAll(".node");
 
-svg.attr("viewBox", (-width/2) + " " + (-height/2) + " " + (width) + " " + (height))
+svg.attr("viewBox", (-width / 2) + " " + (-height / 2) + " " + (width) + " " + (height))
     .attr("width", width)
     .attr("height", height)
     .style("pointer-events", "visible")
@@ -158,7 +170,7 @@ svg.attr("viewBox", (-width/2) + " " + (-height/2) + " " + (width) + " " + (heig
         .on("zoom", zoomed));
 
 function zoomed() {
-  g.attr("transform", d3.event.transform);
+    g.attr("transform", d3.event.transform);
 }
 
 function remove_node(cur_index) {
@@ -175,8 +187,10 @@ function remove_node(cur_index) {
     nodes.forEach(function (tmp_node) {
         if (tmp_node.group == 5 || tmp_node.group == 6) {
             if (links.filter(function (l) {
-                return l.source.value == tmp_node.value || l.target.value == tmp_node.value;
-            }).length == 0) {to_drop.push(tmp_node)}
+                    return l.source.value == tmp_node.value || l.target.value == tmp_node.value;
+                }).length == 0) {
+                to_drop.push(tmp_node)
+            }
         }
     });
     to_drop.forEach(function (tmp_node) {
@@ -263,7 +277,6 @@ function restart() {
         .merge(link);
 
 
-
     $(".plante").each(function () {
         var $this = $(this);
         var value = $this.data("value");
@@ -285,7 +298,7 @@ function restart() {
         ))
     });
     $('[data-toggle="tooltip"]').tooltip({container: "body"});
-     $("circle").on( {
+    $("circle").on({
         mouseenter: function () {
             if (!is_selected) {
                 transparent($(this).attr("value"))
@@ -296,10 +309,12 @@ function restart() {
                 no_transparence()
             }
         },
-        click: function () {
-            select_node($(this).attr("value"))
+        click: function (event) {
+            select_node($(this).attr("value"));
+            event.stopPropagation();
         }
-     });
+    });
+    $(".planteSelected").removeClass('active');
     $("#filter").click();
     $("#info").addClass("hidden");
     is_selected = false;
@@ -316,11 +331,13 @@ function transparent(index) {
     link.filter(function (l) {
         return l.source.value !== cur_node.value && l.target.value !== cur_node.value;
     }).transition().style("opacity", "0.12");
-    node.filter(function(d){ return d !== cur_node & graph.forward[index].filter(function (l) {
-            return l.target == d.value
-        }).length == 0 & graph.backward[index].filter(function (l) {
-            return l.source == d.value
-        }).length == 0})
+    node.filter(function (d) {
+        return d !== cur_node & graph.forward[index].filter(function (l) {
+                return l.target == d.value
+            }).length == 0 & graph.backward[index].filter(function (l) {
+                return l.source == d.value
+            }).length == 0
+    })
         .transition().style("opacity", "0.12");
 }
 
@@ -328,6 +345,17 @@ function no_transparence() {
     link.transition().style("opacity", "1");
     node.transition().style("opacity", "1");
 }
+
+$(document).on('click', function (evt) {
+    console.log("click");
+    if (is_selected) {
+        $(".planteSelected").removeClass('active');
+        $("#filter").click();
+        $("#info").addClass("hidden");
+        is_selected = false;
+        no_transparence();
+    }
+});
 
 function tick() {
     node.attr("transform", function (d) {

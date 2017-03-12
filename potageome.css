@@ -77,6 +77,7 @@
 	width: 80%;
 	max-width: 80%;
 	border: none;
+	background-color: #fafafa;
 	color: #65737e;
 	font-size: 1.2em;
 	transition: background .55s ease;
@@ -102,19 +103,19 @@
 
 .info-side .box .container-jets input:hover, .info-side .box .container-jets input:focus, .info-side .box .container-jets input:active {
 	outline: none;
-	background: #fff;}
+	background: #fafafa;}
 
 .info-side .box .container-jets input:focus::-webkit-input-placeholder {
-	color: #fdfdfd;}
+	color: #fafafa;}
 
 .info-side .box .container-jets input:focus:-moz-placeholder {
-	color: #fdfdfd;}
+	color: #fafafa;}
 
 .info-side .box .container-jets input:focus::-moz-placeholder {
-	color: #fdfdfd;}
+	color: #fafafa;}
 
 .info-side .box .container-jets input:focus:-ms-input-placeholder {
-	color: #fdfdfd;}
+	color: #fafafa;}
 
 .btn:focus {
 	outline: none;}
@@ -149,7 +150,12 @@
 .footer #footer-about:hover {
 	cursor: pointer;}
 
-.panel-heading {
+.panel-default .panel-heading {
+	background-color: #31627f;
+	color: #fff;
 	line-height: 1.6em;
 	font-size: 1.4em;}
+
+.panel-default .panel-body {
+	background-color: #fafafa;}
 
