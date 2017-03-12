@@ -1,17 +1,78 @@
-.box {
+#graph {
+	margin: 0;
+	width: 100%;
+	height: 100%;}
+
+#graph g {
+	fill: #0f0f0f;}
+
+#graph circle {
+	stroke: #333;
+	stroke-width: 2px;}
+
+#graph circle:hover {
+	cursor: pointer;}
+
+#graph text {
+	text-shadow: 0 1px 0 #fff , 1px 0 0 #fff , 0 -1px 0 #fff , -1px 0 0 #fff;
+	font: 14px sans-serif;
+	font-weight: bold;
+	fill: #0f0f0f;
+	pointer-events: none;}
+
+#graph .link {
+	fill: none;
+	stroke-width: 2px;}
+
+#graph .link.pos {
+	stroke: #5cb85c;}
+
+#graph #pos {
+	fill: #5cb85c;}
+
+#graph .link.neg {
+	stroke: #d9534f;}
+
+#graph #neg {
+	fill: #d9534f;}
+
+#graph .link.atr {
+	stroke: #5cb85c;
+	stroke-dasharray: 0 , 2 1;}
+
+#graph #atr {
+	fill: #5cb85c;}
+
+#graph .link.rep {
+	stroke: #d9534f;
+	stroke-dasharray: 0 , 2 1;}
+
+#graph #rep {
+	fill: #d9534f;}
+
+.info-side .btn-plante {
+	margin: -1px -1px 0 0;
+	border-radius: 0;
+	word-break: break-all;
+	word-wrap: break-word;}
+
+.info-side .filtered {
+	display: none;}
+
+.info-side .box {
 	margin-top: -10px;
 	margin-bottom: 10px;
 	width: 100%;
 	max-width: 100%;}
 
-.box .container-jets {
+.info-side .box .container-jets {
 	position: relative;
 	width: 100%;
 	max-width: 100%;
 	border-bottom: 4px solid #26a69a;
 	white-space: nowrap;}
 
-.box .container-jets input {
+.info-side .box .container-jets input {
 	padding: 5px 0 5px 0;
 	width: 80%;
 	max-width: 80%;
@@ -24,86 +85,39 @@
 	-ms-transition: background .55s ease;
 	-o-transition: background .55s ease;}
 
-.box .container-jets input::-webkit-input-placeholder {
+.info-side .box .container-jets input::-webkit-input-placeholder {
 	color: #65737e;}
 
-.box .container-jets input:-moz-placeholder {
+.info-side .box .container-jets input:-moz-placeholder {
 	color: #65737e;}
 
-.box .container-jets input::-moz-placeholder {
+.info-side .box .container-jets input::-moz-placeholder {
 	color: #65737e;}
 
-.box .container-jets input:-ms-input-placeholder {
+.info-side .box .container-jets input:-ms-input-placeholder {
 	color: #65737e;}
 
-.box .container-jets .glyphicon {
+.info-side .box .container-jets .glyphicon {
 	color: #65737e;}
 
-.box .container-jets input:hover, .box .container-jets input:focus, .box .container-jets input:active {
+.info-side .box .container-jets input:hover, .info-side .box .container-jets input:focus, .info-side .box .container-jets input:active {
 	outline: none;
 	background: #fff;}
 
-.box .container-jets input:focus::-webkit-input-placeholder {
+.info-side .box .container-jets input:focus::-webkit-input-placeholder {
 	color: #fdfdfd;}
 
-.box .container-jets input:focus:-moz-placeholder {
+.info-side .box .container-jets input:focus:-moz-placeholder {
 	color: #fdfdfd;}
 
-.box .container-jets input:focus::-moz-placeholder {
+.info-side .box .container-jets input:focus::-moz-placeholder {
 	color: #fdfdfd;}
 
-.box .container-jets input:focus:-ms-input-placeholder {
+.info-side .box .container-jets input:focus:-ms-input-placeholder {
 	color: #fdfdfd;}
 
 .btn:focus {
 	outline: none;}
-
-.link {
-	fill: none;
-	stroke-width: 2px;}
-
-.link.pos {
-	stroke: #5cb85c;}
-
-#pos {
-	fill: #5cb85c;}
-
-.link.neg {
-	stroke: #d9534f;}
-
-#neg {
-	fill: #d9534f;}
-
-.link.atr {
-	stroke: #5cb85c;
-	stroke-dasharray: 0 , 2 1;}
-
-#atr {
-	fill: #5cb85c;}
-
-.link.rep {
-	stroke: #d9534f;
-	stroke-dasharray: 0 , 2 1;}
-
-#rep {
-	fill: #d9534f;}
-
-g {
-	fill: #0f0f0f;}
-
-circle {
-	stroke: #333;
-	stroke-width: 2px;}
-
-circle:hover {
-	cursor: pointer;}
-
-text {
-	text-shadow: 0 1px 0 #fff , 1px 0 0 #fff , 0 -1px 0 #fff , -1px 0 0 #fff;
-	font: 14px sans-serif;
-	font-weight: bold;
-	fill: #0f0f0f;
-	pointer-events: none;}
 
 .green {
 	color: #5cb85c;}
@@ -111,23 +125,23 @@ text {
 .red {
 	color: #d9534f;}
 
-#graph {
-	width: 100%;
-	max-width: 100%;
-	min-width: 100%;}
+.col-left .td-filter {
+	text-align: center;}
 
-#filter {
+.col-left #info .panel-body {
+	padding-bottom: 0;}
+
+.col-right #filter {
 	margin-bottom: 10px;}
 
-.filtered {
-	display: none;}
+.footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background-color: #337ab7;}
 
-.btn-filter {
-	margin-top: 5px;}
-
-.btn-plante {
-	margin: -1px -1px 0 0;
-	border-radius: 0;
-	word-break: break-all;
-	word-wrap: break-word;}
+.footer #footer-about {
+	border: 0;
+	border-radius: 0;}
 

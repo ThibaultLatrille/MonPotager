@@ -74,9 +74,14 @@ function select_node(index) {
             var graph_list_ids = list_ids.filter(function (val) {
                 return index_nodes.indexOf(val) > -1
                 });
-            $(".text", "#"+direction+"-"+association).text($.map(graph_list_ids, function (val) {
+            if (graph_list_ids.length > 0 ){
+                $(".text", "#"+direction+"-"+association).text($.map(graph_list_ids, function (val) {
                     return " " + graph.nodes[val].name
-            }));
+                }));
+            } else {
+                $(".text", "#"+direction+"-"+association).html("&#8709;")
+            }
+
             var $button = $(".btn", "#"+direction+"-"+association);
             $button.removeClass("hidden");
             var other_associations = list_ids.filter(function(x) {
@@ -86,11 +91,7 @@ function select_node(index) {
                 $button.data('direction', direction);
                 $button.data('association', association);
                 $button.data('value', index);
-                if (other_associations == 1) {
-                    $button.text("1 autre espèce");
-                } else {
-                    $button.text(String(other_associations) + " en réserve");
-                }
+                $button.text(String(other_associations) + " dans l'inventaire");
             } else {
                 $button.addClass("hidden")
             }
@@ -105,8 +106,8 @@ $(document).ready(function () {
 });
 
 var svg = d3.select("svg"),
-    width = +svg.attr("width"),
-    height = +svg.attr("height");
+    width = +$(window).width(),
+    height = +$(window).height();
 
 var color = {
     0: "#000",
@@ -136,6 +137,7 @@ svg.append("defs").selectAll("marker")
     .append("path")
     .attr("d", "M0,-5L10,0L0,5");
 
+
 var simulation = d3.forceSimulation(nodes)
     .force("link", d3.forceLink(links).distance(200).strength(0.2))
     .force("charge", d3.forceManyBody().strength(-600))
@@ -143,9 +145,21 @@ var simulation = d3.forceSimulation(nodes)
     .force("y", d3.forceY())
     .on("tick", tick);
 
-var g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")"),
+var g = svg.append("g"),
     link = g.append("g").attr("class", "links").selectAll(".link"),
     node = g.append("g").attr("class", "nodes").selectAll(".node");
+
+svg.attr("viewBox", (-width/2) + " " + (-height/2) + " " + (width) + " " + (height))
+    .attr("width", width)
+    .attr("height", height)
+    .style("pointer-events", "visible")
+    .call(d3.zoom()
+        .scaleExtent([1 / 2, 4])
+        .on("zoom", zoomed));
+
+function zoomed() {
+  g.attr("transform", d3.event.transform);
+}
 
 function remove_node(cur_index) {
     $("#planteSelected_" + String(cur_index), "#jetsMyPotageomeContent").addClass("hidden");

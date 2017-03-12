@@ -1,142 +1,171 @@
 $green: #5cb85c;
 $red: #d9534f;
-
 $altgreen: #aed688;
 $altred: #ca472f;
 
-.box {
-  margin-top: -10px;
+#graph {
+  height: 100%;
+  margin: 0;
   width: 100%;
-  max-width: 100%;
-  margin-bottom: 10px;
-  .container-jets {
-    width: 100%;
-    max-width: 100%;
-    white-space: nowrap;
-    position: relative;
-    border-bottom: 4px solid #26a69a;
+  g {
+    fill: #0f0f0f;
   }
-  .container-jets input {
-    width: 80%;
-    max-width: 80%;
-    border: none;
-    font-size: 1.2em;
-    color: #65737e;
-    padding: 5px 0 5px 0;
-    -webkit-transition: background .55s ease;
-    -moz-transition: background .55s ease;
-    -ms-transition: background .55s ease;
-    -o-transition: background .55s ease;
-    transition: background .55s ease;
+  circle {
+    stroke: #333;
+    stroke-width: 2px;
   }
-  .container-jets input::-webkit-input-placeholder {
-    color: #65737e;
+  circle:hover {
+    cursor: pointer;
   }
-  .container-jets input:-moz-placeholder {
-    /* Firefox 18- */
-    color: #65737e;
+  text {
+    fill: #0f0f0f;
+    font: 14px sans-serif;
+    font-weight: bold;
+    pointer-events: none;
+    text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
   }
-  .container-jets input::-moz-placeholder {
-    /* Firefox 19+ */
-    color: #65737e;
+  .link {
+    fill: none;
+    stroke-width: 2px;
   }
-  .container-jets input:-ms-input-placeholder {
-    color: #65737e;
+  .link.pos {
+    stroke: $green;
   }
-  .container-jets .glyphicon {
-    color: #65737e;
+  #pos {
+    fill: $green;
   }
-  .container-jets input:hover, .container-jets input:focus, .container-jets input:active {
-    outline: none;
-    background: #ffffff;
+  .link.neg {
+    stroke: $red;
   }
-  .container-jets input:focus::-webkit-input-placeholder {
-    color: #FDFDFD;
+  #neg {
+    fill: $red;
   }
-  .container-jets input:focus:-moz-placeholder {
-    color: #FDFDFD;
+  .link.atr {
+    stroke: $green;
+    stroke-dasharray: 0, 2 1;
   }
-  .container-jets input:focus::-moz-placeholder {
-    color: #FDFDFD;
+  #atr {
+    fill: $green;
   }
-  .container-jets input:focus:-ms-input-placeholder {
-    color: #FDFDFD;
+  .link.rep {
+    stroke: $red;
+    stroke-dasharray: 0, 2 1;
+  }
+  #rep {
+    fill: $red;
   }
 }
+
+.info-side {
+  .btn-plante {
+    word-break: break-all;
+    word-wrap: break-word;
+    margin: -1px -1px 0 0;
+    border-radius: 0;
+  }
+  .filtered {
+    display: none;
+  }
+  .box {
+    margin-top: -10px;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 10px;
+    .container-jets {
+      width: 100%;
+      max-width: 100%;
+      white-space: nowrap;
+      position: relative;
+      border-bottom: 4px solid #26a69a;
+    }
+    .container-jets input {
+      width: 80%;
+      max-width: 80%;
+      border: none;
+      font-size: 1.2em;
+      color: #65737e;
+      padding: 5px 0 5px 0;
+      -webkit-transition: background .55s ease;
+      -moz-transition: background .55s ease;
+      -ms-transition: background .55s ease;
+      -o-transition: background .55s ease;
+      transition: background .55s ease;
+    }
+    .container-jets input::-webkit-input-placeholder {
+      color: #65737e;
+    }
+    .container-jets input:-moz-placeholder {
+      /* Firefox 18- */
+      color: #65737e;
+    }
+    .container-jets input::-moz-placeholder {
+      /* Firefox 19+ */
+      color: #65737e;
+    }
+    .container-jets input:-ms-input-placeholder {
+      color: #65737e;
+    }
+    .container-jets .glyphicon {
+      color: #65737e;
+    }
+    .container-jets input:hover, .container-jets input:focus, .container-jets input:active {
+      outline: none;
+      background: #ffffff;
+    }
+    .container-jets input:focus::-webkit-input-placeholder {
+      color: #FDFDFD;
+    }
+    .container-jets input:focus:-moz-placeholder {
+      color: #FDFDFD;
+    }
+    .container-jets input:focus::-moz-placeholder {
+      color: #FDFDFD;
+    }
+    .container-jets input:focus:-ms-input-placeholder {
+      color: #FDFDFD;
+    }
+  }
+}
+
 .btn:focus {
   outline: none;
 }
-.link {
-  fill: none;
-  stroke-width: 2px;
-}
 
-.link.pos {
-  stroke: $green;
-}
-#pos{
-  fill: $green;
-}
-.link.neg {
-  stroke: $red;
-}
-#neg{
-  fill: $red;
-}
-.link.atr {
-  stroke: $green;
-  stroke-dasharray: 0,2 1;
-}
-#atr{
-  fill: $green;
-}
-.link.rep {
-  stroke: $red;
-  stroke-dasharray: 0,2 1;
-}
-#rep{
-  fill: $red;
-}
-g {
-  fill: #0f0f0f;
-}
-circle {
-  stroke: #333;
-  stroke-width: 2px;
-}
-circle:hover{
-  cursor: pointer;
-}
-text {
-  fill: #0f0f0f;
-  font: 14px sans-serif;
-  font-weight: bold;
-  pointer-events: none;
-  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
-}
-.green{
+.green {
   color: $green;
 }
-.red{
+
+.red {
   color: $red;
 }
-#graph{
+
+.col-left {
+  .td-filter {
+    text-align: center;
+  }
+  #info {
+    .panel-body {
+      padding-bottom: 0;
+    }
+  }
+}
+
+.col-right {
+  #filter {
+    margin-bottom: 10px;
+  }
+}
+
+.footer {
+  background-color: #337ab7;
+  position: fixed;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  min-width: 100%;
-  max-width: 100%;
+  #footer-about {
+    border-radius: 0;
+    border: 0;
+  }
 }
-#filter{
-  margin-bottom: 10px;
-}
-.filtered{
-  display: none;
-}
-.btn-filter{
-  margin-top: 5px;
-}
-.btn-plante{
-  word-break: break-all;
-  word-wrap: break-word;
-  margin: -1px -1px 0 0;
-  border-radius: 0;
-}
+
+
