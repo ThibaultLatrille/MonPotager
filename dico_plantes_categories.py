@@ -175,3 +175,5 @@ categories = {1: "Légume", 2: "Fruit", 3: "Arômate", 4: "Fleur", 5: "Nuisible"
              8: "Arbres", 0: "Null"}
 
 associations = {-1: "neg", 1: "pos", -2: "neg", 2: "pos", -3: "rep", 3: "atr"}
+association_forward = {"neg": "défavorise", "pos": "favorise", "rep": "repousse", "atr": "attire"}
+association_backward = {"neg": "défavorisé par", "pos": "favorisé par", "rep": "repoussé par", "atr": "attiré par"}

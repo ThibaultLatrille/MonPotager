@@ -15,8 +15,8 @@
     <div class="row">
         <div class="col-xs-12 col-md-3 info-side col-left">
             <br>
-            <div class="panel panel-default">
-                <div class="panel-heading">Dans mon potager</div>
+            <div class="panel panel-primary">
+                <div class="panel-heading"><b>Mon potager</b></div>
                 <div class="panel-body">
                     <div id="jetsMyPotageomeContent" data-toggle="buttons" style="padding: 0 5px 0 5px">
                         {% for key, value in appartenance if value in [1,2,3,4,7,8] %}
@@ -29,12 +29,12 @@
                     </div>
                 </div>
             </div>
-            <div id="info" class="panel panel-default hidden">
+            <div id="info" class="panel panel-primary hidden">
                 <div class="panel-heading clearfix">
                     <button id="removeSelected" class="btn btn-danger btn-sm pull-right">
                         <span class="glyphicon glyphicon-trash"></span> Enlever de mon potager
                     </button>
-                    <span id="info-name"></span>
+                    <b><span id="info-name"></span></b>
                 </div>
                 <div class="panel-body">
                     <table class="table table-bordered">
@@ -107,8 +107,8 @@
         <svg id="graph"></svg>
         <div class="col-xs-12 col-md-3 info-side col-right">
             <br>
-            <div class="panel panel-default">
-                <div class="panel-heading">Inventaire</div>
+            <div class="panel panel-primary">
+                <div class="panel-heading"><b>Inventaire des espèces</b></div>
                 <div class="panel-body">
                     <div class="box">
                         <div class="container-jets">
@@ -138,9 +138,9 @@
 </div>
 <footer class="footer">
     <div class="container">
-        <button id="footer-about" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#apropos">
+        <div href="#" id="footer-about" data-toggle="modal" data-target="#apropos">
             À propos
-        </button>
+        </div>
     </div>
 </footer>
 <div class="modal fade" id="apropos" tabindex="-1">

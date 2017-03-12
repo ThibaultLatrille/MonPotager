@@ -24,7 +24,7 @@ $(".btn-filter").on( "click", function() {
     var cur_node = graph.nodes[index];
     var $plantes =  $(".plante");
     $plantes.removeClass("filtered");
-    $("#filter-name").text(cur_node.name + " " + direction + " " + association);
+    $("#filter-name").text(cur_node.name + " " + filter_name_dico[direction][association]+ " :");
     $("#filter").removeClass("hidden");
     $plantes.each(function () {
         var $this = $(this);
@@ -61,7 +61,7 @@ function select_node(index) {
     }
     var $plantes =  $(".plante");
     $plantes.removeClass("filtered");
-    $("#info-name").text(cur_node.name);
+    $("#info-name").text(cur_node.name+ " (" + groups[cur_node.group] + ")");
     $("#info").removeClass("hidden");
 
     ["forward", "backward"].forEach(function (direction) {

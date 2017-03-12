@@ -2,7 +2,7 @@
 
 from dico_appartenance import appartenance
 from dico_interaction_plantes import interaction_plante
-from dico_plantes_categories import plantes, categories, associations
+from dico_plantes_categories import plantes, categories, associations, association_forward, association_backward
 from exemple_association import list_defavorable, list_favorable
 
 
@@ -41,6 +41,10 @@ def generate_js():
     javascript.write("\nvar list_defavorable = [" + ",".join(map(str, list_defavorable)) + "];")
     javascript.write("\nvar list_favorable = [" + ",".join(map(str, list_favorable)) + "];")
     javascript.write('\nvar associations = ["' + '","'.join(set(associations.values())) + '"];')
+    forward = ', '.join(['"{0}":"{1}"'.format(value, association_forward[value]) for value in set(associations.values())])
+    backward = ', '.join(['"{0}":"{1}"'.format(value, association_backward[value]) for value in set(associations.values())])
+    javascript.write('\nvar filter_name_dico = {"forward":{' + forward + '}, "backward":{' + backward + '}};')
+
     javascript.close()
 
     print("Javascript data file successfully written !")

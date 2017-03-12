@@ -502,4 +502,5 @@ var groups = {
 };
 var list_defavorable = [1,6,30,4,21,12,80];
 var list_favorable = [1,13,4,3,62,6];
-var associations = ["neg","atr","rep","pos"];
+var associations = ["neg","rep","atr","pos"];
+var filter_name_dico = {"forward":{"neg":"défavorise", "rep":"repousse", "atr":"attire", "pos":"favorise"}, "backward":{"neg":"défavorisé par", "rep":"repoussé par", "atr":"attiré par", "pos":"favorisé par"}};
