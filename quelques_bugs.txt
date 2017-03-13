@@ -14,3 +14,10 @@ Avec une flèche verte pointillée associée ? :)
 En gros on aurait une case "Les autres plantes" avec  "Favorise, défavorise, favorisé par, défavorisé par"
 Et une case "Auxiliaires et nuisibles" avec "Attire les auxiliaires suivants" et "Repousse les nuisibles suivants"
 
+9. "Attire" c'est pas 2 normalement ?
+Par exemple la phacélie n'est pas favorisée par Bourdons, Abeilles, Coccinelles, Syrphes, Punaises
+mais les attire :)
+Idem, quand on clique sur un auxiliaire (genre Coccinelles), on devrait avoir l'info
+"attiré par" et pas "favorise" :)
+
+10. Il faudra penser à changer le nom du repository git en potagraphe ! ^.^
