@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 
+# ATTENTION: dans ce dictionnaire il faut TOUJOURS que les 
+# nuisibles ou auxiliaires soient en deuxième dans la parenthèse !
+# (dans le cas ou un c'est une interaction nuisible/auxiliaire, 
+# mettre le nuisible en DEUXIEME)
+
 interaction_plante = [
     (1, 2, 1),  # carotte-poireau
     (1, 3, 1),  # carotte-ail
