@@ -21,7 +21,7 @@ Carotte\Légume|favorise|Coriandre\Arômate
 Carotte\Légume|défavorise|Aneth\Arômate
 Carotte\Légume|défavorise|Maïs\Légume
 Carotte\Légume|défavorise|Bette\Légume
-Carabes\Auxiliaire|attire|Carotte\Légume
+Carotte\Légume|attire|Carabes\Auxiliaire
 Carotte\Légume|défavorise|Carotte sauvage\Fleur
 Carotte sauvage\Fleur|favorise|Choux\Légume
 Poireau\Légume|favorise|Carotte\Légume
@@ -139,7 +139,7 @@ Concombre\Légume|favorise|Tomate\Légume
 Pomme de terre\Légume|favorise|Kiwi\Fruit
 Pomme de terre\Légume|favorise|Asperge\Légume
 Pomme de terre\Légume|favorise|Camomille allemande\Fleur
-Coccinelles\Auxiliaire|attire|Camomille allemande\Fleur
+Camomille allemande\Fleur|attire|Coccinelles\Auxiliaire
 Camomille allemande\Fleur|repousse|Nématodes\Nuisible
 Pomme de terre\Légume|favorise|Capucine\Fleur
 Pomme de terre\Légume|favorise|Céleri\Légume
@@ -290,9 +290,9 @@ Fenouil\Légume|défavorise|Navet\Légume
 Fenouil\Légume|défavorise|Choux\Légume
 Fenouil\Légume|défavorise|Coriandre\Arômate
 Fenouil\Légume|défavorise|Cumin\Arômate
-Araignées\Auxiliaire|attire|Fenouil\Légume
-Syrphes\Auxiliaire|attire|Fenouil\Légume
-Papillons\Auxiliaire|attire|Fenouil\Légume
+Fenouil\Légume|attire|Araignées\Auxiliaire
+Fenouil\Légume|attire|Syrphes\Auxiliaire
+Fenouil\Légume|attire|Papillons\Auxiliaire
 Fenouil\Légume|repousse|Pucerons\Nuisible
 Fenouil\Légume|repousse|Lièvres\Nuisible
 Echalote\Légume|défavorise|Choux\Légume
@@ -339,7 +339,7 @@ Artichaut\Légume|favorise|Persil\Arômate
 Artichaut\Légume|favorise|Capucine\Fleur
 Artichaut\Légume|favorise|Poireau\Légume
 Artichaut\Légume|défavorise|Ail\Légume
-Bourdons\Auxiliaire|attire|Artichaut\Légume
+Artichaut\Légume|attire|Bourdons\Auxiliaire
 Cresson\Légume|favorise|Poireau\Légume
 Cresson\Légume|favorise|Radis\Légume
 Cresson\Légume|défavorise|Choux\Légume
@@ -473,7 +473,7 @@ Kiwi\Fruit|défavorise|Haricot\Légume
 Kiwi\Fruit|défavorise|Mâche\Légume
 Kiwi\Fruit|défavorise|Navet\Légume
 Kiwi\Fruit|défavorise|Oignon\Légume
-Syrphes\Auxiliaire|attire|Noisetier\Fruit
+Noisetier\Fruit|attire|Syrphes\Auxiliaire
 Cerisier\Fruit|favorise|Raifort\Légume
 Cerisier\Fruit|favorise|Rue\Arômate
 Aneth\Arômate|favorise|Choux\Légume
@@ -549,16 +549,16 @@ Groseillier\Fruit|défavorise|Maïs\Légume
 Moutarde\Arômate|favorise|Choux\Légume
 Moutarde\Arômate|favorise|Laitue\Légume
 Moutarde\Arômate|défavorise|Tournesol\Fleur
-Syrphes\Auxiliaire|attire|Moutarde\Arômate
+Moutarde\Arômate|attire|Syrphes\Auxiliaire
 Menthe\Arômate|favorise|Pommier\Fruit
 Menthe\Arômate|favorise|Poirier\Fruit
 Menthe\Arômate|favorise|Camomille allemande\Fleur
 Menthe\Arômate|défavorise|Fenouil\Légume
 Menthe\Arômate|défavorise|Asperge\Légume
 Menthe\Arômate|défavorise|Carotte sauvage\Fleur
-Bourdons\Auxiliaire|attire|Menthe\Arômate
-Coccinelles\Auxiliaire|attire|Menthe\Arômate
-Papillons\Auxiliaire|attire|Menthe\Arômate
+Menthe\Arômate|attire|Bourdons\Auxiliaire
+Menthe\Arômate|attire|Coccinelles\Auxiliaire
+Menthe\Arômate|attire|Papillons\Auxiliaire
 Menthe\Arômate|repousse|Pucerons\Nuisible
 Mélisse citronnelle\Arômate|favorise|Choux\Légume
 Mélisse citronnelle\Arômate|défavorise|Sauge\Arômate
@@ -642,8 +642,8 @@ Rue\Arômate|défavorise|Achillée millefeuille\Fleur
 Tanaisie\Fleur|favorise|Pêcher\Fruit
 Tanaisie\Fleur|favorise|Rosier\Fleur
 Tanaisie\Fleur|repousse|Pucerons\Nuisible
-Syrphes\Auxiliaire|attire|Tanaisie\Fleur
-Coccinelles\Auxiliaire|attire|Tanaisie\Fleur
+Tanaisie\Fleur|attire|Syrphes\Auxiliaire
+Tanaisie\Fleur|attire|Coccinelles\Auxiliaire
 Trèfle blanc\Fleur|favorise|Choux\Légume
 Trèfle blanc\Fleur|favorise|Fraisier\Fruit
 Trèfle blanc\Fleur|favorise|Mâche\Légume
@@ -652,8 +652,8 @@ Trèfle blanc\Fleur|favorise|Maïs\Légume
 Trèfle blanc\Fleur|favorise|Pommier\Fruit
 Trèfle blanc\Fleur|favorise|Vigne\Fruit
 Trèfle blanc\Fleur|défavorise|Groseillier\Fruit
-Syrphes\Auxiliaire|attire|Bourrache\Fleur
-Bourdons\Auxiliaire|attire|Bourrache\Fleur
+Bourrache\Fleur|attire|Syrphes\Auxiliaire
+Bourrache\Fleur|attire|Bourdons\Auxiliaire
 Bourrache\Fleur|repousse|Limaces\Nuisible
 Bourrache\Fleur|favorise|Fraisier\Fruit
 Bourrache\Fleur|favorise|Haricot\Légume
@@ -668,8 +668,8 @@ Soucis\Fleur|défavorise|Ail\Légume
 Soucis\Fleur|défavorise|Sarrasin\Céréale
 Soucis\Fleur|favorise|Framboisier\Fruit
 Soucis\Fleur|repousse|Nématodes\Nuisible
-Coccinelles\Auxiliaire|attire|Soucis\Fleur
-Punaises\Auxiliaire|attire|Soucis\Fleur
+Soucis\Fleur|attire|Coccinelles\Auxiliaire
+Soucis\Fleur|attire|Punaises\Auxiliaire
 Achillée millefeuille\Fleur|favorise|Framboisier\Fruit
 Achillée millefeuille\Fleur|favorise|Romarin\Arômate
 Achillée millefeuille\Fleur|favorise|Maïs\Légume
@@ -705,39 +705,39 @@ Tournesol\Fleur|défavorise|Concombre\Légume
 Cosmos\Fleur|favorise|Choux\Légume
 Cosmos\Fleur|favorise|Tomate\Légume
 Cosmos\Fleur|repousse|Nématodes\Nuisible
-Araignées\Auxiliaire|attire|Cosmos\Fleur
-Coccinelles\Auxiliaire|attire|Cosmos\Fleur
+Cosmos\Fleur|attire|Araignées\Auxiliaire
+Cosmos\Fleur|attire|Coccinelles\Auxiliaire
 Camomille allemande\Fleur|favorise|Choux\Légume
 Camomille allemande\Fleur|favorise|Oignon\Légume
 Camomille allemande\Fleur|favorise|Pois\Légume
 Camomille allemande\Fleur|favorise|Pomme de terre\Légume
 Camomille allemande\Fleur|défavorise|Rue\Arômate
 Camomille allemande\Fleur|défavorise|Pucerons\Nuisible
-Punaises\Auxiliaire|attire|Géranium\Fleur
+Géranium\Fleur|attire|Punaises\Auxiliaire
 Inule visqueuse\Fleur|favorise|Olivier\Arbres
-Punaises\Auxiliaire|attire|Inule visqueuse\Fleur
+Inule visqueuse\Fleur|attire|Punaises\Auxiliaire
 Ricin\Fleur|repousse|Nématodes\Nuisible
 Ricin\Fleur|repousse|Pucerons\Nuisible
 Ricin\Fleur|repousse|Doryphores\Nuisible
-Carabes\Auxiliaire|attire|Amarante\Fleur
+Amarante\Fleur|attire|Carabes\Auxiliaire
 Amarante\Fleur|défavorise|Mâche\Légume
-Carabes\Auxiliaire|attire|Amarante\Fleur
+Amarante\Fleur|attire|Carabes\Auxiliaire
 Chanvre\Fleur|repousse|Courtilières\Nuisible
 Morelle de Balbis\Fleur|favorise|Pomme de terre\Légume
 Morelle de Balbis\Fleur|repousse|Nématodes\Nuisible
 Morelle de Balbis\Fleur|repousse|Doryphores\Nuisible
 Genêt\Fleur|favorise|Radis\Légume
 Genêt\Fleur|repousse|Altises\Nuisible
-Abeilles\Auxiliaire|attire|Phacélie\Fleur
-Bourdons\Auxiliaire|attire|Phacélie\Fleur
+Phacélie\Fleur|attire|Abeilles\Auxiliaire
+Phacélie\Fleur|attire|Bourdons\Auxiliaire
 Phacélie\Fleur|repousse|Pucerons\Nuisible
 Phacélie\Fleur|repousse|Nématodes\Nuisible
-Punaises\Auxiliaire|attire|Phacélie\Fleur
-Coccinelles\Auxiliaire|attire|Phacélie\Fleur
-Syrphes\Auxiliaire|attire|Phacélie\Fleur
+Phacélie\Fleur|attire|Punaises\Auxiliaire
+Phacélie\Fleur|attire|Coccinelles\Auxiliaire
+Phacélie\Fleur|attire|Syrphes\Auxiliaire
 Phacélie\Fleur|favorise|Soucis\Fleur
-Chrysopes\Auxiliaire|attire|Angélique\Fleur
-Coccinelles\Auxiliaire|attire|Angélique\Fleur
+Angélique\Fleur|attire|Chrysopes\Auxiliaire
+Angélique\Fleur|attire|Coccinelles\Auxiliaire
 Angélique\Fleur|défavorise|Aneth\Arômate
 Angélique\Fleur|défavorise|Céleri\Légume
 Angélique\Fleur|défavorise|Betterave\Légume
@@ -772,7 +772,7 @@ Marjolaine\Fleur|repousse|Fourmis\Nuisible
 Tanaisie\Fleur|repousse|Fourmis\Nuisible
 Sureau\Arbres|repousse|Fourmis\Nuisible
 Tomate\Légume|repousse|Fourmis\Nuisible
-Syrphes\Auxiliaire|attire|Mélilot\Fleur
+Mélilot\Fleur|attire|Syrphes\Auxiliaire
 Marjolaine\Fleur|favorise|Piment\Légume
 Marjolaine\Fleur|favorise|Piment\Légume
 Araignées\Auxiliaire|repousse|Pucerons\Nuisible
@@ -780,13 +780,13 @@ Syrphes\Auxiliaire|repousse|Pucerons\Nuisible
 Chrysopes\Auxiliaire|repousse|Pucerons\Nuisible
 Lin\Céréale|favorise|Carotte\Légume
 Lin\Céréale|favorise|Laitue\Légume
-Syrphes\Auxiliaire|attire|Sarrasin\Céréale
-Papillons\Auxiliaire|attire|Sarrasin\Céréale
-Pucerons\Nuisible|attire|Orme\Arbres
-Coccinelles\Auxiliaire|attire|Fusain d'Europe\Arbres
-Chrysopes\Auxiliaire|attire|Fusain d'Europe\Arbres
+Sarrasin\Céréale|attire|Syrphes\Auxiliaire
+Sarrasin\Céréale|attire|Papillons\Auxiliaire
+Orme\Arbres|attire|Pucerons\Nuisible
+Fusain d'Europe\Arbres|attire|Coccinelles\Auxiliaire
+Fusain d'Europe\Arbres|attire|Chrysopes\Auxiliaire
 Baguenaudier\Arbres|défavorise|Pommier\Fruit
-Coccinelles\Auxiliaire|attire|Genévrier\Arbres
+Genévrier\Arbres|attire|Coccinelles\Auxiliaire
 Laurier-sauce\Arbres|défavorise|Vigne\Fruit
 Laurier-sauce\Arbres|favorise|Persil\Arômate
 Laurier-sauce\Arbres|défavorise|Cerfeuil\Arômate
@@ -796,11 +796,11 @@ Noyer\Arbres|défavorise|Cassis\Fruit
 Noyer\Arbres|défavorise|Choux\Légume
 Noyer\Arbres|défavorise|Rhubarbe\Légume
 Noyer\Arbres|défavorise|Pomme de terre\Légume
-Syrphes\Auxiliaire|attire|Noyer\Arbres
-Syrphes\Auxiliaire|attire|Noisetier\Arbres
-Punaises\Auxiliaire|attire|Ortie\Fleur
-Coccinelles\Auxiliaire|attire|Ortie\Fleur
-Carabes\Auxiliaire|attire|Ortie\Fleur
+Noyer\Arbres|attire|Syrphes\Auxiliaire
+Noisetier\Arbres|attire|Syrphes\Auxiliaire
+Ortie\Fleur|attire|Punaises\Auxiliaire
+Ortie\Fleur|attire|Coccinelles\Auxiliaire
+Ortie\Fleur|attire|Carabes\Auxiliaire
 Pucerons\Nuisible|nuit à|Pommier\Fruit
 Pucerons\Nuisible|nuit à|Rosier\Fleur
 Altises\Nuisible|nuit à|Choux\Légume

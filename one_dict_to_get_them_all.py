@@ -48,7 +48,7 @@ for i in range (0,len(interaction_plante)):
     if interaction_plante[i][2] == -2:
         f.write(plantes[interaction_plante[i][1]]+"\\"+categories[appartenance[interaction_plante[i][1]]]+"|nuit à|"+plantes[interaction_plante[i][0]]+"\\"+categories[appartenance[interaction_plante[i][0]]]+"\n")
     if interaction_plante[i][2] == 2:
-        f.write(plantes[interaction_plante[i][1]]+"\\"+categories[appartenance[interaction_plante[i][1]]]+"|attire|"+plantes[interaction_plante[i][0]]+"\\"+categories[appartenance[interaction_plante[i][0]]]+"\n")
+        f.write(plantes[interaction_plante[i][0]]+"\\"+categories[appartenance[interaction_plante[i][0]]]+"|attire|"+plantes[interaction_plante[i][1]]+"\\"+categories[appartenance[interaction_plante[i][1]]]+"\n")
     if interaction_plante[i][2] == -3:
         f.write(plantes[interaction_plante[i][0]]+"\\"+categories[appartenance[interaction_plante[i][0]]]+"|repousse|"+plantes[interaction_plante[i][1]]+"\\"+categories[appartenance[interaction_plante[i][1]]]+"\n")
     
