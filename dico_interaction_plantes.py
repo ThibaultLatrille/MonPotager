@@ -739,8 +739,8 @@ interaction_plante = [
     (95, 90, -3),  # morelle de balbis-doryphores
     (96, 21, 1),  # genêt-radis
     (96, 40, -3),  # genet-altises
-    (101, 149, 1),  # phacélie-abeilles
-    (101, 114, 1),  # phacélie-bourdons
+    (101, 149, 2),  # phacélie-abeilles
+    (101, 114, 2),  # phacélie-bourdons
     (101, 41, -3),  # phacélie-pucerons
     (101, 42, -3),  # phacélie-nématodes
     (101, 145, 2),  # phacélie-punaises
