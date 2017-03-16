@@ -40,33 +40,11 @@ Contacter l'auteur et terre vivante
 business plan baby
 
 14. Menu de départ avec mode débutant, mode intermédiaire et mode avancé (et mode personnalisé) 
-trouver termes marrants "Néophyte", "Maraicher en herbe", "Grand chef du potager" et 
-faire une petite aide
+trouver termes marrants "Néophyte", "Jardinier confirmé", "Grand chef du potager" et 
+faire une petite aide pour le néophyte
 
-15. faire dico français avec "Carotte\légume|favorise|Poireau\légume"
-"-2" = est nuisible à
-1 favorise
--1 défavorise
-2 attire
--3 repousse
-
-Seuls trucs utiles:
-
-from dico_appartenance import appartenance
-from dico_interaction_plantes import interaction_plante
-from dico_plantes_categories import plantes, categories
-
-
-Output :
-Carotte\légume|favorise|Poireau\légume
-Carotte\légume|favorise|Poireau\légume
-Carotte\légume|favorise|Poireau\légume
-Carotte\légume|favorise|Poireau\légume
-Carotte\légume|favorise|Poireau\légume
-Carotte\légume|favorise|Poireau\légume
-Carotte\légume|favorise|Poireau\légume
-
-
+15. Faire petits textes explicatifs pour expliquer ce qu'est chaque espèce ? 
+(Par exemple "Nématodes" : écrire en plus petit en-dessous "petits vers du sol" dans le panneau de gauche) 
 
 16. faire une API : pouvoir sauvegarder son potagraphe, et suggérer nouvelles interactions
 

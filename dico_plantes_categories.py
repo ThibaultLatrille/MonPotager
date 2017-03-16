@@ -143,6 +143,9 @@ plantes = {
     144: "Rats",
     148: "Courtilières",
     160: "Mouche de la carotte",
+    161: "Thrips de l'oignon",
+    162: "Puceron de la carotte",
+    163: "Teigne du poireau",
     # auxiliaires
     45: "Coccinelles",
     46: "Carabes",

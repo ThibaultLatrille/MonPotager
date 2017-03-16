@@ -5,6 +5,14 @@
 # (dans le cas ou un c'est une interaction nuisible/auxiliaire, 
 # mettre le nuisible en DEUXIEME)
 
+
+# (a,b,1) : a favorise b
+# (a,b,-1) : a défavorise b
+# (a,b,2) : a attire b
+# (a,b,-2) : a repousse b (avec b un nuisible)
+# (a,b,-3) : b nuit à a (attention, nuisible b en deuxième !)
+
+
 interaction_plante = [
     (1, 2, 1),  # carotte-poireau
     (1, 3, 1),  # carotte-ail
@@ -728,7 +736,7 @@ interaction_plante = [
     (86, 7, 1),  # camomille allemande-pois
     (86, 12, 1),  # camomille allemande-pomme de terre
     (86, 133, -1),  # camomille allemande-rue
-    (86, 41, -1),  # camomille allemande-pucerons
+    (86, 41, -3),  # camomille allemande-pucerons
     (87, 145, 2),  # géranium-punaises
     (88, 147, 1),  # inule-olivier
     (88, 145, 2),  # inule-punaises
@@ -774,8 +782,8 @@ interaction_plante = [
     (139, 41, -3),  # lavande-pucerons
     (35, 41, -3),  # trèfle blanc-pucerons
     (38, 41, -3),  # oeillets d'inde-pucerons
-    (116, 69, -2),  # campagnols-chicorée
-    (116, 70, -2),  # campagnols-pissenlit
+    (69, 116, -2),  # campagnols-chicorée
+    (70, 116, -2),  # campagnols-pissenlit
     (1, 116, -2),  # campagnols-carotte
     (5, 116, -2),  # campagnols-panais
     (3, 116, -3),  # ail-campagnols
@@ -837,10 +845,12 @@ interaction_plante = [
     (15, 42, -2),  # nematodes-
     (16, 42, -2),  # nematodes-
     (12, 90, -2),  # doryphores-pomme de terre
-    (46, 138, -2),  # carabe-limaces
-    (109, 41, -2),  # araignee-pucerons
-    (110, 41, -2),  # araignee-pucerons
+    (46, 138, -3),  # carabe-limaces
     (6, 160, -3),  # tomate-mouche de la carotte
     (2, 160, -3),  # poireau-mouche de la carotte
-    (1, 160, -2)  # carotte - mouche de la carotte
+    (1, 160, -2),  # carotte - mouche de la carotte
+    (1, 161, -3),  # carotte - thrips de l'oignon
+    (13, 160, -3),  # oignon - mouche de la carotte
+    (13, 162, -3),  # oignon - puceron de la carotte
+    (1, 163, -3)  # carotte - teigne du poireau
 ]

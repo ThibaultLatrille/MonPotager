@@ -7,9 +7,9 @@ from dico_appartenance import appartenance
 from dico_interaction_plantes import interaction_plante
 from dico_plantes_categories import plantes, categories
 
-
-
-
+appartenance
+categories
+plantes
 #Le résultat final qu'on veut
 
 #Carotte\légume|favorise|Poireau\légume
@@ -45,11 +45,14 @@ for i in range (0,len(interaction_plante)):
         f.write(plantes[interaction_plante[i][0]]+"\\"+categories[appartenance[interaction_plante[i][0]]]+"|favorise|"+plantes[interaction_plante[i][1]]+"\\"+categories[appartenance[interaction_plante[i][1]]]+"\n")
     elif interaction_plante[i][2] == -1:
         f.write(plantes[interaction_plante[i][0]]+"\\"+categories[appartenance[interaction_plante[i][0]]]+"|défavorise|"+plantes[interaction_plante[i][1]]+"\\"+categories[appartenance[interaction_plante[i][1]]]+"\n")
-    if interaction_plante[i][2] == -2:
-        f.write(plantes[interaction_plante[i][1]]+"\\"+categories[appartenance[interaction_plante[i][1]]]+"|nuit à|"+plantes[interaction_plante[i][0]]+"\\"+categories[appartenance[interaction_plante[i][0]]]+"\n")
-    if interaction_plante[i][2] == 2:
+    elif interaction_plante[i][2] == -2:
+        if categories[appartenance[interaction_plante[i][0]]] == "Auxiliaire":
+            f.write(plantes[interaction_plante[i][0]]+"\\"+categories[appartenance[interaction_plante[i][0]]]+"|nuit à|"+plantes[interaction_plante[i][1]]+"\\"+categories[appartenance[interaction_plante[i][1]]]+"\n")
+        else: #if we consider the interaction between a légume (first in the interaction list) and a nuisible (second)
+            f.write(plantes[interaction_plante[i][1]]+"\\"+categories[appartenance[interaction_plante[i][1]]]+"|nuit à|"+plantes[interaction_plante[i][0]]+"\\"+categories[appartenance[interaction_plante[i][0]]]+"\n")
+    elif interaction_plante[i][2] == 2:
         f.write(plantes[interaction_plante[i][0]]+"\\"+categories[appartenance[interaction_plante[i][0]]]+"|attire|"+plantes[interaction_plante[i][1]]+"\\"+categories[appartenance[interaction_plante[i][1]]]+"\n")
-    if interaction_plante[i][2] == -3:
+    elif interaction_plante[i][2] == -3:
         f.write(plantes[interaction_plante[i][0]]+"\\"+categories[appartenance[interaction_plante[i][0]]]+"|repousse|"+plantes[interaction_plante[i][1]]+"\\"+categories[appartenance[interaction_plante[i][1]]]+"\n")
     
 

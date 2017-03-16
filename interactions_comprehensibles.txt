@@ -821,9 +821,13 @@ Nématodes\Nuisible|nuit à|Chou-fleur\Légume
 Nématodes\Nuisible|nuit à|Chou-rave\Légume
 Nématodes\Nuisible|nuit à|Chou-rouge\Légume
 Doryphores\Nuisible|nuit à|Pomme de terre\Légume
-Limaces\Nuisible|nuit à|Carabes\Auxiliaire
-Pucerons\Nuisible|nuit à|Araignées\Auxiliaire
-Pucerons\Nuisible|nuit à|Syrphes\Auxiliaire
+Carabes\Auxiliaire|nuit à|Limaces\Nuisible
+Araignées\Auxiliaire|nuit à|Pucerons\Nuisible
+Syrphes\Auxiliaire|nuit à|Pucerons\Nuisible
 Tomate\Légume|repousse|Mouche de la carotte\Nuisible
 Poireau\Légume|repousse|Mouche de la carotte\Nuisible
 Mouche de la carotte\Nuisible|nuit à|Carotte\Légume
+Carotte\Légume|repousse|Thrips de l'oignon\Nuisible
+Oignon\Légume|repousse|Mouche de la carotte\Nuisible
+Oignon\Légume|repousse|Puceron de la carotte\Nuisible
+Carotte\Légume|repousse|Teigne du poireau\Nuisible
