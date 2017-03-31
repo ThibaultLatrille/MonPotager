@@ -5,6 +5,20 @@ $(".plante").on("click", function (event) {
     select_node(value);
     event.stopPropagation();
 });
+$(".reset-btn").on("click", function () {
+    var str_list = $(this).data("plantes").split("|");
+    var int_list = $.map(graph.nodes.filter(function (val) {
+            return str_list.indexOf(val.name) > -1
+        }),
+        function (node) {
+            return node.value
+        });
+    remove_nodes();
+    for (var i = 0; i < int_list.length; i++) {
+        add_node(int_list[i])
+    }
+    restart();
+});
 $(".planteSelected").on("click", function (event) {
     var value = parseInt($(this).data("value"));
     select_node(value);
@@ -29,9 +43,9 @@ $(".btn-filter").on("click", function (event) {
     var $plantes = $(".plante");
     $plantes.removeClass("filtered");
     var $filter = $("#filter");
-    if (association == 'pos' || association == 'atr') {
+    if (association == 'pos' || association == 'atr') {
         $filter.removeClass('btn-danger').addClass('btn-success')
-    } else {
+    } else {
         $filter.addClass('btn-danger').removeClass('btn-success')
     }
     $("#filter-name").html(filter_name_dico[direction][association] + " " + cur_node.name.toLowerCase() + " ");
@@ -109,12 +123,6 @@ function select_node(index) {
         });
     });
 }
-$(document).ready(function () {
-    new Jets({
-        searchTag: "#jetsPotageomeSearch",
-        contentTag: "#jetsPotageomeContent"
-    });
-});
 
 var svg = d3.select("svg"),
     width = +$(window).width(),
@@ -171,6 +179,14 @@ svg.attr("viewBox", (-width / 2) + " " + (-height / 2) + " " + (width) + " " + (
 
 function zoomed() {
     g.attr("transform", d3.event.transform);
+}
+
+function remove_nodes() {
+    $(".planteSelected", "#jetsMyPotageomeContent").addClass("hidden");
+    $(".plante", "#jetsPotageomeContent").removeClass("hidden");
+    index_nodes = [];
+    nodes = [];
+    links = [];
 }
 
 function remove_node(cur_index) {
@@ -368,3 +384,10 @@ function tick() {
         return "M" + d.source.x + "," + d.source.y + "A" + dr + "," + dr + " 0 0,1 " + d.target.x + "," + d.target.y;
     })
 }
+$(document).ready(function () {
+    new Jets({
+        searchTag: "#jetsPotageomeSearch",
+        contentTag: "#jetsPotageomeContent"
+    });
+    $('#reset').modal('show');
+});

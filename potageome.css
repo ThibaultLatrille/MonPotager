@@ -143,11 +143,11 @@
 	background-color: #232d33;
 	color: #fff;}
 
-.footer #footer-about {
+.footer .footer-link {
 	line-height: 2em;
 	font-size: 1.6em;}
 
-.footer #footer-about:hover {
+.footer .footer-link:hover {
 	cursor: pointer;}
 
 .panel-default .panel-heading {
