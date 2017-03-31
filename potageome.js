@@ -347,7 +347,6 @@ function no_transparence() {
 }
 
 $(document).on('click', function (evt) {
-    console.log("click");
     if (is_selected) {
         $(".planteSelected").removeClass('active');
         $("#filter").click();

@@ -1,11 +1,9 @@
-from dico_appartenance import appartenance
-from dico_plantes_categories import plantes
-from dict2json import generate_js
+from interaction2json import generate_js
 import jinja2
 from scss import parser
 compress = False
 
-generate_js()
+plantes, appartenance = generate_js()
 
 env = jinja2.Environment(loader=jinja2.FileSystemLoader('./'))
 template = env.get_template('potageome.html')
