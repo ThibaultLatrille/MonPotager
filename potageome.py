@@ -1,7 +1,6 @@
 from interaction2json import generate_js
 import jinja2
-from scss import parser
-compress = False
+import sass
 
 plantes, appartenance = generate_js()
 
@@ -11,6 +10,8 @@ output_from_parsed_template = template.stream(plantes=plantes,
                                               appartenance=sorted(appartenance.items(),
                                                                   key=lambda pl: plantes[pl[0]].lower())
                                               ).dump('potageome_rendered.html')
+
 css = open("potageome.css", "w")
-css.write(parser.Stylesheet(options=dict(compress=compress)).load('potageome.css.scss'))
+print(sass.compile(filename='potageome.css.scss'))
+css.write(sass.compile(filename='potageome.css.scss'))
 css.close()

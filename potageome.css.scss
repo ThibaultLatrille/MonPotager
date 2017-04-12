@@ -184,3 +184,24 @@ $altred: #ca472f;
     background-color: #FAFAFA;
   }
 }
+@media screen and (min-width: 992px){
+    .col-right {
+        position: absolute;
+        top: 0;
+        right: 0;
+        overflow-y: auto;
+        max-height: 100%;
+        height: 100%;
+    }
+    .col-left {
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow-y: auto;
+        max-height: 100%;
+        height: 100%;
+    }
+    body, html {
+      overflow: hidden;
+    }
+}

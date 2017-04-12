@@ -483,5 +483,5 @@ var groups = {
 };
 var list_defavorable = [1,6,30,4,21,12,80];
 var list_favorable = [0,3,13,4,3,62,6];
-var associations = ["atr","rep","neg","pos"];
-var filter_name_dico = {"forward":{"atr":"attiré par", "rep":"repoussé par", "neg":"défavorisé par", "pos":"favorisé par"}, "backward":{"atr":"attire", "rep":"repousse", "neg":"défavorise", "pos":"favorise"}};
+var associations = ["rep","neg","atr","pos"];
+var filter_name_dico = {"forward":{"rep":"repoussé par", "neg":"défavorisé par", "atr":"attiré par", "pos":"favorisé par"}, "backward":{"rep":"repousse", "neg":"défavorise", "atr":"attire", "pos":"favorise"}};
