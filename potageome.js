@@ -6,7 +6,9 @@ $(".plante").on("click", function (event) {
     event.stopPropagation();
 });
 $(".reset-btn").on("click", function () {
-    var str_list = $(this).data("plantes").split("|");
+    restart_with_list($(this).data("plantes").split("|"));
+});
+function restart_with_list(str_list) {
     var int_list = $.map(graph.nodes.filter(function (val) {
             return str_list.indexOf(val.name) > -1
         }),
@@ -18,7 +20,7 @@ $(".reset-btn").on("click", function () {
         add_node(int_list[i])
     }
     restart();
-});
+}
 $(".planteSelected").on("click", function (event) {
     var value = parseInt($(this).data("value"));
     select_node(value);
@@ -245,11 +247,6 @@ function add_node(cur_index) {
     }
 }
 
-for (var i = 0; i < list_favorable.length; i++) {
-    add_node(list_favorable[i])
-}
-restart();
-
 function restart() {
 
     // Apply the general update pattern to the nodes.
@@ -340,6 +337,9 @@ function restart() {
     simulation.nodes(nodes);
     simulation.force("link").links(links);
     simulation.alpha(1).restart();
+    Cookies.set("nodes", $.map(nodes, function (node) {
+        return node.name
+    }), {expires: 3650});
 }
 
 function transparent(index) {
@@ -389,5 +389,12 @@ $(document).ready(function () {
         searchTag: "#jetsPotageomeSearch",
         contentTag: "#jetsPotageomeContent"
     });
-    $('#reset').modal('show');
+
+    var plante_list = Cookies.getJSON("nodes");
+    console.log(plante_list);
+    if (plante_list) {
+        restart_with_list(plante_list)
+    } else {
+        $('#reset').modal('show');
+    }
 });

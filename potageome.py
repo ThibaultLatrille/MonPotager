@@ -12,6 +12,5 @@ output_from_parsed_template = template.stream(plantes=plantes,
                                               ).dump('potageome_rendered.html')
 
 css = open("potageome.css", "w")
-print(sass.compile(filename='potageome.css.scss'))
 css.write(sass.compile(filename='potageome.css.scss'))
 css.close()
