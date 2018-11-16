@@ -36,7 +36,7 @@ def generate_js():
     association_backward = {"neg": "défavorise", "pos": "favorise", "rep": "repousse", "atr": "attire"}
     association_forward = {"neg": "défavorisé par", "pos": "favorisé par", "rep": "repoussé par", "atr": "attiré par"}
 
-    javascript = open("lib/data.js", "w")
+    javascript = open("js/data.js", "w")
     javascript.write("var graph = {\n")
     # nodes for javascript file
     javascript.write('\t"nodes":[\n')

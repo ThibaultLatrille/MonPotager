@@ -18,7 +18,7 @@ if __name__ == '__main__':
         minified = "min."
         from jsmin import jsmin
 
-        for js_path in sorted(glob("lib/*.js")):
+        for js_path in sorted(glob("js/*.js")):
             if ".min.js" not in js_path:
                 with open(js_path, 'r') as js_file:
                     jsminified = jsmin(js_file.read())
@@ -30,7 +30,7 @@ if __name__ == '__main__':
     else:
         print(".js and .css not minified, use -c option if you wish to compress")
 
-    css = open("lib/potageome." + minified + "css", "w")
+    css = open("css/potageome." + minified + "css", "w")
     css.write(sass.compile(filename='potageome.css.scss', output_style=('compressed' if args.c else "nested")))
     css.close()
 
