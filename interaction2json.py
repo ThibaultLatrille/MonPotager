@@ -36,7 +36,7 @@ def generate_js():
     association_backward = {"neg": "défavorise", "pos": "favorise", "rep": "repousse", "atr": "attire"}
     association_forward = {"neg": "défavorisé par", "pos": "favorisé par", "rep": "repoussé par", "atr": "attiré par"}
 
-    javascript = open("data.js", "w")
+    javascript = open("lib/data.js", "w")
     javascript.write("var graph = {\n")
     # nodes for javascript file
     javascript.write('\t"nodes":[\n')
@@ -62,9 +62,9 @@ def generate_js():
     javascript.write(",\n".join(['\t{0}:"{1}"'.format(key, value) for key, value in categories.items()]))
     javascript.write('\n};')
 
-    javascript.write('\nvar associations = ["' + '","'.join(set(associations.values())) + '"];')
-    forward = ', '.join(['"{0}":"{1}"'.format(value, association_forward[value]) for value in set(associations.values())])
-    backward = ', '.join(['"{0}":"{1}"'.format(value, association_backward[value]) for value in set(associations.values())])
+    javascript.write('\nvar associations = ["' + '","'.join(sorted(set(associations.values()))) + '"];')
+    forward = ', '.join(['"{0}":"{1}"'.format(value, association_forward[value]) for value in sorted(set(associations.values()))])
+    backward = ', '.join(['"{0}":"{1}"'.format(value, association_backward[value]) for value in sorted(set(associations.values()))])
     javascript.write('\nvar filter_name_dico = {"forward":{' + forward + '}, "backward":{' + backward + '}};')
 
     javascript.close()

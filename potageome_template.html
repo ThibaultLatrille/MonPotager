@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="lib/bootstrap.{{ minified }}css">
+    <link rel="stylesheet" href="lib/potageome.{{ minified }}css">
+    <script src="lib/jquery-3.1.1.{{ minified }}js"></script>
+    <script src="lib/jets.{{ minified }}js"></script>
+    <script src="lib/cookie.{{ minified }}js"></script>
+    <script src="lib/bootstrap.{{ minified }}js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-md-3 info-side col-left">
+            <br>
+            <div class="panel panel-default">
+                <div class="panel-heading"><b>Mon potager</b></div>
+                <div class="panel-body">
+                    <div id="jetsMyPotageomeContent" data-toggle="buttons" style="padding: 0 5px 0 5px">
+                        {% for key, value in appartenance if value in [1,2,3,4,7,8] %}
+                        <div id="planteSelected_{{ key }}" data-value="{{ key }}"
+                             class="btn btn-default btn-sm planteSelected btn-plante hidden
+                            col-xs-12 col-md-6 col-md-4 col-lg-3">
+                            {{ plantes[key] }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="info" class="panel panel-default hidden">
+                <div class="panel-heading clearfix">
+                    <button id="removeSelected" class="btn btn-danger btn-sm pull-right">
+                        <span class="glyphicon glyphicon-trash"></span> Enlever de mon potager
+                    </button>
+                    <b><span id="info-name"></span></b>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th class="col-xs-12 col-md-6 success">Favorise</th>
+                            <th class="col-xs-12 col-md-6 danger">Défavorise</th>
+                        </tr>
+                        <tr>
+                            <td id="forward-pos" class="td-filter success"><span class="text"></span>
+                                <br>
+                                <button class="btn btn-sm btn-success btn-filter"></button>
+                            </td>
+                            <td id="forward-neg" class="td-filter danger"><span class="text"></span>
+                                <br>
+                                <button class="btn btn-sm btn-danger btn-filter"></button>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="table table-bordered" id="table-plant">
+                        <tr>
+                            <th class="col-xs-12 col-md-6 success">Favorisé par</th>
+                            <th class="col-xs-12 col-md-6 danger">Défavorisé par</th>
+                        </tr>
+                        <tr>
+                            <td id="backward-pos" class="td-filter success"><span class="text"></span>
+                                <br>
+                                <button class="btn btn-sm btn-success btn-filter"></button>
+                            </td>
+                            <td id="backward-neg" class="td-filter danger"><span class="text"></span>
+                                <br>
+                                <button class="btn btn-sm btn-danger btn-filter"></button>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="table table-bordered">
+                        <tr>
+                            <th class="col-xs-12 col-md-6 success">Attire</th>
+                            <th class="col-xs-12 col-md-6 danger">Repousse</th>
+                        </tr>
+                        <tr>
+                            <td id="forward-atr" class="td-filter success"><span class="text"></span>
+                                <br>
+                                <button class="btn btn-sm btn-success btn-filter"></button>
+                            </td>
+                            <td id="forward-rep" class="td-filter danger"><span class="text"></span>
+                                <br>
+                                <button class="btn btn-sm btn-danger btn-filter"></button>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="table table-bordered" id="table-bug">
+                        <tr>
+                            <th class="col-xs-12 col-md-6 success">Attiré par</th>
+                            <th class="col-xs-12 col-md-6 danger">Repoussé par</th>
+                        </tr>
+                        <tr>
+                            <td id="backward-atr" class="td-filter success"><span class="text"></span>
+                                <br>
+                                <button class="btn btn-sm btn-success btn-filter"></button>
+                            </td>
+                            <td id="backward-rep" class="td-filter danger"><span class="text"></span>
+                                <br>
+                                <button class="btn btn-sm btn-danger btn-filter"></button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <svg id="graph"></svg>
+        <div class="col-xs-12 col-md-3 info-side col-right">
+            <br>
+            <div class="panel panel-default">
+                <div class="panel-heading"><b>Inventaire des espèces</b></div>
+                <div class="panel-body">
+                    <div class="box">
+                        <div class="container-jets">
+                            <span class="glyphicon glyphicon-search"></span>
+                            <input type="search" id="jetsPotageomeSearch" placeholder="Chercher"/>
+                        </div>
+                    </div>
+                    <div id="filter" class="btn btn-primary btn-sm hidden">
+                        <span id="filter-name"></span>
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </div>
+                    <div id="jetsPotageomeContent" data-toggle="buttons">
+                        {% for key, value in appartenance if value in [1,2,3,4,7,8] %}
+                        <div id="plante_{{ key }}" data-value="{{ key }}"
+                             class="btn btn-default btn-sm plante btn-plante col-xs-12">
+                            {{ plantes[key] }}
+                            (<span class="plus"></span><span class="green">&#8593;</span>/
+                            <span class="minus"></span><span class="red">&#8595;</span>)
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <br><br>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div href="#" data-toggle="modal" class="pull-left footer-link" data-target="#apropos">
+            À propos
+        </div>
+        <div href="#" data-toggle="modal" class="pull-right footer-link" data-target="#reset">
+            &nbsp On recommence
+        </div>
+    </div>
+</footer>
+<div class="modal fade" id="apropos" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">À propos</h4>
+            </div>
+            <div class="modal-body">
+                Cette année, vous voulez commencer un potager avec quatre espèces, par exemple carotte, radis, tomate et
+                pomme
+                de terre, mais vous ne savez pas s'il vaut mieux planter la pomme de terre à côté des pieds de tomate ou
+                au contraire
+                le plus loin possible ? Et est-ce que la carotte ne risque pas d'attirer des parasites du radis ? Que de
+                questions...
+                <br><br>
+                Ainsi, les plantes font parfois bon ménage : l'une favorise le développement de l'autre (interaction
+                positive) ;
+                au contraire, l'une peut attirer les parasites de l'autre ou sécréter des composés chimiques
+                défavorables au
+                développement de sa voisine (interaction défavorable).
+                <br><br>
+                Rarement prises en compte dans la planification d'un potager, les interactions végétales entre plantes
+                compagnes
+                peuvent souvent aider à limiter l'apparition des maladies ou même à augmenter la productivité du
+                potager.
+                <br><br>
+                PotaGraphe est une application permettant de simuler son potager en insérant les diverses espèces de
+                fruits et légumes,
+                et de savoir si les interactions seront favorables ou défavorables. PotaGraphe permet également
+                d'obtenir facilement des
+                informations sur la façon dont un parasite peut être éliminé par des plantes compagnes.
+                <br><br>
+                <div class="small">
+                    Les références que nous avons utilisées sont : <br>
+
+                    <a href="http://boutique.terrevivante.org/librairie/livres/119/jardin-bio/conseils-d-expert/458-plantes-compagnes-au-potager-bio.htm"
+                       target="_blank">
+                        1. Plantes compagnes au potager bio, de S. Lefrançois et Jean-Paul Thorez
+                    </a><br>
+
+                    <a href="http://boutique.terrevivante.org/librairie/livres/31/jardin-bio/facile-et-bio/458-le-poireau-prefere-les-fraises.htm"
+                       target="_blank">
+                        2. Le poireau préfère les fraises, de Hans Wagner
+                    </a><br><br>
+                    PotaGraphe a été développé par
+                    <a href="https://github.com/ThibaultLatrille/" target="_blank">Thibault Latrille</a> et
+                    <a href="https://github.com/tlorin" target="_blank">Thibault Lorin</a>, deux comparses intéressés
+                    par les interactions
+                    végétales au sein du potager. Le code est disponible à
+                    <a href="https://github.com/tlorin/potageome"
+                       target="_blank">https://github.com/tlorin/potageome</a>.
+                    <br><br>
+                    N'hésitez pas à nous contacter à l'adresse <a href="mailto:potagraphe@gmail.com">potagraphe@gmail.com</a>
+                    pour nous signaler des erreurs, nous
+                    proposer des améliorations possibles, partager des bons plans, ou simplement pour en savoir plus !
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="reset" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Planter quelques graines</h4>
+            </div>
+            <div class="modal-body">
+                <button id="reset-0" data-plantes="Carotte|Oignon" type="button"
+                        class="btn btn-primary center-block reset-btn" data-dismiss="modal">Carotte et Oignon
+                </button>
+                <br><br>
+                <button id="reset-1" data-plantes="Carotte|Oignon|Betterave|Haricot" type="button"
+                        class="btn btn-primary center-block reset-btn" data-dismiss="modal">Carotte, Oignon, Betterave &
+                    Haricot
+                </button>
+                <br><br>
+                <button id="reset-2" data-plantes="" type="button"
+                        class="btn btn-primary center-block reset-btn" data-dismiss="modal">A partir de rien
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="lib/d3.{{ minified }}js"></script>
+<script src="lib/data.{{ minified }}js"></script>
+<script src="lib/potageome.{{ minified }}js"></script>
+</body>
+</html>
+
+
+
