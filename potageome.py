@@ -11,7 +11,7 @@ if __name__ == '__main__':
     parser.add_argument('-c', action='store_true')
     args = parser.parse_args()
 
-    plantes, appartenance = generate_js()
+    plantes, appartenance = generate_js("js/data.js")
 
     minified = ""
     if args.c:

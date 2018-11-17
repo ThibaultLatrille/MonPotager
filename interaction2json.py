@@ -5,7 +5,7 @@ def reverse_dict(dico):
     return {value: key for key, value in dico.items()}
 
 
-def generate_js():
+def generate_js(file_name):
     categories = {1: "Légume", 2: "Fruit", 3: "Arômate", 4: "Fleur", 5: "Nuisible", 6: "Auxiliaire", 7: "Céréale",
                   8: "Arbres"}
     reverse_cat = reverse_dict(categories)
@@ -36,7 +36,7 @@ def generate_js():
     association_backward = {"neg": "défavorise", "pos": "favorise", "rep": "repousse", "atr": "attire"}
     association_forward = {"neg": "défavorisé par", "pos": "favorisé par", "rep": "repoussé par", "atr": "attiré par"}
 
-    javascript = open("js/data.js", "w")
+    javascript = open(file_name, "w")
     javascript.write("var graph = {\n")
     # nodes for javascript file
     javascript.write('\t"nodes":[\n')
