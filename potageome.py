@@ -5,6 +5,7 @@ from glob import glob
 from interaction2json import generate_js
 import jinja2
 import sass
+import os
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Minifying the .js and .css with -c option")
@@ -41,4 +42,5 @@ if __name__ == '__main__':
                                                   appartenance=sorted(appartenance.items(),
                                                                       key=lambda pl: plantes[pl[0]].lower())
                                                   ).dump('potageome.html')
+    print("Application generated.\nOpen the file {0}/potageome.html to open the application.".format(os.getcwd()))
 

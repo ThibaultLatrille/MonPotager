@@ -108,8 +108,8 @@ Tomate\Légume|favorise|Poireau\Légume
 Tomate\Légume|favorise|Laitue\Légume
 Tomate\Légume|défavorise|Pomme de terre\Légume
 Tomate\Légume|défavorise|Tournesol\Fleur
-Tomate\Légume|défavorise|Mildiou\Nuisible
-Pomme de terre\Légume|défavorise|Mildiou\Nuisible
+Tomate\Légume|repousse|Mildiou\Nuisible
+Pomme de terre\Légume|repousse|Mildiou\Nuisible
 Tomate\Légume|défavorise|Betterave\Légume
 Tomate\Légume|défavorise|Fenouil\Légume
 Tomate\Légume|défavorise|Fraisier\Fruit
@@ -712,7 +712,7 @@ Camomille allemande\Fleur|favorise|Oignon\Légume
 Camomille allemande\Fleur|favorise|Pois\Légume
 Camomille allemande\Fleur|favorise|Pomme de terre\Légume
 Camomille allemande\Fleur|défavorise|Rue\Arômate
-Camomille allemande\Fleur|défavorise|Pucerons\Nuisible
+Camomille allemande\Fleur|repousse|Pucerons\Nuisible
 Géranium\Fleur|attire|Punaises\Auxiliaire
 Inule visqueuse\Fleur|favorise|Olivier\Arbres
 Inule visqueuse\Fleur|attire|Punaises\Auxiliaire
@@ -758,10 +758,10 @@ Cresson\Légume|repousse|Pucerons\Nuisible
 Lavande\Fleur|repousse|Pucerons\Nuisible
 Trèfle blanc\Fleur|repousse|Pucerons\Nuisible
 Oeillets d'Inde\Fleur|repousse|Pucerons\Nuisible
-Chicorée\Légume|nuit à|Campagnols\Nuisible
-Pissenlit\Fleur|nuit à|Campagnols\Nuisible
-Campagnols\Nuisible|nuit à|Carotte\Légume
-Campagnols\Nuisible|nuit à|Panais\Légume
+Chicorée\Légume|repousse|Campagnols\Nuisible
+Pissenlit\Fleur|repousse|Campagnols\Nuisible
+Campagnols\Nuisible|défavorise|Carotte\Légume
+Campagnols\Nuisible|défavorise|Panais\Légume
 Ail\Légume|repousse|Campagnols\Nuisible
 Narcisse\Fleur|repousse|Campagnols\Nuisible
 Buis\Arbres|repousse|Campagnols\Nuisible
@@ -801,32 +801,32 @@ Noisetier\Arbres|attire|Syrphes\Auxiliaire
 Ortie\Fleur|attire|Punaises\Auxiliaire
 Ortie\Fleur|attire|Coccinelles\Auxiliaire
 Ortie\Fleur|attire|Carabes\Auxiliaire
-Pucerons\Nuisible|nuit à|Pommier\Fruit
-Pucerons\Nuisible|nuit à|Rosier\Fleur
-Altises\Nuisible|nuit à|Choux\Légume
-Altises\Nuisible|nuit à|Chou-fleur\Légume
-Altises\Nuisible|nuit à|Chou-rave\Légume
-Altises\Nuisible|nuit à|Chou-rouge\Légume
-Altises\Nuisible|nuit à|Radis\Légume
-Altises\Nuisible|nuit à|Navet\Légume
-Altises\Nuisible|nuit à|Moutarde\Arômate
-Nématodes\Nuisible|nuit à|Fraisier\Fruit
-Nématodes\Nuisible|nuit à|Artichaut\Légume
-Nématodes\Nuisible|nuit à|Carotte\Légume
-Nématodes\Nuisible|nuit à|Pois\Légume
-Nématodes\Nuisible|nuit à|Epinard\Légume
-Nématodes\Nuisible|nuit à|Betterave\Légume
-Nématodes\Nuisible|nuit à|Choux\Légume
-Nématodes\Nuisible|nuit à|Chou-fleur\Légume
-Nématodes\Nuisible|nuit à|Chou-rave\Légume
-Nématodes\Nuisible|nuit à|Chou-rouge\Légume
-Doryphores\Nuisible|nuit à|Pomme de terre\Légume
-Carabes\Auxiliaire|nuit à|Limaces\Nuisible
-Araignées\Auxiliaire|nuit à|Pucerons\Nuisible
-Syrphes\Auxiliaire|nuit à|Pucerons\Nuisible
+Pucerons\Nuisible|défavorise|Pommier\Fruit
+Pucerons\Nuisible|défavorise|Rosier\Fleur
+Altises\Nuisible|défavorise|Choux\Légume
+Altises\Nuisible|défavorise|Chou-fleur\Légume
+Altises\Nuisible|défavorise|Chou-rave\Légume
+Altises\Nuisible|défavorise|Chou-rouge\Légume
+Altises\Nuisible|défavorise|Radis\Légume
+Altises\Nuisible|défavorise|Navet\Légume
+Altises\Nuisible|défavorise|Moutarde\Arômate
+Nématodes\Nuisible|défavorise|Fraisier\Fruit
+Nématodes\Nuisible|défavorise|Artichaut\Légume
+Nématodes\Nuisible|défavorise|Carotte\Légume
+Nématodes\Nuisible|défavorise|Pois\Légume
+Nématodes\Nuisible|défavorise|Epinard\Légume
+Nématodes\Nuisible|défavorise|Betterave\Légume
+Nématodes\Nuisible|défavorise|Choux\Légume
+Nématodes\Nuisible|défavorise|Chou-fleur\Légume
+Nématodes\Nuisible|défavorise|Chou-rave\Légume
+Nématodes\Nuisible|défavorise|Chou-rouge\Légume
+Doryphores\Nuisible|défavorise|Pomme de terre\Légume
+Carabes\Auxiliaire|repousse|Limaces\Nuisible
+Araignées\Auxiliaire|repousse|Pucerons\Nuisible
+Syrphes\Auxiliaire|repousse|Pucerons\Nuisible
 Tomate\Légume|repousse|Mouche de la carotte\Nuisible
 Poireau\Légume|repousse|Mouche de la carotte\Nuisible
-Mouche de la carotte\Nuisible|nuit à|Carotte\Légume
+Mouche de la carotte\Nuisible|défavorise|Carotte\Légume
 Carotte\Légume|repousse|Thrips de l'oignon\Nuisible
 Oignon\Légume|repousse|Mouche de la carotte\Nuisible
 Oignon\Légume|repousse|Puceron de la carotte\Nuisible
