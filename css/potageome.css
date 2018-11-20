@@ -156,3 +156,6 @@ svg {
     height: 100%; }
   body, html {
     overflow: hidden; } }
+
+.transparent {
+  opacity: 0.1 !important; }

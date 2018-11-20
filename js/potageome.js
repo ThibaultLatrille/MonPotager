@@ -187,18 +187,27 @@ function remove_nodes() {
 }
 
 function remove_node(cur_index) {
-    $("#planteSelected_" + String(cur_index), "#jetsMyPotageomeContent").addClass("hidden");
-    $("#plante_" + String(cur_index), "#jetsPotageomeContent").removeClass("hidden");
+    var cur_node = graph.nodes[cur_index];
+    if (cat_plantes.includes(cur_node.group)) {
+        $("#planteSelected_" + String(cur_index), "#jetsMyPotageomeContent").addClass("hidden");
+        $("#plante_" + String(cur_index), "#jetsPotageomeContent").removeClass("hidden");
+    } else if (cur_node.group === 5) {
+        $("#nuisible_" + String(cur_index), "#nuisible").addClass("hidden");
+    } else {
+        $("#auxiliaire_" + String(cur_index), "#auxiliaire").addClass("hidden");
+    }
+
     var i = index_nodes.indexOf(cur_index);
     index_nodes.splice(i, 1);
     nodes.splice(i, 1);
-    var cur_node = graph.nodes[cur_index];
+
     links = links.filter(function (l) {
         return l.source.value !== cur_node.value && l.target.value !== cur_node.value;
     });
     var to_drop = [];
     nodes.forEach(function (tmp_node) {
         if (cat_animals.includes(tmp_node.group)) {
+            // maybe this is more complicated here
             var filtered_links = links.filter(function (l) {
                 return (l.source.value === tmp_node.value) || (l.target.value === tmp_node.value);
             });
@@ -215,30 +224,42 @@ function remove_node(cur_index) {
 }
 
 function add_node(cur_index) {
-    $("#plante_" + String(cur_index), "#jetsPotageomeContent").addClass("hidden");
-    $("#planteSelected_" + String(cur_index), "#jetsMyPotageomeContent").removeClass("hidden");
     index_nodes.push(cur_index);
     var cur_node = graph.nodes[cur_index];
     nodes.push(cur_node);
+
+    if (cat_plantes.includes(cur_node.group)) {
+        $("#plante_" + String(cur_index), "#jetsPotageomeContent").addClass("hidden");
+        $("#planteSelected_" + String(cur_index), "#jetsMyPotageomeContent").removeClass("hidden");
+    } else {
+        $("#auxiliaire_" + String(cur_index), "#auxiliaire").removeClass("hidden");
+    }
 
     for (var f = 0; f < graph.forward[cur_index].length; f++) {
         var f_link = graph.forward[cur_index][f];
         if (index_nodes.includes(f_link.target)) {
             links.push({"source": cur_node, "target": graph.nodes[f_link.target], "value": f_link.value});
-        } else if (cat_animals.includes(f_link.group)) {
-            index_nodes.push(f_link.target);
-            nodes.push(graph.nodes[f_link.target]);
-            links.push({"source": cur_node, "target": graph.nodes[f_link.target], "value": f_link.value});
+        } else if (cat_animals.includes(f_link.group) && ["atr", "rep"].includes(f_link.value)) {
+            add_node(f_link.target);
         }
     }
     for (var b = 0; b < graph.backward[cur_index].length; b++) {
         var b_link = graph.backward[cur_index][b];
         if (index_nodes.includes(b_link.source)) {
             links.push({"source": graph.nodes[b_link.source], "target": cur_node, "value": b_link.value});
-        } else if (cat_animals.includes(b_link.group)) {
-            index_nodes.push(b_link.source);
-            nodes.push(graph.nodes[b_link.source]);
-            links.push({"source": graph.nodes[b_link.source], "target": cur_node, "value": b_link.value});
+        } else if (cat_animals.includes(b_link.group) && ["neg", "pos"].includes(b_link.value)) {
+            add_node(b_link.source);
+        }
+    }
+
+    // Make auxilliaire and nuisible invisible if not relevant
+    if (cur_node.group === 5) {
+        var filtered_links = links.filter(function (l) {
+            return (l.target.value === cur_node.value && ["rep"].includes(l.value));
+        });
+        if (filtered_links.length > 0) {
+            transparent_node(cur_node);
+            $("#nuisible_" + String(cur_index), "#nuisible").removeClass("hidden");
         }
     }
 }
@@ -250,7 +271,9 @@ function restart() {
         return d.value;
     });
     node.exit().remove();
-    node = node.enter().append("g").attr("class", "node").each(function () {
+    node = node.enter().append("g").attr("class", function (d) {
+            return "node " + d.transparent;
+        }).each(function () {
         d3.select(this).insert("circle")
             .attr("fill", function (d) {
                 return color[d.group]
@@ -278,7 +301,7 @@ function restart() {
     link.exit().remove();
     link = link.enter().append("path")
         .attr("class", function (d) {
-            return "link " + d.value;
+            return "link " + d.value + " " + d.transparent;
         })
         .attr("marker-end", function (d) {
             return "url(#" + d.value + ")";
@@ -333,7 +356,9 @@ function restart() {
     simulation.nodes(nodes);
     simulation.force("link").links(links);
     simulation.alpha(1).restart();
-    Cookies.set("nodes", $.map(nodes, function (node) {
+    Cookies.set("nodes", $.map(nodes.filter(function (n) {
+        return cat_plantes.includes(n.group);
+    }), function (node) {
         return node.name
     }), {expires: 3650});
 }
@@ -351,6 +376,16 @@ function transparent(index) {
         }).length === 0
     }).transition().style("opacity", "0.12");
 }
+
+function transparent_node(cur_node) {
+    links.forEach(function (tmp_link) {
+        if (tmp_link.source.value === cur_node.value || tmp_link.target.value === cur_node.value) {
+            tmp_link.transparent = "transparent";
+        }
+    });
+    cur_node.transparent = "transparent";
+}
+
 
 function no_transparence() {
     link.transition().style("opacity", "1");

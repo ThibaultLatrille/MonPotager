@@ -34,6 +34,24 @@
                         </div>
                     </div>
                     <br>
+                    <div id="nuisible" style="padding: 0 5px 0 5px">
+                        Les nuisibles qui sont écartés : <br>
+                        {% for key, value in appartenance if value == 5 %}
+                        <a href="" id="nuisible_{{ key }}" data-value="{{ key }}" class="nuisibleSelected hidden">
+                            {{ plantes[key] }}
+                        </a>
+                        {% endfor %}
+                    </div>
+                    <br>
+                    <div id="auxiliaire" style="padding: 0 5px 0 5px">
+                        Les auxiliaires qui sont attirès : <br>
+                        {% for key, value in appartenance if value == 6 %}
+                        <a href="" id="auxiliaire_{{ key }}" data-value="{{ key }}" class="auxiliaireSelected hidden">
+                            {{ plantes[key] }}
+                        </a>
+                        {% endfor %}
+                    </div>
+                    <br>
                     <div class="panel panel-default" style="margin-bottom: 0">
                         <div class="breadcrumb clearfix" style="margin-bottom: 0">
                             <a data-toggle="collapse" href="#legend"
