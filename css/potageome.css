@@ -1,41 +1,46 @@
-#graph {
+.big {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 120%; }
+
+svg {
   height: 100%;
   margin: 0;
   width: 100%; }
-  #graph g {
+  svg g {
     fill: #0f0f0f; }
-  #graph circle {
+  svg circle {
     stroke: #333;
     stroke-width: 2px; }
-  #graph circle:hover {
+  svg circle:hover {
     cursor: pointer; }
-  #graph text {
+  svg text {
     fill: #0f0f0f;
     font: 14px sans-serif;
     font-weight: bold;
     pointer-events: none;
     text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff; }
-  #graph .link {
+  svg .link {
     fill: none;
     stroke-width: 2px; }
-  #graph .link.pos {
+  svg .link.pos {
     stroke: #5cb85c; }
-  #graph #pos {
+  svg #pos {
     fill: #5cb85c; }
-  #graph .link.neg {
+  svg .link.neg {
     stroke: #d9534f; }
-  #graph #neg {
+  svg #neg {
     fill: #d9534f; }
-  #graph .link.atr {
-    stroke: #5cb85c;
-    stroke-dasharray: 0, 2 1; }
-  #graph #atr {
-    fill: #5cb85c; }
-  #graph .link.rep {
-    stroke: #d9534f;
-    stroke-dasharray: 0, 2 1; }
-  #graph #rep {
-    fill: #d9534f; }
+  svg .link.atr {
+    stroke: #59C596;
+    stroke-dasharray: 5; }
+  svg #atr {
+    fill: #59C596; }
+  svg .link.rep {
+    stroke: #E67B48;
+    stroke-dasharray: 5; }
+  svg #rep {
+    fill: #E67B48; }
 
 .info-side .btn-plante {
   word-break: break-all;
@@ -125,13 +130,13 @@
   .footer .footer-link:hover {
     cursor: pointer; }
 
-.panel-default .panel-heading {
+.panel-potageome .panel-heading {
   background-color: #31627F;
   color: white;
   font-size: 1.4em;
   line-height: 1.6em; }
 
-.panel-default .panel-body {
+.panel-potageome .panel-body {
   background-color: #FAFAFA; }
 
 @media screen and (min-width: 992px) {

@@ -1,9 +1,15 @@
 $green: #5cb85c;
 $red: #d9534f;
-$altgreen: #aed688;
-$altred: #ca472f;
+$altgreen: #59C596;
+$altred: #E67B48;
 
-#graph {
+.big {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 120%;
+}
+
+svg {
   height: 100%;
   margin: 0;
   width: 100%;
@@ -41,18 +47,18 @@ $altred: #ca472f;
     fill: $red;
   }
   .link.atr {
-    stroke: $green;
-    stroke-dasharray: 0, 2 1;
+    stroke: $altgreen;
+    stroke-dasharray: 5;
   }
   #atr {
-    fill: $green;
+    fill: $altgreen;
   }
   .link.rep {
-    stroke: $red;
-    stroke-dasharray: 0, 2 1;
+    stroke: $altred;
+    stroke-dasharray: 5;
   }
   #rep {
-    fill: $red;
+    fill: $altred;
   }
 }
 
@@ -173,7 +179,7 @@ $altred: #ca472f;
   }
 }
 
-.panel-default {
+.panel-potageome {
   .panel-heading {
     background-color: #31627F;
     color: white;
@@ -184,24 +190,25 @@ $altred: #ca472f;
     background-color: #FAFAFA;
   }
 }
-@media screen and (min-width: 992px){
-    .col-right {
-        position: absolute;
-        top: 0;
-        right: 0;
-        overflow-y: auto;
-        max-height: 100%;
-        height: 100%;
-    }
-    .col-left {
-        position: absolute;
-        top: 0;
-        left: 0;
-        overflow-y: auto;
-        max-height: 100%;
-        height: 100%;
-    }
-    body, html {
-      overflow: hidden;
-    }
+
+@media screen and (min-width: 992px) {
+  .col-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    overflow-y: auto;
+    max-height: 100%;
+    height: 100%;
+  }
+  .col-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    max-height: 100%;
+    height: 100%;
+  }
+  body, html {
+    overflow: hidden;
+  }
 }

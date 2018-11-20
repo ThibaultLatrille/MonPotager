@@ -2,7 +2,7 @@
 
 import argparse
 from glob import glob
-from interaction2json import generate_js
+from association2json import generate_js
 import jinja2
 import sass
 import os
@@ -12,7 +12,7 @@ if __name__ == '__main__':
     parser.add_argument('-c', action='store_true')
     args = parser.parse_args()
 
-    plantes, appartenance = generate_js("js/data.js")
+    plantes, appartenance, examples = generate_js("js/data.js")
 
     minified = ""
     if args.c:
@@ -38,6 +38,7 @@ if __name__ == '__main__':
     env = jinja2.Environment(loader=jinja2.FileSystemLoader('./'))
     template = env.get_template('potageome_template.html')
     output_from_parsed_template = template.stream(plantes=plantes,
+                                                  examples=examples,
                                                   minified=minified,
                                                   appartenance=sorted(appartenance.items(),
                                                                       key=lambda pl: plantes[pl[0]].lower())

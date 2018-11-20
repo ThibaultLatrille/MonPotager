@@ -42,23 +42,23 @@ $("#filter").on("click", function (event) {
 $(".btn-filter").on("click", function (event) {
     var index = $(this).data("value");
     var direction = $(this).data("direction");
-    var association = $(this).data("association");
+    var interaction = $(this).data("interaction");
     var cur_node = graph.nodes[index];
     var $plantes = $(".plante");
     $plantes.removeClass("filtered");
     var $filter = $("#filter");
-    if (association === 'pos' || association === 'atr') {
+    if (interaction === 'pos' || interaction === 'atr') {
         $filter.removeClass('btn-danger').addClass('btn-success')
     } else {
         $filter.addClass('btn-danger').removeClass('btn-success')
     }
-    $("#filter-name").html(filter_name_dico[direction][association] + " " + cur_node.name.toLowerCase() + " ");
+    $("#filter-name").html(filter_name_dico[direction][interaction] + " " + cur_node.name.toLowerCase() + " ");
     $filter.removeClass("hidden");
     $plantes.each(function () {
         var $this = $(this);
         var thisIndex = parseInt($this.data("value"));
         var connected = graph[direction][index].filter(function (l) {
-            return (l.target ? l.target : l.source) === thisIndex && l.value === association
+            return (l.target ? l.target : l.source) === thisIndex && l.value === interaction
         });
         if (connected.length === 0) {
             $this.addClass("filtered")
@@ -67,9 +67,9 @@ $(".btn-filter").on("click", function (event) {
     event.stopPropagation();
 });
 
-function direction_association(direction, association, index) {
+function direction_interaction(direction, interaction, index) {
     var list_ids = $.map(graph[direction][index].filter(function (l) {
-        return l.value === association
+        return l.value === interaction
     }), function (val) {
         return val.source ? val.source : val.target
     });
@@ -77,23 +77,23 @@ function direction_association(direction, association, index) {
         return index_nodes.includes(val)
     });
     if (graph_list_ids.length > 0) {
-        $(".text", "#" + direction + "-" + association).text($.map(graph_list_ids, function (val) {
+        $(".text", "#" + direction + "-" + interaction).text($.map(graph_list_ids, function (val) {
             return " " + graph.nodes[val].name
         }));
     } else {
-        $(".text", "#" + direction + "-" + association).html("&#8709;")
+        $(".text", "#" + direction + "-" + interaction).html("&#8709;")
     }
 
-    var $button = $(".btn", "#" + direction + "-" + association);
+    var $button = $(".btn", "#" + direction + "-" + interaction);
     $button.removeClass("hidden");
-    var other_associations = list_ids.filter(function (x) {
+    var other_interactions = list_ids.filter(function (x) {
         return !graph_list_ids.includes(x)
     }).length;
-    if (other_associations > 0) {
+    if (other_interactions > 0) {
         $button.data('direction', direction);
-        $button.data('association', association);
+        $button.data('interaction', interaction);
         $button.data('value', index);
-        $button.text(String(other_associations) + " dans l'inventaire");
+        $button.text(String(other_interactions) + " dans l'inventaire");
     } else {
         $button.addClass("hidden")
     }
@@ -122,8 +122,8 @@ function select_node(index) {
         $removeSelected.data("value", index);
     }
     ["forward", "backward"].forEach(function (direction) {
-        associations.forEach(function (association) {
-            direction_association(direction, association, index)
+        interactions.forEach(function (interaction) {
+            direction_interaction(direction, interaction, index)
         });
     });
 
@@ -133,26 +133,14 @@ function select_node(index) {
     $("#info").removeClass("hidden");
 }
 
-var svg = d3.select("svg"),
+var svg = d3.select("#graph"),
     width = +$(window).width(),
     height = +$(window).height();
-
-var color = {
-    0: "#0F0F0F",
-    1: "#1776b6",
-    2: "#ff7f0e",
-    3: "#9564bf",
-    4: "#f7b6d2",
-    5: "#d62728",
-    6: "#24a221",
-    7: "#ffe778",
-    8: "#8d5649"
-};
 
 var nodes = [], index_nodes = [], links = [];
 var is_selected = false;
 svg.append("defs").selectAll("marker")
-    .data(associations)
+    .data(interactions)
     .enter().append("marker")
     .attr("id", function (d) {
         return d;
@@ -361,8 +349,7 @@ function transparent(index) {
         }).length === 0 & graph.backward[index].filter(function (l) {
             return l.source === d.value
         }).length === 0
-    })
-        .transition().style("opacity", "0.12");
+    }).transition().style("opacity", "0.12");
 }
 
 function no_transparence() {
@@ -405,4 +392,12 @@ $(document).ready(function () {
     } else {
         $('#reset').modal('show');
     }
+    $('.collapse').on('show.bs.collapse', function () {
+        $(this).parent(".panel").find(".glyphicon-chevron-down").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
+        $(this).parent(".panel").find(".text-left").html("Masquer la légende");
+    });
+    $('.collapse').on('hide.bs.collapse', function () {
+        $(this).parent("div").parent("div").find(".glyphicon-chevron-up").removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");
+        $(this).parent("div").parent("div").find(".text-left").html("Afficher la légende");
+    });
 });

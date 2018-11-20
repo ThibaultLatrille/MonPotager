@@ -481,7 +481,18 @@ var groups = {
 	7:"Céréale",
 	8:"Arbres"
 };
+var color = {
+	0:"#0F0F0F",
+	1:"#1776b6",
+	2:"#ff7f0e",
+	3:"#9564bf",
+	4:"#f7b6d2",
+	5:"#d62728",
+	6:"#24a221",
+	7:"#ffe778",
+	8:"#8d5649"
+};
 var cat_animals = [5,6];
 var cat_plantes = [1,2,3,4,7,8];
-var associations = ["atr","neg","pos","rep"];
+var interactions = ["atr","neg","pos","rep"];
 var filter_name_dico = {"forward":{"atr":"attiré par", "neg":"défavorisé par", "pos":"favorisé par", "rep":"repoussé par"}, "backward":{"atr":"attire", "neg":"défavorise", "pos":"favorise", "rep":"repousse"}};

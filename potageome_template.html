@@ -15,25 +15,59 @@
     <div class="row">
         <div class="col-xs-12 col-md-3 info-side col-left">
             <br>
-            <div class="panel panel-default">
+            <div class="panel panel-default panel-potageome">
                 <div class="panel-heading"><b>Dans mon potager</b>
                     <div href="#" data-toggle="modal" class="pull-right btn btn-default" data-target="#reset">
                         <span class="glyphicon glyphicon-refresh"></span>
                     </div>
                 </div>
                 <div class="panel-body">
-                    <div id="jetsMyPotageomeContent" data-toggle="buttons" style="padding: 0 5px 0 5px">
-                        {% for key, value in appartenance if value in [1,2,3,4,7,8] %}
-                        <div id="planteSelected_{{ key }}" data-value="{{ key }}"
-                             class="btn btn-default btn-sm planteSelected btn-plante hidden
+                    <div class="clearfix">
+                        <div id="jetsMyPotageomeContent" data-toggle="buttons" style="padding: 0 5px 0 5px">
+                            {% for key, value in appartenance if value in [1,2,3,4,7,8] %}
+                            <div id="planteSelected_{{ key }}" data-value="{{ key }}"
+                                 class="btn btn-default btn-sm planteSelected btn-plante hidden
                             col-xs-12 col-md-6 col-md-4 col-lg-3">
-                            {{ plantes[key] }}
+                                {{ plantes[key] }}
+                            </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
+                    </div>
+                    <br>
+                    <div class="panel panel-default" style="margin-bottom: 0">
+                        <div class="breadcrumb clearfix" style="margin-bottom: 0">
+                            <a data-toggle="collapse" href="#legend"
+                               class="pull-right glyphicon glyphicon-chevron-down"></a>
+                            <a data-toggle="collapse" href="#legend" class="text-left">
+                                Afficher la légende
+                            </a>
+                        </div>
+                        <div id="legend" class="panel-collapse collapse" role="tabpanel">
+                            <div class="panel-body">
+                                {% for example in examples %}
+                                <div class="breadcrumb-item">
+                                    <b>{{ example['description'] }} :</b>
+                                    <svg class="example" width="200" height="30">
+                                        <path class="link {{ example['link'] }}"
+                                              marker-end="url(#{{ example['link'] }})"
+                                              d="M30 30 Q 105 -25 180 30"></path>
+                                        <g class="node" transform="translate(30,30)" style="opacity: 1;">
+                                            <circle fill="{{ example['color_source'] }}" r="10"></circle>
+                                            <text x="11" y="-4">{{ example['name_source'] }}</text>
+                                        </g>
+                                        <g class="node" transform="translate(180,30)" style="opacity: 1;">
+                                            <circle fill="{{ example['color_target'] }}" r="10"></circle>
+                                            <text x="11" y="-4">{{ example['name_target'] }}</text>
+                                        </g>
+                                    </svg>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div id="info" class="panel panel-default hidden">
+            <div id="info" class="panel panel-default panel-potageome hidden">
                 <div class="panel-heading clearfix">
                     <button id="removeSelected" class="btn btn-danger btn-sm pull-right">
                         <span class="glyphicon glyphicon-trash"></span>
@@ -111,8 +145,8 @@
         <svg id="graph"></svg>
         <div class="col-xs-12 col-md-3 info-side col-right">
             <br>
-            <div class="panel panel-default">
-                <div class="panel-heading"><b>Ajouter des plantes à mon potager</b></div>
+            <div class="panel panel-default panel-potageome">
+                <div class="panel-heading"><b>Ajouter des plantes</b></div>
                 <div class="panel-body">
                     <div class="box">
                         <div class="container-jets">
