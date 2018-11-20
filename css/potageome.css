@@ -1,3 +1,14 @@
+.animals {
+  color: #2e6da4; }
+
+.animals:hover {
+  color: #122b40;
+  cursor: pointer; }
+
+.padding-div {
+  padding: 0 5px 0 5px;
+  margin-bottom: 10px; }
+
 .big {
   font-family: sans-serif;
   font-weight: bold;

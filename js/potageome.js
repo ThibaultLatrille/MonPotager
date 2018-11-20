@@ -186,16 +186,26 @@ function remove_nodes() {
     links = [];
 }
 
+function hide_animals() {
+    ["pestDiscarded", "pest", "helpers"].forEach(function (div_id) {
+        if ($(".animals", '#' + div_id).length === $(".hidden", '#' + div_id).length) {
+            $('#' + div_id).hide();
+        } else {
+            $('#' + div_id).show();
+        }
+    });
+}
+
 function remove_node(cur_index) {
     var cur_node = graph.nodes[cur_index];
+
     if (cat_plantes.includes(cur_node.group)) {
         $("#planteSelected_" + String(cur_index), "#jetsMyPotageomeContent").addClass("hidden");
         $("#plante_" + String(cur_index), "#jetsPotageomeContent").removeClass("hidden");
-    } else if (cur_node.group === 5) {
-        $("#nuisible_" + String(cur_index), "#nuisible").addClass("hidden");
     } else {
-        $("#auxiliaire_" + String(cur_index), "#auxiliaire").addClass("hidden");
+        $(".animal_" + String(cur_index), "#upper-left").addClass("hidden");
     }
+    hide_animals();
 
     var i = index_nodes.indexOf(cur_index);
     index_nodes.splice(i, 1);
@@ -204,35 +214,31 @@ function remove_node(cur_index) {
     links = links.filter(function (l) {
         return l.source.value !== cur_node.value && l.target.value !== cur_node.value;
     });
-    var to_drop = [];
+
     nodes.forEach(function (tmp_node) {
         if (cat_animals.includes(tmp_node.group)) {
-            // maybe this is more complicated here
-            var filtered_links = links.filter(function (l) {
-                return (l.source.value === tmp_node.value) || (l.target.value === tmp_node.value);
-            });
-            if (filtered_links.length === 0) {
-                to_drop.push(tmp_node)
+            if (links.filter(function (l) {
+                var atr_rep = (l.target.value === tmp_node.value) && ["atr", "rep"].includes(l.value);
+                var neg_pos = (l.source.value === tmp_node.value) && ["neg", "pos"].includes(l.value);
+                return neg_pos || atr_rep;
+            }).length === 0) {
+                remove_node(tmp_node.value)
             }
         }
     });
-    to_drop.forEach(function (tmp_node) {
-        var i = index_nodes.indexOf(tmp_node.value);
-        index_nodes.splice(i, 1);
-        nodes.splice(i, 1);
-    })
 }
 
 function add_node(cur_index) {
     index_nodes.push(cur_index);
     var cur_node = graph.nodes[cur_index];
     nodes.push(cur_node);
+    hide_animals();
 
     if (cat_plantes.includes(cur_node.group)) {
         $("#plante_" + String(cur_index), "#jetsPotageomeContent").addClass("hidden");
         $("#planteSelected_" + String(cur_index), "#jetsMyPotageomeContent").removeClass("hidden");
     } else {
-        $("#auxiliaire_" + String(cur_index), "#auxiliaire").removeClass("hidden");
+        $("#helper_" + String(cur_index), "#helpers").removeClass("hidden");
     }
 
     for (var f = 0; f < graph.forward[cur_index].length; f++) {
@@ -251,17 +257,6 @@ function add_node(cur_index) {
             add_node(b_link.source);
         }
     }
-
-    // Make auxilliaire and nuisible invisible if not relevant
-    if (cur_node.group === 5) {
-        var filtered_links = links.filter(function (l) {
-            return (l.target.value === cur_node.value && ["rep"].includes(l.value));
-        });
-        if (filtered_links.length > 0) {
-            transparent_node(cur_node);
-            $("#nuisible_" + String(cur_index), "#nuisible").removeClass("hidden");
-        }
-    }
 }
 
 function restart() {
@@ -271,9 +266,7 @@ function restart() {
         return d.value;
     });
     node.exit().remove();
-    node = node.enter().append("g").attr("class", function (d) {
-            return "node " + d.transparent;
-        }).each(function () {
+    node = node.enter().append("g").attr("class", "node ").each(function () {
         d3.select(this).insert("circle")
             .attr("fill", function (d) {
                 return color[d.group]
@@ -301,7 +294,7 @@ function restart() {
     link.exit().remove();
     link = link.enter().append("path")
         .attr("class", function (d) {
-            return "link " + d.value + " " + d.transparent;
+            return "link " + d.value;
         })
         .attr("marker-end", function (d) {
             return "url(#" + d.value + ")";
@@ -333,12 +326,14 @@ function restart() {
     $("circle").on({
         mouseenter: function () {
             if (!is_selected) {
+                no_transparence();
                 transparent($(this).attr("value"))
             }
         },
         mouseleave: function () {
             if (!is_selected) {
-                no_transparence()
+                no_transparence();
+                transparence_pest();
             }
         },
         click: function (event) {
@@ -351,6 +346,7 @@ function restart() {
     $("#info").addClass("hidden");
     is_selected = false;
     no_transparence();
+    transparence_pest();
 
     // Update and restart the simulation.
     simulation.nodes(nodes);
@@ -377,19 +373,30 @@ function transparent(index) {
     }).transition().style("opacity", "0.12");
 }
 
-function transparent_node(cur_node) {
-    links.forEach(function (tmp_link) {
-        if (tmp_link.source.value === cur_node.value || tmp_link.target.value === cur_node.value) {
-            tmp_link.transparent = "transparent";
-        }
-    });
-    cur_node.transparent = "transparent";
-}
-
-
 function no_transparence() {
     link.transition().style("opacity", "1");
     node.transition().style("opacity", "1");
+}
+
+function transparence_pest() {
+    nodes.forEach(function (tmp_node) {
+        if (tmp_node.group === 5) {
+            var filtered_links = links.filter(function (l) {
+                return (l.target.value === tmp_node.value && ["rep"].includes(l.value));
+            });
+            if (filtered_links.length > 0) {
+                link.filter(function (l) {
+                    return l.source.value === tmp_node.value || l.target.value === tmp_node.value;
+                }).transition().style("opacity", "0.12");
+                node.filter(function (d) {
+                    return d === tmp_node;
+                }).transition().style("opacity", "0.12");
+                $("#repelled_pest_" + String(tmp_node.value), "#repelled_pests").removeClass("hidden");
+            } else {
+                $("#pest_" + String(tmp_node.value), "#pests").removeClass("hidden");
+            }
+        }
+    });
 }
 
 $(document).on('click', function (evt) {
@@ -399,6 +406,7 @@ $(document).on('click', function (evt) {
         $("#info").addClass("hidden");
         is_selected = false;
         no_transparence();
+        transparence_pest();
     }
 });
 
@@ -427,11 +435,12 @@ $(document).ready(function () {
     } else {
         $('#reset').modal('show');
     }
-    $('.collapse').on('show.bs.collapse', function () {
+    var $collapse = $('.collapse');
+    $collapse.on('show.bs.collapse', function () {
         $(this).parent(".panel").find(".glyphicon-chevron-down").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
         $(this).parent(".panel").find(".text-left").html("Masquer la légende");
     });
-    $('.collapse').on('hide.bs.collapse', function () {
+    $collapse.on('hide.bs.collapse', function () {
         $(this).parent("div").parent("div").find(".glyphicon-chevron-up").removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");
         $(this).parent("div").parent("div").find(".text-left").html("Afficher la légende");
     });
