@@ -171,7 +171,7 @@ svg.attr("viewBox", (-width / 2) + " " + (-height / 2) + " " + (width) + " " + (
     .attr("height", height)
     .style("pointer-events", "visible")
     .call(d3.zoom()
-        .scaleExtent([1 / 2, 4])
+        .scaleExtent([0.9, 2])
         .on("zoom", zoomed));
 
 function zoomed() {
@@ -181,17 +181,20 @@ function zoomed() {
 function remove_nodes() {
     $(".planteSelected", "#jetsMyPotageomeContent").addClass("hidden");
     $(".plante", "#jetsPotageomeContent").removeClass("hidden");
+    $(".animals", "#upper-left").addClass("hidden");
+    $(".padding-div", "#upper-left").addClass("hidden");
     index_nodes = [];
     nodes = [];
     links = [];
 }
 
 function hide_animals() {
-    ["pestDiscarded", "pest", "helpers"].forEach(function (div_id) {
-        if ($(".animals", '#' + div_id).length === $(".hidden", '#' + div_id).length) {
-            $('#' + div_id).hide();
+    ["repelled_pests", "pests", "helpers"].forEach(function (div_id) {
+        var $animals = $(".animals", '#' + div_id);
+        if ($animals.length === $animals.filter(".hidden").length) {
+            $('#' + div_id).addClass("hidden");
         } else {
-            $('#' + div_id).show();
+            $('#' + div_id).removeClass("hidden");
         }
     });
 }
@@ -205,7 +208,6 @@ function remove_node(cur_index) {
     } else {
         $(".animal_" + String(cur_index), "#upper-left").addClass("hidden");
     }
-    hide_animals();
 
     var i = index_nodes.indexOf(cur_index);
     index_nodes.splice(i, 1);
@@ -232,7 +234,6 @@ function add_node(cur_index) {
     index_nodes.push(cur_index);
     var cur_node = graph.nodes[cur_index];
     nodes.push(cur_node);
-    hide_animals();
 
     if (cat_plantes.includes(cur_node.group)) {
         $("#plante_" + String(cur_index), "#jetsPotageomeContent").addClass("hidden");
@@ -347,6 +348,7 @@ function restart() {
     is_selected = false;
     no_transparence();
     transparence_pest();
+    hide_animals();
 
     // Update and restart the simulation.
     simulation.nodes(nodes);
@@ -392,7 +394,10 @@ function transparence_pest() {
                     return d === tmp_node;
                 }).transition().style("opacity", "0.12");
                 $("#repelled_pest_" + String(tmp_node.value), "#repelled_pests").removeClass("hidden");
+                $("#pest_" + String(tmp_node.value), "#pests").addClass("hidden");
             } else {
+                console.log(tmp_node.name);
+                $("#repelled_pest_" + String(tmp_node.value), "#repelled_pests").addClass("hidden");
                 $("#pest_" + String(tmp_node.value), "#pests").removeClass("hidden");
             }
         }
