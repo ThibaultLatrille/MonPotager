@@ -103,7 +103,7 @@ function direction_interaction(direction, interaction, index) {
     } else {
         $button.addClass("hidden");
     }
-    if (graph_list_ids.length === 0 && other_interactions ===0) {
+    if (graph_list_ids.length === 0 && other_interactions === 0) {
         $("#node-" + direction + "-" + interaction, "#info").addClass("hidden")
     } else {
         $("#node-" + direction + "-" + interaction, "#info").removeClass("hidden")
@@ -203,11 +203,15 @@ function show_item_div(div_id, nbr_items) {
 }
 
 function show_items() {
+    var relevant_links = links;
     nodes.forEach(function (tmp_node) {
         if (tmp_node.group === 5) {
             if (links.filter(function (l) {
                 return (l.target.value === tmp_node.value && ["rep"].includes(l.value));
             }).length > 0) {
+                relevant_links = relevant_links.filter(function (l) {
+                    return !(l.source.value === tmp_node.value || l.target.value === tmp_node.value);
+                });
                 $(".potager-item-" + String(tmp_node.value), "#repelled-pests").removeClass("hidden");
                 $(".potager-item-" + String(tmp_node.value), "#pests").addClass("hidden");
             } else {
@@ -217,7 +221,7 @@ function show_items() {
         }
     });
     ["pos", "neg"].forEach(function (inter) {
-        var nbr_links = links.filter(function (l) {
+        var nbr_links = relevant_links.filter(function (l) {
             return inter === l.value;
         }).length;
         show_item_div("interaction-" + inter, nbr_links);
