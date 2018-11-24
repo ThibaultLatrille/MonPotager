@@ -1,17 +1,12 @@
 # -*- coding: utf-8 -*-
-import random
 
 color = {
-    0: "#0F0F0F",
-    1: "#1776b6",
-    2: "#ff7f0e",
-    3: "#9564bf",
-    4: "#f7b6d2",
-    5: "#d62728",
-    6: "#24a221",
-    7: "#ffe778",
+    0: "#0F0F0F", 1: "#1776b6", 2: "#ff7f0e", 3: "#9564bf", 4: "#f7b6d2", 5: "#d62728", 6: "#24a221", 7: "#ffe778",
     8: "#8d5649"
 }
+
+categories = {1: "Légume", 2: "Fruit", 3: "Arômate", 4: "Fleur", 5: "Nuisible", 6: "Auxiliaire", 7: "Céréale",
+              8: "Arbres"}
 
 
 def reverse_dict(dico):
@@ -19,19 +14,16 @@ def reverse_dict(dico):
 
 
 def generate_js(file_name):
-    categories = {1: "Légume", 2: "Fruit", 3: "Arômate", 4: "Fleur", 5: "Nuisible", 6: "Auxiliaire", 7: "Céréale",
-                  8: "Arbres"}
     cat_animals = {"Nuisible", "Auxiliaire"}
-    cat_plantes = set(categories.values()) - cat_animals
+    cat_plants = set(categories.values()) - cat_animals
     reverse_cat = reverse_dict(categories)
 
     description_interactions = {"favorise": 1, "défavorise": -1, "attire": 2, "repousse": -2}
     interactions = {-1: "neg", 1: "pos", -2: "rep", 2: "atr"}
-    interaction_backward = {"neg": "défavorise", "pos": "favorise", "rep": "repousse", "atr": "attire"}
-    interaction_forward = {"neg": "défavorisé par", "pos": "favorisé par", "rep": "repoussé par", "atr": "attiré par"}
-
+    interaction_forward = {"neg": "Défavorise", "pos": "Favorise", "rep": "Repousse", "atr": "Attire"}
+    interaction_backward = {"neg": "Défavorisé par", "pos": "Favorisé par", "rep": "Repoussé par", "atr": "Attiré par"}
     associations = open("associations.txt", "r")
-    associations_plante = set()
+    associations_plant = set()
     appartenance = dict()
     name_to_index = dict()
     count = 0
@@ -55,7 +47,7 @@ def generate_js(file_name):
             interaction, "|".join(description_interactions.keys()))
         inter = description_interactions[interaction]
 
-        if ((cat_target in cat_animals) and abs(inter) != 2) or ((cat_target in cat_plantes) and abs(inter) != 1):
+        if ((cat_target in cat_animals) and abs(inter) != 2) or ((cat_target in cat_plants) and abs(inter) != 1):
             if (cat_target in cat_animals) and abs(inter) != 2:
                 inter *= 2
             else:
@@ -64,10 +56,10 @@ def generate_js(file_name):
             print("Erreur: {0} ({3}) {1} {2} ({4})".format(name_source, interaction, name_target,
                                                            cat_source, cat_target))
             print("Remplacé par: {0} ({3}) {1} {2} ({4})".format(name_source,
-                                                                 interaction_backward[interactions[inter]],
+                                                                 interaction_forward[interactions[inter]],
                                                                  name_target, cat_source, cat_target))
 
-        associations_plante.add((source, target, inter))
+        associations_plant.add((source, target, inter))
 
     if nbr_errors > 0:
         print("{0} erreurs au total".format(nbr_errors))
@@ -88,14 +80,14 @@ def generate_js(file_name):
     javascript.write(",\n".join(['\t\t[' + ','.join(
         ['{{"target":{0},"value":"{1}","group":{2}}}'.format(target, interactions[inter], appartenance[target])
          for source, target, inter
-         in associations_plante if source == index]) + ']' for index, _ in index_to_name.items()]))
+         in associations_plant if source == index]) + ']' for index, _ in index_to_name.items()]))
     javascript.write('\n\t],\n')
     # Backward list
     javascript.write('\t"backward":[\n')
     javascript.write(",\n".join(['\t\t[' + ','.join(
         ['{{"source":{0},"value":"{1}","group":{2}}}'.format(source, interactions[inter], appartenance[source])
          for source, target, inter
-         in associations_plante if target == index]) + ']' for index, _ in index_to_name.items()]))
+         in associations_plant if target == index]) + ']' for index, _ in index_to_name.items()]))
     javascript.write('\n\t]\n};')
 
     javascript.write("\nvar groups = {\n")
@@ -109,20 +101,20 @@ def generate_js(file_name):
     javascript.write('\n};')
 
     javascript.write('\nvar cat_animals = [' + ','.join(sorted([str(reverse_cat[c]) for c in cat_animals])) + '];')
-    javascript.write('\nvar cat_plantes = [' + ','.join(sorted([str(reverse_cat[c]) for c in cat_plantes])) + '];')
+    javascript.write('\nvar cat_plants = [' + ','.join(sorted([str(reverse_cat[c]) for c in cat_plants])) + '];')
 
     javascript.write('\nvar interactions = ["' + '","'.join(sorted(set(interactions.values()))) + '"];')
-    forward = ', '.join(
-        ['"{0}":"{1}"'.format(value, interaction_forward[value]) for value in sorted(set(interactions.values()))])
     backward = ', '.join(
-        ['"{0}":"{1}"'.format(value, interaction_backward[value]) for value in sorted(set(interactions.values()))])
-    javascript.write('\nvar filter_name_dico = {"forward":{' + forward + '}, "backward":{' + backward + '}};')
+        ['"{0}":"{1}"'.format(value, interaction_backward[value].lower()) for value in sorted(set(interactions.values()))])
+    forward = ', '.join(
+        ['"{0}":"{1}"'.format(value, interaction_forward[value].lower()) for value in sorted(set(interactions.values()))])
+    javascript.write('\nvar filter_name_dico = {"backward":{' + backward + '}, "forward":{' + forward + '}};')
 
     javascript.close()
 
     examples = []
     for index, name in index_to_name.items():
-        name_associations = [l for l in associations_plante if l[0] == index]
+        name_associations = [l for l in associations_plant if l[0] == index]
         name_interactions = set([l[2] for l in name_associations])
         if len(name_interactions) == len(description_interactions):
             for interaction in sorted(name_interactions, key=lambda x: abs(x)):
@@ -135,9 +127,16 @@ def generate_js(file_name):
                 example["color_target"] = color[appartenance[target]]
                 example["link"] = interactions[inter]
                 example["description"] = "{0} {1} {2}".format(example["name_source"],
-                                                              interaction_backward[interactions[inter]],
+                                                              interaction_forward[interactions[inter]].lower(),
                                                               example["name_target"].lower())
                 examples.append(example)
             break
 
-    return index_to_name, appartenance, examples
+    categories_list = []
+    for cat in [cat_plants, cat_animals]:
+        categories_list += [(k, color[reverse_cat[k]]) for k in cat]
+
+    return index_to_name, appartenance, examples, categories_list, \
+           sorted([reverse_cat[cat] for cat in cat_plants]), \
+           sorted([reverse_cat[cat] for cat in cat_animals]), \
+           {"backward": interaction_backward, "forward": interaction_forward}

@@ -12,7 +12,7 @@ if __name__ == '__main__':
     parser.add_argument('-c', action='store_true')
     args = parser.parse_args()
 
-    plantes, appartenance, examples = generate_js("js/data.js")
+    plants, appartenance, examples, categories, cat_plants, cat_animals, interactions = generate_js("js/data.js")
 
     minified = ""
     if args.c:
@@ -37,11 +37,14 @@ if __name__ == '__main__':
 
     env = jinja2.Environment(loader=jinja2.FileSystemLoader('./'))
     template = env.get_template('potageome_template.html')
-    output_from_parsed_template = template.stream(plantes=plantes,
+    output_from_parsed_template = template.stream(plants=plants,
                                                   examples=examples,
                                                   minified=minified,
+                                                  cat_plants=cat_plants,
+                                                  cat_animals=cat_animals,
+                                                  categories=categories,
+                                                  interactions=interactions,
                                                   appartenance=sorted(appartenance.items(),
-                                                                      key=lambda pl: plantes[pl[0]].lower())
+                                                                      key=lambda pl: plants[pl[0]].lower())
                                                   ).dump('potageome.html')
     print("Application generated.\nOpen the file {0}/potageome.html to open the application.".format(os.getcwd()))
-

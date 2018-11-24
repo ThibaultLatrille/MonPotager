@@ -1,4 +1,4 @@
-$(".plante").on("click", function (event) {
+$(".plant").on("click", function (event) {
     var value = parseInt($(this).data("value"));
     add_node(value);
     restart();
@@ -6,7 +6,11 @@ $(".plante").on("click", function (event) {
     event.stopPropagation();
 });
 $(".reset-btn").on("click", function () {
-    restart_with_list($(this).data("plantes").split("|"));
+    restart_with_list($(this).data("plants").split("|"));
+});
+var jetsearch = Jets({
+    searchTag: "#jets-potageome-search",
+    contentTag: "#jets-potageome-content"
 });
 
 function restart_with_list(str_list) {
@@ -23,20 +27,19 @@ function restart_with_list(str_list) {
     restart();
 }
 
-$(".planteSelected").on("click", function (event) {
+$(".potager-item").on("click", function (event) {
     var value = parseInt($(this).data("value"));
     select_node(value);
     event.stopPropagation();
 });
-$("#removeSelected").on("click", function (event) {
-    var value = parseInt($(this).data("value"));
-    remove_node(value);
+$("#remove-selected").on("click", function (event) {
+    remove_node(parseInt($(this).data("value")));
     restart();
     event.stopPropagation();
 });
 $("#filter").on("click", function (event) {
     $(this).addClass("hidden");
-    $(".plante").removeClass("filtered");
+    $(".plant").removeClass("filtered");
     event.stopPropagation();
 });
 $(".btn-filter").on("click", function (event) {
@@ -44,21 +47,24 @@ $(".btn-filter").on("click", function (event) {
     var direction = $(this).data("direction");
     var interaction = $(this).data("interaction");
     var cur_node = graph.nodes[index];
-    var $plantes = $(".plante");
-    $plantes.removeClass("filtered");
+    var $plants = $(".plant");
+    $plants.removeClass("filtered");
+    $("#jets-potageome-search").val('');
+    jetsearch.search();
     var $filter = $("#filter");
-    if (interaction === 'pos' || interaction === 'atr') {
+    if (["pos", "atr"].includes(interaction)) {
         $filter.removeClass('btn-danger').addClass('btn-success')
     } else {
         $filter.addClass('btn-danger').removeClass('btn-success')
     }
-    $("#filter-name").html(filter_name_dico[direction][interaction] + " " + cur_node.name.toLowerCase() + " ");
+    var opposite_direction = (direction === "forward") ? "backward" : "forward";
+    $("#filter-name").html(filter_name_dico[opposite_direction][interaction] + " " + cur_node.name.toLowerCase() + " ");
     $filter.removeClass("hidden");
-    $plantes.each(function () {
+    $plants.each(function () {
         var $this = $(this);
         var thisIndex = parseInt($this.data("value"));
         var connected = graph[direction][index].filter(function (l) {
-            return (l.target ? l.target : l.source) === thisIndex && l.value === interaction
+            return ((typeof l.target !== "undefined") ? l.target : l.source) === thisIndex && l.value === interaction
         });
         if (connected.length === 0) {
             $this.addClass("filtered")
@@ -71,20 +77,20 @@ function direction_interaction(direction, interaction, index) {
     var list_ids = $.map(graph[direction][index].filter(function (l) {
         return l.value === interaction
     }), function (val) {
-        return val.source ? val.source : val.target
+        return (typeof val.source !== "undefined") ? val.source : val.target
     });
     var graph_list_ids = list_ids.filter(function (val) {
         return index_nodes.includes(val)
     });
     if (graph_list_ids.length > 0) {
-        $(".text", "#" + direction + "-" + interaction).text($.map(graph_list_ids, function (val) {
+        $(".text", "#node-" + direction + "-" + interaction).text($.map(graph_list_ids, function (val) {
             return " " + graph.nodes[val].name
         }));
     } else {
-        $(".text", "#" + direction + "-" + interaction).html("&#8709;")
+        $(".text", "#node-" + direction + "-" + interaction).html("&#8709;")
     }
 
-    var $button = $(".btn", "#" + direction + "-" + interaction);
+    var $button = $(".btn-filter", "#node-" + direction + "-" + interaction);
     $button.removeClass("hidden");
     var other_interactions = list_ids.filter(function (x) {
         return !graph_list_ids.includes(x)
@@ -93,31 +99,26 @@ function direction_interaction(direction, interaction, index) {
         $button.data('direction', direction);
         $button.data('interaction', interaction);
         $button.data('value', index);
-        $button.text(String(other_interactions) + " dans l'inventaire");
+        $button.text(". +" + String(other_interactions) + " dans l'inventaire");
     } else {
-        $button.addClass("hidden")
+        $button.addClass("hidden");
+    }
+    if (graph_list_ids.length === 0 && other_interactions ===0) {
+        $("#node-" + direction + "-" + interaction, "#info").addClass("hidden")
+    } else {
+        $("#node-" + direction + "-" + interaction, "#info").removeClass("hidden")
     }
 }
 
 function select_node(index) {
-    $(".planteSelected").removeClass("active").each(function () {
-        var $this = $(this);
-        if ($this.data("value") === index) {
-            $this.addClass('active')
-        }
-    });
     is_selected = true;
     no_transparence();
     transparent(index);
     var cur_node = graph.nodes[index];
-    var $removeSelected = $("#removeSelected");
+    var $removeSelected = $("#remove-selected");
     if (cat_animals.includes(cur_node.group)) {
         $removeSelected.addClass("hidden");
-        $("#table-bug").removeClass("hidden");
-        $("#table-plant").addClass("hidden")
     } else {
-        $("#table-plant").removeClass("hidden");
-        $("#table-bug").addClass("hidden");
         $removeSelected.removeClass("hidden");
         $removeSelected.data("value", index);
     }
@@ -127,8 +128,8 @@ function select_node(index) {
         });
     });
 
-    var $plantes = $(".plante");
-    $plantes.removeClass("filtered");
+    var $plants = $(".plant");
+    $plants.removeClass("filtered");
     $("#info-name").text(cur_node.name + " (" + groups[cur_node.group].toLowerCase() + ")");
     $("#info").removeClass("hidden");
 }
@@ -170,51 +171,77 @@ svg.attr("viewBox", (-width / 2) + " " + (-height / 2) + " " + (width) + " " + (
     .attr("width", width)
     .attr("height", height)
     .style("pointer-events", "visible")
-    .call(d3.zoom()
-        .scaleExtent([0.9, 2])
+    .call(d3.zoom(2)
+        .scaleExtent([1 / 4, 4])
         .on("zoom", zoomed));
 
 function zoomed() {
-    g.attr("transform", d3.event.transform);
+    g.attr("transform", d3.event.transform.scale(1));
 }
 
 function remove_nodes() {
-    $(".planteSelected", "#jetsMyPotageomeContent").addClass("hidden");
-    $(".plante", "#jetsPotageomeContent").removeClass("hidden");
-    $(".animals", "#upper-left").addClass("hidden");
+    $(".plant", "#jets-potageome-content").removeClass("hidden");
+    $(".potager-item", "#upper-left").addClass("hidden");
     $(".padding-div", "#upper-left").addClass("hidden");
     index_nodes = [];
     nodes = [];
     links = [];
 }
 
-function hide_animals() {
-    ["repelled_pests", "pests", "helpers"].forEach(function (div_id) {
-        var $animals = $(".animals", '#' + div_id);
-        if ($animals.length === $animals.filter(".hidden").length) {
-            $('#' + div_id).addClass("hidden");
+function show_item_div(div_id, nbr_items) {
+    if (nbr_items === 0) {
+        $('#' + div_id).addClass("hidden");
+    } else {
+        $('#' + div_id).removeClass("hidden");
+        var span_text = $('#' + div_id + "-count");
+        if (nbr_items > 1) {
+            span_text.html(nbr_items + " " + span_text.data("plural"));
         } else {
-            $('#' + div_id).removeClass("hidden");
+            span_text.html(nbr_items + " " + span_text.data("singular"));
         }
+    }
+}
+
+function show_items() {
+    nodes.forEach(function (tmp_node) {
+        if (tmp_node.group === 5) {
+            if (links.filter(function (l) {
+                return (l.target.value === tmp_node.value && ["rep"].includes(l.value));
+            }).length > 0) {
+                $(".potager-item-" + String(tmp_node.value), "#repelled-pests").removeClass("hidden");
+                $(".potager-item-" + String(tmp_node.value), "#pests").addClass("hidden");
+            } else {
+                $(".potager-item-" + String(tmp_node.value), "#repelled-pests").addClass("hidden");
+                $(".potager-item-" + String(tmp_node.value), "#pests").removeClass("hidden");
+            }
+        }
+    });
+    ["pos", "neg"].forEach(function (inter) {
+        var nbr_links = links.filter(function (l) {
+            return inter === l.value;
+        }).length;
+        show_item_div("interaction-" + inter, nbr_links);
+    });
+    ["plants", "repelled-pests", "pests", "helpers"].forEach(function (div_id) {
+        var $items = $(".potager-item", '#' + div_id);
+        var displayed_items = $items.length - $items.filter(".hidden").length;
+        show_item_div(div_id, displayed_items);
     });
 }
 
 function remove_node(cur_index) {
     var cur_node = graph.nodes[cur_index];
-
-    if (cat_plantes.includes(cur_node.group)) {
-        $("#planteSelected_" + String(cur_index), "#jetsMyPotageomeContent").addClass("hidden");
-        $("#plante_" + String(cur_index), "#jetsPotageomeContent").removeClass("hidden");
-    } else {
-        $(".animal_" + String(cur_index), "#upper-left").addClass("hidden");
+    if (cat_plants.includes(cur_node.group)) {
+        $("#plant-" + String(cur_index), "#jets-potageome-content").removeClass("hidden");
     }
+    $(".potager-item-" + String(cur_index), "#upper-left").addClass("hidden");
 
     var i = index_nodes.indexOf(cur_index);
     index_nodes.splice(i, 1);
     nodes.splice(i, 1);
 
     links = links.filter(function (l) {
-        return l.source.value !== cur_node.value && l.target.value !== cur_node.value;
+        return l.source.value !== cur_index && l.target.value !== cur_index;
     });
 
     nodes.forEach(function (tmp_node) {
@@ -235,12 +262,10 @@ function add_node(cur_index) {
     var cur_node = graph.nodes[cur_index];
     nodes.push(cur_node);
 
-    if (cat_plantes.includes(cur_node.group)) {
-        $("#plante_" + String(cur_index), "#jetsPotageomeContent").addClass("hidden");
-        $("#planteSelected_" + String(cur_index), "#jetsMyPotageomeContent").removeClass("hidden");
-    } else {
-        $("#helper_" + String(cur_index), "#helpers").removeClass("hidden");
+    if (cat_plants.includes(cur_node.group)) {
+        $("#plant-" + String(cur_index), "#jets-potageome-content").addClass("hidden");
     }
+    $(".potager-item-" + String(cur_node.value), "#upper-left").removeClass("hidden");
 
     for (var f = 0; f < graph.forward[cur_index].length; f++) {
         var f_link = graph.forward[cur_index][f];
@@ -303,7 +328,7 @@ function restart() {
         .merge(link);
 
 
-    $(".plante").each(function () {
+    $(".plant").each(function () {
         var $this = $(this);
         var value = $this.data("value");
         $(".plus", $this).text(String(
@@ -342,20 +367,19 @@ function restart() {
             event.stopPropagation();
         }
     });
-    $(".planteSelected").removeClass('active');
     $("#filter").click();
     $("#info").addClass("hidden");
     is_selected = false;
     no_transparence();
     transparence_pest();
-    hide_animals();
+    show_items();
 
     // Update and restart the simulation.
     simulation.nodes(nodes);
     simulation.force("link").links(links);
     simulation.alpha(1).restart();
     Cookies.set("nodes", $.map(nodes.filter(function (n) {
-        return cat_plantes.includes(n.group);
+        return cat_plants.includes(n.group);
     }), function (node) {
         return node.name
     }), {expires: 3650});
@@ -393,12 +417,6 @@ function transparence_pest() {
                 node.filter(function (d) {
                     return d === tmp_node;
                 }).transition().style("opacity", "0.12");
-                $("#repelled_pest_" + String(tmp_node.value), "#repelled_pests").removeClass("hidden");
-                $("#pest_" + String(tmp_node.value), "#pests").addClass("hidden");
-            } else {
-                console.log(tmp_node.name);
-                $("#repelled_pest_" + String(tmp_node.value), "#repelled_pests").addClass("hidden");
-                $("#pest_" + String(tmp_node.value), "#pests").removeClass("hidden");
             }
         }
     });
@@ -406,8 +424,6 @@ function transparence_pest() {
 
 $(document).on('click', function (evt) {
     if (is_selected) {
-        $(".planteSelected").removeClass('active');
-        $("#filter").click();
         $("#info").addClass("hidden");
         is_selected = false;
         no_transparence();
@@ -429,14 +445,10 @@ function tick() {
 }
 
 $(document).ready(function () {
-    new Jets({
-        searchTag: "#jetsPotageomeSearch",
-        contentTag: "#jetsPotageomeContent"
-    });
-
-    var plante_list = Cookies.getJSON("nodes");
-    if (plante_list) {
-        restart_with_list(plante_list)
+    show_items();
+    var plant_list = Cookies.getJSON("nodes");
+    if (plant_list) {
+        restart_with_list(plant_list)
     } else {
         $('#reset').modal('show');
     }

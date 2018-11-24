@@ -493,6 +493,6 @@ var color = {
 	8:"#8d5649"
 };
 var cat_animals = [5,6];
-var cat_plantes = [1,2,3,4,7,8];
+var cat_plants = [1,2,3,4,7,8];
 var interactions = ["atr","neg","pos","rep"];
-var filter_name_dico = {"forward":{"atr":"attiré par", "neg":"défavorisé par", "pos":"favorisé par", "rep":"repoussé par"}, "backward":{"atr":"attire", "neg":"défavorise", "pos":"favorise", "rep":"repousse"}};
+var filter_name_dico = {"backward":{"atr":"attiré par", "neg":"défavorisé par", "pos":"favorisé par", "rep":"repoussé par"}, "forward":{"atr":"attire", "neg":"défavorise", "pos":"favorise", "rep":"repousse"}};

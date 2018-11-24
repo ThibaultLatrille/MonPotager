@@ -21,187 +21,165 @@
                         <span class="glyphicon glyphicon-refresh"></span>
                     </div>
                 </div>
-                <div class="panel-body">
-                    <div class="clearfix">
-                        <div id="jetsMyPotageomeContent" data-toggle="buttons" class="padding-div">
-                            {% for key, value in appartenance if value in [1,2,3,4,7,8] %}
-                            <div id="planteSelected_{{ key }}" data-value="{{ key }}"
-                                 class="btn btn-default btn-sm planteSelected btn-plante hidden
-                            col-xs-12 col-md-6 col-md-4 col-lg-3">
-                                {{ plantes[key] }}
-                            </div>
-                            {% endfor %}
-                        </div>
+                <div id="upper-left" class="panel-body">
+                    <div id="plants" class="padding-div">
+                        <span id="plants-count" class="text-bold"
+                              data-singular="plante :"
+                              data-plural="plantes :"></span><br>
+                        {% for key, value in appartenance if value in cat_plants %}
+                        <span data-value="{{ key }}"
+                              class="potager-item potager-item-{{ key }} hidden">
+                                {{ plants[key] }};
+                            </span>
+                        {% endfor %}
                     </div>
-                    <div id="upper-left" style="margin-top: 5px">
-                        <div id="helpers" class="padding-div">
-                            <span class="glyphicon glyphicon-ok green"></span> Les auxiliaires qui sont attirés : <br>
-                            {% for key, value in appartenance if value == 6 %}
-                            <span id="helper_{{ key }}" data-value="{{ key }}"
-                                  class="animals animal_{{ key }} planteSelected hidden">
-                            {{ plantes[key] }};
-                        </span>
-                            {% endfor %}
-                            <br>
-                        </div>
-                        <div id="repelled_pests" class="padding-div">
-                            <span class="glyphicon glyphicon-ok green"></span> Les nuisibles qui sont écartés : <br>
-                            {% for key, value in appartenance if value == 5 %}
-                            <span id="repelled_pest_{{ key }}" data-value="{{ key }}"
-                                  class="animals animal_{{ key }} planteSelected hidden">
-                            {{ plantes[key] }};
-                        </span>
-                            {% endfor %}
-                            <br>
-                        </div>
-                        <div id="pests" class="padding-div">
-                            <span class="glyphicon glyphicon-remove red"></span> Les nuisibles qui ne sont pas écartés : <br>
-                            {% for key, value in appartenance if value == 5 %}
-                            <span id="pest_{{ key }}" data-value="{{ key }}"
-                                  class="animals animal_{{ key }} planteSelected hidden">
-                            {{ plantes[key] }};
-                        </span>
-                            {% endfor %}
-                            <br>
-                        </div>
+                    <div id="interaction-pos" class="padding-div">
+                        <span class="glyphicon glyphicon-ok green"></span>
+                        <span id="interaction-pos-count" class="text-bold"
+                              data-singular="interaction favorable."
+                              data-plural="interactions favorables."></span> <br>
                     </div>
-                    <div class="panel panel-default" style="margin-bottom: 0">
-                        <div class="breadcrumb clearfix" style="margin-bottom: 0">
-                            <a data-toggle="collapse" href="#legend"
-                               class="pull-right glyphicon glyphicon-chevron-down"></a>
-                            <a data-toggle="collapse" href="#legend" class="text-left">
-                                Afficher la légende
-                            </a>
-                        </div>
-                        <div id="legend" class="panel-collapse collapse" role="tabpanel">
-                            <div class="panel-body">
-                                {% for example in examples %}
-                                <div class="breadcrumb-item">
-                                    <b>{{ example['description'] }} :</b>
-                                    <svg class="example" width="200" height="30">
-                                        <path class="link {{ example['link'] }}"
-                                              marker-end="url(#{{ example['link'] }})"
-                                              d="M30 30 Q 105 -25 180 30"></path>
-                                        <g class="node" transform="translate(30,30)" style="opacity: 1;">
-                                            <circle fill="{{ example['color_source'] }}" r="10"></circle>
-                                            <text x="11" y="-4">{{ example['name_source'] }}</text>
-                                        </g>
-                                        <g class="node" transform="translate(180,30)" style="opacity: 1;">
-                                            <circle fill="{{ example['color_target'] }}" r="10"></circle>
-                                            <text x="11" y="-4">{{ example['name_target'] }}</text>
-                                        </g>
-                                    </svg>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
+                    <div id="helpers" class="padding-div">
+                        <span class="glyphicon glyphicon-ok green"></span>
+                        <span id="helpers-count" class="text-bold"
+                              data-singular="auxiliaire attiré :"
+                              data-plural="auxiliaires attirés :"></span><br>
+                        {% for key, value in appartenance if value == 6 %}
+                        <span data-value="{{ key }}"
+                              class="potager-item potager-item-{{ key }} hidden">
+                            {{ plants[key] }};
+                        </span>
+                        {% endfor %}
+                        <br>
+                    </div>
+                    <div id="repelled-pests" class="padding-div">
+                        <span class="glyphicon glyphicon-ok green"></span>
+                        <span id="repelled-pests-count" class="text-bold"
+                              data-singular="nuisible écarté :"
+                              data-plural="nuisibles écartés :"></span><br>
+                        {% for key, value in appartenance if value == 5 %}
+                        <span data-value="{{ key }}"
+                              class="potager-item potager-item-{{ key }} hidden">
+                            {{ plants[key] }};
+                        </span>
+                        {% endfor %}
+                        <br>
+                    </div>
+                    <div id="interaction-neg" class="padding-div">
+                        <span class="glyphicon glyphicon-remove red"></span>
+                        <span id="interaction-neg-count" class="text-bold"
+                              data-singular="interaction défavorable."
+                              data-plural="interactions défavorables."></span> <br>
+                    </div>
+                    <div id="pests" class="padding-div">
+                        <span class="glyphicon glyphicon-remove red"></span>
+                        <span id="pests-count" class="text-bold"
+                              data-singular="nuisible :"
+                              data-plural="nuisibles :"></span><br>
+                        {% for key, value in appartenance if value == 5 %}
+                        <span data-value="{{ key }}"
+                              class="potager-item potager-item-{{ key }} hidden">
+                            {{ plants[key] }};
+                        </span>
+                        {% endfor %}
+                        <br>
                     </div>
                 </div>
             </div>
-            <div id="info" class="panel panel-default panel-potageome hidden">
+            <div id="info" class="panel panel-default panel-potageome no-margin-bottom hidden">
                 <div class="panel-heading clearfix">
-                    <button id="removeSelected" class="btn btn-danger btn-sm pull-right">
+                    <button id="remove-selected" class="btn btn-danger btn-sm pull-right">
                         <span class="glyphicon glyphicon-trash"></span>
                     </button>
                     <b><span id="info-name"></span></b>
                 </div>
                 <div class="panel-body">
-                    <table class="table table-bordered">
-                        <tr>
-                            <th class="col-xs-12 col-md-6 success">Favorise</th>
-                            <th class="col-xs-12 col-md-6 danger">Défavorise</th>
-                        </tr>
-                        <tr>
-                            <td id="forward-pos" class="td-filter success"><span class="text"></span>
-                                <br>
-                                <button class="btn btn-sm btn-success btn-filter"></button>
-                            </td>
-                            <td id="forward-neg" class="td-filter danger"><span class="text"></span>
-                                <br>
-                                <button class="btn btn-sm btn-danger btn-filter"></button>
-                            </td>
-                        </tr>
-                    </table>
-                    <table class="table table-bordered" id="table-plant">
-                        <tr>
-                            <th class="col-xs-12 col-md-6 success">Favorisé par</th>
-                            <th class="col-xs-12 col-md-6 danger">Défavorisé par</th>
-                        </tr>
-                        <tr>
-                            <td id="backward-pos" class="td-filter success"><span class="text"></span>
-                                <br>
-                                <button class="btn btn-sm btn-success btn-filter"></button>
-                            </td>
-                            <td id="backward-neg" class="td-filter danger"><span class="text"></span>
-                                <br>
-                                <button class="btn btn-sm btn-danger btn-filter"></button>
-                            </td>
-                        </tr>
-                    </table>
-                    <table class="table table-bordered">
-                        <tr>
-                            <th class="col-xs-12 col-md-6 success">Attire</th>
-                            <th class="col-xs-12 col-md-6 danger">Repousse</th>
-                        </tr>
-                        <tr>
-                            <td id="forward-atr" class="td-filter success"><span class="text"></span>
-                                <br>
-                                <button class="btn btn-sm btn-success btn-filter"></button>
-                            </td>
-                            <td id="forward-rep" class="td-filter danger"><span class="text"></span>
-                                <br>
-                                <button class="btn btn-sm btn-danger btn-filter"></button>
-                            </td>
-                        </tr>
-                    </table>
-                    <table class="table table-bordered" id="table-bug">
-                        <tr>
-                            <th class="col-xs-12 col-md-6 success">Attiré par</th>
-                            <th class="col-xs-12 col-md-6 danger">Repoussé par</th>
-                        </tr>
-                        <tr>
-                            <td id="backward-atr" class="td-filter success"><span class="text"></span>
-                                <br>
-                                <button class="btn btn-sm btn-success btn-filter"></button>
-                            </td>
-                            <td id="backward-rep" class="td-filter danger"><span class="text"></span>
-                                <br>
-                                <button class="btn btn-sm btn-danger btn-filter"></button>
-                            </td>
-                        </tr>
-                    </table>
+                    {% for inter in ["pos","atr","neg","rep"] %}
+                    {% for direction in ["forward", "backward"] %}
+                    <div id="node-{{ direction }}-{{ inter }}" class="padding-div">
+                        {% if inter in ["pos", "atr"] %}
+                        <span class="glyphicon glyphicon-ok green"></span>
+                        {% else %}
+                        <span class="glyphicon glyphicon-remove red"></span>
+                        {% endif %}
+                        <b>{{ interactions[direction][inter] }} :</b><br>
+                        <span class="text"></span><span class="btn-filter"></span>
+                    </div>
+                    {% endfor %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
         <svg id="graph"></svg>
-        <div class="col-xs-12 col-md-3 info-side col-right">
-            <br>
-            <div class="panel panel-default panel-potageome">
-                <div class="panel-heading"><b>Ajouter des plantes</b></div>
-                <div class="panel-body">
-                    <div class="box">
-                        <div class="container-jets">
-                            <span class="glyphicon glyphicon-search"></span>
-                            <input type="search" id="jetsPotageomeSearch" placeholder="Chercher"/>
+        <div class="col-xs-12 col-md-3 info-side col-right" style="display: flex; flex-flow: column; height: 100%;">
+            <div style="flex: 0 1 auto; overflow-y: scroll">
+                <br>
+                <div class="panel panel-default panel-potageome no-margin-bottom">
+                    <div class="panel-heading"><b>Ajouter des plantes</b></div>
+                    <div class="panel-body">
+                        <div class="box">
+                            <div class="container-jets">
+                                <span class="glyphicon glyphicon-search"></span>
+                                <input type="search" id="jets-potageome-search" placeholder="Chercher"/>
+                            </div>
                         </div>
-                    </div>
-                    <div id="filter" class="btn btn-primary btn-sm hidden">
-                        <span id="filter-name"></span>
-                        <span class="glyphicon glyphicon-remove"></span>
-                    </div>
-                    <div id="jetsPotageomeContent" data-toggle="buttons">
-                        {% for key, value in appartenance if value in [1,2,3,4,7,8] %}
-                        <div id="plante_{{ key }}" data-value="{{ key }}"
-                             class="btn btn-default btn-sm plante btn-plante col-xs-12">
-                            {{ plantes[key] }}
-                            (<span class="plus"></span><span class="green">&#8593;</span>/
-                            <span class="minus"></span><span class="red">&#8595;</span>)
+                        <div id="filter" class="btn btn-primary btn-sm hidden">
+                            <span id="filter-name"></span>
+                            <span class="glyphicon glyphicon-remove"></span>
                         </div>
-                        {% endfor %}
+                        <div id="jets-potageome-content" data-toggle="buttons">
+                            {% for key, value in appartenance if value in [1,2,3,4,7,8] %}
+                            <div id="plant-{{ key }}" data-value="{{ key }}"
+                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                                {{ plants[key] }}
+                                (<span class="plus"></span><span class="green">&#8593;</span>/
+                                <span class="minus"></span><span class="red">&#8595;</span>)
+                            </div>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
-            <br><br>
+            <div style="flex: 1 1 auto; padding-bottom: 60px">
+                <br>
+                <div class="panel panel-default no-margin-bottom">
+                    <div class="breadcrumb clearfix no-margin-bottom">
+                        <a data-toggle="collapse" href="#legend"
+                           class="pull-right glyphicon glyphicon-chevron-down"></a>
+                        <a data-toggle="collapse" href="#legend" class="text-left">
+                            Afficher la légende
+                        </a>
+                    </div>
+                    <div id="legend" class="panel-collapse collapse" role="tabpanel">
+                        <div class="panel-body">
+                            {% for example in examples %}
+                            <div class="breadcrumb-item">
+                                <b>{{ example['description'] }} :</b>
+                                <svg class="example" width="200" height="30">
+                                    <path class="link {{ example['link'] }}"
+                                          marker-end="url(#{{ example['link'] }})"
+                                          d="M30 30 Q 105 -25 180 30"></path>
+                                    <g class="node" transform="translate(30,30)" style="opacity: 1;">
+                                        <circle fill="{{ example['color_source'] }}" r="10"></circle>
+                                        <text x="11" y="-4">{{ example['name_source'] }}</text>
+                                    </g>
+                                    <g class="node" transform="translate(180,30)" style="opacity: 1;">
+                                        <circle fill="{{ example['color_target'] }}" r="10"></circle>
+                                        <text x="11" y="-4">{{ example['name_target'] }}</text>
+                                    </g>
+                                </svg>
+                            </div>
+                            {% endfor %}
+                            {% for cat, color in categories %}
+                            <span style="font-size: 1.2em;">
+                             <b style='font-size:1.4em; color: {{ color }}; text-shadow: -1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;'>
+                                 ■</b>&nbsp;{{ cat }};
+                            </span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -223,32 +201,33 @@
             <div class="modal-body">
                 Cette année, vous voulez commencer un potager avec quatre espèces, par exemple carotte, radis, tomate et
                 pomme
-                de terre, mais vous ne savez pas s'il vaut mieux planter la pomme de terre à côté des pieds de tomate ou
+                de terre, mais vous ne savez pas s'il vaut mieux plantr la pomme de terre à côté des pieds de tomate ou
                 au contraire
                 le plus loin possible ? Et est-ce que la carotte ne risque pas d'attirer des parasites du radis ? Que de
                 questions...
                 <br><br>
-                Ainsi, les plantes font parfois bon ménage : l'une favorise le développement de l'autre (interaction
+                Ainsi, les plants font parfois bon ménage : l'une favorise le développement de l'autre (interaction
                 positive) ;
                 au contraire, l'une peut attirer les parasites de l'autre ou sécréter des composés chimiques
                 défavorables au
                 développement de sa voisine (interaction défavorable).
                 <br><br>
-                Rarement prises en compte dans la planification d'un potager, les interactions végétales entre plantes
+                Rarement prises en compte dans la planification d'un potager, les interactions végétales entre plants
                 compagnes
                 peuvent souvent aider à limiter l'apparition des maladies ou même à augmenter la productivité du
                 potager.
                 <br><br>
-                PotaGraphe est une application permettant de simuler son potager en insérant les diverses espèces de
+                <i>Mon Potager</i> est une application permettant de simuler son potager en insérant les diverses
+                espèces de
                 fruits et légumes,
-                et de savoir si les interactions seront favorables ou défavorables. PotaGraphe permet également
+                et de savoir si les interactions seront favorables ou défavorables. <i>Mon Potager</i> permet également
                 d'obtenir facilement des
-                informations sur la façon dont un parasite peut être éliminé par des plantes compagnes.
+                informations sur la façon dont un parasite peut être éliminé par des plants compagnes.
                 <br><br>
                 <div class="small">
-                    Les références que nous avons utilisées sont : <br>
+                    Les références que nous avons utilisées sont<br>
 
-                    <a href="http://boutique.terrevivante.org/librairie/livres/119/jardin-bio/conseils-d-expert/458-plantes-compagnes-au-potager-bio.htm"
+                    <a href="http://boutique.terrevivante.org/librairie/livres/119/jardin-bio/conseils-d-expert/458-plants-compagnes-au-potager-bio.htm"
                        target="_blank">
                         1. Plantes compagnes au potager bio, de S. Lefrançois et Jean-Paul Thorez
                     </a><br>
@@ -257,7 +236,7 @@
                        target="_blank">
                         2. Le poireau préfère les fraises, de Hans Wagner
                     </a><br><br>
-                    PotaGraphe a été développé par
+                    <i>Mon Potager</i> a été développé par
                     <a href="https://github.com/ThibaultLatrille/" target="_blank">Thibault Latrille</a> et
                     <a href="https://github.com/tlorin" target="_blank">Thibault Lorin</a>, deux comparses intéressés
                     par les interactions
@@ -286,16 +265,16 @@
                 <h4 class="modal-title">Initialiser mon potager avec:</h4>
             </div>
             <div class="modal-body">
-                <button id="reset-0" data-plantes="Carotte|Oignon" type="button"
+                <button id="reset-0" data-plants="Carotte|Oignon" type="button"
                         class="btn btn-primary center-block reset-btn" data-dismiss="modal">Carotte et Oignon
                 </button>
                 <br>
-                <button id="reset-1" data-plantes="Carotte|Oignon|Betterave|Haricot" type="button"
+                <button id="reset-1" data-plants="Carotte|Oignon|Betterave|Haricot" type="button"
                         class="btn btn-primary center-block reset-btn" data-dismiss="modal">Carotte, Oignon, Betterave &
                     Haricot
                 </button>
                 <br>
-                <button id="reset-2" data-plantes="" type="button"
+                <button id="reset-2" data-plants="" type="button"
                         class="btn btn-primary center-block reset-btn" data-dismiss="modal">A partir de rien
                 </button>
             </div>

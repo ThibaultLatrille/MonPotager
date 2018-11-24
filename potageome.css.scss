@@ -3,16 +3,32 @@ $red: #d9534f;
 $altgreen: #59C596;
 $altred: #E67B48;
 
-.animals{
+.text-bold{
+  font-weight: bold;
+}
+.potager-item {
   color: #2e6da4;
 }
 
-.animals:hover {
+.potager-item:hover {
   color: #122b40;
   cursor: pointer;
 }
 
-.padding-div{
+.btn-filter {
+  color: #2e6da4;
+}
+
+.btn-filter:hover {
+  color: #122b40;
+  cursor: pointer;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0 !important;
+}
+
+.padding-div {
   padding: 0 5px 0 5px;
   margin-bottom: 10px;
 }
@@ -27,16 +43,20 @@ svg {
   height: 100%;
   margin: 0;
   width: 100%;
+
   g {
     fill: #0f0f0f;
   }
+
   circle {
     stroke: #333;
     stroke-width: 2px;
   }
+
   circle:hover {
     cursor: pointer;
   }
+
   text {
     fill: #0f0f0f;
     font: 14px sans-serif;
@@ -44,33 +64,42 @@ svg {
     pointer-events: none;
     text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
   }
+
   .link {
     fill: none;
     stroke-width: 2px;
   }
+
   .link.pos {
     stroke: $green;
   }
+
   #pos {
     fill: $green;
   }
+
   .link.neg {
     stroke: $red;
   }
+
   #neg {
     fill: $red;
   }
+
   .link.atr {
     stroke: $altgreen;
     stroke-dasharray: 5;
   }
+
   #atr {
     fill: $altgreen;
   }
+
   .link.rep {
     stroke: $altred;
     stroke-dasharray: 5;
   }
+
   #rep {
     fill: $altred;
   }
@@ -83,14 +112,17 @@ svg {
     margin: -1px -1px 0 0;
     border-radius: 0;
   }
+
   .filtered {
     display: none;
   }
+
   .box {
     margin-top: -10px;
     width: 100%;
     max-width: 100%;
     margin-bottom: 10px;
+
     .container-jets {
       width: 100%;
       max-width: 100%;
@@ -98,6 +130,7 @@ svg {
       position: relative;
       border-bottom: 4px solid #26a69a;
     }
+
     .container-jets input {
       width: 80%;
       max-width: 80%;
@@ -112,36 +145,46 @@ svg {
       -o-transition: background .55s ease;
       transition: background .55s ease;
     }
+
     .container-jets input::-webkit-input-placeholder {
       color: #65737e;
     }
+
     .container-jets input:-moz-placeholder {
       /* Firefox 18- */
       color: #65737e;
     }
+
     .container-jets input::-moz-placeholder {
       /* Firefox 19+ */
       color: #65737e;
     }
+
     .container-jets input:-ms-input-placeholder {
       color: #65737e;
     }
+
     .container-jets .glyphicon {
       color: #65737e;
     }
+
     .container-jets input:hover, .container-jets input:focus, .container-jets input:active {
       outline: none;
       background: #FAFAFA;
     }
+
     .container-jets input:focus::-webkit-input-placeholder {
       color: #FAFAFA;
     }
+
     .container-jets input:focus:-moz-placeholder {
       color: #FAFAFA;
     }
+
     .container-jets input:focus::-moz-placeholder {
       color: #FAFAFA;
     }
+
     .container-jets input:focus:-ms-input-placeholder {
       color: #FAFAFA;
     }
@@ -164,6 +207,7 @@ svg {
   .td-filter {
     text-align: center;
   }
+
   #info {
     .panel-body {
       padding-bottom: 0;
@@ -184,10 +228,12 @@ svg {
   bottom: 0;
   left: 0;
   width: 100%;
+
   .footer-link {
     font-size: 1.6em;
     line-height: 2em;
   }
+
   .footer-link:hover {
     cursor: pointer;
   }
@@ -200,6 +246,7 @@ svg {
     font-size: 1.4em;
     line-height: 1.6em;
   }
+
   .panel-body {
     background-color: #FAFAFA;
   }
@@ -210,9 +257,6 @@ svg {
     position: absolute;
     top: 0;
     right: 0;
-    overflow-y: auto;
-    max-height: 100%;
-    height: 100%;
   }
   .col-left {
     position: absolute;
@@ -224,9 +268,11 @@ svg {
   }
   body, html {
     overflow: hidden;
+    height: 100%;
+    margin: 0;
   }
 }
 
-.transparent{
+.transparent {
   opacity: 0.1 !important;
 }
