@@ -133,7 +133,7 @@ def generate_js(file_name):
             break
 
     categories_list = []
-    for cat in [cat_plants, cat_animals]:
+    for cat in [sorted(cat_plants), sorted(cat_animals)]:
         categories_list += [(k, color[reverse_cat[k]]) for k in cat]
 
     return index_to_name, appartenance, examples, categories_list, \
