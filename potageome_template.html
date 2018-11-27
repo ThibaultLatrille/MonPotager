@@ -13,8 +13,7 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xs-12 col-md-3 info-side col-left">
-            <br>
+        <div class="col-xs-12 col-md-3 info-side col-left" style="padding-top: 10px;">
             <div class="panel panel-default panel-potageome">
                 <div class="panel-heading"><b>Dans mon potager</b>
                     <div href="#" data-toggle="modal" class="pull-right btn btn-default" data-target="#reset">
@@ -34,13 +33,13 @@
                         {% endfor %}
                     </div>
                     <div id="interaction-pos" class="padding-div">
-                        <span class="glyphicon glyphicon-ok green"></span>
+                        <span class="glyphicon glyphicon-ok-circle green"></span>
                         <span id="interaction-pos-count" class="text-bold"
                               data-singular="interaction favorable."
                               data-plural="interactions favorables."></span> <br>
                     </div>
                     <div id="helpers" class="padding-div">
-                        <span class="glyphicon glyphicon-ok green"></span>
+                        <span class="glyphicon glyphicon-ok-circle green"></span>
                         <span id="helpers-count" class="text-bold"
                               data-singular="auxiliaire attiré :"
                               data-plural="auxiliaires attirés :"></span><br>
@@ -53,7 +52,7 @@
                         <br>
                     </div>
                     <div id="repelled-pests" class="padding-div">
-                        <span class="glyphicon glyphicon-ok green"></span>
+                        <span class="glyphicon glyphicon-ok-circle green"></span>
                         <span id="repelled-pests-count" class="text-bold"
                               data-singular="nuisible écarté :"
                               data-plural="nuisibles écartés :"></span><br>
@@ -66,13 +65,13 @@
                         <br>
                     </div>
                     <div id="interaction-neg" class="padding-div">
-                        <span class="glyphicon glyphicon-remove red"></span>
+                        <span class="glyphicon glyphicon-remove-circle red"></span>
                         <span id="interaction-neg-count" class="text-bold"
                               data-singular="interaction défavorable."
                               data-plural="interactions défavorables."></span> <br>
                     </div>
                     <div id="pests" class="padding-div">
-                        <span class="glyphicon glyphicon-remove red"></span>
+                        <span class="glyphicon glyphicon-remove-circle red"></span>
                         <span id="pests-count" class="text-bold"
                               data-singular="nuisible :"
                               data-plural="nuisibles :"></span><br>
@@ -98,9 +97,9 @@
                     {% for direction in ["forward", "backward"] %}
                     <div id="node-{{ direction }}-{{ inter }}" class="padding-div">
                         {% if inter in ["pos", "atr"] %}
-                        <span class="glyphicon glyphicon-ok green"></span>
+                        <span class="glyphicon glyphicon-ok-circle green"></span>
                         {% else %}
-                        <span class="glyphicon glyphicon-remove red"></span>
+                        <span class="glyphicon glyphicon-remove-circle red"></span>
                         {% endif %}
                         <b>{{ interactions[direction][inter] }} :</b><br>
                         <span class="text"></span><span class="btn-filter"></span>
@@ -111,12 +110,13 @@
             </div>
         </div>
         <svg id="graph"></svg>
-        <div class="col-xs-12 col-md-3 info-side col-right" style="display: flex; flex-flow: column; height: 100%;">
-            <div style="flex: 0 1 auto; overflow-y: scroll">
-                <br>
-                <div class="panel panel-default panel-potageome no-margin-bottom">
-                    <div class="panel-heading"><b>Ajouter des plantes</b></div>
-                    <div class="panel-body">
+        <div class="col-xs-12 col-md-3 info-side col-right"
+             style="display: flex; flex-flow: column; max-height: 100%; height: 100%; padding-top: 10px;">
+            <div class="panel panel-default panel-potageome no-margin-bottom"
+                 style="flex: 0 1 auto; display: flex; flex-flow: column; overflow-y: hidden; max-height: 100%; height: 100%;">
+                <div class="panel-heading" style="flex: 0 1 auto;"><b>Ajouter des plantes</b></div>
+                <div class="panel-body" style="flex: 0 1 auto; display: flex; flex-flow: column; overflow-y: hidden; max-height: 100%; height: 100%;">
+                    <div class="filter-bow"  style="flex: 0 1 auto;">
                         <div class="box">
                             <div class="container-jets">
                                 <span class="glyphicon glyphicon-search"></span>
@@ -125,18 +125,20 @@
                         </div>
                         <div id="filter" class="btn btn-primary btn-sm hidden">
                             <span id="filter-name"></span>
-                            <span class="glyphicon glyphicon-remove"></span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>
                         </div>
-                        <div id="jets-potageome-content" data-toggle="buttons">
-                            {% for key, value in appartenance if value in [1,2,3,4,7,8] %}
-                            <div id="plant-{{ key }}" data-value="{{ key }}"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                {{ plants[key] }}
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            {% endfor %}
+                    </div>
+                    <div id="jets-potageome-content" style="flex: 0 1 auto; overflow: auto;" data-toggle="buttons">
+                        {% for key, value in appartenance if value in [1,2,3,4,7,8] %}
+                        <div id="plant-{{ key }}" data-value="{{ key }}"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>{{ plants[key] }}</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -172,8 +174,8 @@
                             {% endfor %}
                             {% for cat, color in categories %}
                             <span style="font-size: 1.2em;">
-                             <b style='font-size:1.4em; color: {{ color }}; text-shadow: -1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;'>
-                                 ■</b>&nbsp;{{ cat }};
+                             <b style='color: {{ color }}; text-shadow: -1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;'>
+                                 <span class="glyphicon glyphicon-stop"></span></b>&nbsp;{{ cat }};
                             </span>
                             {% endfor %}
                         </div>
@@ -289,6 +291,3 @@
 <script src="js/potageome.{{ minified }}js"></script>
 </body>
 </html>
-
-
-

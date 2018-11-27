@@ -13,8 +13,7 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xs-12 col-md-3 info-side col-left">
-            <br>
+        <div class="col-xs-12 col-md-3 info-side col-left" style="padding-top: 10px;">
             <div class="panel panel-default panel-potageome">
                 <div class="panel-heading"><b>Dans mon potager</b>
                     <div href="#" data-toggle="modal" class="pull-right btn btn-default" data-target="#reset">
@@ -674,13 +673,13 @@
                         
                     </div>
                     <div id="interaction-pos" class="padding-div">
-                        <span class="glyphicon glyphicon-ok green"></span>
+                        <span class="glyphicon glyphicon-ok-circle green"></span>
                         <span id="interaction-pos-count" class="text-bold"
                               data-singular="interaction favorable."
                               data-plural="interactions favorables."></span> <br>
                     </div>
                     <div id="helpers" class="padding-div">
-                        <span class="glyphicon glyphicon-ok green"></span>
+                        <span class="glyphicon glyphicon-ok-circle green"></span>
                         <span id="helpers-count" class="text-bold"
                               data-singular="auxiliaire attiré :"
                               data-plural="auxiliaires attirés :"></span><br>
@@ -733,7 +732,7 @@
                         <br>
                     </div>
                     <div id="repelled-pests" class="padding-div">
-                        <span class="glyphicon glyphicon-ok green"></span>
+                        <span class="glyphicon glyphicon-ok-circle green"></span>
                         <span id="repelled-pests-count" class="text-bold"
                               data-singular="nuisible écarté :"
                               data-plural="nuisibles écartés :"></span><br>
@@ -826,13 +825,13 @@
                         <br>
                     </div>
                     <div id="interaction-neg" class="padding-div">
-                        <span class="glyphicon glyphicon-remove red"></span>
+                        <span class="glyphicon glyphicon-remove-circle red"></span>
                         <span id="interaction-neg-count" class="text-bold"
                               data-singular="interaction défavorable."
                               data-plural="interactions défavorables."></span> <br>
                     </div>
                     <div id="pests" class="padding-div">
-                        <span class="glyphicon glyphicon-remove red"></span>
+                        <span class="glyphicon glyphicon-remove-circle red"></span>
                         <span id="pests-count" class="text-bold"
                               data-singular="nuisible :"
                               data-plural="nuisibles :"></span><br>
@@ -938,7 +937,7 @@
                     
                     <div id="node-forward-pos" class="padding-div">
                         
-                        <span class="glyphicon glyphicon-ok green"></span>
+                        <span class="glyphicon glyphicon-ok-circle green"></span>
                         
                         <b>Favorise :</b><br>
                         <span class="text"></span><span class="btn-filter"></span>
@@ -946,7 +945,7 @@
                     
                     <div id="node-backward-pos" class="padding-div">
                         
-                        <span class="glyphicon glyphicon-ok green"></span>
+                        <span class="glyphicon glyphicon-ok-circle green"></span>
                         
                         <b>Favorisé par :</b><br>
                         <span class="text"></span><span class="btn-filter"></span>
@@ -956,7 +955,7 @@
                     
                     <div id="node-forward-atr" class="padding-div">
                         
-                        <span class="glyphicon glyphicon-ok green"></span>
+                        <span class="glyphicon glyphicon-ok-circle green"></span>
                         
                         <b>Attire :</b><br>
                         <span class="text"></span><span class="btn-filter"></span>
@@ -964,7 +963,7 @@
                     
                     <div id="node-backward-atr" class="padding-div">
                         
-                        <span class="glyphicon glyphicon-ok green"></span>
+                        <span class="glyphicon glyphicon-ok-circle green"></span>
                         
                         <b>Attiré par :</b><br>
                         <span class="text"></span><span class="btn-filter"></span>
@@ -974,7 +973,7 @@
                     
                     <div id="node-forward-neg" class="padding-div">
                         
-                        <span class="glyphicon glyphicon-remove red"></span>
+                        <span class="glyphicon glyphicon-remove-circle red"></span>
                         
                         <b>Défavorise :</b><br>
                         <span class="text"></span><span class="btn-filter"></span>
@@ -982,7 +981,7 @@
                     
                     <div id="node-backward-neg" class="padding-div">
                         
-                        <span class="glyphicon glyphicon-remove red"></span>
+                        <span class="glyphicon glyphicon-remove-circle red"></span>
                         
                         <b>Défavorisé par :</b><br>
                         <span class="text"></span><span class="btn-filter"></span>
@@ -992,7 +991,7 @@
                     
                     <div id="node-forward-rep" class="padding-div">
                         
-                        <span class="glyphicon glyphicon-remove red"></span>
+                        <span class="glyphicon glyphicon-remove-circle red"></span>
                         
                         <b>Repousse :</b><br>
                         <span class="text"></span><span class="btn-filter"></span>
@@ -1000,7 +999,7 @@
                     
                     <div id="node-backward-rep" class="padding-div">
                         
-                        <span class="glyphicon glyphicon-remove red"></span>
+                        <span class="glyphicon glyphicon-remove-circle red"></span>
                         
                         <b>Repoussé par :</b><br>
                         <span class="text"></span><span class="btn-filter"></span>
@@ -1011,12 +1010,13 @@
             </div>
         </div>
         <svg id="graph"></svg>
-        <div class="col-xs-12 col-md-3 info-side col-right" style="display: flex; flex-flow: column; height: 100%;">
-            <div style="flex: 0 1 auto; overflow-y: scroll">
-                <br>
-                <div class="panel panel-default panel-potageome no-margin-bottom">
-                    <div class="panel-heading"><b>Ajouter des plantes</b></div>
-                    <div class="panel-body">
+        <div class="col-xs-12 col-md-3 info-side col-right"
+             style="display: flex; flex-flow: column; max-height: 100%; height: 100%; padding-top: 10px;">
+            <div class="panel panel-default panel-potageome no-margin-bottom"
+                 style="flex: 0 1 auto; display: flex; flex-flow: column; overflow-y: hidden; max-height: 100%; height: 100%;">
+                <div class="panel-heading" style="flex: 0 1 auto;"><b>Ajouter des plantes</b></div>
+                <div class="panel-body" style="flex: 0 1 auto; display: flex; flex-flow: column; overflow-y: hidden; max-height: 100%; height: 100%;">
+                    <div class="filter-bow"  style="flex: 0 1 auto;">
                         <div class="box">
                             <div class="container-jets">
                                 <span class="glyphicon glyphicon-search"></span>
@@ -1025,914 +1025,1172 @@
                         </div>
                         <div id="filter" class="btn btn-primary btn-sm hidden">
                             <span id="filter-name"></span>
-                            <span class="glyphicon glyphicon-remove"></span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>
                         </div>
-                        <div id="jets-potageome-content" data-toggle="buttons">
-                            
-                            <div id="plant-18" data-value="18"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Absinthe
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-89" data-value="89"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Achillée millefeuille
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-130" data-value="130"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Agrumes
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-2" data-value="2"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Ail
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-70" data-value="70"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Amarante
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-20" data-value="20"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Aneth
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-93" data-value="93"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Angélique
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-131" data-value="131"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Anis
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-30" data-value="30"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Artichaut
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-27" data-value="27"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Asperge
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-120" data-value="120"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Baguenaudier
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-85" data-value="85"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Basilic
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-22" data-value="22"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Bette
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-6" data-value="6"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Betterave
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-51" data-value="51"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Bourrache
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-136" data-value="136"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Brocoli
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-144" data-value="144"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Buis
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-61" data-value="61"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Camomille allemande
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-52" data-value="52"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Capucine
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-94" data-value="94"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Cardon
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-0" data-value="0"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Carotte
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-24" data-value="24"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Carotte sauvage
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-127" data-value="127"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Cassis
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-78" data-value="78"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Cerfeuil
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-122" data-value="122"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Cerisier
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-73" data-value="73"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Chanvre
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-39" data-value="39"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Chicorée
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-149" data-value="149"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Chou-fleur
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-57" data-value="57"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Chou-rave
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-150" data-value="150"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Chou-rouge
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-25" data-value="25"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Choux
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-110" data-value="110"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Chénopode blanc
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-5" data-value="5"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Ciboulette
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-74" data-value="74"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Ciboulette chinoise
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-64" data-value="64"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Concombre
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-86" data-value="86"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Coquelicot
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-19" data-value="19"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Coriandre
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-79" data-value="79"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Cornichon
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-60" data-value="60"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Cosmos
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-92" data-value="92"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Courges
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-55" data-value="55"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Courgette
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-32" data-value="32"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Cresson
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-84" data-value="84"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Cumin
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-26" data-value="26"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Céleri
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-4" data-value="4"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Echalote
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-50" data-value="50"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Epinard
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-112" data-value="112"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Erable
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-29" data-value="29"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Fenouil
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-34" data-value="34"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Fraisier
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-42" data-value="42"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Framboisier
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-115" data-value="115"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Fusain d'Europe
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-49" data-value="49"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Fève
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-75" data-value="75"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Féverole
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-121" data-value="121"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Genévrier
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-77" data-value="77"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Genêt
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-126" data-value="126"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Groseillier
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-62" data-value="62"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Géranium
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-13" data-value="13"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Haricot
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-63" data-value="63"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Inule visqueuse
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-56" data-value="56"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Kiwi
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-9" data-value="9"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Laitue
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-133" data-value="133"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Laurier-sauce
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-129" data-value="129"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Lavande
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-15" data-value="15"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Lin
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-146" data-value="146"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Marjolaine
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-88" data-value="88"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Matricaire inodore
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-21" data-value="21"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Maïs
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-47" data-value="47"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Melon
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-100" data-value="100"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Menthe
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-76" data-value="76"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Morelle de Balbis
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-31" data-value="31"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Moutarde
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-124" data-value="124"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Myrtille
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-28" data-value="28"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Mâche
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-145" data-value="145"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Mélilot
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-83" data-value="83"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Mélisse citronnelle
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-143" data-value="143"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Narcisse
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-95" data-value="95"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Navet
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-118" data-value="118"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Nerprun alaterne
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-114" data-value="114"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Noisetier
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-119" data-value="119"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Noyer
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-59" data-value="59"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Oeillets d'Inde
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-3" data-value="3"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Oignon
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-137" data-value="137"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Olivier
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-81" data-value="81"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Origan
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-113" data-value="113"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Orme
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-148" data-value="148"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Ortie
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-11" data-value="11"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Panais
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-116" data-value="116"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Panicaut
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-48" data-value="48"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Pastèque
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-108" data-value="108"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Patate douce
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-33" data-value="33"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Persil
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-87" data-value="87"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Phacélie
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-14" data-value="14"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Piment
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-40" data-value="40"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Pissenlit
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-1" data-value="1"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Poireau
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-37" data-value="37"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Poirier
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-7" data-value="7"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Pois
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-69" data-value="69"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Poivron
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-44" data-value="44"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Pomme de terre
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-36" data-value="36"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Pommier
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-117" data-value="117"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Potentille
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-46" data-value="46"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Potiron
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-38" data-value="38"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Prunier
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-35" data-value="35"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Pêcher
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-8" data-value="8"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Radis
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-109" data-value="109"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Raifort
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-90" data-value="90"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Ray-grass
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-147" data-value="147"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Rhubarbe
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-66" data-value="66"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Ricin
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-16" data-value="16"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Romarin
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-125" data-value="125"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Ronce
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-10" data-value="10"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Roquette
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-43" data-value="43"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Rosier
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-58" data-value="58"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Rosier d'Inde
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-123" data-value="123"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Rue
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-107" data-value="107"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Salsifis
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-91" data-value="91"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Sarrasin
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-53" data-value="53"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Sarriette
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-17" data-value="17"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Sauge
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-45" data-value="45"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Soucis
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-142" data-value="142"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Sureau
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-106" data-value="106"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Tanaisie
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-82" data-value="82"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Thym
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-12" data-value="12"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Tomate
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-41" data-value="41"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Topinambour
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-54" data-value="54"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Tournesol
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-71" data-value="71"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Trèfle blanc
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-111" data-value="111"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Verge d'or
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
-                            <div id="plant-132" data-value="132"
-                                 class="btn btn-default btn-sm plant btn-plant col-xs-12">
-                                Vigne
-                                (<span class="plus"></span><span class="green">&#8593;</span>/
-                                <span class="minus"></span><span class="red">&#8595;</span>)
-                            </div>
-                            
+                    </div>
+                    <div id="jets-potageome-content" style="flex: 0 1 auto; overflow: auto;" data-toggle="buttons">
+                        
+                        <div id="plant-18" data-value="18"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Absinthe</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
                         </div>
+                        
+                        <div id="plant-89" data-value="89"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Achillée millefeuille</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-130" data-value="130"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Agrumes</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-2" data-value="2"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Ail</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-70" data-value="70"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Amarante</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-20" data-value="20"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Aneth</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-93" data-value="93"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Angélique</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-131" data-value="131"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Anis</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-30" data-value="30"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Artichaut</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-27" data-value="27"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Asperge</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-120" data-value="120"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Baguenaudier</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-85" data-value="85"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Basilic</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-22" data-value="22"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Bette</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-6" data-value="6"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Betterave</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-51" data-value="51"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Bourrache</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-136" data-value="136"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Brocoli</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-144" data-value="144"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Buis</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-61" data-value="61"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Camomille allemande</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-52" data-value="52"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Capucine</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-94" data-value="94"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Cardon</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-0" data-value="0"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Carotte</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-24" data-value="24"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Carotte sauvage</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-127" data-value="127"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Cassis</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-78" data-value="78"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Cerfeuil</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-122" data-value="122"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Cerisier</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-73" data-value="73"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Chanvre</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-39" data-value="39"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Chicorée</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-149" data-value="149"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Chou-fleur</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-57" data-value="57"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Chou-rave</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-150" data-value="150"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Chou-rouge</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-25" data-value="25"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Choux</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-110" data-value="110"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Chénopode blanc</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-5" data-value="5"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Ciboulette</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-74" data-value="74"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Ciboulette chinoise</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-64" data-value="64"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Concombre</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-86" data-value="86"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Coquelicot</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-19" data-value="19"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Coriandre</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-79" data-value="79"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Cornichon</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-60" data-value="60"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Cosmos</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-92" data-value="92"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Courges</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-55" data-value="55"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Courgette</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-32" data-value="32"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Cresson</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-84" data-value="84"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Cumin</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-26" data-value="26"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Céleri</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-4" data-value="4"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Echalote</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-50" data-value="50"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Epinard</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-112" data-value="112"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Erable</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-29" data-value="29"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Fenouil</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-34" data-value="34"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Fraisier</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-42" data-value="42"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Framboisier</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-115" data-value="115"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Fusain d'Europe</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-49" data-value="49"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Fève</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-75" data-value="75"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Féverole</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-121" data-value="121"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Genévrier</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-77" data-value="77"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Genêt</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-126" data-value="126"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Groseillier</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-62" data-value="62"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Géranium</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-13" data-value="13"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Haricot</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-63" data-value="63"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Inule visqueuse</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-56" data-value="56"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Kiwi</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-9" data-value="9"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Laitue</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-133" data-value="133"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Laurier-sauce</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-129" data-value="129"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Lavande</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-15" data-value="15"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Lin</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-146" data-value="146"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Marjolaine</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-88" data-value="88"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Matricaire inodore</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-21" data-value="21"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Maïs</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-47" data-value="47"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Melon</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-100" data-value="100"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Menthe</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-76" data-value="76"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Morelle de Balbis</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-31" data-value="31"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Moutarde</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-124" data-value="124"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Myrtille</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-28" data-value="28"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Mâche</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-145" data-value="145"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Mélilot</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-83" data-value="83"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Mélisse citronnelle</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-143" data-value="143"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Narcisse</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-95" data-value="95"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Navet</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-118" data-value="118"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Nerprun alaterne</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-114" data-value="114"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Noisetier</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-119" data-value="119"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Noyer</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-59" data-value="59"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Oeillets d'Inde</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-3" data-value="3"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Oignon</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-137" data-value="137"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Olivier</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-81" data-value="81"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Origan</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-113" data-value="113"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Orme</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-148" data-value="148"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Ortie</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-11" data-value="11"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Panais</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-116" data-value="116"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Panicaut</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-48" data-value="48"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Pastèque</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-108" data-value="108"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Patate douce</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-33" data-value="33"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Persil</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-87" data-value="87"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Phacélie</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-14" data-value="14"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Piment</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-40" data-value="40"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Pissenlit</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-1" data-value="1"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Poireau</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-37" data-value="37"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Poirier</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-7" data-value="7"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Pois</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-69" data-value="69"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Poivron</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-44" data-value="44"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Pomme de terre</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-36" data-value="36"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Pommier</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-117" data-value="117"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Potentille</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-46" data-value="46"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Potiron</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-38" data-value="38"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Prunier</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-35" data-value="35"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Pêcher</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-8" data-value="8"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Radis</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-109" data-value="109"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Raifort</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-90" data-value="90"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Ray-grass</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-147" data-value="147"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Rhubarbe</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-66" data-value="66"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Ricin</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-16" data-value="16"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Romarin</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-125" data-value="125"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Ronce</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-10" data-value="10"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Roquette</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-43" data-value="43"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Rosier</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-58" data-value="58"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Rosier d'Inde</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-123" data-value="123"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Rue</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-107" data-value="107"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Salsifis</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-91" data-value="91"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Sarrasin</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-53" data-value="53"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Sarriette</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-17" data-value="17"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Sauge</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-45" data-value="45"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Soucis</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-142" data-value="142"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Sureau</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-106" data-value="106"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Tanaisie</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-82" data-value="82"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Thym</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-12" data-value="12"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Tomate</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-41" data-value="41"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Topinambour</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-54" data-value="54"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Tournesol</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-71" data-value="71"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Trèfle blanc</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-111" data-value="111"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Verge d'or</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
+                        <div id="plant-132" data-value="132"
+                             class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                            <b>Vigne</b>
+                            (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
+                                                                   style="font-size: 0.8em"></span>&nbsp;/&nbsp;
+                            <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
+                                                                   style="font-size: 0.8em"></span>)
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -2019,43 +2277,43 @@
                             
                             
                             <span style="font-size: 1.2em;">
-                             <b style='font-size:1.4em; color: #8d5649; text-shadow: -1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;'>
-                                 ■</b>&nbsp;Arbres;
+                             <b style='color: #8d5649; text-shadow: -1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;'>
+                                 <span class="glyphicon glyphicon-stop"></span></b>&nbsp;Arbres;
                             </span>
                             
                             <span style="font-size: 1.2em;">
-                             <b style='font-size:1.4em; color: #9564bf; text-shadow: -1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;'>
-                                 ■</b>&nbsp;Arômate;
+                             <b style='color: #9564bf; text-shadow: -1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;'>
+                                 <span class="glyphicon glyphicon-stop"></span></b>&nbsp;Arômate;
                             </span>
                             
                             <span style="font-size: 1.2em;">
-                             <b style='font-size:1.4em; color: #ffe778; text-shadow: -1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;'>
-                                 ■</b>&nbsp;Céréale;
+                             <b style='color: #ffe778; text-shadow: -1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;'>
+                                 <span class="glyphicon glyphicon-stop"></span></b>&nbsp;Céréale;
                             </span>
                             
                             <span style="font-size: 1.2em;">
-                             <b style='font-size:1.4em; color: #f7b6d2; text-shadow: -1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;'>
-                                 ■</b>&nbsp;Fleur;
+                             <b style='color: #f7b6d2; text-shadow: -1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;'>
+                                 <span class="glyphicon glyphicon-stop"></span></b>&nbsp;Fleur;
                             </span>
                             
                             <span style="font-size: 1.2em;">
-                             <b style='font-size:1.4em; color: #ff7f0e; text-shadow: -1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;'>
-                                 ■</b>&nbsp;Fruit;
+                             <b style='color: #ff7f0e; text-shadow: -1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;'>
+                                 <span class="glyphicon glyphicon-stop"></span></b>&nbsp;Fruit;
                             </span>
                             
                             <span style="font-size: 1.2em;">
-                             <b style='font-size:1.4em; color: #1776b6; text-shadow: -1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;'>
-                                 ■</b>&nbsp;Légume;
+                             <b style='color: #1776b6; text-shadow: -1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;'>
+                                 <span class="glyphicon glyphicon-stop"></span></b>&nbsp;Légume;
                             </span>
                             
                             <span style="font-size: 1.2em;">
-                             <b style='font-size:1.4em; color: #24a221; text-shadow: -1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;'>
-                                 ■</b>&nbsp;Auxiliaire;
+                             <b style='color: #24a221; text-shadow: -1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;'>
+                                 <span class="glyphicon glyphicon-stop"></span></b>&nbsp;Auxiliaire;
                             </span>
                             
                             <span style="font-size: 1.2em;">
-                             <b style='font-size:1.4em; color: #d62728; text-shadow: -1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;'>
-                                 ■</b>&nbsp;Nuisible;
+                             <b style='color: #d62728; text-shadow: -1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;'>
+                                 <span class="glyphicon glyphicon-stop"></span></b>&nbsp;Nuisible;
                             </span>
                             
                         </div>
@@ -2171,5 +2429,3 @@
 <script src="js/potageome.min.js"></script>
 </body>
 </html>
-
-

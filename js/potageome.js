@@ -171,7 +171,7 @@ svg.attr("viewBox", (-width / 2) + " " + (-height / 2) + " " + (width) + " " + (
     .attr("width", width)
     .attr("height", height)
     .style("pointer-events", "visible")
-    .call(d3.zoom(2)
+    .call(d3.zoom(1)
         .scaleExtent([1 / 4, 4])
         .on("zoom", zoomed));
 

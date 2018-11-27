@@ -25,8 +25,6 @@ $ python3 potageome.py
 ```
 
 ### To do
-    - Afficher dans le potager le nombre d'interactions et le nombre de nuisibles
-    - Pour chaque plante, indiquer le nombre d'interactions (positive et negative) et comment ajouter des interactions positives
-    - Pour les nuisibles, le nombre d'interactions negative et comment attirer les nuisibles qui les repousse
-    - Pour les auxiliaires, le nombre d'interactions positives avec les plantes, le nombre de nuisibles qu'il vire, et comment les attirer.
-    - Dans la liste, degradé vert et rouge
+    - Pour les nuisibles, comment attirer les auxilliaire qui les repousses (filtre)
+    - Smooth Zoom (et bouttons +/-)
+    - Lettres pour passer d'une plantes à l'autre facilement
