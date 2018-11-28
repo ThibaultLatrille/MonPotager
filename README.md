@@ -27,4 +27,4 @@ $ python3 potageome.py
 ### To do
     - Pour les nuisibles, comment attirer les auxilliaire qui les repousses (filtre)
     - Smooth Zoom (et bouttons +/-)
-    - Lettres pour passer d'une plantes à l'autre facilement
+    - Sauvegarder dans les cookies

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/potageome.min.css">
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/jets.min.js"></script>
+    <script src="js/jquery.scrollTo.min.js"></script>
     <script src="js/cookie.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </head>
@@ -797,8 +798,8 @@
                             Nématodes;
                         </span>
                         
-                        <span data-value="153"
-                              class="potager-item potager-item-153 hidden">
+                        <span data-value="152"
+                              class="potager-item potager-item-152 hidden">
                             Puceron de la carotte;
                         </span>
                         
@@ -817,8 +818,8 @@
                             Teigne du poireau;
                         </span>
                         
-                        <span data-value="152"
-                              class="potager-item potager-item-152 hidden">
+                        <span data-value="153"
+                              class="potager-item potager-item-153 hidden">
                             Thrips de l'oignon;
                         </span>
                         
@@ -896,8 +897,8 @@
                             Nématodes;
                         </span>
                         
-                        <span data-value="153"
-                              class="potager-item potager-item-153 hidden">
+                        <span data-value="152"
+                              class="potager-item potager-item-152 hidden">
                             Puceron de la carotte;
                         </span>
                         
@@ -916,8 +917,8 @@
                             Teigne du poireau;
                         </span>
                         
-                        <span data-value="152"
-                              class="potager-item potager-item-152 hidden">
+                        <span data-value="153"
+                              class="potager-item potager-item-153 hidden">
                             Thrips de l'oignon;
                         </span>
                         
@@ -1015,8 +1016,9 @@
             <div class="panel panel-default panel-potageome no-margin-bottom"
                  style="flex: 0 1 auto; display: flex; flex-flow: column; overflow-y: hidden; max-height: 100%; height: 100%;">
                 <div class="panel-heading" style="flex: 0 1 auto;"><b>Ajouter des plantes</b></div>
-                <div class="panel-body" style="flex: 0 1 auto; display: flex; flex-flow: column; overflow-y: hidden; max-height: 100%; height: 100%;">
-                    <div class="filter-bow"  style="flex: 0 1 auto;">
+                <div class="panel-body"
+                     style="flex: 0 1 auto; display: flex; flex-flow: column; overflow-y: hidden; max-height: 100%; height: 100%;">
+                    <div class="filter-bow" style="flex: 0 1 auto;">
                         <div class="box">
                             <div class="container-jets">
                                 <span class="glyphicon glyphicon-search"></span>
@@ -1027,1168 +1029,1390 @@
                             <span id="filter-name"></span>
                             <span class="glyphicon glyphicon-remove-circle"></span>
                         </div>
+                        <div class="btn-group-justified" data-toggle="buttons" style="padding-bottom: 5px">
+                            
+                            <span data-letter="A"
+                                  class="btn-letter btn btn-default btn-sm" style="padding: 5px 0">
+                            A
+                            </span>
+                            
+                            <span data-letter="B"
+                                  class="btn-letter btn btn-default btn-sm" style="padding: 5px 0">
+                            B
+                            </span>
+                            
+                            <span data-letter="C"
+                                  class="btn-letter btn btn-default btn-sm" style="padding: 5px 0">
+                            C
+                            </span>
+                            
+                            <span data-letter="E"
+                                  class="btn-letter btn btn-default btn-sm" style="padding: 5px 0">
+                            E
+                            </span>
+                            
+                            <span data-letter="F"
+                                  class="btn-letter btn btn-default btn-sm" style="padding: 5px 0">
+                            F
+                            </span>
+                            
+                            <span data-letter="G"
+                                  class="btn-letter btn btn-default btn-sm" style="padding: 5px 0">
+                            G
+                            </span>
+                            
+                            <span data-letter="H"
+                                  class="btn-letter btn btn-default btn-sm" style="padding: 5px 0">
+                            H
+                            </span>
+                            
+                            <span data-letter="I"
+                                  class="btn-letter btn btn-default btn-sm" style="padding: 5px 0">
+                            I
+                            </span>
+                            
+                            <span data-letter="K"
+                                  class="btn-letter btn btn-default btn-sm" style="padding: 5px 0">
+                            K
+                            </span>
+                            
+                            <span data-letter="L"
+                                  class="btn-letter btn btn-default btn-sm" style="padding: 5px 0">
+                            L
+                            </span>
+                            
+                            <span data-letter="M"
+                                  class="btn-letter btn btn-default btn-sm" style="padding: 5px 0">
+                            M
+                            </span>
+                            
+                            <span data-letter="N"
+                                  class="btn-letter btn btn-default btn-sm" style="padding: 5px 0">
+                            N
+                            </span>
+                            
+                            <span data-letter="O"
+                                  class="btn-letter btn btn-default btn-sm" style="padding: 5px 0">
+                            O
+                            </span>
+                            
+                            <span data-letter="P"
+                                  class="btn-letter btn btn-default btn-sm" style="padding: 5px 0">
+                            P
+                            </span>
+                            
+                            <span data-letter="R"
+                                  class="btn-letter btn btn-default btn-sm" style="padding: 5px 0">
+                            R
+                            </span>
+                            
+                            <span data-letter="S"
+                                  class="btn-letter btn btn-default btn-sm" style="padding: 5px 0">
+                            S
+                            </span>
+                            
+                            <span data-letter="T"
+                                  class="btn-letter btn btn-default btn-sm" style="padding: 5px 0">
+                            T
+                            </span>
+                            
+                            <span data-letter="V"
+                                  class="btn-letter btn btn-default btn-sm" style="padding: 5px 0">
+                            V
+                            </span>
+                            
+                        </div>
                     </div>
                     <div id="jets-potageome-content" style="flex: 0 1 auto; overflow: auto;" data-toggle="buttons">
                         
-                        <div id="plant-18" data-value="18"
+                        <div id="plant-18" data-value="18" data-letter="A"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Absinthe</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-89" data-value="89"
+                        <div id="plant-89" data-value="89" data-letter="A"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Achillée millefeuille</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-130" data-value="130"
+                        <div id="plant-130" data-value="130" data-letter="A"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Agrumes</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-2" data-value="2"
+                        <div id="plant-2" data-value="2" data-letter="A"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Ail</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-70" data-value="70"
+                        <div id="plant-70" data-value="70" data-letter="A"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Amarante</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-20" data-value="20"
+                        <div id="plant-20" data-value="20" data-letter="A"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Aneth</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-93" data-value="93"
+                        <div id="plant-93" data-value="93" data-letter="A"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Angélique</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-131" data-value="131"
+                        <div id="plant-131" data-value="131" data-letter="A"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Anis</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-30" data-value="30"
+                        <div id="plant-30" data-value="30" data-letter="A"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Artichaut</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-27" data-value="27"
+                        <div id="plant-27" data-value="27" data-letter="A"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Asperge</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-120" data-value="120"
+                        <div id="plant-120" data-value="120" data-letter="B"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Baguenaudier</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-85" data-value="85"
+                        <div id="plant-85" data-value="85" data-letter="B"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Basilic</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-22" data-value="22"
+                        <div id="plant-22" data-value="22" data-letter="B"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Bette</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-6" data-value="6"
+                        <div id="plant-6" data-value="6" data-letter="B"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Betterave</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-51" data-value="51"
+                        <div id="plant-51" data-value="51" data-letter="B"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Bourrache</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-136" data-value="136"
+                        <div id="plant-136" data-value="136" data-letter="B"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Brocoli</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-144" data-value="144"
+                        <div id="plant-144" data-value="144" data-letter="B"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Buis</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-61" data-value="61"
+                        <div id="plant-61" data-value="61" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Camomille allemande</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-52" data-value="52"
+                        <div id="plant-52" data-value="52" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Capucine</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-94" data-value="94"
+                        <div id="plant-94" data-value="94" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Cardon</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-0" data-value="0"
+                        <div id="plant-0" data-value="0" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Carotte</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-24" data-value="24"
+                        <div id="plant-24" data-value="24" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Carotte sauvage</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-127" data-value="127"
+                        <div id="plant-127" data-value="127" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Cassis</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-78" data-value="78"
+                        <div id="plant-78" data-value="78" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Cerfeuil</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-122" data-value="122"
+                        <div id="plant-122" data-value="122" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Cerisier</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-73" data-value="73"
+                        <div id="plant-73" data-value="73" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Chanvre</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-39" data-value="39"
+                        <div id="plant-39" data-value="39" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Chicorée</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-149" data-value="149"
+                        <div id="plant-149" data-value="149" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Chou-fleur</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-57" data-value="57"
+                        <div id="plant-57" data-value="57" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Chou-rave</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-150" data-value="150"
+                        <div id="plant-150" data-value="150" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Chou-rouge</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-25" data-value="25"
+                        <div id="plant-25" data-value="25" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Choux</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-110" data-value="110"
+                        <div id="plant-110" data-value="110" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Chénopode blanc</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-5" data-value="5"
+                        <div id="plant-5" data-value="5" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Ciboulette</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-74" data-value="74"
+                        <div id="plant-74" data-value="74" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Ciboulette chinoise</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-64" data-value="64"
+                        <div id="plant-64" data-value="64" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Concombre</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-86" data-value="86"
+                        <div id="plant-86" data-value="86" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Coquelicot</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-19" data-value="19"
+                        <div id="plant-19" data-value="19" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Coriandre</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-79" data-value="79"
+                        <div id="plant-79" data-value="79" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Cornichon</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-60" data-value="60"
+                        <div id="plant-60" data-value="60" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Cosmos</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-92" data-value="92"
+                        <div id="plant-92" data-value="92" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Courges</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-55" data-value="55"
+                        <div id="plant-55" data-value="55" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Courgette</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-32" data-value="32"
+                        <div id="plant-32" data-value="32" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Cresson</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-84" data-value="84"
+                        <div id="plant-84" data-value="84" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Cumin</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-26" data-value="26"
+                        <div id="plant-26" data-value="26" data-letter="C"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Céleri</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-4" data-value="4"
+                        <div id="plant-4" data-value="4" data-letter="E"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Echalote</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-50" data-value="50"
+                        <div id="plant-50" data-value="50" data-letter="E"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Epinard</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-112" data-value="112"
+                        <div id="plant-112" data-value="112" data-letter="E"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Erable</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-29" data-value="29"
+                        <div id="plant-29" data-value="29" data-letter="F"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Fenouil</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-34" data-value="34"
+                        <div id="plant-34" data-value="34" data-letter="F"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Fraisier</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-42" data-value="42"
+                        <div id="plant-42" data-value="42" data-letter="F"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Framboisier</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-115" data-value="115"
+                        <div id="plant-115" data-value="115" data-letter="F"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Fusain d'Europe</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-49" data-value="49"
+                        <div id="plant-49" data-value="49" data-letter="F"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Fève</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-75" data-value="75"
+                        <div id="plant-75" data-value="75" data-letter="F"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Féverole</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-121" data-value="121"
+                        <div id="plant-121" data-value="121" data-letter="G"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Genévrier</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-77" data-value="77"
+                        <div id="plant-77" data-value="77" data-letter="G"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Genêt</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-126" data-value="126"
+                        <div id="plant-126" data-value="126" data-letter="G"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Groseillier</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-62" data-value="62"
+                        <div id="plant-62" data-value="62" data-letter="G"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Géranium</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-13" data-value="13"
+                        <div id="plant-13" data-value="13" data-letter="H"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Haricot</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-63" data-value="63"
+                        <div id="plant-63" data-value="63" data-letter="I"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Inule visqueuse</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-56" data-value="56"
+                        <div id="plant-56" data-value="56" data-letter="K"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Kiwi</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-9" data-value="9"
+                        <div id="plant-9" data-value="9" data-letter="L"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Laitue</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-133" data-value="133"
+                        <div id="plant-133" data-value="133" data-letter="L"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Laurier-sauce</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-129" data-value="129"
+                        <div id="plant-129" data-value="129" data-letter="L"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Lavande</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-15" data-value="15"
+                        <div id="plant-15" data-value="15" data-letter="L"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Lin</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-146" data-value="146"
+                        <div id="plant-146" data-value="146" data-letter="M"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Marjolaine</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-88" data-value="88"
+                        <div id="plant-88" data-value="88" data-letter="M"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Matricaire inodore</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-21" data-value="21"
+                        <div id="plant-21" data-value="21" data-letter="M"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Maïs</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-47" data-value="47"
+                        <div id="plant-47" data-value="47" data-letter="M"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Melon</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-100" data-value="100"
+                        <div id="plant-100" data-value="100" data-letter="M"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Menthe</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-76" data-value="76"
+                        <div id="plant-76" data-value="76" data-letter="M"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Morelle de Balbis</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-31" data-value="31"
+                        <div id="plant-31" data-value="31" data-letter="M"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Moutarde</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-124" data-value="124"
+                        <div id="plant-124" data-value="124" data-letter="M"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Myrtille</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-28" data-value="28"
+                        <div id="plant-28" data-value="28" data-letter="M"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Mâche</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-145" data-value="145"
+                        <div id="plant-145" data-value="145" data-letter="M"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Mélilot</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-83" data-value="83"
+                        <div id="plant-83" data-value="83" data-letter="M"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Mélisse citronnelle</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-143" data-value="143"
+                        <div id="plant-143" data-value="143" data-letter="N"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Narcisse</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-95" data-value="95"
+                        <div id="plant-95" data-value="95" data-letter="N"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Navet</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-118" data-value="118"
+                        <div id="plant-118" data-value="118" data-letter="N"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Nerprun alaterne</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-114" data-value="114"
+                        <div id="plant-114" data-value="114" data-letter="N"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Noisetier</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-119" data-value="119"
+                        <div id="plant-119" data-value="119" data-letter="N"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Noyer</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-59" data-value="59"
+                        <div id="plant-59" data-value="59" data-letter="O"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Oeillets d'Inde</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-3" data-value="3"
+                        <div id="plant-3" data-value="3" data-letter="O"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Oignon</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-137" data-value="137"
+                        <div id="plant-137" data-value="137" data-letter="O"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Olivier</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-81" data-value="81"
+                        <div id="plant-81" data-value="81" data-letter="O"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Origan</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-113" data-value="113"
+                        <div id="plant-113" data-value="113" data-letter="O"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Orme</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-148" data-value="148"
+                        <div id="plant-148" data-value="148" data-letter="O"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Ortie</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-11" data-value="11"
+                        <div id="plant-11" data-value="11" data-letter="P"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Panais</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-116" data-value="116"
+                        <div id="plant-116" data-value="116" data-letter="P"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Panicaut</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-48" data-value="48"
+                        <div id="plant-48" data-value="48" data-letter="P"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Pastèque</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-108" data-value="108"
+                        <div id="plant-108" data-value="108" data-letter="P"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Patate douce</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-33" data-value="33"
+                        <div id="plant-33" data-value="33" data-letter="P"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Persil</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-87" data-value="87"
+                        <div id="plant-87" data-value="87" data-letter="P"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Phacélie</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-14" data-value="14"
+                        <div id="plant-14" data-value="14" data-letter="P"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Piment</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-40" data-value="40"
+                        <div id="plant-40" data-value="40" data-letter="P"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Pissenlit</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-1" data-value="1"
+                        <div id="plant-1" data-value="1" data-letter="P"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Poireau</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-37" data-value="37"
+                        <div id="plant-37" data-value="37" data-letter="P"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Poirier</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-7" data-value="7"
+                        <div id="plant-7" data-value="7" data-letter="P"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Pois</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-69" data-value="69"
+                        <div id="plant-69" data-value="69" data-letter="P"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Poivron</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-44" data-value="44"
+                        <div id="plant-44" data-value="44" data-letter="P"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Pomme de terre</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-36" data-value="36"
+                        <div id="plant-36" data-value="36" data-letter="P"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Pommier</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-117" data-value="117"
+                        <div id="plant-117" data-value="117" data-letter="P"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Potentille</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-46" data-value="46"
+                        <div id="plant-46" data-value="46" data-letter="P"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Potiron</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-38" data-value="38"
+                        <div id="plant-38" data-value="38" data-letter="P"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Prunier</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-35" data-value="35"
+                        <div id="plant-35" data-value="35" data-letter="P"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Pêcher</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-8" data-value="8"
+                        <div id="plant-8" data-value="8" data-letter="R"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Radis</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-109" data-value="109"
+                        <div id="plant-109" data-value="109" data-letter="R"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Raifort</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-90" data-value="90"
+                        <div id="plant-90" data-value="90" data-letter="R"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Ray-grass</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-147" data-value="147"
+                        <div id="plant-147" data-value="147" data-letter="R"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Rhubarbe</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-66" data-value="66"
+                        <div id="plant-66" data-value="66" data-letter="R"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Ricin</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-16" data-value="16"
+                        <div id="plant-16" data-value="16" data-letter="R"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Romarin</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-125" data-value="125"
+                        <div id="plant-125" data-value="125" data-letter="R"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Ronce</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-10" data-value="10"
+                        <div id="plant-10" data-value="10" data-letter="R"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Roquette</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-43" data-value="43"
+                        <div id="plant-43" data-value="43" data-letter="R"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Rosier</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-58" data-value="58"
+                        <div id="plant-58" data-value="58" data-letter="R"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Rosier d'Inde</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-123" data-value="123"
+                        <div id="plant-123" data-value="123" data-letter="R"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Rue</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-107" data-value="107"
+                        <div id="plant-107" data-value="107" data-letter="S"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Salsifis</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-91" data-value="91"
+                        <div id="plant-91" data-value="91" data-letter="S"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Sarrasin</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-53" data-value="53"
+                        <div id="plant-53" data-value="53" data-letter="S"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Sarriette</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-17" data-value="17"
+                        <div id="plant-17" data-value="17" data-letter="S"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Sauge</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-45" data-value="45"
+                        <div id="plant-45" data-value="45" data-letter="S"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Soucis</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-142" data-value="142"
+                        <div id="plant-142" data-value="142" data-letter="S"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Sureau</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-106" data-value="106"
+                        <div id="plant-106" data-value="106" data-letter="T"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Tanaisie</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-82" data-value="82"
+                        <div id="plant-82" data-value="82" data-letter="T"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Thym</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-12" data-value="12"
+                        <div id="plant-12" data-value="12" data-letter="T"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Tomate</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-41" data-value="41"
+                        <div id="plant-41" data-value="41" data-letter="T"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Topinambour</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-54" data-value="54"
+                        <div id="plant-54" data-value="54" data-letter="T"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Tournesol</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-71" data-value="71"
+                        <div id="plant-71" data-value="71" data-letter="T"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Trèfle blanc</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-111" data-value="111"
+                        <div id="plant-111" data-value="111" data-letter="V"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Verge d'or</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
-                        <div id="plant-132" data-value="132"
+                        <div id="plant-132" data-value="132" data-letter="V"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
                             <b>Vigne</b>
                             (<span class="plus"></span>&nbsp;<span class="glyphicon glyphicon-ok-circle green"
                                                                    style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="glyphicon glyphicon-remove-circle red"
                                                                    style="font-size: 0.8em"></span>)
+
                         </div>
                         
                     </div>
@@ -2259,7 +2483,7 @@
                             </div>
                             
                             <div class="breadcrumb-item">
-                                <b>Carotte repousse teigne du poireau :</b>
+                                <b>Carotte repousse thrips de l'oignon :</b>
                                 <svg class="example" width="200" height="30">
                                     <path class="link rep"
                                           marker-end="url(#rep)"
@@ -2270,7 +2494,7 @@
                                     </g>
                                     <g class="node" transform="translate(180,30)" style="opacity: 1;">
                                         <circle fill="#d62728" r="10"></circle>
-                                        <text x="11" y="-4">Teigne du poireau</text>
+                                        <text x="11" y="-4">Thrips de l'oignon</text>
                                     </g>
                                 </svg>
                             </div>

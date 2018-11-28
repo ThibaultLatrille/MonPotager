@@ -448,6 +448,25 @@ function tick() {
     })
 }
 
+$('.btn-letter').click(function (e) {
+    var letter = $(this).data("letter");
+    var not_hidden = $('.btn-plant').filter(function (i) {
+        return !$(this).hasClass("hidden");
+    });
+    var sup_letter = not_hidden.filter(function (i) {
+        console.log($(this).data("letter"));
+        return $(this).data("letter") >= letter;
+    });
+    if (not_hidden.length >= 1) {
+        if (sup_letter.length >= 1) {
+            $('#jets-potageome-content').scrollTo(sup_letter[0], 500);
+        } else {
+            $('#jets-potageome-content').scrollTo(not_hidden[not_hidden.length - 1], 500);
+        }
+    }
+
+});
+
 $(document).ready(function () {
     show_items();
     var plant_list = Cookies.getJSON("nodes");

@@ -822,12 +822,14 @@ Nématodes\Nuisible|défavorise|Chou-rave\Légume
 Nématodes\Nuisible|défavorise|Chou-rouge\Légume
 Doryphores\Nuisible|défavorise|Pomme de terre\Légume
 Carabes\Auxiliaire|repousse|Limaces\Nuisible
-Araignées\Auxiliaire|repousse|Pucerons\Nuisible
 Syrphes\Auxiliaire|repousse|Pucerons\Nuisible
 Tomate\Légume|repousse|Mouche de la carotte\Nuisible
 Poireau\Légume|repousse|Mouche de la carotte\Nuisible
-Mouche de la carotte\Nuisible|défavorise|Carotte\Légume
-Carotte\Légume|repousse|Thrips de l'oignon\Nuisible
 Oignon\Légume|repousse|Mouche de la carotte\Nuisible
+Mouche de la carotte\Nuisible|défavorise|Carotte\Légume
 Oignon\Légume|repousse|Puceron de la carotte\Nuisible
+Puceron de la carotte\Nuisible|défavorise|Carotte\Légume
+Carotte\Légume|repousse|Thrips de l'oignon\Nuisible
+Thrips de l'oignon\Nuisible|défavorise|Oignon\Légume
 Carotte\Légume|repousse|Teigne du poireau\Nuisible
+Teigne du poireau\Nuisible|défavorise|Poireau\Légume
