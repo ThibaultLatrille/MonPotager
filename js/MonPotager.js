@@ -463,25 +463,24 @@ $('.btn-letter').on("click", function (event) {
 
 $('#save-btn').on("click", function (event) {
     var saves = Cookies.getJSON("saves");
+    if (typeof saves === "undefined") {
+        saves = [];
+    }
     var plante_nodes = $.map(nodes.filter(function (n) {
         return cat_plants.includes(n.group);
     }), function (node) {
-        return node.name
+        return node.name;
     });
     var save = {};
     var currentdate = new Date();
-    var datetime = currentdate.getDate() + "/"
+    save.date = currentdate.getDate() + "/"
         + (currentdate.getMonth() + 1) + "/"
         + currentdate.getFullYear() + " @ "
         + currentdate.getHours() + ":"
         + currentdate.getMinutes() + ":"
         + currentdate.getSeconds();
-    save.date = datetime;
     save.nbr_nodes = plante_nodes.length;
     save.nodes = plante_nodes;
-    if (typeof saves === "undefined") {
-        saves = []
-    }
     saves.push(save);
     Cookies.set("saves", saves, {expires: 3650});
     $(this).addClass("hidden");
@@ -490,6 +489,9 @@ $('#save-btn').on("click", function (event) {
 
 function display_saves() {
     var saves = Cookies.getJSON("saves");
+    if (typeof saves === "undefined") {
+        saves = [];
+    }
     if (saves.length >= 1) {
         $('#my-saves').removeClass("hidden")
     } else {
