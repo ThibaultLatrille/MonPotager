@@ -154,13 +154,13 @@ svg {
   .footer .footer-link:hover {
     cursor: pointer; }
 
-.panel-potageome .panel-heading {
+.panel-MonPotager .panel-heading {
   background-color: #31627F;
   color: white;
   font-size: 1.4em;
   line-height: 1.6em; }
 
-.panel-potageome .panel-body {
+.panel-MonPotager .panel-body {
   background-color: #FAFAFA; }
 
 @media screen and (min-width: 992px) {

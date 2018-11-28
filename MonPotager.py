@@ -31,12 +31,12 @@ if __name__ == '__main__':
     else:
         print(".js and .css not minified, use -c option if you wish to compress")
 
-    css = open("css/potageome." + minified + "css", "w")
-    css.write(sass.compile(filename='potageome.css.scss', output_style=('compressed' if args.c else "nested")))
+    css = open("css/MonPotager." + minified + "css", "w")
+    css.write(sass.compile(filename='MonPotager.css.scss', output_style=('compressed' if args.c else "nested")))
     css.close()
 
     env = jinja2.Environment(loader=jinja2.FileSystemLoader('./'))
-    template = env.get_template('potageome_template.html')
+    template = env.get_template('MonPotager_template.html')
 
     first_letter = sorted(set([name[0].upper() for key, name in plants.items() if (appartenance[key] in cat_plants)]))
     sorted_appartenance = sorted(appartenance.items(), key=lambda pl: plants[pl[0]].lower())
@@ -49,5 +49,5 @@ if __name__ == '__main__':
                                                   categories=categories,
                                                   first_letter=first_letter,
                                                   interactions=interactions,
-                                                  appartenance=sorted_appartenance).dump('potageome.html')
-    print("Application generated.\nOpen the file {0}/potageome.html to open the application.".format(os.getcwd()))
+                                                  appartenance=sorted_appartenance).dump('MonPotager.html')
+    print("Application generated.\nOpen the file {0}/MonPotager.html to open the application.".format(os.getcwd()))

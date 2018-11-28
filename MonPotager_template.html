@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.{{ minified }}css">
-    <link rel="stylesheet" href="css/potageome.{{ minified }}css">
+    <link rel="stylesheet" href="css/MonPotager.{{ minified }}css">
     <script src="js/jquery-3.1.1.{{ minified }}js"></script>
     <script src="js/jets.{{ minified }}js"></script>
     <script src="js/jquery.scrollTo.{{ minified }}js"></script>
@@ -15,7 +15,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12 col-md-3 info-side col-left" style="padding-top: 10px;">
-            <div class="panel panel-default panel-potageome">
+            <div class="panel panel-default panel-MonPotager">
                 <div class="panel-heading"><b>Dans mon potager</b>
                     <div href="#" data-toggle="modal" class="pull-right btn btn-default" data-target="#reset">
                         <span class="glyphicon glyphicon-refresh"></span>
@@ -86,7 +86,7 @@
                     </div>
                 </div>
             </div>
-            <div id="info" class="panel panel-default panel-potageome no-margin-bottom hidden">
+            <div id="info" class="panel panel-default panel-MonPotager no-margin-bottom hidden">
                 <div class="panel-heading clearfix">
                     <button id="remove-selected" class="btn btn-danger btn-sm pull-right">
                         <span class="glyphicon glyphicon-trash"></span>
@@ -113,7 +113,7 @@
         <svg id="graph"></svg>
         <div class="col-xs-12 col-md-3 info-side col-right"
              style="display: flex; flex-flow: column; max-height: 100%; height: 100%; padding-top: 10px;">
-            <div class="panel panel-default panel-potageome no-margin-bottom"
+            <div class="panel panel-default panel-MonPotager no-margin-bottom"
                  style="flex: 0 1 auto; display: flex; flex-flow: column; overflow-y: hidden; max-height: 100%; height: 100%;">
                 <div class="panel-heading" style="flex: 0 1 auto;"><b>Ajouter des plantes</b></div>
                 <div class="panel-body"
@@ -122,7 +122,7 @@
                         <div class="box">
                             <div class="container-jets">
                                 <span class="glyphicon glyphicon-search"></span>
-                                <input type="search" id="jets-potageome-search" placeholder="Chercher"/>
+                                <input type="search" id="jets-MonPotager-search" placeholder="Chercher"/>
                             </div>
                         </div>
                         <div id="filter" class="btn btn-primary btn-sm hidden">
@@ -138,7 +138,7 @@
                             {% endfor %}
                         </div>
                     </div>
-                    <div id="jets-potageome-content" style="flex: 0 1 auto; overflow: auto;" data-toggle="buttons">
+                    <div id="jets-MonPotager-content" style="flex: 0 1 auto; overflow: auto;" data-toggle="buttons">
                         {% for key, value in appartenance if value in cat_plants %}
                         <div id="plant-{{ key }}" data-value="{{ key }}" data-letter="{{ plants[key][0] }}"
                              class="btn btn-default btn-sm plant btn-plant col-xs-12">
@@ -254,8 +254,8 @@
                     <a href="https://github.com/tlorin" target="_blank">Thibault Lorin</a>, deux comparses intéressés
                     par les interactions
                     végétales au sein du potager. Le code est disponible à
-                    <a href="https://github.com/tlorin/potageome"
-                       target="_blank">https://github.com/tlorin/potageome</a>.
+                    <a href="https://github.com/ThibaultLatrille/MonPotager"
+                       target="_blank">https://github.com/ThibaultLatrille/MonPotager</a>.
                     <br><br>
                     N'hésitez pas à nous contacter à l'adresse <a href="mailto:potagraphe@gmail.com">potagraphe@gmail.com</a>
                     pour nous signaler des erreurs, nous
@@ -299,6 +299,6 @@
 </div>
 <script src="js/d3.{{ minified }}js"></script>
 <script src="js/data.{{ minified }}js"></script>
-<script src="js/potageome.{{ minified }}js"></script>
+<script src="js/MonPotager.{{ minified }}js"></script>
 </body>
 </html>

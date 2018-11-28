@@ -8,20 +8,20 @@
 	2 : la plante attire l'auxiliaire
 	-2 : la plante/l'auxiliaire repousse le nuisible
 
-- potageome.py : fichier python qui permet de remplir potageome_template.html en utilisant les données contenus dans les dictionnnaires :
+- MonPotager.py : fichier python qui permet de remplir MonPotager_template.html en utilisant les données contenus dans les dictionnnaires :
 
 ### Installer les dependances
 
 ```
-$ git clone https://github.com/tlorin/potageome
+$ git clone https://github.com/ThibaultLatrille/MonPotager
 $ pip3 install --user libsass jinja2 jsmin
 ```
 
-### Generer le fichier potageome.html 
+### Generer le fichier MonPotager.html 
  
 ```
-$ cd potageome
-$ python3 potageome.py
+$ cd MonPotager
+$ python3 MonPotager.py
 ```
 
 ### To do

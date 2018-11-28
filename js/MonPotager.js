@@ -9,8 +9,8 @@ $(".reset-btn").on("click", function () {
     restart_with_list($(this).data("plants").split("|"));
 });
 var jetsearch = Jets({
-    searchTag: "#jets-potageome-search",
-    contentTag: "#jets-potageome-content"
+    searchTag: "#jets-MonPotager-search",
+    contentTag: "#jets-MonPotager-content"
 });
 
 function restart_with_list(str_list) {
@@ -49,7 +49,7 @@ $(".btn-filter").on("click", function (event) {
     var cur_node = graph.nodes[index];
     var $plants = $(".plant");
     $plants.removeClass("filtered");
-    $("#jets-potageome-search").val('');
+    $("#jets-MonPotager-search").val('');
     jetsearch.search();
     var $filter = $("#filter");
     if (["pos", "atr"].includes(interaction)) {
@@ -180,7 +180,7 @@ function zoomed() {
 }
 
 function remove_nodes() {
-    $(".plant", "#jets-potageome-content").removeClass("hidden");
+    $(".plant", "#jets-MonPotager-content").removeClass("hidden");
     $(".potager-item", "#upper-left").addClass("hidden");
     $(".padding-div", "#upper-left").addClass("hidden");
     index_nodes = [];
@@ -236,7 +236,7 @@ function show_items() {
 function remove_node(cur_index) {
     var cur_node = graph.nodes[cur_index];
     if (cat_plants.includes(cur_node.group)) {
-        $("#plant-" + String(cur_index), "#jets-potageome-content").removeClass("hidden");
+        $("#plant-" + String(cur_index), "#jets-MonPotager-content").removeClass("hidden");
     }
     $(".potager-item-" + String(cur_index), "#upper-left").addClass("hidden");
 
@@ -267,7 +267,7 @@ function add_node(cur_index) {
     nodes.push(cur_node);
 
     if (cat_plants.includes(cur_node.group)) {
-        $("#plant-" + String(cur_index), "#jets-potageome-content").addClass("hidden");
+        $("#plant-" + String(cur_index), "#jets-MonPotager-content").addClass("hidden");
     }
     $(".potager-item-" + String(cur_node.value), "#upper-left").removeClass("hidden");
 
@@ -459,9 +459,9 @@ $('.btn-letter').click(function (e) {
     });
     if (not_hidden.length >= 1) {
         if (sup_letter.length >= 1) {
-            $('#jets-potageome-content').scrollTo(sup_letter[0], 500);
+            $('#jets-MonPotager-content').scrollTo(sup_letter[0], 500);
         } else {
-            $('#jets-potageome-content').scrollTo(not_hidden[not_hidden.length - 1], 500);
+            $('#jets-MonPotager-content').scrollTo(not_hidden[not_hidden.length - 1], 500);
         }
     }
 
