@@ -20,6 +20,9 @@
                     <div href="#" data-toggle="modal" class="pull-right btn btn-default" data-target="#reset">
                         <span class="glyphicon glyphicon-refresh"></span>
                     </div>
+                    <div id="save-btn" class="pull-right btn btn-success" style="margin-right: 3px">
+                        <span class="glyphicon glyphicon-save"></span>
+                    </div>
                 </div>
                 <div id="upper-left" class="panel-body">
                     <div id="plants" class="padding-div">
@@ -290,6 +293,15 @@
                 <button id="reset-2" data-plants="" type="button"
                         class="btn btn-primary center-block reset-btn" data-dismiss="modal">A partir de rien
                 </button>
+                <br>
+                <div id="my-saves" class="clearfix">
+                    <b>Mes sauvegardes</b>
+                    <div id="my-save-list">
+                    </div>
+                    <button id="saves-remove" class="btn btn-danger btn-sm pull-right">
+                        Supprimer mes sauvegardes<span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>

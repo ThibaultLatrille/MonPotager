@@ -15,6 +15,13 @@
   color: #122b40;
   cursor: pointer; }
 
+.save-reset {
+  color: #2e6da4; }
+
+.save-reset:hover {
+  color: #122b40;
+  cursor: pointer; }
+
 .no-margin-bottom {
   margin-bottom: 0 !important; }
 

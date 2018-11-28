@@ -70,7 +70,6 @@ $(".btn-filter").on("click", function (event) {
             $this.addClass("filtered")
         }
     });
-    event.stopPropagation();
 });
 
 function direction_interaction(direction, interaction, index) {
@@ -373,6 +372,7 @@ function restart() {
     });
     $("#filter").click();
     $("#info").addClass("hidden");
+    $('#save-btn').removeClass("hidden");
     is_selected = false;
     no_transparence();
     transparence_pest();
@@ -382,11 +382,6 @@ function restart() {
     simulation.nodes(nodes);
     simulation.force("link").links(links);
     simulation.alpha(1).restart();
-    Cookies.set("nodes", $.map(nodes.filter(function (n) {
-        return cat_plants.includes(n.group);
-    }), function (node) {
-        return node.name
-    }), {expires: 3650});
 }
 
 function transparent(index) {
@@ -448,13 +443,12 @@ function tick() {
     })
 }
 
-$('.btn-letter').click(function (e) {
+$('.btn-letter').on("click", function (event) {
     var letter = $(this).data("letter");
     var not_hidden = $('.btn-plant').filter(function (i) {
         return !$(this).hasClass("hidden");
     });
     var sup_letter = not_hidden.filter(function (i) {
-        console.log($(this).data("letter"));
         return $(this).data("letter") >= letter;
     });
     if (not_hidden.length >= 1) {
@@ -464,17 +458,75 @@ $('.btn-letter').click(function (e) {
             $('#jets-MonPotager-content').scrollTo(not_hidden[not_hidden.length - 1], 500);
         }
     }
+    event.stopPropagation();
+});
 
+$('#save-btn').on("click", function (event) {
+    var saves = Cookies.getJSON("saves");
+    var plante_nodes = $.map(nodes.filter(function (n) {
+        return cat_plants.includes(n.group);
+    }), function (node) {
+        return node.name
+    });
+    var save = {};
+    var currentdate = new Date();
+    var datetime = currentdate.getDate() + "/"
+        + (currentdate.getMonth() + 1) + "/"
+        + currentdate.getFullYear() + " @ "
+        + currentdate.getHours() + ":"
+        + currentdate.getMinutes() + ":"
+        + currentdate.getSeconds();
+    save.date = datetime;
+    save.nbr_nodes = plante_nodes.length;
+    save.nodes = plante_nodes;
+    if (typeof saves === "undefined") {
+        saves = []
+    }
+    saves.push(save);
+    Cookies.set("saves", saves, {expires: 3650});
+    $(this).addClass("hidden");
+    event.stopPropagation();
+});
+
+function display_saves() {
+    var saves = Cookies.getJSON("saves");
+    if (saves.length >= 1) {
+        $('#my-saves').removeClass("hidden")
+    } else {
+        $('#my-saves').addClass("hidden");
+    }
+    var $my_saves = $('#my-save-list');
+    $my_saves.html("");
+    saves.forEach(function (save) {
+        // Add inner html
+        var d = document.createElement('div');
+        $(d).addClass('save-reset')
+            .html("<span class=\"glyphicon glyphicon-open\"></span> " + save.date + " (" + save.nbr_nodes + " plantes)")
+            .data("plants", save.nodes.join('|'))
+            .appendTo($my_saves)
+    });
+    // for all buttons, activate behavior
+    $('.save-reset').on("click", function (event) {
+        restart_with_list($(this).data("plants").split("|"));
+        $('#save-btn').addClass("hidden");
+        $('#reset').modal('hide');
+    });
+}
+
+$('#saves-remove').on("click", function (event) {
+    Cookies.set("saves", [], {expires: 3650});
+    display_saves();
+    event.stopPropagation();
+});
+
+$('#reset').on('show.bs.modal', function () {
+    display_saves()
 });
 
 $(document).ready(function () {
     show_items();
-    var plant_list = Cookies.getJSON("nodes");
-    if (plant_list) {
-        restart_with_list(plant_list)
-    } else {
-        $('#reset').modal('show');
-    }
+    $('#save-btn').addClass("hidden");
+    $('#reset').modal('show');
     var $collapse = $('.collapse');
     $collapse.on('show.bs.collapse', function () {
         $(this).parent(".panel").find(".glyphicon-chevron-down").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
