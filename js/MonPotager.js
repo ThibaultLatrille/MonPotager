@@ -42,10 +42,8 @@ $("#filter").on("click", function (event) {
     $(".plant").removeClass("filtered");
     event.stopPropagation();
 });
-$(".btn-filter").on("click", function (event) {
-    var index = $(this).data("value");
-    var direction = $(this).data("direction");
-    var interaction = $(this).data("interaction");
+
+function filter_plantes(index, direction, interaction) {
     var cur_node = graph.nodes[index];
     var $plants = $(".plant");
     $plants.removeClass("filtered");
@@ -70,6 +68,13 @@ $(".btn-filter").on("click", function (event) {
             $this.addClass("filtered")
         }
     });
+}
+
+$(".btn-filter").on("click", function (event) {
+    var index = $(this).data("value");
+    var direction = $(this).data("direction");
+    var interaction = $(this).data("interaction");
+    filter_plantes(index, direction, interaction);
 });
 
 function direction_interaction(direction, interaction, index) {
@@ -94,6 +99,7 @@ function direction_interaction(direction, interaction, index) {
     var other_interactions = list_ids.filter(function (x) {
         return !graph_list_ids.includes(x)
     }).length;
+
     if (other_interactions > 0) {
         $button.data('direction', direction);
         $button.data('interaction', interaction);
@@ -121,11 +127,41 @@ function select_node(index) {
         $removeSelected.removeClass("hidden");
         $removeSelected.data("value", index);
     }
+    $("#helpers-links").addClass("hidden");
+    $(".helpers-item", "#helpers-container").remove();
     ["forward", "backward"].forEach(function (direction) {
         interactions.forEach(function (interaction) {
             direction_interaction(direction, interaction, index)
         });
     });
+
+    if (cat_pests.includes(graph.nodes[index].group)) {
+        var plus = $.map(graph.backward[index].filter(function (l) {
+            return l.value === "rep" && cat_helpers.includes(l.group);
+        }), function (val) {
+            return val.source;
+        });
+        if (plus.length > 0) {
+            $("#helpers-links").removeClass("hidden");
+            var $helpers_container = $("#helpers-container");
+            plus.forEach(function (helper) {
+                var d = document.createElement('span');
+                $(d).addClass('helpers-item')
+                    .html(graph.nodes[helper].name + "; ")
+                    .data("value", helper)
+                    .appendTo($helpers_container)
+            });
+            $(".helpers-item", "#helpers-container").on("click", function (event) {
+                var index = parseInt($(this).data("value"));
+                filter_plantes(index, "backward", "atr");
+            });
+        }
+        $("#glyph-backward-atr", "#info").removeClass("glyphicon-ok-circle green").addClass("glyphicon-remove-circle red");
+        $("#glyph-backward-rep", "#info").removeClass("glyphicon-remove-circle red").addClass("glyphicon-ok-circle green");
+    } else {
+        $("#glyph-backward-rep", "#info").removeClass("glyphicon-ok-circle green").addClass("glyphicon-remove-circle red");
+        $("#glyph-backward-atr", "#info").removeClass("glyphicon-remove-circle red").addClass("glyphicon-ok-circle green");
+    }
 
     var $plants = $(".plant");
     $plants.removeClass("filtered");
@@ -204,7 +240,7 @@ function show_item_div(div_id, nbr_items) {
 function show_items() {
     var relevant_links = links;
     nodes.forEach(function (tmp_node) {
-        if (tmp_node.group === 5) {
+        if (cat_pests.includes(tmp_node.group)) {
             if (links.filter(function (l) {
                 return (l.target.value === tmp_node.value && ["rep"].includes(l.value));
             }).length > 0) {
@@ -260,7 +296,9 @@ function remove_node(cur_index) {
     });
 }
 
-function add_node(cur_index) {
+function add_node(cur_index, add_links) {
+    add_links = typeof add_links !== 'undefined' ? add_links : true;
+
     index_nodes.push(cur_index);
     var cur_node = graph.nodes[cur_index];
     nodes.push(cur_node);
@@ -270,20 +308,22 @@ function add_node(cur_index) {
     }
     $(".potager-item-" + String(cur_node.value), "#upper-left").removeClass("hidden");
 
-    for (var f = 0; f < graph.forward[cur_index].length; f++) {
-        var f_link = graph.forward[cur_index][f];
-        if (index_nodes.includes(f_link.target)) {
-            links.push({"source": cur_node, "target": graph.nodes[f_link.target], "value": f_link.value});
-        } else if (cat_animals.includes(f_link.group) && ["atr", "rep"].includes(f_link.value)) {
-            add_node(f_link.target);
+    if (add_links) {
+        for (var f = 0; f < graph.forward[cur_index].length; f++) {
+            var f_link = graph.forward[cur_index][f];
+            if (index_nodes.includes(f_link.target)) {
+                links.push({"source": cur_node, "target": graph.nodes[f_link.target], "value": f_link.value});
+            } else if (cat_animals.includes(f_link.group) && ["atr", "rep"].includes(f_link.value)) {
+                add_node(f_link.target);
+            }
         }
-    }
-    for (var b = 0; b < graph.backward[cur_index].length; b++) {
-        var b_link = graph.backward[cur_index][b];
-        if (index_nodes.includes(b_link.source)) {
-            links.push({"source": graph.nodes[b_link.source], "target": cur_node, "value": b_link.value});
-        } else if (cat_animals.includes(b_link.group) && ["neg", "pos"].includes(b_link.value)) {
-            add_node(b_link.source);
+        for (var b = 0; b < graph.backward[cur_index].length; b++) {
+            var b_link = graph.backward[cur_index][b];
+            if (index_nodes.includes(b_link.source)) {
+                links.push({"source": graph.nodes[b_link.source], "target": cur_node, "value": b_link.value});
+            } else if (cat_animals.includes(b_link.group) && ["neg", "pos"].includes(b_link.value)) {
+                add_node(b_link.source);
+            }
         }
     }
 }
@@ -405,7 +445,7 @@ function no_transparence() {
 
 function transparence_pest() {
     nodes.forEach(function (tmp_node) {
-        if (tmp_node.group === 5) {
+        if (cat_pests.includes(tmp_node.group)) {
             var filtered_links = links.filter(function (l) {
                 return (l.target.value === tmp_node.value && ["rep"].includes(l.value));
             });

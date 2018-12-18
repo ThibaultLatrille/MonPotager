@@ -1,6 +1,16 @@
 .text-bold {
   font-weight: bold; }
 
+#helpers-links {
+  margin-bottom: 5px; }
+
+.helpers-item {
+  color: #2e6da4; }
+
+.helpers-item:hover {
+  color: #122b40;
+  cursor: pointer; }
+
 .potager-item {
   color: #2e6da4; }
 

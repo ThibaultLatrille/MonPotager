@@ -101,15 +101,20 @@
                     {% for direction in ["forward", "backward"] %}
                     <div id="node-{{ direction }}-{{ inter }}" class="padding-div">
                         {% if inter in ["pos", "atr"] %}
-                        <span class="glyphicon glyphicon-ok-circle green"></span>
+                        <span id="glyph-{{ direction }}-{{ inter }}" class="glyphicon glyphicon-ok-circle green"></span>
                         {% else %}
-                        <span class="glyphicon glyphicon-remove-circle red"></span>
+                        <span id="glyph-{{ direction }}-{{ inter }}" class="glyphicon glyphicon-remove-circle red"></span>
                         {% endif %}
                         <b>{{ interactions[direction][inter] }} :</b><br>
                         <span class="text"></span><span class="btn-filter"></span>
                     </div>
                     {% endfor %}
                     {% endfor %}
+                    <div id="helpers-links">
+                        <span class="glyphicon glyphicon-ok-circle green"></span>
+                        <b>Attirer des auxilliaires pour le repousser :</b>
+                        <div id="helpers-container"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -281,13 +286,15 @@
                 <h4 class="modal-title">Initialiser mon potager avec:</h4>
             </div>
             <div class="modal-body">
-                <button id="reset-0" data-plants="Carotte|Oignon" type="button"
-                        class="btn btn-primary center-block reset-btn" data-dismiss="modal">Carotte et Oignon
+                <button id="reset-0" data-plants="Carotte|Pommier|Betterave|Haricot" type="button"
+                        class="btn btn-primary center-block reset-btn" data-dismiss="modal">Carotte, pommier, betterave
+                    et haricot
                 </button>
                 <br>
-                <button id="reset-1" data-plants="Carotte|Oignon|Betterave|Haricot" type="button"
-                        class="btn btn-primary center-block reset-btn" data-dismiss="modal">Carotte, Oignon, Betterave &
-                    Haricot
+                <button id="reset-1" data-plants="Ail|Betterave|Camomille allemande|Carotte|Oignon|Pommier"
+                        type="button"
+                        class="btn btn-primary center-block reset-btn" data-dismiss="modal">Ail, betterave, camomille
+                    allemande, carotte, oignon, pommier
                 </button>
                 <br>
                 <button id="reset-2" data-plants="" type="button"

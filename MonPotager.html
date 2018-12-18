@@ -941,7 +941,7 @@
                     
                     <div id="node-forward-pos" class="padding-div">
                         
-                        <span class="glyphicon glyphicon-ok-circle green"></span>
+                        <span id="glyph-forward-pos" class="glyphicon glyphicon-ok-circle green"></span>
                         
                         <b>Favorise :</b><br>
                         <span class="text"></span><span class="btn-filter"></span>
@@ -949,7 +949,7 @@
                     
                     <div id="node-backward-pos" class="padding-div">
                         
-                        <span class="glyphicon glyphicon-ok-circle green"></span>
+                        <span id="glyph-backward-pos" class="glyphicon glyphicon-ok-circle green"></span>
                         
                         <b>Favorisé par :</b><br>
                         <span class="text"></span><span class="btn-filter"></span>
@@ -959,7 +959,7 @@
                     
                     <div id="node-forward-atr" class="padding-div">
                         
-                        <span class="glyphicon glyphicon-ok-circle green"></span>
+                        <span id="glyph-forward-atr" class="glyphicon glyphicon-ok-circle green"></span>
                         
                         <b>Attire :</b><br>
                         <span class="text"></span><span class="btn-filter"></span>
@@ -967,7 +967,7 @@
                     
                     <div id="node-backward-atr" class="padding-div">
                         
-                        <span class="glyphicon glyphicon-ok-circle green"></span>
+                        <span id="glyph-backward-atr" class="glyphicon glyphicon-ok-circle green"></span>
                         
                         <b>Attiré par :</b><br>
                         <span class="text"></span><span class="btn-filter"></span>
@@ -977,7 +977,7 @@
                     
                     <div id="node-forward-neg" class="padding-div">
                         
-                        <span class="glyphicon glyphicon-remove-circle red"></span>
+                        <span id="glyph-forward-neg" class="glyphicon glyphicon-remove-circle red"></span>
                         
                         <b>Défavorise :</b><br>
                         <span class="text"></span><span class="btn-filter"></span>
@@ -985,7 +985,7 @@
                     
                     <div id="node-backward-neg" class="padding-div">
                         
-                        <span class="glyphicon glyphicon-remove-circle red"></span>
+                        <span id="glyph-backward-neg" class="glyphicon glyphicon-remove-circle red"></span>
                         
                         <b>Défavorisé par :</b><br>
                         <span class="text"></span><span class="btn-filter"></span>
@@ -995,7 +995,7 @@
                     
                     <div id="node-forward-rep" class="padding-div">
                         
-                        <span class="glyphicon glyphicon-remove-circle red"></span>
+                        <span id="glyph-forward-rep" class="glyphicon glyphicon-remove-circle red"></span>
                         
                         <b>Repousse :</b><br>
                         <span class="text"></span><span class="btn-filter"></span>
@@ -1003,13 +1003,18 @@
                     
                     <div id="node-backward-rep" class="padding-div">
                         
-                        <span class="glyphicon glyphicon-remove-circle red"></span>
+                        <span id="glyph-backward-rep" class="glyphicon glyphicon-remove-circle red"></span>
                         
                         <b>Repoussé par :</b><br>
                         <span class="text"></span><span class="btn-filter"></span>
                     </div>
                     
                     
+                    <div id="helpers-links">
+                        <span class="glyphicon glyphicon-ok-circle green"></span>
+                        <b>Attirer des auxilliaires pour le repousser :</b>
+                        <div id="helpers-container"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2632,13 +2637,15 @@
                 <h4 class="modal-title">Initialiser mon potager avec:</h4>
             </div>
             <div class="modal-body">
-                <button id="reset-0" data-plants="Carotte|Oignon" type="button"
-                        class="btn btn-primary center-block reset-btn" data-dismiss="modal">Carotte et Oignon
+                <button id="reset-0" data-plants="Carotte|Pommier|Betterave|Haricot" type="button"
+                        class="btn btn-primary center-block reset-btn" data-dismiss="modal">Carotte, pommier, betterave
+                    et haricot
                 </button>
                 <br>
-                <button id="reset-1" data-plants="Carotte|Oignon|Betterave|Haricot" type="button"
-                        class="btn btn-primary center-block reset-btn" data-dismiss="modal">Carotte, Oignon, Betterave &
-                    Haricot
+                <button id="reset-1" data-plants="Ail|Betterave|Camomille allemande|Carotte|Oignon|Pommier"
+                        type="button"
+                        class="btn btn-primary center-block reset-btn" data-dismiss="modal">Ail, betterave, camomille
+                    allemande, carotte, oignon, pommier
                 </button>
                 <br>
                 <button id="reset-2" data-plants="" type="button"

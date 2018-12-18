@@ -16,6 +16,7 @@ def reverse_dict(dico):
 def generate_js(file_name):
     cat_animals = {"Nuisible", "Auxiliaire"}
     cat_plants = set(categories.values()) - cat_animals
+    cat_pests = set(["Nuisible"])
     reverse_cat = reverse_dict(categories)
 
     description_interactions = {"favorise": 1, "défavorise": -1, "attire": 2, "repousse": -2}
@@ -29,6 +30,8 @@ def generate_js(file_name):
     count = 0
     nbr_errors = 0
     for line in associations.readlines():
+        if line.count('|') != 2:
+            print(line)
         specie_source, interaction, specie_target = line.strip("\n").split('|')
         name_source, cat_source = specie_source.split('\\')
         name_target, cat_target = specie_target.split('\\')
@@ -101,13 +104,18 @@ def generate_js(file_name):
     javascript.write('\n};')
 
     javascript.write('\nvar cat_animals = [' + ','.join(sorted([str(reverse_cat[c]) for c in cat_animals])) + '];')
+    javascript.write('\nvar cat_pests = [' + ','.join(sorted([str(reverse_cat[c]) for c in cat_pests])) + '];')
+    javascript.write(
+        '\nvar cat_helpers = [' + ','.join(sorted([str(reverse_cat[c]) for c in (cat_animals - cat_pests)])) + '];')
     javascript.write('\nvar cat_plants = [' + ','.join(sorted([str(reverse_cat[c]) for c in cat_plants])) + '];')
 
     javascript.write('\nvar interactions = ["' + '","'.join(sorted(set(interactions.values()))) + '"];')
     backward = ', '.join(
-        ['"{0}":"{1}"'.format(value, interaction_backward[value].lower()) for value in sorted(set(interactions.values()))])
+        ['"{0}":"{1}"'.format(value, interaction_backward[value].lower()) for value in
+         sorted(set(interactions.values()))])
     forward = ', '.join(
-        ['"{0}":"{1}"'.format(value, interaction_forward[value].lower()) for value in sorted(set(interactions.values()))])
+        ['"{0}":"{1}"'.format(value, interaction_forward[value].lower()) for value in
+         sorted(set(interactions.values()))])
     javascript.write('\nvar filter_name_dico = {"backward":{' + backward + '}, "forward":{' + forward + '}};')
 
     javascript.close()

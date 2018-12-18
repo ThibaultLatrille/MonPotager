@@ -108,8 +108,8 @@ Tomate\Légume|favorise|Poireau\Légume
 Tomate\Légume|favorise|Laitue\Légume
 Tomate\Légume|défavorise|Pomme de terre\Légume
 Tomate\Légume|défavorise|Tournesol\Fleur
-Tomate\Légume|repousse|Mildiou\Nuisible
-Pomme de terre\Légume|repousse|Mildiou\Nuisible
+Mildiou\Nuisible|défavorise|Tomate\Légume
+Mildiou\Nuisible|défavorise|Pomme de terre\Légume
 Tomate\Légume|défavorise|Betterave\Légume
 Tomate\Légume|défavorise|Fenouil\Légume
 Tomate\Légume|défavorise|Fraisier\Fruit
