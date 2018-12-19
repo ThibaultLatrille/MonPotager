@@ -442,7 +442,6 @@ Pommier\Fruit|favorise|Trèfle blanc\Fleur
 Pommier\Fruit|favorise|Capucine\Fleur
 Pommier\Fruit|favorise|Nerprun alaterne\Arbres
 Pommier\Fruit|favorise|Noyer\Fruit
-Pommier\Fruit|défavorise|Pommier\Fruit
 Pommier\Fruit|défavorise|Baguenaudier\Arbres
 Poirier\Fruit|favorise|Trèfle blanc\Fleur
 Poirier\Fruit|favorise|Nerprun alaterne\Arbres

@@ -35,6 +35,8 @@ def generate_js(file_name):
         specie_source, interaction, specie_target = line.strip("\n").split('|')
         name_source, cat_source = specie_source.split('\\')
         name_target, cat_target = specie_target.split('\\')
+        if name_source == name_target:
+            continue
         if name_source not in name_to_index:
             name_to_index[name_source] = count
             count += 1
