@@ -27,9 +27,9 @@ if __name__ == '__main__':
                     jsminified_file.write(jsminified)
                     jsminified_file.close()
 
-        print("Minifying the .js et .css")
+        print("Minifying the .js et .css files.")
     else:
-        print(".js and .css not minified, use -c option if you wish to compress")
+        print(".js and .css not minified, use -c option if you wish to compress files.")
 
     css = open("css/MonPotager." + minified + "css", "w")
     css.write(sass.compile(filename='MonPotager.css.scss', output_style=('compressed' if args.c else "nested")))

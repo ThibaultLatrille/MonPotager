@@ -25,13 +25,14 @@
                     </div>
                 </div>
                 <div id="upper-left" class="panel-body">
+                    <div id="alert-save"></div>
                     <div id="plants" class="padding-div">
                         <span id="plants-count" class="text-bold"
                               data-singular="plante :"
                               data-plural="plantes :"></span><br>
                         {% for key, value in appartenance if value in cat_plants %}
                         <span data-value="{{ key }}"
-                              class="potager-item potager-item-{{ key }} hidden">
+                              class="potager-item potager-item-{{ key }} links hidden">
                                 {{ plants[key] }};
                             </span>
                         {% endfor %}
@@ -49,7 +50,7 @@
                               data-plural="auxiliaires attirés :"></span><br>
                         {% for key, value in appartenance if value == 6 %}
                         <span data-value="{{ key }}"
-                              class="potager-item potager-item-{{ key }} hidden">
+                              class="potager-item potager-item-{{ key }} links hidden">
                             {{ plants[key] }};
                         </span>
                         {% endfor %}
@@ -62,7 +63,7 @@
                               data-plural="nuisibles écartés :"></span><br>
                         {% for key, value in appartenance if value == 5 %}
                         <span data-value="{{ key }}"
-                              class="potager-item potager-item-{{ key }} hidden">
+                              class="potager-item potager-item-{{ key }} links hidden">
                             {{ plants[key] }};
                         </span>
                         {% endfor %}
@@ -81,7 +82,7 @@
                               data-plural="nuisibles :"></span><br>
                         {% for key, value in appartenance if value == 5 %}
                         <span data-value="{{ key }}"
-                              class="potager-item potager-item-{{ key }} hidden">
+                              class="potager-item potager-item-{{ key }} links hidden">
                             {{ plants[key] }};
                         </span>
                         {% endfor %}
@@ -97,16 +98,20 @@
                     <b><span id="info-name"></span></b>
                 </div>
                 <div class="panel-body">
+                    <a href="" id="wiki-btn" class="links pull-right" target="_blank" style="margin-bottom: 15px">
+                        <span class="glyphicon glyphicon-globe"></span> Wikipedia
+                    </a>
                     {% for inter in ["pos","atr","neg","rep"] %}
                     {% for direction in ["forward", "backward"] %}
                     <div id="node-{{ direction }}-{{ inter }}" class="padding-div">
                         {% if inter in ["pos", "atr"] %}
                         <span id="glyph-{{ direction }}-{{ inter }}" class="glyphicon glyphicon-ok-circle green"></span>
                         {% else %}
-                        <span id="glyph-{{ direction }}-{{ inter }}" class="glyphicon glyphicon-remove-circle red"></span>
+                        <span id="glyph-{{ direction }}-{{ inter }}"
+                              class="glyphicon glyphicon-remove-circle red"></span>
                         {% endif %}
                         <b>{{ interactions[direction][inter] }} :</b><br>
-                        <span class="text"></span><span class="btn-filter"></span>
+                        <span class="text"></span><span class="btn-filter links"></span>
                     </div>
                     {% endfor %}
                     {% endfor %}
@@ -168,10 +173,10 @@
                         <a data-toggle="collapse" href="#legend"
                            class="pull-right glyphicon glyphicon-chevron-down"></a>
                         <a data-toggle="collapse" href="#legend" class="text-left">
-                            Afficher la légende
+                            Masquer la légende
                         </a>
                     </div>
-                    <div id="legend" class="panel-collapse collapse" role="tabpanel">
+                    <div id="legend" class="panel-collapse collapse in" role="tabpanel">
                         <div class="panel-body">
                             {% for example in examples %}
                             <div class="breadcrumb-item">
@@ -220,30 +225,14 @@
                 <h4 class="modal-title">À propos</h4>
             </div>
             <div class="modal-body">
-                Cette année, vous voulez commencer un potager avec quatre espèces, par exemple carotte, radis, tomate et
-                pomme
-                de terre, mais vous ne savez pas s'il vaut mieux plantr la pomme de terre à côté des pieds de tomate ou
-                au contraire
-                le plus loin possible ? Et est-ce que la carotte ne risque pas d'attirer des parasites du radis ? Que de
-                questions...
-                <br><br>
-                Ainsi, les plants font parfois bon ménage : l'une favorise le développement de l'autre (interaction
-                positive) ;
-                au contraire, l'une peut attirer les parasites de l'autre ou sécréter des composés chimiques
-                défavorables au
-                développement de sa voisine (interaction défavorable).
-                <br><br>
                 Rarement prises en compte dans la planification d'un potager, les interactions végétales entre plants
-                compagnes
-                peuvent souvent aider à limiter l'apparition des maladies ou même à augmenter la productivité du
-                potager.
+                compagnes peuvent souvent aider à limiter l'apparition des maladies ou même à augmenter la productivité
+                du potager.
                 <br><br>
                 <i>Mon Potager</i> est une application permettant de simuler son potager en insérant les diverses
-                espèces de
-                fruits et légumes,
-                et de savoir si les interactions seront favorables ou défavorables. <i>Mon Potager</i> permet également
-                d'obtenir facilement des
-                informations sur la façon dont un parasite peut être éliminé par des plants compagnes.
+                espèces de fruits et légumes, et de savoir si les interactions seront favorables ou défavorables.
+                <i>Mon Potager</i> permet également d'obtenir facilement des informations sur la façon dont un parasite
+                peut être éliminé par des plants compagnes.
                 <br><br>
                 <div class="small">
                     Les références que nous avons utilisées sont<br>
@@ -261,15 +250,39 @@
                     <a href="https://github.com/ThibaultLatrille/" target="_blank">Thibault Latrille</a> et
                     <a href="https://github.com/tlorin" target="_blank">Thibault Lorin</a>, deux comparses intéressés
                     par les interactions
-                    végétales au sein du potager. Le code est disponible à
+                    végétales au sein du potager. Le code (CC-BY-NC) est disponible à
                     <a href="https://github.com/ThibaultLatrille/MonPotager"
                        target="_blank">https://github.com/ThibaultLatrille/MonPotager</a>.
                     <br><br>
-                    N'hésitez pas à nous contacter à l'adresse <a href="mailto:potagraphe@gmail.com">potagraphe@gmail.com</a>
+                    Par ailleurs la base de données est collaborative, n'hésitez pas à proposer des changements: <br>
+                    <ul>
+                        <li><a href="https://framacalc.org/monpotagerespeces" target="_blank">Base de données des
+                            espèces</a>.</li>
+                        <li><a href="https://framacalc.org/monpotagerassociations" target="_blank">Base de données des
+                            associations</a>.</li>
+                    </ul>
+                    Contactez nous à l'adresse <a href="mailto:monpotager@controversciences.org">monpotager@controversciences.org</a>
                     pour nous signaler des erreurs, nous
                     proposer des améliorations possibles, partager des bons plans, ou simplement pour en savoir plus !
                 </div>
 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="wiki-modal" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Wikipedia</h4>
+            </div>
+            <div class="modal-body">
+                <div id="wiki-div"></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>

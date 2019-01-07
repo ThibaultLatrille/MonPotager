@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import csv
 
 color = {
     0: "#0F0F0F", 1: "#1776b6", 2: "#ff7f0e", 3: "#9564bf", 4: "#f7b6d2", 5: "#d62728", 6: "#24a221", 7: "#ffe778",
@@ -16,59 +17,86 @@ def reverse_dict(dico):
 def generate_js(file_name):
     cat_animals = {"Nuisible", "Auxiliaire"}
     cat_plants = set(categories.values()) - cat_animals
-    cat_pests = set(["Nuisible"])
+    cat_pests = {"Nuisible"}
     reverse_cat = reverse_dict(categories)
 
     description_interactions = {"favorise": 1, "défavorise": -1, "attire": 2, "repousse": -2}
     interactions = {-1: "neg", 1: "pos", -2: "rep", 2: "atr"}
     interaction_forward = {"neg": "Défavorise", "pos": "Favorise", "rep": "Repousse", "atr": "Attire"}
     interaction_backward = {"neg": "Défavorisé par", "pos": "Favorisé par", "rep": "Repoussé par", "atr": "Attiré par"}
-    associations = open("associations.txt", "r")
+
+    species_cat = dict()
+    species_name = dict()
+    species_wiki = dict()
+    with open('especes.csv', 'r') as csvfile:
+        speciesreader = csv.reader(csvfile)
+        next(speciesreader)
+        for name, cat, disp_name, txt, wiki in speciesreader:
+            species_cat[name] = cat
+            species_name[name] = disp_name
+            species_wiki[disp_name] = wiki
+
     associations_plant = set()
     appartenance = dict()
     name_to_index = dict()
     count = 0
     nbr_errors = 0
-    for line in associations.readlines():
-        if line.count('|') != 2:
-            print(line)
-        specie_source, interaction, specie_target = line.strip("\n").split('|')
-        name_source, cat_source = specie_source.split('\\')
-        name_target, cat_target = specie_target.split('\\')
-        if name_source == name_target:
-            continue
-        if name_source not in name_to_index:
-            name_to_index[name_source] = count
-            count += 1
-        if name_target not in name_to_index:
-            name_to_index[name_target] = count
-            count += 1
-        appartenance[name_to_index[name_source]] = reverse_cat[cat_source]
-        appartenance[name_to_index[name_target]] = reverse_cat[cat_target]
 
-        source = name_to_index[name_source]
-        target = name_to_index[name_target]
-        assert interaction in description_interactions.keys(), "association '{0}' n'existe pas, seulement {1} sont possible".format(
-            interaction, "|".join(description_interactions.keys()))
-        inter = description_interactions[interaction]
+    with open('associations.csv', 'r') as csvfile:
+        associationsreader = csv.reader(csvfile)
+        next(associationsreader)
+        for specie_source, interaction, specie_target, txt, details in associationsreader:
+            name_source, cat_source = species_name[specie_source], species_cat[specie_source]
+            name_target, cat_target = species_name[specie_target], species_cat[specie_target]
+            if name_source == name_target:
+                print("La source ({0}) et la cible sont les mêmes espèces ({1})".format(name_source, name_target))
+                continue
 
-        if ((cat_target in cat_animals) and abs(inter) != 2) or ((cat_target in cat_plants) and abs(inter) != 1):
-            if (cat_target in cat_animals) and abs(inter) != 2:
-                inter *= 2
-            else:
-                inter /= 2
-            nbr_errors += 1
-            print("Erreur: {0} ({3}) {1} {2} ({4})".format(name_source, interaction, name_target,
-                                                           cat_source, cat_target))
-            print("Remplacé par: {0} ({3}) {1} {2} ({4})".format(name_source,
-                                                                 interaction_forward[interactions[inter]],
-                                                                 name_target, cat_source, cat_target))
+            if name_source not in name_to_index:
+                name_to_index[name_source] = count
+                count += 1
+            if name_target not in name_to_index:
+                name_to_index[name_target] = count
+                count += 1
+            appartenance[name_to_index[name_source]] = reverse_cat[cat_source]
+            appartenance[name_to_index[name_target]] = reverse_cat[cat_target]
 
-        associations_plant.add((source, target, inter))
+            source = name_to_index[name_source]
+            target = name_to_index[name_target]
+            assert interaction in description_interactions.keys(), \
+                "interaction '{0}' n'existe pas, seulement {1} sont possible".format(
+                    interaction, "|".join(description_interactions.keys()))
+            inter = description_interactions[interaction]
+
+            same_association = [assoc for assoc in associations_plant if (assoc[0] == source and assoc[1] == target)]
+            if len(same_association) > 0:
+                for assoc in same_association:
+                    if assoc[2] == inter:
+                        print("Erreur: {0} {1} {2} car l'association existe déjà.".format(name_source,
+                                                                                          interaction,
+                                                                                          name_target))
+                    else:
+                        print(
+                            "Erreur: {0} {1} {2} impossible car {3} déjà.".format(
+                                name_source, interaction,
+                                name_target, interaction_forward[interactions[assoc[2]]].lower()))
+
+            if ((cat_target in cat_animals) and abs(inter) != 2) or ((cat_target in cat_plants) and abs(inter) != 1):
+                if (cat_target in cat_animals) and abs(inter) != 2:
+                    inter *= 2
+                else:
+                    inter /= 2
+                nbr_errors += 1
+                print("Erreur: {0} ({3}) {1} {2} ({4}).".format(name_source, interaction, name_target,
+                                                                cat_source, cat_target))
+                print("Remplacé par: {0} ({3}) {1} {2} ({4}).".format(name_source,
+                                                                      interaction_forward[interactions[inter]],
+                                                                      name_target, cat_source, cat_target))
+
+            associations_plant.add((source, target, inter))
 
     if nbr_errors > 0:
         print("{0} erreurs au total".format(nbr_errors))
-    associations.close()
 
     index_to_name = reverse_dict(name_to_index)
 
@@ -77,7 +105,8 @@ def generate_js(file_name):
     # nodes for javascript file
     javascript.write('\t"nodes":[\n')
     javascript.write(
-        ",\n".join(['\t\t{{"name":"{0}","group":{1},"value":{2}}}'.format(name, appartenance[index], index)
+        ",\n".join(['\t\t{{"name":"{0}","group":{1},"value":{2},"wiki":"{3}"}}'.format(name, appartenance[index], index,
+                                                                                     species_wiki[name])
                     for index, name in index_to_name.items()]))
     javascript.write('\n\t],\n')
     # Forward list

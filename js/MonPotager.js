@@ -7,6 +7,10 @@ $(".plant").on("click", function (event) {
 });
 $(".reset-btn").on("click", function () {
     restart_with_list($(this).data("plants").split("|"));
+    $('#save-btn').addClass("hidden");
+});
+$("#wiki-btn").on("click", function (event) {
+    event.stopPropagation();
 });
 var jetsearch = Jets({
     searchTag: "#jets-MonPotager-search",
@@ -127,7 +131,8 @@ function select_node(index) {
         $removeSelected.removeClass("hidden");
         $removeSelected.data("value", index);
     }
-    $("#helpers-links").addClass("hidden");
+    var $helpers_links = $("#helpers-links");
+    $helpers_links.addClass("hidden");
     $(".helpers-item", "#helpers-container").remove();
     ["forward", "backward"].forEach(function (direction) {
         interactions.forEach(function (interaction) {
@@ -142,11 +147,11 @@ function select_node(index) {
             return val.source;
         });
         if (plus.length > 0) {
-            $("#helpers-links").removeClass("hidden");
+            $helpers_links.removeClass("hidden");
             var $helpers_container = $("#helpers-container");
             plus.forEach(function (helper) {
                 var d = document.createElement('span');
-                $(d).addClass('helpers-item')
+                $(d).addClass('helpers-item links')
                     .html(graph.nodes[helper].name + "; ")
                     .data("value", helper)
                     .appendTo($helpers_container)
@@ -167,6 +172,13 @@ function select_node(index) {
     $plants.removeClass("filtered");
     $("#info-name").text(cur_node.name + " (" + groups[cur_node.group].toLowerCase() + ")");
     $("#info").removeClass("hidden");
+    var $wiki_btn = $("#wiki-btn");
+    if (cur_node.wiki.length === 0) {
+        $wiki_btn.addClass("hidden")
+    } else {
+        $wiki_btn.removeClass("hidden");
+        $wiki_btn.attr("href", cur_node.wiki);
+    }
 }
 
 var svg = d3.select("#graph"),
@@ -524,6 +536,10 @@ $('#save-btn').on("click", function (event) {
     saves.push(save);
     Cookies.set("saves", saves, {expires: 3650});
     $(this).addClass("hidden");
+    var d = document.createElement('div');
+    $(d).addClass('alert alert-success alert-dismissible')
+        .html("<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Potager sauvergardé.</strong>")
+        .appendTo("#alert-save");
     event.stopPropagation();
 });
 
@@ -571,11 +587,13 @@ $(document).ready(function () {
     $('#reset').modal('show');
     var $collapse = $('.collapse');
     $collapse.on('show.bs.collapse', function () {
-        $(this).parent(".panel").find(".glyphicon-chevron-down").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
         $(this).parent(".panel").find(".text-left").html("Masquer la légende");
+        $(this).parent("div").parent("div").find(".glyphicon-chevron-up").removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");
+
     });
     $collapse.on('hide.bs.collapse', function () {
-        $(this).parent("div").parent("div").find(".glyphicon-chevron-up").removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");
         $(this).parent("div").parent("div").find(".text-left").html("Afficher la légende");
+        $(this).parent(".panel").find(".glyphicon-chevron-down").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
+
     });
 });
