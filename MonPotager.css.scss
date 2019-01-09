@@ -289,7 +289,14 @@ svg {
   }
 }
 
+#on-screen-test {
+  float: left;
+}
+
 @media screen and (min-width: 992px) {
+  #on-screen-test {
+    float: none;
+  }
   .col-right {
     position: absolute;
     top: 0;

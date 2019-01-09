@@ -217,10 +217,20 @@ var g = svg.append("g"),
 svg.attr("viewBox", (-width / 2) + " " + (-height / 2) + " " + (width) + " " + (height))
     .attr("width", width)
     .attr("height", height)
-    .style("pointer-events", "visible")
-    .call(d3.zoom(1)
-        .scaleExtent([1 / 4, 4])
-        .on("zoom", zoomed));
+    .style("pointer-events", "visible");
+
+//Function to the css rule
+function checkSize() {
+    if ($("#on-screen-test").css("float") === "none") {
+        console.log("On Screen");
+        svg.call(d3.zoom(1)
+            .scaleExtent([1 / 4, 4])
+            .on("zoom", zoomed));
+    } else {
+        console.log("On mobile");
+        svg.on(".zoom", null);
+    }
+}
 
 function zoomed() {
     g.attr("transform", d3.event.transform.scale(1));
@@ -581,7 +591,14 @@ $('#reset').on('show.bs.modal', function () {
     display_saves()
 });
 
+
 $(document).ready(function () {
+    // run test on initial page load
+    checkSize();
+
+    // run test on resize of the window
+    $(window).resize(checkSize);
+
     show_items();
     $('#save-btn').addClass("hidden");
     $('#reset').modal('show');
