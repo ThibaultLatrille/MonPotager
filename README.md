@@ -1,30 +1,33 @@
-*UN POINT SUR LES FICHIERS*
+Mon Potager est une application permettant de simuler son potager en
+ insérant les diverses espèces de fruits et légumes,
+ et de savoir si les interactions seront favorables ou défavorables.
+ 
+Mon Potager permet également d'obtenir facilement des informations 
+sur la façon dont un parasite peut être éliminé par des plants compagnes.
 
-- dico_plantes_categories.py : identifiants des espèces et des catégories
-- dico_appartenance.py : liste des espèces et la catégorie à laquelle elles appartiennent
-- dico_interaction_plantes.py : liste avec les identifiants des espèces et le type d'interactions :
-	1 : interaction favorable entre les plantes (exemple : (a,b,1) : a est favorable à b )
-	-1 : interaction défavorable entre les plantes
-	2 : la plante attire l'auxiliaire
-	-2 : la plante/l'auxiliaire repousse le nuisible
+L'application est live à [http://monpotager.org](http://monpotager.org)
 
-- MonPotager.py : fichier python qui permet de remplir MonPotager_template.html en utilisant les données contenus dans les dictionnnaires :
+## Pour améliorer la base de données de MonPotager
 
-### Installer les dependances
+Si la base de données (tableur en ligne ouverte aux suggestions) vous semble incomplète ou erroné, rendez-vous à :
+
+[La base de donnes des espèces](https://docs.google.com/spreadsheets/d/1Wp_fomhElzCspAxgarp1BstonU0HGA_tNB_U2uNskw0/edit?usp=sharing#gid=537765681)
+
+[La base de donnes des interactions](https://docs.google.com/spreadsheets/d/1Wp_fomhElzCspAxgarp1BstonU0HGA_tNB_U2uNskw0/edit?usp=sharing#gid=0537765681)
+
+
+## Pour développer MonPotager en local (linux version)
+
+### Installer les dépendances
 
 ```
 $ git clone https://github.com/ThibaultLatrille/MonPotager
-$ pip3 install --user libsass jinja2 jsmin
+$ cd MonPotager
+$ pip3 install --user -r requirements.txt
 ```
 
-### Generer le fichier MonPotager.html 
+### Générer le fichier index.html 
  
 ```
-$ cd MonPotager
 $ python3 MonPotager.py
 ```
-
-### To do
-    - Pour les nuisibles, comment attirer les auxilliaire qui les repousses (filtre)
-    - Smooth Zoom (et bouttons +/-)
-    - Sauvegarder dans les cookies
