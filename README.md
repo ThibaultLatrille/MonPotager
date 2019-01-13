@@ -7,16 +7,13 @@
 Mon Potager permet également d'obtenir facilement des informations 
 sur la façon dont un parasite peut être éliminé par des plants compagnes.
 
-L'application est live à [http://monpotager.org](http://monpotager.org)
+L'application est actuellement accessible sur [https://monpotager.org](https://monpotager.org)
 
 ## Pour améliorer la base de données de MonPotager
 
-Si la base de données (tableur en ligne ouverte aux suggestions) vous semble incomplète ou erroné, rendez-vous à :
-
-[La base de donnes des espèces](https://docs.google.com/spreadsheets/d/1Wp_fomhElzCspAxgarp1BstonU0HGA_tNB_U2uNskw0/edit?usp=sharing#gid=537765681)
-
-[La base de donnes des interactions](https://docs.google.com/spreadsheets/d/1Wp_fomhElzCspAxgarp1BstonU0HGA_tNB_U2uNskw0/edit?usp=sharing#gid=0537765681)
-
+Si la base de données (tableur en ligne ouverte aux suggestions) vous semble incomplète ou erronée, rendez-vous à :
+ - [La base de donnes des espèces](https://docs.google.com/spreadsheets/d/1Wp_fomhElzCspAxgarp1BstonU0HGA_tNB_U2uNskw0/edit?usp=sharing#gid=537765681)
+ - [La base de donnes des interactions](https://docs.google.com/spreadsheets/d/1Wp_fomhElzCspAxgarp1BstonU0HGA_tNB_U2uNskw0/edit?usp=sharing#gid=0537765681)
 
 ## Pour développer MonPotager en local (linux version)
 
