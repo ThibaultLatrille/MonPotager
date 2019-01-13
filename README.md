@@ -1,4 +1,6 @@
-Mon Potager est une application permettant de simuler son potager en
+ [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+ 
+ Mon Potager est une application permettant de simuler son potager en
  insérant les diverses espèces de fruits et légumes,
  et de savoir si les interactions seront favorables ou défavorables.
  
@@ -31,3 +33,7 @@ $ pip3 install --user -r requirements.txt
 ```
 $ python3 MonPotager.py
 ```
+
+## License
+
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0). Voir [LICENSE.md](https://github.com/ThibaultLatrille/MonPotager/blob/master/LICENSE.md) pour plus d'informations.
