@@ -31,6 +31,7 @@ $ pip3 install --user -r requirements.txt
 $ python3 MonPotager.py
 ```
 
+
 ## License
 
 Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0). Voir [LICENSE.md](https://github.com/ThibaultLatrille/MonPotager/blob/master/LICENSE.md) pour plus d'informations.

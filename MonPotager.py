@@ -35,7 +35,7 @@ if __name__ == '__main__':
     css.close()
 
     env = jinja2.Environment(loader=jinja2.FileSystemLoader('./'))
-    template = env.get_template('MonPotager_template.html')
+    template = env.get_template('MonPotager.html')
 
     first_letter = sorted(set([name[0].upper() for key, name in plants.items() if (appartenance[key] in cat_plants)]))
     sorted_appartenance = sorted(appartenance.items(), key=lambda pl: plants[pl[0]].lower())
