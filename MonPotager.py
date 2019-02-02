@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 import argparse
 from glob import glob
 from association2json import generate_js
@@ -7,6 +6,10 @@ import jinja2
 from jsmin import jsmin
 import sass
 import os
+
+OKBLUE = '\033[94m'
+OKGREEN = '\033[92m'
+ENDC = '\033[0m'
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Minifying the .js and .css with -c option")
@@ -18,17 +21,15 @@ if __name__ == '__main__':
     minified = ""
     if args.c:
         minified = "min."
-        for js_path in sorted(glob("js/*.js")):
-            if ".min.js" not in (js_path):
-                with open(js_path, 'r') as js_file:
-                    jsminified = jsmin(js_file.read())
-                    jsminified_file = open(js_path.replace('.js', ".min.js"), "w")
-                    jsminified_file.write(jsminified)
-                    jsminified_file.close()
-
-        print("Minifying the .js et .css files.")
+        for js_path in ["js/MonPotager.js", "js/data.js"]:
+            with open(js_path, 'r') as js_file:
+                jsminified = jsmin(js_file.read())
+                jsminified_file = open(js_path.replace('.js', ".min.js"), "w")
+                jsminified_file.write(jsminified)
+                jsminified_file.close()
+                print(OKBLUE + "Minifying " + js_path + ENDC)
     else:
-        print(".js and .css not minified, use -c option if you wish to compress files.")
+        print(OKBLUE + ".js and .css not minified, use -c option if you wish to compress files." + ENDC)
 
     css = open("css/MonPotager." + minified + "css", "w")
     css.write(sass.compile(filename='MonPotager.css.scss', output_style=('compressed' if args.c else "nested")))
@@ -49,4 +50,5 @@ if __name__ == '__main__':
                                                   first_letter=first_letter,
                                                   interactions=interactions,
                                                   appartenance=sorted_appartenance).dump('index.html')
-    print("Application generated.\nOpen the file {0}/index.html to open the application.".format(os.getcwd()))
+    print(OKGREEN + "Application generated.\nOpen the file {0}/index.html to open the application.".format(
+        os.getcwd()) + ENDC)

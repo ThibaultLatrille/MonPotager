@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 import csv
 
+WARNING = '\033[93m'
+FAIL = '\033[91m'
+ENDC = '\033[0m'
+
 color = {
     0: "#0F0F0F", 1: "#1776b6", 2: "#ff7f0e", 3: "#9564bf", 4: "#f7b6d2", 5: "#d62728", 6: "#24a221", 7: "#ffe778",
     8: "#8d5649"
@@ -12,6 +16,15 @@ categories = {1: "Légume", 2: "Fruit", 3: "Arômate", 4: "Fleur", 5: "Nuisible"
 
 def reverse_dict(dico):
     return {value: key for key, value in dico.items()}
+
+
+def print_w(txt):
+    print(WARNING + txt + ENDC)
+
+
+def print_fail_assoc(source, inter, target, line):
+    print(FAIL + "Association '{0}' '{1}' '{2}' n'est pas prise en compte (ligne {3}).".format(source, inter,
+                                                                                   target, line) + ENDC)
 
 
 def generate_js(file_name):
@@ -45,11 +58,23 @@ def generate_js(file_name):
     with open('associations.csv', 'r') as csvfile:
         associationsreader = csv.reader(csvfile)
         next(associationsreader)
-        for specie_source, interaction, specie_target, txt, details in associationsreader:
+        for line, (specie_source, interaction, specie_target, source, rank, details) in enumerate(associationsreader):
+
+            drop = False
+            for specie in [specie_source, specie_target]:
+                if specie not in species_name:
+                    print_w("'" + specie + "' n'est pas dans le dictionnaire des espèces.")
+                    drop = True
+
+            if drop:
+                print_fail_assoc(specie_source, interaction, specie_target, line + 1)
+                continue
+
             name_source, cat_source = species_name[specie_source], species_cat[specie_source]
             name_target, cat_target = species_name[specie_target], species_cat[specie_target]
             if name_source == name_target:
-                print("La source ({0}) et la cible sont les mêmes espèces ({1})".format(name_source, name_target))
+                print_w("La source ({0}) et la cible sont les mêmes espèces ({1})".format(name_source, name_target))
+                print_fail_assoc(specie_source, interaction, specie_target, line + 1)
                 continue
 
             if name_source not in name_to_index:
@@ -63,23 +88,28 @@ def generate_js(file_name):
 
             source = name_to_index[name_source]
             target = name_to_index[name_target]
-            assert interaction in description_interactions.keys(), \
-                "interaction '{0}' n'existe pas, seulement {1} sont possible".format(
-                    interaction, "|".join(description_interactions.keys()))
+            if interaction not in description_interactions.keys():
+                print_w("interaction '{0}' n'existe pas, seulement {1} sont possible".format(
+                    interaction, "|".join(description_interactions.keys())))
+                print_fail_assoc(specie_source, interaction, specie_target, line + 1)
+                continue
+
             inter = description_interactions[interaction]
 
             same_association = [assoc for assoc in associations_plant if (assoc[0] == source and assoc[1] == target)]
             if len(same_association) > 0:
                 for assoc in same_association:
                     if assoc[2] == inter:
-                        print("Erreur: {0} {1} {2} car l'association existe déjà.".format(name_source,
+                        print_w("Erreur: {0} {1} {2} car l'association existe déjà.".format(name_source,
                                                                                           interaction,
                                                                                           name_target))
                     else:
-                        print(
+                        print_w(
                             "Erreur: {0} {1} {2} impossible car {3} déjà.".format(
                                 name_source, interaction,
                                 name_target, interaction_forward[interactions[assoc[2]]].lower()))
+                print_fail_assoc(specie_source, interaction, specie_target, line + 1)
+                continue
 
             if ((cat_target in cat_animals) and abs(inter) != 2) or ((cat_target in cat_plants) and abs(inter) != 1):
                 if (cat_target in cat_animals) and abs(inter) != 2:
@@ -87,16 +117,16 @@ def generate_js(file_name):
                 else:
                     inter /= 2
                 nbr_errors += 1
-                print("Erreur: {0} ({3}) {1} {2} ({4}).".format(name_source, interaction, name_target,
+                print_w("Erreur: {0} ({3}) {1} {2} ({4}).".format(name_source, interaction, name_target,
                                                                 cat_source, cat_target))
-                print("Remplacé par: {0} ({3}) {1} {2} ({4}).".format(name_source,
+                print_w("Remplacé par: {0} ({3}) {1} {2} ({4}).".format(name_source,
                                                                       interaction_forward[interactions[inter]],
                                                                       name_target, cat_source, cat_target))
 
             associations_plant.add((source, target, inter))
 
     if nbr_errors > 0:
-        print("{0} erreurs au total".format(nbr_errors))
+        print_w("{0} erreurs corrigées au total".format(nbr_errors))
 
     index_to_name = reverse_dict(name_to_index)
 
@@ -106,7 +136,7 @@ def generate_js(file_name):
     javascript.write('\t"nodes":[\n')
     javascript.write(
         ",\n".join(['\t\t{{"name":"{0}","group":{1},"value":{2},"wiki":"{3}"}}'.format(name, appartenance[index], index,
-                                                                                     species_wiki[name])
+                                                                                       species_wiki[name])
                     for index, name in index_to_name.items()]))
     javascript.write('\n\t],\n')
     # Forward list

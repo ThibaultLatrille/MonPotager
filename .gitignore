@@ -22,4 +22,10 @@ Icon
 .AppleDesktop
 .apdisk
 .idea/
+index.html
+js/data.js
+js/data.min.js
+js/MonPotager.min.js
+css/MonPotager.min.css
+css/MonPotager.css
 __pycache__/
