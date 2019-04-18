@@ -24,7 +24,7 @@ def print_w(txt):
 
 def print_fail_assoc(source, inter, target, line):
     print(FAIL + "Association '{0}' '{1}' '{2}' n'est pas prise en compte (ligne {3}).".format(source, inter,
-                                                                                   target, line) + ENDC)
+                                                                                               target, line) + ENDC)
 
 
 def generate_js(file_name):
@@ -41,13 +41,16 @@ def generate_js(file_name):
     species_cat = dict()
     species_name = dict()
     species_wiki = dict()
+    months = dict()
     with open('especes.csv', 'r') as csvfile:
         speciesreader = csv.reader(csvfile)
         next(speciesreader)
-        for name, cat, disp_name, txt, wiki in speciesreader:
+        for line in speciesreader:
+            name, cat, disp_name, txt, wiki = line[:5]
             species_cat[name] = cat
             species_name[name] = disp_name
             species_wiki[disp_name] = wiki
+            months[name] = line[5:]
 
     associations_plant = set()
     appartenance = dict()
@@ -101,8 +104,8 @@ def generate_js(file_name):
                 for assoc in same_association:
                     if assoc[2] == inter:
                         print_w("Erreur: {0} {1} {2} car l'association existe déjà.".format(name_source,
-                                                                                          interaction,
-                                                                                          name_target))
+                                                                                            interaction,
+                                                                                            name_target))
                     else:
                         print_w(
                             "Erreur: {0} {1} {2} impossible car {3} déjà.".format(
@@ -118,10 +121,10 @@ def generate_js(file_name):
                     inter /= 2
                 nbr_errors += 1
                 print_w("Erreur: {0} ({3}) {1} {2} ({4}).".format(name_source, interaction, name_target,
-                                                                cat_source, cat_target))
+                                                                  cat_source, cat_target))
                 print_w("Remplacé par: {0} ({3}) {1} {2} ({4}).".format(name_source,
-                                                                      interaction_forward[interactions[inter]],
-                                                                      name_target, cat_source, cat_target))
+                                                                        interaction_forward[interactions[inter]],
+                                                                        name_target, cat_source, cat_target))
 
             associations_plant.add((source, target, inter))
 
@@ -205,7 +208,7 @@ def generate_js(file_name):
     for cat in [sorted(cat_plants), sorted(cat_animals)]:
         categories_list += [(k, color[reverse_cat[k]]) for k in cat]
 
-    return index_to_name, appartenance, examples, categories_list, \
+    return months, index_to_name, appartenance, examples, categories_list, \
            sorted([reverse_cat[cat] for cat in cat_plants]), \
            sorted([reverse_cat[cat] for cat in cat_animals]), \
            {"backward": interaction_backward, "forward": interaction_forward}
