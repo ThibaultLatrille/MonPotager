@@ -523,6 +523,8 @@ $('.btn-letter').on("click", function (event) {
     event.stopPropagation();
 });
 
+
+
 $('#save-btn').on("click", function (event) {
     var saves = Cookies.getJSON("saves");
     if (typeof saves === "undefined") {
