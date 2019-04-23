@@ -16,7 +16,7 @@ aubergine,Légume,Aubergine,Solanum melongena,https://fr.wikipedia.org/wiki/Aube
 baguenaudier,Arbres,Baguenaudier,Colutea arborescens,https://fr.wikipedia.org/wiki/Baguenaudier,,,,,,,,,,,,
 basilic,Arômate,Basilic,,https://fr.wikipedia.org/wiki/Basilic_(plante),,,,,,,,,,,,
 bette,Légume,Bette,,https://fr.wikipedia.org/wiki/Bette,,,,,,,,,,,,
-betterave,Légume,Betterave,Beta vulgaris subsp. vulgaris,https://fr.wikipedia.org/wiki/Betterave,,,,,,,,,,,,
+betterave,Légume,Betterave,Beta vulgaris subsp. vulgaris,https://fr.wikipedia.org/wiki/Betterave,S,G,G,G,H,,,,,,,
 bourdons,Auxiliaire,Bourdon,,https://fr.wikipedia.org/wiki/Bombus,,,,,,,,,,,,
 bourrache,Fleur,Bourrache officinale,Borago officinalis,https://fr.wikipedia.org/wiki/Bourrache_officinale,,,,,,,,,,,,
 brocoli,Légume,Brocoli,Brassica oleracea var. italica,https://fr.wikipedia.org/wiki/Brocoli,,,,,,,,,,,,
@@ -119,7 +119,7 @@ poirier,Fruit,Poirier commun,Pyrus communis,https://fr.wikipedia.org/wiki/Poirie
 pois,Légume,Pois,,https://fr.wikipedia.org/wiki/Pois,,,,,,,,,,,,
 poivron,Légume,Poivron,Capsicum annuum,https://fr.wikipedia.org/wiki/Poivron,,,,,,,,,,,,
 pomme de terre,Légume,Pomme de terre,Solanum tuberosum,https://fr.wikipedia.org/wiki/Pomme_de_terre,,,,,,,,,,,,
-pommier,Fruit,Pommier,Malus domestica,https://fr.wikipedia.org/wiki/Pommier_domestique,,,S,G,G,G,G,H,,,,
+pommier,Fruit,Pommier,Malus domestica,https://fr.wikipedia.org/wiki/Pommier_domestique,G,G,G,G,G,G,G,H,G,G,G,G
 potentille,Fleur,Potentille,Potentilla,https://fr.wikipedia.org/wiki/Potentille,,,,,,,,,,,,
 potiron,Légume,Potiron,Cucurbita maxima,https://fr.wikipedia.org/wiki/Potiron,,,,,,,,,,,,
 prunier,Fruit,Prunier,Prunus domestica L.,https://fr.wikipedia.org/wiki/Prunier,,,,,,,,,,,,

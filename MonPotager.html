@@ -347,7 +347,7 @@
     </div>
 </div>
 
-<div class="modal" id="calendar" tabindex="-1">
+<div class="modal" id="calendar" tabindex="-1"><!--Code de la fenêtre affichant le calendrier-->
     <div class="modal-dialog" style="width:70%" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -356,33 +356,34 @@
                 <h4 class="modal-title">Calendrier de semis</h4>
             </div>
             <div class="modal-body">
-                <table class="table" align="center">
-                    <thead class="thead-dark">
+                <table class="table">
                     <tr>
-                        {% for months in ['Plants','January','Ferbruary','March','April','May','June','July','August','September','October','November','December'] %}
-                        <th align="center">{{ months }}</th>
+                        {% for months in
+                        ['Plantes','Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre']
+                        %}<!--Mois en Français pour l'instant-->
+                        <th scope="col">{{ months }}</th>
                         {% endfor %}
                     </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <!--Parcourir les plantes pour créer une ligne par plante -->
-                        <td scope="row" >{{ plants[47] }}</td>
-                        {% for mo in months['carotte'] %}
-                        {% if mo=='S' %}
-                        <td  align="center"><img src="Seed.svg" width="50" height="30"/></td>
-                        {% endif %}
-                        {% if mo=='G' %}
-                        <td align="center"><img src="Grow.png" width="30" height="30"/></td>
-                        {% endif %}
-                        {% if mo=='H' %}
-                        <td align="center"><img src="Harvest.png" width="30" height="30"/></td>
-                        {% endif %}
-                        {% if mo=='' %}
-                        <td align="center"></td>
+                    <tbody id="plantCalendar">
+                    {% for key, value in appartenance if value in cat_plants %}<!--Parcourir les plantes pour créer une ligne par plante -->
+                    <tr data-value="{{ key }}" class="potager-item potager-item-{{ key }} links hidden" >
+                        <th scope="row" valign="bottom">{{ plants[key] }}</th>
+                        {% for mo in months[plants[key]] %}
+                        {% if mo=='S' %}<!--En fonction de Harvest, grow ou seed la cellule aura une typo différente-->
+                        <td bgcolor="#67c23d" style="height: 10px;"><img src="Seed.png" width="40"
+                                                                         height="27"/></td>
+                        {% elif mo=='G' %}
+                        <td bgcolor="#ceca73" style="height: 10px;"><img src="Grow.png" width="40"
+                                                                         height="27"/></td>
+                        {% elif mo=='H' %}
+                        <td bgcolor="#88b2ff" style="height: 10px;"><img src="Harvest.png" width="40"
+                                                                         height="27"/></td>
+                        {% elif mo=='' %}
+                        <td bgcolor="#ff8888" style="height: 10px;"></td>
                         {% endif %}
                         {% endfor %}
                     </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>

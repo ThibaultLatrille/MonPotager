@@ -18,7 +18,8 @@ if __name__ == '__main__':
 
     months, plants, appartenance, examples, categories, cat_plants, cat_animals, interactions = generate_js("js/data.js")
 
-    print(months['carotte'])
+    print(months['Carotte'])
+
 
     minified = ""
     if args.c:

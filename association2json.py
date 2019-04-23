@@ -50,7 +50,7 @@ def generate_js(file_name):
             species_cat[name] = cat
             species_name[name] = disp_name
             species_wiki[disp_name] = wiki
-            months[name] = line[5:]
+            months[name.capitalize() ] = line[5:] #Donc la je met en majuscule la première lettre du nom car je comprends rien à la configuration de [key] et j'ai pas envie de chercher et surtout ca marche très bien comme ça :) En gros pour chercher dans le html le calendrier d'une plante on fera référence à son nom
 
     associations_plant = set()
     appartenance = dict()
