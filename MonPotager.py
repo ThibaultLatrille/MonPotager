@@ -16,7 +16,10 @@ if __name__ == '__main__':
     parser.add_argument('-c', action='store_true')
     args = parser.parse_args()
 
-    plants, appartenance, examples, categories, cat_plants, cat_animals, interactions = generate_js("js/data.js")
+    months, plants, appartenance, examples, categories, cat_plants, cat_animals, interactions = generate_js("js/data.js")
+
+    print(months['Carotte'])
+
 
     minified = ""
     if args.c:
@@ -41,7 +44,8 @@ if __name__ == '__main__':
     first_letter = sorted(set([name[0].upper() for key, name in plants.items() if (appartenance[key] in cat_plants)]))
     sorted_appartenance = sorted(appartenance.items(), key=lambda pl: plants[pl[0]].lower())
 
-    output_from_parsed_template = template.stream(plants=plants,
+    output_from_parsed_template = template.stream(months=months,
+                                                  plants=plants,
                                                   examples=examples,
                                                   minified=minified,
                                                   cat_plants=cat_plants,

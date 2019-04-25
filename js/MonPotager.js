@@ -239,6 +239,7 @@ function zoomed() {
 function remove_nodes() {
     $(".plant", "#jets-MonPotager-content").removeClass("hidden");
     $(".potager-item", "#upper-left").addClass("hidden");
+    $(".potager-item", "#plantCalendar").addClass("hidden");/*Permet de supprimer du calendrier la ligne de la plante*/
     $(".padding-div", "#upper-left").addClass("hidden");
     index_nodes = [];
     nodes = [];
@@ -296,6 +297,7 @@ function remove_node(cur_index) {
         $("#plant-" + String(cur_index), "#jets-MonPotager-content").removeClass("hidden");
     }
     $(".potager-item-" + String(cur_index), "#upper-left").addClass("hidden");
+    $(".potager-item-" + String(cur_index), "#plantCalendar").addClass("hidden");/*Permet de supprimer du calendrier la ligne de la plante*/
 
     var i = index_nodes.indexOf(cur_index);
     index_nodes.splice(i, 1);
@@ -329,6 +331,7 @@ function add_node(cur_index, add_links) {
         $("#plant-" + String(cur_index), "#jets-MonPotager-content").addClass("hidden");
     }
     $(".potager-item-" + String(cur_node.value), "#upper-left").removeClass("hidden");
+    $(".potager-item-" + String(cur_node.value), "#plantCalendar").removeClass("hidden");/*Permet d'ajouter au calendrier la ligne de la plante*/
 
     if (add_links) {
         for (var f = 0; f < graph.forward[cur_index].length; f++) {
@@ -522,6 +525,8 @@ $('.btn-letter').on("click", function (event) {
     }
     event.stopPropagation();
 });
+
+
 
 $('#save-btn').on("click", function (event) {
     var saves = Cookies.getJSON("saves");

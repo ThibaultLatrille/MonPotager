@@ -9,6 +9,16 @@ html {
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
+table
+{
+    table-layout: fixed;
+    width: 100px;
+}
+table, th, td {
+  border: 1px solid black;
+  width: 30px
+}
+
 body {
   margin: 0;
 }
@@ -182,10 +192,27 @@ optgroup {
 table {
   border-spacing: 0;
   border-collapse: collapse;
+      border: 2px solid rgb(200, 200, 200);
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    vertical-align: middle;
 }
 td,
 th {
-  padding: 0;
+  padding: 10;
+  vertical-align: middle;
+  text-align: center;
+}
+
+th[scope="col"] {
+    background-color: #cdcdcd;
+    text-align: center;
+    vertical-align: middle;
+}
+
+th[scope="row"] {
+    text-align: center;
+    font-size: 14px;
 }
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {
