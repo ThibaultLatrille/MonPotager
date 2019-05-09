@@ -1,0 +1,188 @@
+@startuml
+' Définition des classes
+class Media {
+    hash : String
+    url : String
+    type : char
+}
+class Potager {
+    id : Integer
+    nom : String
+    /'coordonnées GPS + altitude ==> format à définir
+      Pourrait être utile pour un futur service connecté à la météo (pluviométrie, ensoleillement, températures pour éviter gel, ...)
+    '/
+    geolocalisation : String
+}
+class Utilisateur {
+    id : Integer
+    pseudo : String
+}
+class Espece {
+    id : Integer
+    nom : String
+    nom_latin : String
+    'categorie : P : plant, A : auxiliaire, N : nuisible
+    categorie : char
+}
+class Lien {
+    /' Relation plante à plante
+        "E" : sous-espèce
+        "+" : favorise
+        "-" : défavorise
+        Relation plante à auxiliaire :
+        ">" : attire
+        Relation nuisible à plante :
+        "<" : est attiré par
+    '/
+    type : char
+}
+class Plante {
+    /'
+    R : Résistante (rustique) : Plante résistante au gel. 
+    S : À protéger (semi-rustique) : Plante qui supporte la fraîcheur mais qui nécessite une protection contre le gel. 
+    F : À rentrer (fragile) : Plante qui craint le froid et qui doit être abritée pendant la saison froide. 
+    Rusticité USDA :
+    0	a	< -53,9
+    0	b	-53,9	-51,1
+    1	a	-51,1	-48,3
+    1	b	-48,3	-45,6
+    2	a	-45,6	-42,8
+    2	b	-42,8	-40
+    3	a	-40	-37,2
+    3	b	-37,2	-34,4
+    4	a	-34,4	-31,7
+    4	b	-31,7	-28,9
+    5	a	-28,9	-26,1
+    5	b	-26,1	-23,3
+    6	a	-23,3	-20,6
+    6	b	-20,6	-17,8
+    7	a	-17,8	-15
+    7	b	-15	-12,2
+    8	a	-12,2	-9,4
+    8	b	-9,4	-6,7
+    9	a	-6,7	-3,9
+    9	b	-3,9	-1,1
+    10	a	-1,1	+1,7
+    10	b	+1,7	+4,4
+    11	a	+4,4	+7,2
+    11	b	+7,2	+10
+    12	a	+10	+12,8
+    12	b	+12,8	+15,6
+    13	a	+15,6	+18,3
+    13	b	+18,3	+21
+    14	a	+21	Max
+    '/
+    rusticite : String
+    /'Echelle de 1 à 5
+        "1" : ombre
+        "3" : mi-ombre
+        "5" : soleil
+    '/
+    exposition : ushort
+    'Besoin en eau : valeur entre 1 et 5 ou 5 représente un fort besoin en eau
+    besoin_eau : ushort
+    /'Végétation
+        2 : bisannuelle : vit 2 ans, la première année se développe, la 2ème année donne ses fruits
+        1 : annuelle : plante qui vit moins d'1 an
+        V : vivace : vit plus de 2 ans
+    '/
+    vegetation : char
+    /'Chaine comprenant toutes les multiplications possibles pour la plante (ex : GB)
+        S : Semis : La plante se reproduit par la plantation de graines. 
+        D : Division : Une partie de la racine (rhizome, tubercule) sert à créer de nouvelles pousses. 
+        B : Bouturage : Une branche est plantée en terre, où elle produit de nouvelles racines.
+        M : Marcottage : La branche n'est pas coupée de la plante mais elle est en partie enfouie dans la terre, où elle développe ses propres racines. 
+        G : Greffe : Un fragment de plante est implanté sur une autre plante. 
+        I : Impossible : Il n'est pas possible, pour un particulier, de multiplier sa plante. S'il en veut une autre, il lui faut l'acheter auprès d'un professionnel. 
+    '/
+    multiplication : String
+    /'Plantations possibles pour la plante
+        T : pleine terre
+        B : bac / pot / jardinière
+        A : plante aquatique
+        O : aquaponie / hydroponie
+    '/
+    plantation : String
+    /'
+        C : caduc : la plante caduque ne conserve ses feuilles que quelques mois dans l'année
+        S : semi-persistant/semi-caduc : la plante conserve une partie de son feuillage toute l'année, car la majorité du feuillage reste en place durant la période hivernale
+        P : persistant : le feuillage dure toute l'année
+    '/
+    feuillage : char
+    /'PH du sol sur lequel il est possible de cultiver la plante
+        "L" : Sol alcalin : Le pH est supérieur à 7. Il s'agit principalement des sols calcaires. 
+        "N" : Sol neutre : Le pH est compris entre 6,5 et 7,2. La plupart des plantes y poussent correctement. 
+        "A" : Sol acide : Le pH est inférieur à 7. Il s'agit principalement des terres de bruyère. 
+    '/
+    ph : String
+    /'Sol sur lequel il est possible de cultiver la plante
+        "A" : argileux : comprend plus de 40 % d'argile.
+        "L" : limoneux : si accumule plus de 35 % de limon
+        "S" : sableux : plux de 60% de sable
+        "H" : humifère : riche en humus et en matières organiques
+        "C" : calcaire : qui ne retient pas l'eau
+    '/
+    sol : String
+    /'Forme(s) que la plante peut prendre :
+        "_" : étalé ou tapissant
+        "B" : Buissonnant
+        "O" : Arrondi, en boule ou ovale
+        "V" : Ouvert ou divergeant
+        "^" :  Conique ou pyramidal
+        "I" : Élancé ou colonnaire
+        "T" : Palme ou parasol
+        "R" : Pleureur ou tombant
+        "P" : Palissable - L'arbre fruitier se développe selon une forme géométrique grâce à des supports horizontaux. Les branches s'étendent sur deux dimensions seulement.
+    '/
+    forme : String
+    /'Climat dans lequel la plante peut se développer
+        "E" : équatorial
+        "T" : tropical
+        "S" : subtropical
+        "D" : désertique
+        "O" : océanique
+        "C" : continental
+        "M" : méditerranéen
+        "A" : subartique
+        "P" : polaire
+    '/
+    climat : String
+    /'Transformations possible des parties consommables :
+        "M" : mellifere, qui produit du miel
+        "H" : possibilité de faire de l'huile
+        "F" : possibilité de faire de la farine
+        "P" : possibilité de faire de la poudre
+        "T" : possibilité de créer des teintures
+        "S" : sèchable
+        "A" : fourragère (pour nourrir les animaux)
+    '/
+    transformations : String
+    'les dimensions suivantes sont en cm
+    hauteur_min : ushort
+    hauteur_max : ushort
+    diametre_min : ushort
+    diametre_max : ushort
+    'Liste de couleur séparée par des virgules (ex : blanche, rouge)
+    couleurs_fleurs : String
+    couleurs_feuilles : String
+    /'# représente un nombre entier
+        Nombre de pieds au m² : #p
+        Nombre de tige au cm linéaire : #t
+    '/
+    densite : String
+    '12 (mois) * 4 (évènement) bits dans cet ordre : plantation, floraison, récolte, taille
+    calendrier : byte[48]
+}
+' Relations
+Espece "*" -- "1" Espece
+(Espece, Espece) -- Lien
+Espece "0..1" o-- "1" Plante
+Espece "*" -- "*" Media
+Potager "0..1" -- "*" Media
+Utilisateur *-- Potager
+/'TODO
+- gérer les modes d'identification
+- gérer la partie modification communautaire
+- gérer la partie spaciale
+'/
+@enduml
