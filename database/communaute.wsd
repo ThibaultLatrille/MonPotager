@@ -71,6 +71,6 @@ class Modification {
 Potager "0..1" -- "*" Media
 Utilisateur "1" -- "*" Potager : MesPotagers
 Utilisateur "*" -- "*" Plante : MesPlantesFavorites
-Utilisateur "1" -- "*" Graph : MesDInteractions
+Utilisateur "1" -- "*" Graph : MesInteractions
 Graph "*" -- "*" Plante
 @enduml
