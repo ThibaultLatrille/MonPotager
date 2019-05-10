@@ -1,0 +1,26 @@
+@startuml Experimentation
+class Media {
+    'hash est une valeur unique (on évite les doublons en base de données)
+    hash : String
+    url : String
+    /'
+        P = photo
+        R = référence
+        L = lien
+        V = vidéo
+        B = boutique, c.a.d. où trouver le produit
+    '/
+    type : char
+}
+class Experimentation {
+    id : Integer
+    nom : String
+}
+class Role {
+    initiateur : bool
+}
+' Relations
+Utilisateur "*" -- "*" Experimentation
+(Utilisateur,Experimentation) .. Role
+Experimentation "*" -- "*" Media
+@enduml

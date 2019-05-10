@@ -1,47 +1,10 @@
-@startuml Base_de_donnees
+@startuml Connaissance
 ' Définition des classes
 class Media {
+    'hash est une valeur unique (on évite les doublons en base de données)
     hash : String
     url : String
     type : char
-}
-class Potager {
-    id : Integer
-    nom : String
-    /'coordonnées GPS + altitude ==> format à définir
-      Pourrait être utile pour un futur service connecté à la météo (pluviométrie, ensoleillement, températures pour éviter gel, ...)
-    '/
-    geolocalisation : String
-}
-class Graph {
-    id : Integer
-    nom : String
-}
-class Utilisateur {
-    id : Integer
-    email : String
-    pseudo : String
-    'SHA256 du mot de passe
-    mot_de_passe : char[32]
-    'Par exemple : "Europe/Paris", https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-    timezone : String
-    /'Rangs qui définit les droits des utilisateurs
-        "A" : administrateur
-        "E" : peut valider une espèce
-        "L" : peut valider un lien
-        "M" : peut valider un media
-    '/
-    rang : String
-    'OAuth, les token ont des tailles variables
-    'Twitter semble limiter à 50 charactères
-    facebook_profile_id : Integer
-    facebook_token : String
-    twitter_profile_id : Integer
-    twitter_token : String
-    google_profile_id : Integer
-    google_token : String
-    github_profile_id : Integer
-    github_token : String
 }
 class Espece {
     id : Integer
@@ -180,7 +143,8 @@ class Plante {
     climat : String
     /'Transformations possible des parties consommables :
         "M" : mellifere, qui produit du miel
-        "H" : possibilité de faire de l'huile
+        "E" : possibilité de faire de l'huile exprimée
+        "V" : possibilité de faire de l'huile volatile
         "F" : possibilité de faire de la farine
         "P" : possibilité de faire de la poudre
         "T" : possibilité de créer des teintures
@@ -204,32 +168,10 @@ class Plante {
     '12 (mois) * 4 (évènement) bits dans cet ordre : plantation, floraison, récolte, taille
     calendrier : byte[48]
 }
-class Modification {
-    id : Integer
-    quand : datetime
-    'E = Espèce, M = Média, L = Lien
-    quoi : char
-    'ID de l'espèce/média/lien
-    element : Integer
-    'les champs suivants prennent les ID des utilisateurs
-    qui : Integer
-    approuver_par : Integer
-    'C = création, M = modification, S = suppression
-    action : char
-    'associations clé-valeur au format JSON (ex : {"feuillage":"C", "ph":"N"} )
-    anciennes_valeurs : String
-}
 ' Relations
 Espece "*" -- "1" Espece
 (Espece, Espece) .. Lien
 Espece "1" <|-- "0..1" Plante
 Espece "*" -- "*" Media
 Espece "1" -- "1..*" Nom : traduction
-Potager "0..1" -- "*" Media
-Utilisateur "1" -- "*" Potager : MesPotagers
-Utilisateur "*" -- "*" Plante : MesFavoris
-Utilisateur "1" -- "*" Graph : MesGraphs
-/'TODO
-- gérer la partie spaciale
-'/
 @enduml
