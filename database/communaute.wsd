@@ -14,6 +14,8 @@ class Utilisateur {
         "M" : peut valider un media
     '/
     rang : String
+    ' Clé API au format GUID (https://fr.wikipedia.org/wiki/Globally_Unique_Identifier)
+    api_key : char[16]
     'OAuth, les token ont des tailles variables
     'Twitter semble limiter à 50 charactères
     facebook_profile_id : Integer

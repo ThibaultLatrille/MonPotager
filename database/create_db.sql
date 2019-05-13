@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS user (
     password BYTEA NOT NULL,
     timezone VARCHAR(32) NOT NULL,
     rang VARCHAR(16),
+    api_key BYTEA, -- 16 octets (GUID)
     facebook_id INTEGER,
     facebook_token BYTEA,
     twitter_id INTEGER,
