@@ -1,5 +1,6 @@
 -- PostgreSQL
 CREATE DATABASE monpotager ENCODING = 'UTF-8';
+CREATE EXTENSION postgis;
 USE monpotager;
 -- créations des tables, les noms ont été traduits en anglais
 CREATE TABLE IF NOT EXISTS media (
@@ -7,7 +8,7 @@ CREATE TABLE IF NOT EXISTS media (
     url VARCHAR(255) UNIQUE NOT NULL,
     type CHAR(1) NOT NULL
 );
-CREATE TABLE IF NOT EXISTS user (
+CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
     email VARCHAR(255) UNIQUE,
     nickname VARCHAR(32) NOT NULL,
@@ -43,7 +44,7 @@ CREATE TABLE IF NOT EXISTS modification (
     id SERIAL PRIMARY KEY,
     when TIMESTAMP DEFAULT now(),
     what CHAR(1),
-    element INTEGER,
+    item INTEGER,
     who INTEGER NOT NULL,
     approved_by INTEGER,
     action CHAR(1) NOT NULL,
