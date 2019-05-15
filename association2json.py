@@ -42,7 +42,7 @@ def generate_js(file_name):
     species_name = dict()
     species_wiki = dict()
     months = dict()
-    with open('especes.csv', 'r') as csvfile:
+    with open('database/especes.csv', 'r') as csvfile:
         speciesreader = csv.reader(csvfile)
         next(speciesreader)
         for line in speciesreader:
@@ -58,7 +58,7 @@ def generate_js(file_name):
     count = 0
     nbr_errors = 0
 
-    with open('associations.csv', 'r') as csvfile:
+    with open('database/associations.csv', 'r') as csvfile:
         associationsreader = csv.reader(csvfile)
         next(associationsreader)
         for line, (specie_source, interaction, specie_target, source, rank, details) in enumerate(associationsreader):
