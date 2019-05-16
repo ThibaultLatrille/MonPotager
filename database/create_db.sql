@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS interaction (
 );
 CREATE TABLE IF NOT EXISTS modification (
     id SERIAL PRIMARY KEY,
-    when TIMESTAMP DEFAULT now(),
+    datetime TIMESTAMP DEFAULT now(),
     what CHAR(1),
     item INTEGER,
     who INTEGER NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS experimentation (
     description TEXT
 );
 CREATE TABLE IF NOT EXISTS role (
-    user INTEGER NOT NULL,
+    who INTEGER NOT NULL,
     experimentation INTEGER NOT NULL,
     creator BOOLEAN DEFAULT FALSE,
     roles VARCHAR(8)
@@ -101,21 +101,22 @@ CREATE TABLE IF NOT EXISTS media_item (
     media INTEGER,
     specie INTEGER,
     garden INTEGER,
-    experimentation INTEGER,
+    experimentation INTEGER
 );
 CREATE TABLE IF NOT EXISTS favourite_plant (
     plant INTEGER,
-    user INTEGER
+    who INTEGER
 );
 -- création des clé étrangères
-ALTER TABLE role ADD CONSTRAINT fk_role_user FOREIGN KEY (user) REFERENCES user (id);
+ALTER TABLE role ADD CONSTRAINT fk_role_user FOREIGN KEY (who) REFERENCES users (id);
 ALTER TABLE role ADD CONSTRAINT fk_role_experimentation FOREIGN KEY (experimentation) REFERENCES experimentation (id);
 ALTER TABLE media_item ADD CONSTRAINT fk_media_garden FOREIGN KEY (garden) REFERENCES garden (id);
 ALTER TABLE media_item ADD CONSTRAINT fk_media_specie FOREIGN KEY (specie) REFERENCES specie (id);
 ALTER TABLE media_item ADD CONSTRAINT fk_media_experimentation FOREIGN KEY (experimentation) REFERENCES experimentation (id);
-ALTER TABLE garden ADD CONSTRAINT fk_garden_user FOREIGN KEY (user) REFERENCES user (id);
-ALTER TABLE interaction ADD CONSTRAINT fk_interaction_user FOREIGN KEY (user) REFERENCES user (id);
+ALTER TABLE garden ADD CONSTRAINT fk_garden_user FOREIGN KEY (owner) REFERENCES users (id);
+ALTER TABLE interaction ADD CONSTRAINT fk_interaction_specie1 FOREIGN KEY (specie1) REFERENCES specie (id);
+ALTER TABLE interaction ADD CONSTRAINT fk_interaction_specie2 FOREIGN KEY (specie2) REFERENCES specie (id);
 ALTER TABLE favourite_plant ADD CONSTRAINT fk_favourite_plant FOREIGN KEY (plant) REFERENCES specie (id);
-ALTER TABLE favourite_plant ADD CONSTRAINT fk_favourite_user FOREIGN KEY (user) REFERENCES user (id);
-ALTER TABLE modification ADD CONSTRAINT fk_modification_who FOREIGN KEY (who) REFERENCES user (id);
-ALTER TABLE modification ADD CONSTRAINT fk_modification_approver FOREIGN KEY (approved_by) REFERENCES user (id);
+ALTER TABLE favourite_plant ADD CONSTRAINT fk_favourite_user FOREIGN KEY (who) REFERENCES users (id);
+ALTER TABLE modification ADD CONSTRAINT fk_modification_who FOREIGN KEY (who) REFERENCES users (id);
+ALTER TABLE modification ADD CONSTRAINT fk_modification_approver FOREIGN KEY (approved_by) REFERENCES users (id);
