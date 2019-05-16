@@ -370,13 +370,13 @@
                         <th scope="row" valign="bottom">{{ plants[key] }}</th>
                         {% for mo in months[plants[key]] %}
                         {% if mo=='S' %}<!--En fonction de Harvest, grow ou seed la cellule aura une typo différente-->
-                        <td bgcolor="#67c23d" style="height: 10px;"><img src="Seed.png" width="40"
+                        <td bgcolor="#67c23d" style="height: 10px;"><img src="images/Seed.png" width="40"
                                                                          height="27"/></td>
                         {% elif mo=='G' %}
-                        <td bgcolor="#ceca73" style="height: 10px;"><img src="Grow.png" width="40"
+                        <td bgcolor="#ceca73" style="height: 10px;"><img src="images/Grow.png" width="40"
                                                                          height="27"/></td>
                         {% elif mo=='H' %}
-                        <td bgcolor="#88b2ff" style="height: 10px;"><img src="Harvest.png" width="40"
+                        <td bgcolor="#88b2ff" style="height: 10px;"><img src="images/Harvest.png" width="40"
                                                                          height="27"/></td>
                         {% elif mo=='' %}
                         <td bgcolor="#ff8888" style="height: 10px;"></td>
