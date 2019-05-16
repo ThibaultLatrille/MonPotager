@@ -8,7 +8,7 @@ class Media {
 }
 class Espece {
     id : Integer
-    'categorie : P : plant, A : auxiliaire, N : nuisible
+    'categorie: C=céréales, V=légume (vegetable), F=fruit, H=arômates (herbs), O=flower, A=auxiliaire (helper), P=nuisible (pest)
     categorie : char
 }
 'Pour traduire les noms (fra, lat), https://fr.wikipedia.org/wiki/Liste_des_codes_ISO_639-1 (prendre 639-3)
@@ -19,16 +19,13 @@ class Nom {
 class Lien {
     'ID sur le lien pour tracer les modifications
     id : Integer
-    /' Relation plante à plante
-        "E" : sous-espèce
-        "+" : favorise
-        "-" : défavorise
-        Relation plante à auxiliaire :
-        ">" : attire
-        Relation nuisible à plante :
-        "<" : est attiré par
+    ' Si la relation est bénéfique de espèce 1 vers espèce B
+    benefique : bool
+    /' Quelles sont les références pour vérifier les données
+    Livre
+    Lien
     '/
-    type : char
+    sources : JSON
 }
 class Plante {
     /'

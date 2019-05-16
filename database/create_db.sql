@@ -93,9 +93,10 @@ CREATE TABLE IF NOT EXISTS specie (
 );
 CREATE TABLE IF NOT EXISTS interaction (
     id SERIAL PRIMARY KEY,
-    type CHAR(1) NOT NULL,
+    beneficial BOOLEAN DEFAULT TRUE,
     specie1 INTEGER NOT NULL,
-    specie2 INTEGER NOT NULL
+    specie2 INTEGER NOT NULL,
+    sources JSON NOT NULL
 );
 CREATE TABLE IF NOT EXISTS media_item (
     media INTEGER,
