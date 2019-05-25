@@ -3,5 +3,17 @@ from . import app
 
 @app.route('/')
 def home_page():
-    print('Home')
-    return 'Accueil /'
+    return render_template('home.html')
+
+@app.route('/<int:post_id>-<string:name>.html')
+def item_page():
+    return 'Plant'
+
+@app.route('/interactions-entre-plantes-legumes-fruits-arbres-fleurs-aromates-maladies-auxiliaires.html')
+def interactions():
+    return render_template('interactions.html')
+
+@app.route('/a-propos.html')
+@app.route('/about.html')
+def about():
+    return render_template('about.html')
