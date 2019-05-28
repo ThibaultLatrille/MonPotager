@@ -1,29 +1,37 @@
-<nav class="navbar sticky-top navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
-    <img src="{{STATIC_FOLDER}}/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt=""> MonPotager
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+<div class="navbar-brand">
+    <a class="navbar-item" href="/">
+    <img src="{{ STATIC_URL }}/images/logo.png" width="112" height="28"> MonPotager
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Base de donn&#233;es
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item disabled" href="#">Plantes</a>
-                <a class="dropdown-item disabled" href="#">- Arbres</a>
-                <a class="dropdown-item disabled" href="#">- Arômates</a>
-                <a class="dropdown-item disabled" href="#">- Fleurs</a>
-                <a class="dropdown-item disabled" href="#">- L&#233;gumes</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item disabled" href="#">Maladies</a>
-                <a class="dropdown-item disabled" href="#">Nuisibles</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item disabled" href="#">Auxiliaires</a>
-            </div>
-        </li>
-        <li class="nav-item"><a class="nav-link" href="#">Interactions</a></li>
-        <div class="my-2 my-lg-0">
-            <li class="nav-item"><a class="nav-link" href="#">Cr&#233;dits</a></li>
-        </div>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarTopLeft">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </a>
+</div>
+
+<div id="navbarTopLeft" class="navbar-menu">
+<div class="navbar-start">
+<a class="navbar-item" href="/interactions-entre-plantes-legumes-fruits-arbres-fleurs-aromates-maladies-auxiliaires.html">Interactions</a>
+<div class="navbar-item has-dropdown is-hoverable">
+    <a class="navbar-link">Base de donn&#233;es</a>
+    <div class="navbar-dropdown">
+        <a class="navbar-item" href="#">Plantes</a>
+        <a class="navbar-item" href="#">- Arbres</a>
+        <a class="navbar-item" href="#">- Arômates</a>
+        <a class="navbar-item" href="#">- Fleurs</a>
+        <a class="navbar-item" href="#">- L&#233;gumes</a>
+        <hr class="navbar-divider" />
+        <a class="navbar-item" href="#">Maladies</a>
+        <a class="navbar-item" href="#">Nuisibles</a>
+        <hr class="navbar-divider" />
+        <a class="navbar-item" href="#">Auxiliaires</a>
     </div>
+</div>
+</div>
+
+<div class="navbar-end"><div class="navbar-item"><div class="buttons">
+    <a class="button is-primary"><strong>Sign up</strong></a>
+    <a class="button is-light">Log in</a>
+</div></div></div>
+</div>
 </nav>
