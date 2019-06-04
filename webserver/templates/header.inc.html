@@ -1,7 +1,7 @@
 <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
 <div class="navbar-brand">
     <a class="navbar-item" href="/">
-    <img src="{{ STATIC_URL }}/images/logo.png" width="112" height="28"> MonPotager
+    <img src="{{ STATIC_URL }}/images/logo.png" width="64" height="28"> MonPotager
     </a>
 
     <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarTopLeft">
@@ -13,7 +13,7 @@
 <div class="navbar-start">
 <a class="navbar-item" href="/interactions-entre-plantes-legumes-fruits-arbres-fleurs-aromates-maladies-auxiliaires.html">Interactions</a>
 <div class="navbar-item has-dropdown is-hoverable">
-    <a class="navbar-link">Base de donn&#233;es</a>
+    <a class="navbar-link" href="/plante/1-fraisier-des-bois.html">Base de donn&#233;es</a>
     <div class="navbar-dropdown">
         <a class="navbar-item" href="#">Plantes</a>
         <a class="navbar-item" href="#">- Arbres</a>
@@ -26,6 +26,12 @@
         <hr class="navbar-divider" />
         <a class="navbar-item" href="#">Auxiliaires</a>
     </div>
+</div>
+<div class="navbar-item field has-addons">
+    <div class="control">
+        <input class="input" type="text" placeholder="Rechercher...">
+    </div>
+    <div class="control"><a class="button is-success">&#x1F50D;</a></div>
 </div>
 </div>
 
