@@ -1,4 +1,5 @@
 from flask import Flask, g
+from flask_caching import Cache
 import sys
 import psycopg2
 
@@ -7,6 +8,7 @@ import config
 
 app = Flask(__name__)
 app.jinja_env.globals['STATIC_URL'] = config.STATIC_URL
+cache = Cache(app,config={'CACHE_TYPE': 'simple'})
 
 
 def get_db():
