@@ -1,0 +1,12 @@
+body {
+    padding: 3.5rem 0;
+}
+.tree {color: #8d5649;}
+.herb {color: #9564bf}
+.cereal {color: #ffe778;}
+.fruit {color: #ff7f0e;}
+.flower {color: #f7b6d2;}
+.vegetable {color: #1776b6;}
+.auxiliary {color: #c0c0c0}
+.pest {color: #f00;}
+.sickness {color: #333;}
