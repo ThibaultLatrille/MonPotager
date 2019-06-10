@@ -5,6 +5,8 @@ jinja2
 #pour le serveur web
 Flask
 Flask-OAuth
+Flask-Caching
 
 #Base de données
 Psycopg2
+#SQLalchemy
