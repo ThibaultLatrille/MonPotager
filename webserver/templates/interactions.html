@@ -6,9 +6,9 @@
 </head>
 <body>
 {% include 'header.inc.html' %}
-<div class="container">
+<div class="is-clearfix">
     <!-- Left menu -->
-    <nav class="panel" style="max-width: 512px;">
+    <nav class="panel is-pulled-left" style="min-width: 512px; max-width: 512px; float:left;">
         <p class="panel-heading">Ajouter des plantes
             <span style="float: right;" title="Trier par nom alphabétiquement ou par type de plante puis nom"><i class="fas fa-sort-alpha-down"></i> <span class="select is-small"><select id="sort_list">
                     <option value="n">nom</option>
@@ -59,6 +59,7 @@
             <!-- Mettre période de dégâts ? -->
         </p>
     </nav>
+    <svg id="graph"></svg>
 </div>
 
 <div class="container-fluid">
@@ -210,7 +211,6 @@
         </div>
     </div>
 </div>
-{% include 'footer.inc.html' %}
 <div class="modal fade" id="wiki-modal" tabindex="-1">
     <div class="modal-background"></div>
     <div class="modal-content">
@@ -235,12 +235,7 @@
         </div>
         <div class="modal-body">
             <b>Niveau 1 (débutant), </b>un potager avec uniquement des interactions positives : <br/>
-            <button id="reset-1" data-plants="Ail|Betterave|Camomille allemande|Carotte|Oignon|Pommier"
-                    type="button"
-                    class="btn btn-primary center-block reset-btn" data-dismiss="modal" style="margin-top: 5px">Ail,
-                betterave, camomille
-                allemande, carotte, oignon, pommier
-            </button>
+            <button id="reset-1" data-plants="Ail|Betterave|Camomille allemande|Carotte|Oignon|Pommier" type="button" class="btn btn-primary center-block reset-btn" data-dismiss="modal" style="margin-top: 5px">Ail, betterave, camomille allemande, carotte, oignon, pommier</button>
             <br/>
             <b>Niveau 2 (intermédiaire), </b>un potager avec des nuisibles dont il faut vous débarrasser : <br/>
             <button id="reset-0" data-plants="Carotte|Pommier|Betterave|Haricot" type="button" class="btn btn-primary center-block reset-btn" data-dismiss="modal" style="margin-top: 5px">Carotte, pommier, betterave et haricot</button>
@@ -269,9 +264,7 @@
         <div class="modal-body">
             <table class="table">
                 <tr>
-                    {% for months in
-                    ['Plantes','Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre']
-                    %}<!--Mois en Français pour l'instant-->
+                    {% for months in ['Plantes','Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'] %}<!--Mois en Français pour l'instant-->
                     <th scope="col">{{ months }}</th>
                     {% endfor %}
                 </tr>
@@ -281,14 +274,11 @@
                     <th scope="row" valign="bottom">{{ plants[key] }}</th>
                     {% for mo in months[plants[key]] %}
                     {% if mo=='S' %}<!--En fonction de Harvest, grow ou seed la cellule aura une typo différente-->
-                    <td bgcolor="#67c23d" style="height: 10px;"><img src="{{STATIC_URL}}/images/Seed.png" width="40"
-                                                                        height="27"/></td>
+                    <td bgcolor="#67c23d" style="height: 10px;"><img src="{{STATIC_URL}}/images/Seed.png" width="40" height="27"/></td>
                     {% elif mo=='G' %}
-                    <td bgcolor="#ceca73" style="height: 10px;"><img src="{{STATIC_URL}}/images/Grow.png" width="40"
-                                                                        height="27"/></td>
+                    <td bgcolor="#ceca73" style="height: 10px;"><img src="{{STATIC_URL}}/images/Grow.png" width="40" height="27"/></td>
                     {% elif mo=='H' %}
-                    <td bgcolor="#88b2ff" style="height: 10px;"><img src="{{STATIC_URL}}/images/Harvest.png" width="40"
-                                                                        height="27"/></td>
+                    <td bgcolor="#88b2ff" style="height: 10px;"><img src="{{STATIC_URL}}/images/Harvest.png" width="40" height="27"/></td>
                     {% elif mo=='' %}
                     <td bgcolor="#ff8888" style="height: 10px;"></td>
                     {% endif %}
