@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html class="is-clipped" lang="fr">
 <head>
 <title>MonPotager - Interactions</title>
 {% include 'head.inc.html' %}
 </head>
 <body>
 {% include 'header.inc.html' %}
-<div class="is-clearfix">
+<div class="hero is-fullheight-with-navbar is-fullwidth is-clearfix">
     <!-- Left menu -->
     <nav class="panel is-pulled-left" style="min-width: 512px; max-width: 512px; float:left;">
         <p class="panel-heading">Ajouter des plantes
@@ -23,7 +23,7 @@
         <p class="panel-tabs is-hidden-mobile is-size-7" id="letters">
             {% for l in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}<a href="#go-{{l}}" data-letter="{{ letter }}">{{l}}</a> {% endfor %}
             {#{% for letter in first_letter %}
-            <span data-letter="{{ letter }}" class="btn-letter btn btn-default btn-sm" style="padding: 5px 0">{{ letter }}</span>
+            <span data-letter="{{ letter }}" class="button-letter button button-default is-small" style="padding: 5px 0">{{ letter }}</span>
             {% endfor %}#}
         </p>
         <label class="panel-block is-size-7"><input type="checkbox" /> Cacher les interactions défavorables avec les plantes déjà dans mon potager</label>
@@ -36,8 +36,8 @@
         <p class="panel-heading">Dans mon potager
             <span style="float: right;">
                 <a id="save-btn" class="button is-success is-small" style="margin-right: 4px"><i class="fas fa-download"></i></a>
-                <a id="calendar-btn" href="#" data-toggle="modal" class="button is-info is-small" style="margin-right:16px" data-target="#calendar"><i class="far fa-calendar-alt"></i></a>
-                <a href="#" data-toggle="modal" class="button is-small" data-target="#reset"><i class="fas fa-sync"></i></a>
+                <a id="calendar-btn" href="javascript:modal('calendar')" class="button is-info is-small" style="margin-right:16px" data-target="#calendar"><i class="far fa-calendar-alt"></i></a>
+                <a href="javascript:modal('reset')" class="button is-small" data-target="#reset"><i class="fas fa-sync"></i></a>
             </span>
         </p>
         <p class="panel-block" style="display: block;"><strong>Plantes</strong> <span style="float: right;" class="is-size-7">
@@ -79,21 +79,19 @@
                         {% endfor %}#}
                     </div>
                     <div id="interaction-pos" class="padding-div">
-                        <i class="far fa-check-circle green"></i></span>
+                        <i class="far fa-check-circle green"></i>
                         <span id="interaction-pos-count" class="text-bold" data-singular="interaction favorable." data-plural="interactions favorables."></span> <br/>
                     </div>
                     <div id="helpers" class="padding-div">
-                        <i class="far fa-check-circle green"></i></span>
-                        <span id="helpers-count" class="text-bold"
-                              data-singular="auxiliaire attiré :"
-                              data-plural="auxiliaires attirés :"></span><br/>
+                        <i class="far fa-check-circle green"></i>
+                        <span id="helpers-count" class="text-bold" data-singular="auxiliaire attiré :" data-plural="auxiliaires attirés :"></span><br/>
                         {#{% for key, value in appartenance if value == 6 %}
                         <span data-value="{{ key }}" class="potager-item potager-item-{{ key }} links hidden">{{ plants[key] }};</span>
                         {% endfor %}#}
                         <br/>
                     </div>
                     <div id="repelled-pests" class="padding-div">
-                        <i class="far fa-check-circle green"></i></span>
+                        <i class="far fa-check-circle green"></i>
                         <span id="repelled-pests-count" class="text-bold" data-singular="nuisible écarté :" data-plural="nuisibles écartés :"></span><br/>
                         {#{% for key, value in appartenance if value == 5 %}
                         <span data-value="{{ key }}" class="potager-item potager-item-{{ key }} links hidden">{{ plants[key] }};</span>
@@ -101,11 +99,11 @@
                         <br/>
                     </div>
                     <div id="interaction-neg" class="padding-div">
-                        <i class="far fa-times-circle red"></i></span>
+                        <i class="far fa-times-circle red"></i>
                         <span id="interaction-neg-count" class="text-bold" data-singular="interaction défavorable." data-plural="interactions défavorables."></span> <br/>
                     </div>
                     <div id="pests" class="padding-div">
-                        <i class="far fa-times-circle red"></i></span>
+                        <i class="far fa-times-circle red"></i>
                         <span id="pests-count" class="text-bold" data-singular="nuisible :" data-plural="nuisibles :"></span><br/>
                         {#{% for key, value in appartenance if value == 5 %}
                         <span data-value="{{ key }}"
@@ -119,7 +117,7 @@
             </div>
             <div id="info" class="panel panel-default panel-MonPotager no-margin-bottom hidden">
                 <div class="panel-heading clearfix">
-                    <button id="remove-selected" class="btn btn-danger btn-sm pull-right"><i class="fas fa-trash-alt"></i></button>
+                    <button id="remove-selected" class="button button-danger is-small pull-right"><i class="fas fa-trash-alt"></i></button>
                     <b><span id="info-name"></span></b>
                 </div>
                 <div class="panel-body">
@@ -133,7 +131,7 @@
                         <i id="glyph-{{ direction }}-{{ inter }}" class="far fa-times-circle red"></i>
                         {% endif %}
                         <b>{{ interactions[direction][inter] }} :</b><br/>
-                        <span class="text"></span><span class="btn-filter links"></span>
+                        <span class="text"></span><span class="button-filter links"></span>
                     </div>
                     {% endfor %}
                     {% endfor %}#}
@@ -145,7 +143,6 @@
                 </div>
             </div>
         </div>
-        <svg id="graph"></svg>
         <div class="col-xs-12 col-md-3 info-side col-right"
              style="display: flex; flex-flow: column; max-height: 100%; height: 100%; padding-top: 10px;">
             <div class="panel panel-default panel-MonPotager no-margin-bottom"
@@ -154,14 +151,14 @@
                 <div class="panel-body"
                      style="flex: 0 1 auto; display: flex; flex-flow: column; overflow-y: hidden; max-height: 100%; height: 100%;">
                     <div class="filter-bow" style="flex: 0 1 auto;">
-                        <div id="filter" class="btn btn-primary btn-sm hidden">
+                        <div id="filter" class="button is-primary is-small hidden">
                             <span id="filter-name"></span>
                             <i class="far fa-times-circle"></i>
                         </div>
                     </div>
                     <div id="jets-MonPotager-content" style="flex: 0 1 auto; overflow: auto;" data-toggle="buttons">
                         {#{% for key, value in appartenance if value in cat_plants %}
-                        <div id="plant-{{ key }}" data-value="{{ key }}" data-letter="{{ plants[key][0] }}" class="btn btn-default btn-sm plant btn-plant col-xs-12">
+                        <div id="plant-{{ key }}" data-value="{{ key }}" data-letter="{{ plants[key][0] }}" class="button button-default is-small plant button-plant col-xs-12">
                             <b>{{ plants[key] }}</b>
                             (<span class="plus"></span>&nbsp;<span class="far fa-check-circle green" style="font-size: 0.8em"></span>&nbsp;/&nbsp;
                             <span class="minus"></span>&nbsp;<span class="far fa-times-circle red"   style="font-size: 0.8em"></span>)
@@ -211,57 +208,43 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="wiki-modal" tabindex="-1">
-    <div class="modal-background"></div>
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Wikipedia</h4>
-        </div>
-        <div class="modal-body">
-            <div id="wiki-div"></div>
-        </div>
-        <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button></div>
-    </div>
-    <button class="modal-close is-large" aria-label="close"></button>
-</div>
-<div class="modal fade" id="reset" tabindex="-1">
-    <div class="modal-background"></div>
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                    aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Initialiser MonPotager.</h4>
-        </div>
-        <div class="modal-body">
-            <b>Niveau 1 (débutant), </b>un potager avec uniquement des interactions positives : <br/>
-            <button id="reset-1" data-plants="Ail|Betterave|Camomille allemande|Carotte|Oignon|Pommier" type="button" class="btn btn-primary center-block reset-btn" data-dismiss="modal" style="margin-top: 5px">Ail, betterave, camomille allemande, carotte, oignon, pommier</button>
+<div class="modal" id="reset" tabindex="-1">
+    <div class="modal-background" onclick="modal('reset')"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Initialiser MonPotager</p>
+            <button class="delete" aria-label="close" onclick="modal('reset')"></button>
+        </header>
+        <section  class="modal-card-body">
+            <b>Niveau 1 (débutant)</b><br/>
+            Un potager avec uniquement des interactions positives.<br/>
+            <div class="has-text-centered"><button id="reset-1" data-plants="Ail|Betterave|Camomille allemande|Carotte|Oignon|Pommier" type="button" class="button is-primary center-block reset-button" data-dismiss="modal" style="margin-top: 5px">Ail, betterave, camomille allemande, carotte, oignon, pommier</button></div>
             <br/>
-            <b>Niveau 2 (intermédiaire), </b>un potager avec des nuisibles dont il faut vous débarrasser : <br/>
-            <button id="reset-0" data-plants="Carotte|Pommier|Betterave|Haricot" type="button" class="btn btn-primary center-block reset-btn" data-dismiss="modal" style="margin-top: 5px">Carotte, pommier, betterave et haricot</button>
+            <b>Niveau 2 (intermédiaire)</b><br/>
+            Un potager avec des nuisibles dont il faut vous débarrasser.<br/>
+            <div class="has-text-centered"><button id="reset-0" data-plants="Carotte|Pommier|Betterave|Haricot" type="button" class="button is-primary center-block reset-button" data-dismiss="modal" style="margin-top: 5px">Carotte, pommier, betterave et haricot</button></div>
             <br/>
-            <b>Niveau 3 (confirmé), </b>à vous de jouer : <br/>
-            <button id="reset-2" data-plants="" type="button" class="btn btn-primary center-block reset-btn" data-dismiss="modal" style="margin-top: 5px">A partir de rien</button>
+            <b>Niveau 3 (confirmé)</b><br/>
+            A vous de jouer !<br/>
+            <div class="has-text-centered"><button id="reset-2" data-plants="" type="button" class="button is-primary center-block reset-button" data-dismiss="modal" style="margin-top: 5px">A partir de rien</button></div>
             <br/>
             <div id="my-saves" class="clearfix">
                 <b>Mes sauvegardes</b>
                 <div id="my-save-list"></div>
-                <button id="saves-remove" class="btn btn-danger btn-sm pull-right">Supprimer mes sauvegardes <i class="fas fa-trash-alt"></i></button>
+                <button id="saves-remove" class="button is-danger is-small is-pulled-right">Supprimer mes sauvegardes <i class="fas fa-trash-alt"></i></button>
             </div>
-        </div>
-        <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button></div>
-    </div
-    ><button class="modal-close is-large" aria-label="close"></button>
+        </section >
+    </div>
 </div>
 
 <div class="modal" id="calendar" tabindex="-1"><!--Code de la fenêtre affichant le calendrier-->
-    <div class="modal-background"></div>
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Calendrier de semis</h4>
-        </div>
-        <div class="modal-body">
+    <div class="modal-background" onclick="modal('calendar')"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Calendrier de semis</p>
+            <button class="delete" aria-label="close" onclick="modal('calendar')"></button>
+        </header>
+        <section class="modal-card-body">
             <table class="table">
                 <tr>
                     {% for months in ['Plantes','Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'] %}<!--Mois en Français pour l'instant-->
@@ -287,16 +270,15 @@
                 {% endfor %}#}
                 </tbody>
             </table>
-        </div>
-        <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button></div>
+        </section>
     </div>
-    <button class="modal-close is-large" aria-label="close"></button>
 </div>
-<script src="{{STATIC_URL}}/js/d3.{{ minified }}js"></script>
+<!--<script src="{{STATIC_URL}}/js/d3.{{ minified }}js"></script>
 <script src="{{STATIC_URL}}/js/data.{{ minified }}js"></script>
-<script src="{{STATIC_URL}}/js/MonPotager.{{ minified }}js"></script>
+<script src="{{STATIC_URL}}/js/MonPotager.{{ minified }}js"></script>-->
 <script>
-
+function modal(id){document.getElementById(id).classList.toggle('is-active')}
+modal('reset');
 </script>
 </body>
 </html>
