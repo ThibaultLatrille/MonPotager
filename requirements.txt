@@ -3,8 +3,8 @@ jsmin
 jinja2
 
 #pour le serveur web
-Flask
-Flask-OAuth
+# Flask
+# Flask-OAuth
 
 #Base de données
-Psycopg2
+# Psycopg2
