@@ -41,24 +41,34 @@ def generate_js(file_name):
     species_cat = dict()
     species_name = dict()
     species_wiki = dict()
+    species_ncbi = dict()
     months = dict()
-    with open('database/especes.csv', 'r') as csvfile:
-        speciesreader = csv.reader(csvfile)
-        next(speciesreader)
-        for line in speciesreader:
-            name, cat, disp_name, txt, wiki = line[:5]
-            species_cat[name] = cat
-            species_name[name] = disp_name
-            species_wiki[disp_name] = wiki
-            months[name.capitalize() ] = line[5:] #Donc la je met en majuscule la première lettre du nom car je comprends rien à la configuration de [key] et j'ai pas envie de chercher et surtout ca marche très bien comme ça :) En gros pour chercher dans le html le calendrier d'une plante on fera référence à son nom
 
-    associations_plant = set()
     appartenance = dict()
     name_to_index = dict()
     count = 0
     nbr_errors = 0
+    with open('static/database/especes_v2.csv', 'r') as csvfile:
+        speciesreader = csv.reader(csvfile)
+        next(speciesreader)
+        for line in speciesreader:
+            name=line[7]
+            cat=line[1]
+            disp_name=line[0]
+            txt=line[4]
+            wiki=line[2]
+            ncbi=line[6]
+            species_cat[name] = cat
+            species_name[name] = name
+            species_wiki[disp_name] = wiki
+            species_ncbi[disp_name]=ncbi
+            months[name.capitalize() ] = line[9:] #Donc la je met en majuscule la première lettre du nom car je comprends rien à la configuration de [key] et j'ai pas envie de chercher et surtout ca marche très bien comme ça :) En gros pour chercher dans le html le calendrier d'une plante on fera référence à son nom
+            name_to_index[name]=count
+            appartenance[name_to_index[name]]=reverse_cat[cat]
+            count+=1
+    associations_plant = set()
 
-    with open('database/associations.csv', 'r') as csvfile:
+    with open('static/database/associations.csv', 'r') as csvfile:
         associationsreader = csv.reader(csvfile)
         next(associationsreader)
         for line, (specie_source, interaction, specie_target, source, rank, details) in enumerate(associationsreader):
@@ -79,15 +89,6 @@ def generate_js(file_name):
                 print_w("La source ({0}) et la cible sont les mêmes espèces ({1})".format(name_source, name_target))
                 print_fail_assoc(specie_source, interaction, specie_target, line + 1)
                 continue
-
-            if name_source not in name_to_index:
-                name_to_index[name_source] = count
-                count += 1
-            if name_target not in name_to_index:
-                name_to_index[name_target] = count
-                count += 1
-            appartenance[name_to_index[name_source]] = reverse_cat[cat_source]
-            appartenance[name_to_index[name_target]] = reverse_cat[cat_target]
 
             source = name_to_index[name_source]
             target = name_to_index[name_target]
@@ -130,16 +131,13 @@ def generate_js(file_name):
 
     if nbr_errors > 0:
         print_w("{0} erreurs corrigées au total".format(nbr_errors))
-
     index_to_name = reverse_dict(name_to_index)
-
     javascript = open(file_name, "w")
     javascript.write("var graph = {\n")
     # nodes for javascript file
     javascript.write('\t"nodes":[\n')
     javascript.write(
-        ",\n".join(['\t\t{{"name":"{0}","group":{1},"value":{2},"wiki":"{3}"}}'.format(name, appartenance[index], index,
-                                                                                       species_wiki[name])
+        ",\n".join(['\t\t{{"name":"{0}","group":{1},"value":{2},"wiki":"{3}","ncbi":"{4}"}}'.format(name, appartenance[index], index,species_wiki[name],species_ncbi[name])
                     for index, name in index_to_name.items()]))
     javascript.write('\n\t],\n')
     # Forward list
@@ -156,6 +154,8 @@ def generate_js(file_name):
          for source, target, inter
          in associations_plant if target == index]) + ']' for index, _ in index_to_name.items()]))
     javascript.write('\n\t]\n};')
+
+    javascript.write('\nvar names_liste = ["' + '","'.join(sorted(set(species_cat))) + '"];')
 
     javascript.write("\nvar groups = {\n")
     javascript.write(
@@ -207,7 +207,7 @@ def generate_js(file_name):
     categories_list = []
     for cat in [sorted(cat_plants), sorted(cat_animals)]:
         categories_list += [(k, color[reverse_cat[k]]) for k in cat]
-
+    print (examples)
     return months, index_to_name, appartenance, examples, categories_list, \
            sorted([reverse_cat[cat] for cat in cat_plants]), \
            sorted([reverse_cat[cat] for cat in cat_animals]), \

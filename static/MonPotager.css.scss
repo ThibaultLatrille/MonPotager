@@ -275,12 +275,68 @@ svg {
     cursor: pointer;
   }
 }
+//style pour le nouveu panel et les boutons d'ajout
+.panel-add {
+    background-color: #FAFAFA;
+    color: #31627F;
+    font-size: 1.2em;
+    line-height: 1.6em;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+.add-interaction{
+  margin-top: 15px;
+}
+  }
+.btn-swap {
+    display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+
+}
+
+.btn-modif {
+    float: right !important;
+    display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+
+}
+//fin modifications
 
 .panel-MonPotager {
   .panel-heading {
     background-color: #31627F;
     color: white;
     font-size: 1.4em;
+    line-height: 1.6em;
+  }
+
+.liens {
+    background-color: #EAEAEA;
+    color: #31627F;
+    font-size: 1.2em;
     line-height: 1.6em;
   }
 
@@ -320,3 +376,66 @@ svg {
 .transparent {
   opacity: 0.1 !important;
 }
+
+// code pour l'autocomplétion dans les formulaires
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+/*the container must be positioned relative:*/
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+  cursor: pointer;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9;
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
+

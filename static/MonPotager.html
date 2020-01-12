@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/bootstrap.{{ minified }}css">
-    <link rel="stylesheet" href="css/MonPotager.{{ minified }}css">
-    <script src="js/jquery-3.1.1.{{ minified }}js"></script>
-    <script src="js/jets.{{ minified }}js"></script>
-    <script src="js/jquery.scrollTo.{{ minified }}js"></script>
-    <script src="js/cookie.{{ minified }}js"></script>
-    <script src="js/bootstrap.{{ minified }}js"></script>
+    <link rel="stylesheet" href="static/css/bootstrap.{{ minified }}css">
+    <link rel="stylesheet" href="static/css/MonPotager.{{ minified }}css">
+    <script src="static/js/jquery-3.1.1.{{ minified }}js"></script>
+    <script src="static/js/jets.{{ minified }}js"></script>
+    <script src="static/js/jquery.scrollTo.{{ minified }}js"></script>
+    <script src="static/js/cookie.{{ minified }}js"></script>
+    <script src="static/js/bootstrap.{{ minified }}js"></script>
 </head>
 <body>
 <div class="container-fluid">
@@ -21,13 +21,16 @@
                     <div href="#" data-toggle="modal" class="pull-right btn btn-default" data-target="#reset">
                         <span class="glyphicon glyphicon-refresh"></span>
                     </div>
-                    <div id="calendar-btn" href="#" data-toggle="modal" class="pull-right btn btn-info"
-                         style="margin-right:5px" data-target="#calendar">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </div>
+                    <!--
+                   <div id="calendar-btn" href="#" data-toggle="modal" class="pull-right btn btn-info"
+                        style="margin-right:5px" data-target="#calendar">
+                       <span class="glyphicon glyphicon-calendar"></span>
+                   </div>
+                   -->
                     <div id="save-btn" class="pull-right btn btn-success" style="margin-right: 3px">
                         <span class="glyphicon glyphicon-save"></span>
                     </div>
+
                 </div>
                 <div id="upper-left" class="panel-body">
                     <div id="alert-save"></div>
@@ -103,9 +106,6 @@
                     <b><span id="info-name"></span></b>
                 </div>
                 <div class="panel-body">
-                    <a href="" id="wiki-btn" class="links pull-right" target="_blank" style="margin-bottom: 15px">
-                        <span class="glyphicon glyphicon-globe"></span> Wikipedia
-                    </a>
                     {% for inter in ["pos","atr","neg","rep"] %}
                     {% for direction in ["forward", "backward"] %}
                     <div id="node-{{ direction }}-{{ inter }}" class="padding-div">
@@ -120,20 +120,38 @@
                     </div>
                     {% endfor %}
                     {% endfor %}
+                    <div class="clearfix" style="margin-bottom: 5px">
+                        <div href="#" data-toggle="modal" class="btn btn-primary pull-right" data-target="#formulaire2">
+                            <span class="glyphicon glyphicon-plus-sign"></span>
+                            Ajouter une nouvelle interaction
+                        </div>
+                    </div>
                     <div id="helpers-links">
                         <span class="glyphicon glyphicon-ok-circle green"></span>
                         <b>Attirer des auxilliaires pour le repousser :</b>
                         <div id="helpers-container"></div>
                     </div>
                 </div>
+                <div class="panel-footer">
+                    <a href="" id="wiki-btn" class="links pull" target="_blank">
+                        <span class="glyphicon glyphicon-globe"></span> Wikipedia
+                    </a>
+                    <a href="" id="ncbi-btn" class="links pull-right" target="_blank">
+                        <span class="glyphicon glyphicon-globe"></span> Taxonomy ID
+                    </a>
+                </div>
             </div>
+            <div style="padding-bottom: 60px !important;"></div>
         </div>
         <svg id="graph"></svg>
+
         <div class="col-xs-12 col-md-3 info-side col-right"
              style="display: flex; flex-flow: column; max-height: 100%; height: 100%; padding-top: 10px;">
             <div class="panel panel-default panel-MonPotager no-margin-bottom"
                  style="flex: 0 1 auto; display: flex; flex-flow: column; overflow-y: hidden; max-height: 100%; height: 100%;">
-                <div class="panel-heading" style="flex: 0 1 auto;"><b>Ajouter des plantes</b></div>
+                <div class="panel-heading" style="flex: 0 1 auto;">
+                    <b>Sélectionner des espèces</b>
+                </div>
                 <div class="panel-body"
                      style="flex: 0 1 auto; display: flex; flex-flow: column; overflow-y: hidden; max-height: 100%; height: 100%;">
                     <div class="filter-bow" style="flex: 0 1 auto;">
@@ -170,18 +188,24 @@
                         {% endfor %}
                     </div>
                 </div>
+                <div class="panel-footer">
+                    <div href="#" data-toggle="modal" class="btn btn-primary pull-right" data-target="#formulaire1">
+                        <span class="glyphicon glyphicon-plus-sign"></span>
+                        Ajouter une nouvelle espèces
+                    </div>
+                </div>
             </div>
             <div style="flex: 1 1 auto; padding-bottom: 60px">
                 <br>
                 <div class="panel panel-default no-margin-bottom">
                     <div class="breadcrumb clearfix no-margin-bottom">
                         <a data-toggle="collapse" href="#legend"
-                           class="pull-right glyphicon glyphicon-chevron-down"></a>
-                        <a data-toggle="collapse" href="#legend" class="text-left">
-                            Masquer la légende
+                           class="pull-right glyphicon glyphicon-chevron-up collapsed"></a>
+                        <a data-toggle="collapse" href="#legend" class="text-left collapsed">
+                            Afficher la légende
                         </a>
                     </div>
-                    <div id="legend" class="panel-collapse collapse in" role="tabpanel">
+                    <div id="legend" class="panel-collapse collapse " role="tabpanel">
                         <div class="panel-body">
                             {% for example in examples %}
                             <div class="breadcrumb-item">
@@ -311,7 +335,7 @@
             </div>
             <div class="modal-body">
                 <b>Niveau 1 (débutant), </b>un potager avec uniquement des interactions positives : <br>
-                <button id="reset-1" data-plants="Ail|Betterave|Camomille allemande|Carotte|Oignon|Pommier"
+                <button id="reset-1" data-plants="ail|betterave|camomille allemande|carotte|oignon|pommier"
                         type="button"
                         class="btn btn-primary center-block reset-btn" data-dismiss="modal" style="margin-top: 5px">Ail,
                     betterave, camomille
@@ -319,7 +343,7 @@
                 </button>
                 <br>
                 <b>Niveau 2 (intermédiaire), </b>un potager avec des nuisibles dont il faut vous débarrasser : <br>
-                <button id="reset-0" data-plants="Carotte|Pommier|Betterave|Haricot" type="button"
+                <button id="reset-0" data-plants="carotte|pommier|betterave|haricot" type="button"
                         class="btn btn-primary center-block reset-btn" data-dismiss="modal" style="margin-top: 5px">
                     Carotte, pommier, betterave
                     et haricot
@@ -346,6 +370,108 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="formulaire1" tabindex="-1"> <!-- code pour le formulaire des espèces -->
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Ajouter une espèce à MonPotager</h4>
+            </div>
+            <div class="modal-body">
+                <b>Entrez le nom de l'espèce: </b> <br><br>
+                <div class="box">
+                    <div class="container-jets">
+                        <form autocomplete="off">
+                            <div class="autocomplete" style="width:200px;">
+                                Nom commun: <input id="specieName" type="text" name="nomcommun">
+                            </div>
+                        </form>
+                        <br>
+                        <form autocomplete="off">
+                            <div class="autocomplete" style="width:200px;">
+                                Nom scientifique (si possible): <input id="myInput2" type="text" name="nomscientifique"
+                                                                       value="-">
+                            </div>
+                        </form>
+                        <br>
+                        <!--  Taxonomy ID: <input type="search" id="jets-MonPotager-search"/><br><br> -->
+                    </div>
+                </div>
+                <br>
+                <b>Saisissez la catégorie de l'espèce:</b> <br><br>
+                <div class="box">
+                    <select name="catégories" id="inputcat">
+                        <option value="Auxiliaire">Auxiliaire</option>
+                        <option value="Arômate">Arômate</option>
+                        <option value="Fleur">Fleur</option>
+                        <option value="Fruit">Fruit</option>
+                        <option value="Légume">Légume</option>
+                        <option value="Nuisible">Nuisible</option>
+                        <option value="Arbres">Arbres</option>
+                        <option value="Céréale">Céréale</option>
+                    </select>
+                </div>
+                <br>
+            </div>
+            <div class="modal-footer">
+                <button id="valid-btn" onclick="submit_specie()" data-dismiss="modal" type="button "
+                        class="btn btn-default" data-toggle="modal">Ajouter
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="formulaire2" tabindex="-1"> <!-- code pour le formulaire des interactions -->
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Ajouter une interaction dans MonPotager </h4>
+            </div>
+            <div class="modal-body">
+                <h5>Veuillez entrer des espèces déja présentes dans MonPotager. Choisissez parmi les propositions.</h5>
+                <br>
+                <form autocomplete="off">
+                    <div class="autocomplete" style="width:200px;">
+                        <b>Entrez l'espèce source:</b> <br>
+                        <input id="myInput3" type="text" name="nomsource">
+                    </div>
+                </form>
+                <br>
+                <div class="btn-swap" onclick="swap()"> <!-- bouton espèce -->
+                    <span class="glyphicon glyphicon-sort " title="Inverser les espèces"></span>
+                </div>
+                <br><br>
+                <form autocomplete="off">
+                    <div class="autocomplete" style="width:200px;">
+                        <b>Entrez l'espèce cible: </b>
+                        <input id="myInput4" type="text" name="nomcible">
+                    </div>
+                </form>
+                <br>
+                <br>
+                <b>Quel est le type d'interaction entre les 2 espèces ? </b> <br><br>
+                <div class="box">
+                    <select id="inputIntType" name="intéraction">
+                        <option value="favorise">favorise</option>
+                        <option value="défavorise">défavorise</option>
+                        <option value="attire">attire</option>
+                        <option value="repousse">repousse</option>
+                    </select>
+                </div>
+                <br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="submit_interaction()" class="btn btn-default" data-dismiss="modal"
+                        data-toggle="modal">Ajouter
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div class="modal" id="calendar" tabindex="-1"><!--Code de la fenêtre affichant le calendrier-->
     <div class="modal-dialog" style="width:70%" role="document">
@@ -365,8 +491,9 @@
                         {% endfor %}
                     </tr>
                     <tbody id="plantCalendar">
-                    {% for key, value in appartenance if value in cat_plants %}<!--Parcourir les plantes pour créer une ligne par plante -->
-                    <tr data-value="{{ key }}" class="potager-item potager-item-{{ key }} links hidden" >
+                    {% for key, value in appartenance if value in cat_plants %}
+                    <!--Parcourir les plantes pour créer une ligne par plante -->
+                    <tr data-value="{{ key }}" class="potager-item potager-item-{{ key }} links hidden">
                         <th scope="row" valign="bottom">{{ plants[key] }}</th>
                         {% for mo in months[plants[key]] %}
                         {% if mo=='S' %}<!--En fonction de Harvest, grow ou seed la cellule aura une typo différente-->
@@ -393,8 +520,8 @@
         </div>
     </div>
 </div>
-<script src="js/d3.{{ minified }}js"></script>
-<script src="js/data.{{ minified }}js"></script>
-<script src="js/MonPotager.{{ minified }}js"></script>
+<script src="static/js/d3.js"></script>
+<script src="static/js/data.js"></script>
+<script src="static/js/MonPotager.js"></script>
 </body>
 </html>

@@ -1308,10 +1308,14 @@ h4,
 h5,
 .h5 {
   font-size: 14px;
+  color: red;
 }
 h6,
 .h6 {
-  font-size: 12px;
+  font-size: 18px;
+  color: green;
+  font-weight: bold;
+
 }
 p {
   margin: 0 0 10px;
@@ -3099,6 +3103,41 @@ fieldset[disabled] a.btn {
   background-color: #e6e6e6;
   border-color: #adadad;
 }
+/*debut modifications pour l'ajout des boutons*/
+.btn-modif {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+.btn-modif:focus,
+.btn-modif.focus {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #8c8c8c;
+}
+.btn-modif:hover {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+.btn-swap {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+.btn-swap:focus,
+.btn-swap.focus {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #8c8c8c;
+}
+.btn-swap:hover {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+/* fin modifications*/
+
 .btn-default:active,
 .btn-default.active,
 .open > .dropdown-toggle.btn-default {
@@ -3649,7 +3688,7 @@ tbody.collapse.in {
 .dropup .caret,
 .navbar-fixed-bottom .dropdown .caret {
   content: "";
-  border-top: 0;
+  border-top: 50px;
   border-bottom: 4px dashed;
   border-bottom: 4px solid \9;
 }
@@ -3657,7 +3696,7 @@ tbody.collapse.in {
 .navbar-fixed-bottom .dropdown .dropdown-menu {
   top: auto;
   bottom: 100%;
-  margin-bottom: 2px;
+  margin-bottom: 100px;
 }
 @media (min-width: 768px) {
   .navbar-right .dropdown-menu {
@@ -5481,6 +5520,23 @@ button.list-group-item-danger.active:focus {
   border-radius: 4px;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
           box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+.panel-add {
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.liens {
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 .panel-body {
   padding: 15px;

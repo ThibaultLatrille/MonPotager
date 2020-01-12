@@ -7,7 +7,7 @@ import config
 pg = None
 cursor = None
 try:
-    pg = psycopg2.connect("dbname='"+config.DB_NAME+"' user='"+config.DB_USER+"' host='"+config.DB_HOST+"' password='"+config.DB_PASSWORD+"'")
+    pg = psycopg2.connect("dbname='" + config.DB_NAME + "' user='" + config.DB_USER + "' host='" + config.DB_HOST + "' password='" + config.DB_PASSWORD + "'")
     cursor = pg.cursor()
 except:
     print("I am unable to connect to the database")

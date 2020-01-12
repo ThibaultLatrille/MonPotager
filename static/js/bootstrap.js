@@ -1231,7 +1231,7 @@ if (typeof jQuery === 'undefined') {
     return this
   }
 
-
+  // fonction pour l'à propos,panel à gauche, panel à droite
   // MODAL DATA-API
   // ==============
 

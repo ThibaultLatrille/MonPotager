@@ -1,17 +1,24 @@
-$(".plant").on("click", function (event) {
+$(".plant").on("click", function (event) { // chaque espèce dans le panel de recherche
     var value = parseInt($(this).data("value"));
     add_node(value);
     restart();
     select_node(value);
     event.stopPropagation();
 });
+// pour la fenêtre d'initialisation
 $(".reset-btn").on("click", function () {
     restart_with_list($(this).data("plants").split("|"));
     $('#save-btn').addClass("hidden");
 });
+// bouton wiki du panel en bas à gauche
 $("#wiki-btn").on("click", function (event) {
     event.stopPropagation();
 });
+
+$("#ncbi-btn").on("click", function (event) {
+    event.stopPropagation();
+});
+
 var jetsearch = Jets({
     searchTag: "#jets-MonPotager-search",
     contentTag: "#jets-MonPotager-content"
@@ -30,17 +37,18 @@ function restart_with_list(str_list) {
     }
     restart();
 }
-
+// span des éléments du panel en haut à gauche (plantes,nuisible,axiliaires) cachés ou pas
 $(".potager-item").on("click", function (event) {
     var value = parseInt($(this).data("value"));
     select_node(value);
     event.stopPropagation();
 });
+// corbeille du panel en bas à gauche
 $("#remove-selected").on("click", function (event) {
     remove_node(parseInt($(this).data("value")));
     restart();
     event.stopPropagation();
-});
+}); // filtre de recherche (panel à droite)
 $("#filter").on("click", function (event) {
     $(this).addClass("hidden");
     $(".plant").removeClass("filtered");
@@ -73,7 +81,7 @@ function filter_plantes(index, direction, interaction) {
         }
     });
 }
-
+//panel en bas à gauche : section favorise etc
 $(".btn-filter").on("click", function (event) {
     var index = $(this).data("value");
     var direction = $(this).data("direction");
@@ -178,6 +186,13 @@ function select_node(index) {
     } else {
         $wiki_btn.removeClass("hidden");
         $wiki_btn.attr("href", cur_node.wiki);
+    }
+    var $ncbi_btn = $("#ncbi-btn");
+    if (cur_node.ncbi.length === 0) {
+        $ncbi_btn.addClass("hidden")
+    } else {
+        $ncbi_btn.removeClass("hidden");
+        $ncbi_btn.attr("href", cur_node.ncbi);
     }
 }
 
@@ -417,7 +432,7 @@ function restart() {
         ))
     });
     $('[data-toggle="tooltip"]').tooltip({container: "body"});
-    $("circle").on({
+    $("circle").on({ //pour les nodes du graphe
         mouseenter: function () {
             if (!is_selected) {
                 no_transparence();
@@ -431,6 +446,7 @@ function restart() {
             }
         },
         click: function (event) {
+            document.getElementById("myInput3").value = $(this).parent().children()[1].innerHTML;
             select_node($(this).attr("value"));
             event.stopPropagation();
         }
@@ -507,7 +523,7 @@ function tick() {
         return "M" + d.source.x + "," + d.source.y + "A" + dr + "," + dr + " 0 0,1 " + d.target.x + "," + d.target.y;
     })
 }
-
+// pour les lettres de la recherche (panel à droite)
 $('.btn-letter').on("click", function (event) {
     var letter = $(this).data("letter");
     var not_hidden = $('.btn-plant').filter(function (i) {
@@ -527,7 +543,7 @@ $('.btn-letter').on("click", function (event) {
 });
 
 
-
+// fonction cachant le bouton de sauvegarde
 $('#save-btn').on("click", function (event) {
     var saves = Cookies.getJSON("saves");
     if (typeof saves === "undefined") {
@@ -619,3 +635,211 @@ $(document).ready(function () {
 
     });
 });
+
+
+
+
+
+
+
+
+// code pour l'autocomplétion dans les formulaires
+
+
+
+function autocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+  });
+}
+
+// fonction du formulaire des interactions pour intervertir espèces
+
+function swap() {
+    var temp = $("#myInput3").val();
+    $("#myInput3").val($("#myInput4").val());
+    $("#myInput4").val(temp);
+}
+
+
+// fonctions pour la prise en compte des formulaires
+
+
+function submit_specie() {
+    var nameesp = document.getElementById("specieName");
+    var scientiesp = document.getElementById("myInput2");
+    var catesp = document.getElementById("inputcat");
+
+    var entryint = {
+        namaesp : nameesp.value,
+        scientiesp: scientiesp.value,
+        catesp: catesp.value
+    };
+
+    fetch(`${window.origin}/species/new-entry`, {
+      method: "POST",
+      credentials: "include",
+      body: JSON.stringify(entryint),
+      cache: "no-cache",
+      headers: new Headers({
+        "content-type": "application/json"
+      })
+    })
+      .then(function (response) {
+        if (response.status !== 200) {
+          console.log(`Looks like there was a problem. Status code: ${response.status}`);
+          alert(`Une ERREUR a été rencontrée lors de l'ajout : Status code: ${response.status}`);
+          return;
+        }
+        response.json().then(function (data) {
+          console.log(data);
+          alert("L'espèce a été ajoutée avec succès !");
+          location.reload(true);
+        });
+      })
+      .catch(function (error) {
+        console.log("Fetch error: " + error);
+        alert("Une ERREUR a été rencontrée : "  + error);
+      });
+}
+
+function submit_interaction() {
+    var espSource = document.getElementById("myInput3");
+    var espCible = document.getElementById("myInput4");
+    var espInteraction = document.getElementById("inputIntType");
+
+    var entryint = {
+        espSource : espSource.value,
+        espCible: espCible.value,
+        espInteraction: espInteraction.value
+    };
+
+    fetch(`${window.origin}/association/new-entry`, {
+      method: "POST",
+      credentials: "include",
+      body: JSON.stringify(entryint),
+      cache: "no-cache",
+      headers: new Headers({
+        "content-type": "application/json"
+      })
+    })
+      .then(function (response) {
+        if (response.status !== 200) {
+          console.log(`Looks like there was a problem. Status code: ${response.status}`);
+          alert(`Une ERREUR a été rencontrée lors de l'ajout : Status code: ${response.status}`);
+          return;
+        }
+        response.json().then(function (data) {
+          console.log(data);
+          alert("L'intéraction a été ajoutée avec succès !");
+          location.reload(true);
+        });
+      })
+      .catch(function (error) {
+        console.log("Fetch error: " + error);
+        alert("Une ERREUR a été rencontrée : "  + error);
+      });
+}
+
+
+
+/*An array containing all the species*/
+
+var availableTags = names_liste
+
+/*initiate the autocomplete function on the "myInput" element, and pass along the species array as possible autocomplete values:*/
+autocomplete(document.getElementById("specieName"), availableTags);
+autocomplete(document.getElementById("myInput3"), availableTags);
+autocomplete(document.getElementById("myInput4"), availableTags);
+

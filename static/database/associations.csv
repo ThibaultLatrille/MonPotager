@@ -3,7 +3,7 @@ absinthe,repousse,limaces,"""Plantes compagnes au potager bio"" et ""Le poireau 
                     ",,
 absinthe,repousse,altises,"""Plantes compagnes au potager bio"" et ""Le poireau préfère les fraises""
                     ",,
-achillée millefeuille,favorise,framboisier,"""Plantes compagnes au potager bio"" et ""Le poireau préfère les fraises""
+achillÃ©e millefeuille,favorise,framboisier,"""Plantes compagnes au potager bio"" et ""Le poireau préfère les fraises""
                     ",,
 achillée millefeuille,favorise,romarin,"""Plantes compagnes au potager bio"" et ""Le poireau préfère les fraises""
                     ",,
@@ -456,7 +456,7 @@ choux,favorise,coriandre,"""Plantes compagnes au potager bio"" et ""Le poireau p
 choux,favorise,potiron,"""Plantes compagnes au potager bio"" et ""Le poireau préfère les fraises""
                     ",,
 choux,favorise,chicorée,"""Plantes compagnes au potager bio"" et ""Le poireau préfère les fraises""
-                    ",,impossible car défavorise déjà (cf ligne 203)
+                    ",,impossible car défavorise déjÃ  (cf ligne 203)
 choux,favorise,cerfeuil,"""Plantes compagnes au potager bio"" et ""Le poireau préfère les fraises""
                     ",,
 choux,favorise,cumin,"""Plantes compagnes au potager bio"" et ""Le poireau préfère les fraises""
@@ -613,7 +613,7 @@ courgette,favorise,maïs,"""Le guide terre vivante du potager bio""",,
 courgette,favorise,oignon,"""Le guide terre vivante du potager bio""",,
 courgette,favorise,radis,"""Le guide terre vivante du potager bio""",,
 courgette,défavorise,haricot,"""Plantes compagnes au potager bio"" et ""Le poireau préfère les fraises""
-                    ",,impossible car défavorise déjà (cf ligne 321)
+                    ",,impossible car défavorise déjÃ  (cf ligne 321)
 cresson,favorise,poireau,"""Plantes compagnes au potager bio"" et ""Le poireau préfère les fraises""
                     ",,
 cresson,favorise,radis,"""Plantes compagnes au potager bio"" et ""Le poireau préfère les fraises""
@@ -1332,7 +1332,7 @@ potiron,défavorise,fenouil,"""Plantes compagnes au potager bio"" et ""Le poirea
 potiron,favorise,pommier,"""Plantes compagnes au potager bio"" et ""Le poireau préfère les fraises""
                     ",,
 potiron,favorise,radis,"""Plantes compagnes au potager bio"" et ""Le poireau préfère les fraises""
-                    ",,impossible car favorise déjà (cf ligne 684)
+                    ",,impossible car favorise déjÃ  (cf ligne 684)
 potiron,favorise,brocoli,"""Plantes compagnes au potager bio"" et ""Le poireau préfère les fraises""
                     ",,
 potiron,favorise,artichaut,"""Plantes compagnes au potager bio"" et ""Le poireau préfère les fraises""
