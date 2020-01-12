@@ -2,6 +2,7 @@ import subprocess
 from flask import Flask
 from flask import render_template, jsonify, request, make_response
 import sys
+import os
 
 sys.path.insert(1, "static/")
 from MonPotager import main
@@ -9,6 +10,12 @@ from function_search_taxonomy import findLatin_name, findTaxID
 
 # creates a Flask application, named app
 app = Flask(__name__)
+os.makedirs("templates", exist_ok=True)
+
+
+def createIndex():
+    main()
+    subprocess.run(["mv", "index.html", "templates/"])
 
 
 @app.route("/species/new-entry", methods=["GET", "POST"])
@@ -68,12 +75,7 @@ def monpotager():
     return render_template('index.html')
 
 
-def createIndex():
-    main()
-    subprocess.run(["mv", "index.html", "templates/"])
-
-
 # run the application
+createIndex()
 if __name__ == "__main__":
-    createIndex()
-    app.run(debug=True)
+    app.run(threaded=True, debug=True)
