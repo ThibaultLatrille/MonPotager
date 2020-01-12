@@ -1,10 +1,10 @@
+flask
 libsass
 jsmin
 jinja2
-
-#pour le serveur web
-# Flask
-# Flask-OAuth
-
-#Base de données
-# Psycopg2
+psycopg2
+wikipedia
+biopython
+requests
+bs4
+gunicorn
