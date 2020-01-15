@@ -797,14 +797,11 @@ function submit_specie() {
 }
 
 function submit_interaction() {
-    var espSource = document.getElementById("myInput3");
-    var espCible = document.getElementById("myInput4");
-    var espInteraction = document.getElementById("inputIntType");
-
     var entryint = {
-        espSource: espSource.value,
-        espCible: espCible.value,
-        espInteraction: espInteraction.value
+        espSource: document.getElementById("myInput3").value,
+        espCible: document.getElementById("myInput4").value,
+        espInteraction: document.getElementById("inputIntType").value,
+        espReference: document.getElementById("inputReference").value,
     };
 
     fetch(`${window.origin}/association/new-entry`, {
@@ -832,6 +829,7 @@ function submit_interaction() {
             alert("Une ERREUR a été rencontrée : " + error);
         });
 }
+
 var availableTags = names_liste;
 autocomplete(document.getElementById("specieName"), availableTags);
 autocomplete(document.getElementById("myInput3"), availableTags);

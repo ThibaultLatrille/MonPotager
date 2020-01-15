@@ -1,10 +1,13 @@
-flask
 libsass
 jsmin
-jinja2
-psycopg2
+Jinja2
+Psycopg2
 wikipedia
-biopython
+Biopython
 requests
 bs4
 gunicorn
+Flask
+Flask-SQLAlchemy
+Flask-Migrate
+Flask-Script
