@@ -36,9 +36,10 @@ def create_entry():
         TaxID=taxonomic_dico[name][4],
         NCBI="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=" + taxonomic_dico[name][4]
     )
-    db.session.add(sp)
-    db.session.commit()
-    render_index()
+    if sp.is_valid:
+        db.session.add(sp)
+        db.session.commit()
+        render_index()
     res = make_response(jsonify(taxonomic_dico[name]), 200)
     return res
 
@@ -46,13 +47,15 @@ def create_entry():
 @app.route('/association/new-entry', methods=["POST", "GET"])
 def create_association():
     req = request.get_json()
-    db.session.add(Interaction(
+    inter = Interaction(
         source=req["espSource"],
         target=req["espCible"],
         interaction=interactions[description_interactions[req["espInteraction"]]],
         references=req["espReference"]
-    ))
-    db.session.commit()
+    )
+    if inter.is_valid:
+        db.session.add()
+        db.session.commit()
     render_index()
     return req
 
@@ -72,109 +75,49 @@ def re_render():
 
 @app.route(os.environ['SEED_PATH'])
 def seed_db():
-    Interaction.query.delete()
-    Specie.query.delete()
+    db.session.query(Interaction).delete()
     db.session.commit()
-
-    species_cat = dict()
-    species_name = dict()
-    name_to_index = dict()
-    associations_plant = set()
-    count = 0
+    db.session.query(Specie).delete()
+    db.session.commit()
 
     with open('static/database/especes_v2.csv', 'r', newline='', encoding='utf-8') as csvfile:
         speciesreader = csv.reader(csvfile, delimiter=',', quotechar='"')
         next(speciesreader)
         for line in speciesreader:
-            disp_name = line[0]
-            name = line[7]
-            cat = line[1]
-            species_cat[name] = cat
-            species_name[name] = name
-            name_to_index[name] = count
-            count += 1
             taxId = 0
             try:
                 taxId = int(line[5])
             except ValueError:
                 pass
-            db.session.add(Specie(
-                name=name,
-                common_name=disp_name,
-                category=cat,
+            sp = Specie(
+                name=line[7],
+                common_name=line[0],
+                category=line[1],
                 wiki=line[2],
                 taxonomy=line[3],
                 latin_name=line[4],
                 TaxID=taxId,
                 NCBI=line[6],
-            ))
-            db.session.commit()
+            )
+            if sp.is_valid:
+                try:
+                    db.session.add(sp)
+                    db.session.commit()
+                except Exception as e:
+                    print(e)
 
     with open('static/database/associations.csv', 'r', newline='', encoding='utf-8') as csvfile:
         associationsreader = csv.reader(csvfile, delimiter=',', quotechar='"')
         next(associationsreader)
-        for line, (specie_source, interaction, specie_target, references, rank, details) in enumerate(
-                associationsreader):
-
-            drop = False
-            for specie in [specie_source, specie_target]:
-                if specie not in species_name:
-                    print_w("'" + specie + "' n'est pas dans le dictionnaire des espèces.")
-                    drop = True
-
-            if drop:
-                print_fail_assoc(specie_source, interaction, specie_target, line + 1)
-                continue
-
-            name_source, cat_source = species_name[specie_source], species_cat[specie_source]
-            name_target, cat_target = species_name[specie_target], species_cat[specie_target]
-            if name_source == name_target:
-                print_w("La source ({0}) et la cible sont les mêmes espèces ({1})".format(name_source, name_target))
-                print_fail_assoc(specie_source, interaction, specie_target, line + 1)
-                continue
-
-            source = name_to_index[name_source]
-            target = name_to_index[name_target]
-            if interaction not in description_interactions.keys():
-                print_w("interaction '{0}' n'existe pas, seulement {1} sont possible".format(
-                    interaction, "|".join(description_interactions.keys())))
-                print_fail_assoc(specie_source, interaction, specie_target, line + 1)
-                continue
-
-            inter = description_interactions[interaction]
-
-            same_association = [assoc for assoc in associations_plant if (assoc[0] == source and assoc[1] == target)]
-            if len(same_association) > 0:
-                for assoc in same_association:
-                    if assoc[2] == inter:
-                        print_w("Erreur: {0} {1} {2} car l'association existe déjà.".format(name_source,
-                                                                                            interaction,
-                                                                                            name_target))
-                    else:
-                        print_w(
-                            "Erreur: {0} {1} {2} impossible car {3} déjà.".format(
-                                name_source, interaction,
-                                name_target, interaction_forward[interactions[assoc[2]]].lower()))
-                print_fail_assoc(specie_source, interaction, specie_target, line + 1)
-                continue
-
-            if ((cat_target in cat_animals) and abs(inter) != 2) or ((cat_target in cat_plants) and abs(inter) != 1):
-                if (cat_target in cat_animals) and abs(inter) != 2:
-                    inter *= 2
-                else:
-                    inter /= 2
-                print_w("Erreur: {0} ({3}) {1} {2} ({4}).".format(name_source, interaction, name_target,
-                                                                  cat_source, cat_target))
-                print_w("Remplacé par: {0} ({3}) {1} {2} ({4}).".format(name_source,
-                                                                        interaction_forward[interactions[inter]],
-                                                                        name_target, cat_source, cat_target))
-            db.session.add(Interaction(
-                source=name_source,
-                target=name_target,
-                interaction=interactions[inter],
-                references=references
-            ))
-            db.session.commit()
+        for source, assoc, target, references, _, _ in associationsreader:
+            inter = Interaction(source=source, target=target, interaction=interactions[description_interactions[assoc]],
+                                references=references)
+            if inter.is_valid():
+                try:
+                    db.session.add(inter)
+                    db.session.commit()
+                except Exception as e:
+                    print(e)
 
     render_index()
     return render_template('index.html')
