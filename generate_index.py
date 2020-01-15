@@ -53,12 +53,12 @@ def generate_js(file_name):
 
     appartenance = dict()
     name_to_index = dict()
-    for id, sp in enumerate(Specie.query.all()):
+    for enum_id, sp in enumerate(Specie.query.all()):
         species_cat[sp.name] = sp.category
         species_wiki[sp.name] = sp.wiki
         species_ncbi[sp.name] = sp.NCBI
         months[sp.name] = []
-        name_to_index[sp.name] = id
+        name_to_index[sp.name] = enum_id
         appartenance[name_to_index[sp.name]] = reverse_cat[sp.category]
 
     associations_plant = set()

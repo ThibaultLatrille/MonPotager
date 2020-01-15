@@ -72,8 +72,8 @@ def re_render():
 
 @app.route(os.environ['SEED_PATH'])
 def seed_db():
-    db.drop_all()
-    db.create_all()
+    Interaction.query.delete()
+    Specie.query.delete()
     db.session.commit()
 
     species_cat = dict()
