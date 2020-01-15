@@ -7,7 +7,7 @@ from jsmin import jsmin
 from flask import Flask
 from flask import render_template, jsonify, request, make_response
 from flask_sqlalchemy import SQLAlchemy
-
+from datetime import datetime
 os.makedirs("templates", exist_ok=True)
 sys.path.insert(1, "static/")
 
@@ -28,7 +28,6 @@ def generate_js(file_name):
 
     appartenance = dict()
     name_to_index = dict()
-    print(db.session.query(Specie).all())
     for enum_id, sp in enumerate(db.session.query(Specie).all()):
         species_cat[sp.name] = sp.category
         species_wiki[sp.name] = sp.wiki
@@ -38,7 +37,6 @@ def generate_js(file_name):
         appartenance[name_to_index[sp.name]] = reverse_cat[sp.category]
 
     associations_plant = set()
-    print(db.session.query(Interaction).all())
     for assoc in db.session.query(Interaction).all():
         associations_plant.add(
             (name_to_index[assoc.source], name_to_index[assoc.target], reverse_interactions[assoc.interaction]))
@@ -158,7 +156,8 @@ def render_index():
     first_letter = sorted(set([name[0].upper() for key, name in plants.items() if (appartenance[key] in cat_plants)]))
     sorted_appartenance = sorted(appartenance.items(), key=lambda pl: plants[pl[0]].lower())
 
-    template.stream(months=months,
+    template.stream(timestamp=datetime.now().timestamp(),
+                    months=months,
                     plants=plants,
                     examples=examples,
                     minified=minified,
@@ -231,6 +230,8 @@ def re_render():
 
 @app.route(os.environ['SEED_PATH'])
 def seed_db():
+    db.drop_all()
+    db.create_all()
     db.session.query(Interaction).delete()
     db.session.commit()
     db.session.query(Specie).delete()
