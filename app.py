@@ -28,6 +28,7 @@ def generate_js(file_name):
 
     appartenance = dict()
     name_to_index = dict()
+    print(db.session.query(Specie).all())
     for enum_id, sp in enumerate(db.session.query(Specie).all()):
         species_cat[sp.name] = sp.category
         species_wiki[sp.name] = sp.wiki
@@ -37,6 +38,7 @@ def generate_js(file_name):
         appartenance[name_to_index[sp.name]] = reverse_cat[sp.category]
 
     associations_plant = set()
+    print(db.session.query(Interaction).all())
     for assoc in db.session.query(Interaction).all():
         associations_plant.add(
             (name_to_index[assoc.source], name_to_index[assoc.target], reverse_interactions[assoc.interaction]))
@@ -208,7 +210,7 @@ def create_association():
         references=req["espReference"]
     )
     if inter.is_valid:
-        db.session.add()
+        db.session.add(inter)
         db.session.commit()
     render_index()
     return req
