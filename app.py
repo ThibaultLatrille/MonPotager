@@ -5,9 +5,10 @@ import jinja2
 import sass
 from jsmin import jsmin
 from flask import Flask
-from flask import render_template, jsonify, request, make_response
+from flask import render_template, jsonify, request, make_response, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+
 os.makedirs("templates", exist_ok=True)
 sys.path.insert(1, "static/")
 
@@ -128,12 +129,11 @@ def generate_js(file_name):
 
 
 def render_index():
-    minifiy = True
     months, plants, appartenance, examples, categories, cat_plants, cat_animals, dict_interactions = generate_js(
         "static/js/data.js")
 
     minified = ""
-    if minifiy:
+    if not app.config['DEBUG']:
         minified = "min."
         for js_path in ["static/js/MonPotager.js", "static/js/data.js"]:
             with open(js_path, 'r') as js_file:
@@ -147,7 +147,8 @@ def render_index():
 
     css = open("static/css/MonPotager." + minified + "css", "w")
     css.write(
-        sass.compile(filename='static/MonPotager.css.scss', output_style=('compressed' if minifiy else "nested")))
+        sass.compile(filename='static/MonPotager.css.scss',
+                     output_style=('nested' if app.config['DEBUG'] else "compressed")))
     css.close()
 
     env = jinja2.Environment(loader=jinja2.FileSystemLoader('./'))
@@ -174,29 +175,35 @@ def render_index():
 @app.route("/species/new-entry", methods=["GET", "POST"])
 def create_entry():
     req = request.get_json()
-    name = req['scientiesp'] if req['scientiesp'] != "-" else req['namaesp']
-    wikipedia = find_latin_name(name)
-    if req['scientiesp'] != "-":
-        for value in wikipedia.values():
-            value[0] = req['namaesp']
+    try:
+        name = req['scientiesp'] if req['scientiesp'] != "-" else req['namaesp']
+        wikipedia = find_latin_name(name)
+        if req['scientiesp'] != "-":
+            for value in wikipedia.values():
+                value[0] = req['namaesp']
+        taxonomic_dico = find_tax_id(wikipedia)
+        sp = Specie(
+            name=taxonomic_dico[name][0],
+            common_name=taxonomic_dico[name][0],
+            category=req['catesp'],
+            wiki=taxonomic_dico[name][1],
+            taxonomy=taxonomic_dico[name][2],
+            latin_name=taxonomic_dico[name][3],
+            TaxID=taxonomic_dico[name][4],
+            NCBI="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=" + taxonomic_dico[name][4]
+        )
 
-    taxonomic_dico = find_tax_id(wikipedia)
-    sp = Specie(
-        name=taxonomic_dico[name][0],
-        common_name=taxonomic_dico[name][0],
-        category=req['catesp'],
-        wiki=taxonomic_dico[name][1],
-        taxonomy=taxonomic_dico[name][2],
-        latin_name=taxonomic_dico[name][3],
-        TaxID=taxonomic_dico[name][4],
-        NCBI="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=" + taxonomic_dico[name][4]
-    )
-    if sp.is_valid:
+        sp.is_valid()
         db.session.add(sp)
         db.session.commit()
         render_index()
-    res = make_response(jsonify(taxonomic_dico[name]), 200)
-    return res
+        return make_response(jsonify("L'espèce a été ajoutée avec succès à la base de données.\n" + str(sp)), 200)
+    except ValidationError as e:
+        db.session.rollback()
+        return make_response(jsonify("Erreur de validation : " + str(e)), 400)
+    except Exception as e:
+        db.session.rollback()
+        return make_response(jsonify("Erreur du serveur : " + str(e)), 500)
 
 
 @app.route('/association/new-entry', methods=["POST", "GET"])
@@ -208,11 +215,19 @@ def create_association():
         interaction=interactions[description_interactions[req["espInteraction"]]],
         references=req["espReference"]
     )
-    if inter.is_valid:
+    try:
+        inter.is_valid()
         db.session.add(inter)
         db.session.commit()
-    render_index()
-    return req
+        render_index()
+        return make_response(jsonify("L'interaction a été ajoutée avec succès à la base de données.\n" + str(inter)),
+                             200)
+    except ValidationError as e:
+        db.session.rollback()
+        return make_response(jsonify("Erreur de validation : " + str(e)), 400)
+    except Exception as e:
+        db.session.rollback()
+        return make_response(jsonify("Erreur du serveur : " + str(e)), 500)
 
 
 @app.route("/")
@@ -228,6 +243,12 @@ def re_render():
     return render_template('index.html')
 
 
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
+
 @app.route(os.environ['SEED_PATH'])
 def seed_db():
     db.drop_all()
@@ -241,11 +262,6 @@ def seed_db():
         speciesreader = csv.reader(csvfile, delimiter=',', quotechar='"')
         next(speciesreader)
         for line in speciesreader:
-            taxId = 0
-            try:
-                taxId = int(line[5])
-            except ValueError:
-                pass
             sp = Specie(
                 name=line[7],
                 common_name=line[0],
@@ -253,15 +269,15 @@ def seed_db():
                 wiki=line[2],
                 taxonomy=line[3],
                 latin_name=line[4],
-                TaxID=taxId,
+                TaxID=line[5],
                 NCBI=line[6],
             )
-            if sp.is_valid:
-                try:
-                    db.session.add(sp)
-                    db.session.commit()
-                except Exception as e:
-                    print(e)
+            try:
+                sp.is_valid()
+                db.session.add(sp)
+                db.session.commit()
+            except Exception as e:
+                print(e)
 
     with open('static/database/associations.csv', 'r', newline='', encoding='utf-8') as csvfile:
         associationsreader = csv.reader(csvfile, delimiter=',', quotechar='"')
@@ -269,12 +285,12 @@ def seed_db():
         for source, assoc, target, references, _, _ in associationsreader:
             inter = Interaction(source=source, target=target, interaction=interactions[description_interactions[assoc]],
                                 references=references)
-            if inter.is_valid():
-                try:
-                    db.session.add(inter)
-                    db.session.commit()
-                except Exception as e:
-                    print(e)
+            try:
+                inter.is_valid()
+                db.session.add(inter)
+                db.session.commit()
+            except Exception as e:
+                print(e)
 
     render_index()
     return render_template('index.html')

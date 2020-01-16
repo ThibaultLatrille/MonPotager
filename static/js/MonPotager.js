@@ -528,12 +528,12 @@ function tick() {
 
 // pour les lettres de la recherche (panel à droite)
 $('.btn-letter').on("click", function (event) {
-    var letter = $(this).data("letter");
+    var letter = $(this).data("letter").toLowerCase();
     var not_hidden = $('.btn-plant').filter(function (i) {
         return !$(this).hasClass("hidden");
     });
     var sup_letter = not_hidden.filter(function (i) {
-        return $(this).data("letter") >= letter;
+        return $(this).data("letter").toLowerCase() >= letter;
     });
     if (not_hidden.length >= 1) {
         if (sup_letter.length >= 1) {
@@ -641,8 +641,6 @@ $(document).ready(function () {
 
 
 // code pour l'autocomplétion dans les formulaires
-
-
 function autocomplete(inp, arr) {
     /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
@@ -756,8 +754,6 @@ function swap() {
 
 
 // fonctions pour la prise en compte des formulaires
-
-
 function submit_specie() {
     var nameesp = document.getElementById("specieName");
     var scientiesp = document.getElementById("myInput2");
@@ -777,23 +773,20 @@ function submit_specie() {
         headers: new Headers({
             "content-type": "application/json"
         })
-    })
-        .then(function (response) {
-            if (response.status !== 200) {
-                console.log(`Looks like there was a problem. Status code: ${response.status}`);
-                alert(`Une ERREUR a été rencontrée lors de l'ajout : Status code: ${response.status}`);
-                return;
-            }
+    }).then(function (response) {
+        if (response.status === 200) {
             response.json().then(function (data) {
-                console.log(data);
-                alert(`L'espèce a été ajoutée avec succès !`);
+                alert(data);
                 location.reload(true);
             });
-        })
-        .catch(function (error) {
-            console.log("Fetch error: " + error);
-            alert("Une ERREUR a été rencontrée : " + error);
-        });
+        } else {
+            response.json().then(function (data) {
+                alert(data);
+            });
+        }
+    }).catch(function (error) {
+        alert("Une ERREUR a été rencontrée : " + error);
+    });
 }
 
 function submit_interaction() {
@@ -812,22 +805,20 @@ function submit_interaction() {
         headers: new Headers({
             "content-type": "application/json"
         })
-    })
-        .then(function (response) {
-            if (response.status !== 200) {
-                console.log(`Looks like there was a problem. Status code: ${response.status}`);
-                alert(`Une ERREUR a été rencontrée lors de l'ajout : Status code: ${response.status}`);
-                return;
-            }
+    }).then(function (response) {
+        if (response.status === 200) {
             response.json().then(function (data) {
-                alert(`L'interaction a été ajoutée avec succès !`);
+                alert(data);
                 location.reload(true);
             });
-        })
-        .catch(function (error) {
-            console.log("Fetch error: " + error);
-            alert("Une ERREUR a été rencontrée : " + error);
-        });
+        } else {
+            response.json().then(function (data) {
+                alert(data);
+            });
+        }
+    }).catch(function (error) {
+        alert("Une ERREUR a été rencontrée : " + error);
+    });
 }
 
 var availableTags = names_liste;

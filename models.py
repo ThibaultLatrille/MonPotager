@@ -40,6 +40,11 @@ def print_fail_assoc(source, inter, target, line):
                                                                                                target, line) + ENDC)
 
 
+class ValidationError(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
+
 class Specie(db.Model):
     __tablename__ = 'species'
 
@@ -54,20 +59,30 @@ class Specie(db.Model):
     NCBI = db.Column(db.String())
 
     def __init__(self, common_name, category, wiki, taxonomy, latin_name, TaxID, NCBI, name):
+        try:
+            taxId = int(TaxID)
+        except ValueError:
+            taxId = 0
         self.name = name
         self.common_name = common_name
         self.category = category
         self.wiki = wiki
         self.taxonomy = taxonomy
         self.latin_name = latin_name
-        self.TaxID = TaxID
+        self.TaxID = taxId
         self.NCBI = NCBI
 
     def is_valid(self):
-        return self.category in categories.values()
+        specie = Specie.query.filter_by(name=self.name).first()
+        if specie is not None:
+            raise ValidationError("l'espèce {0} existe déjà dans la base de données.".format(self.name))
+
+        if self.category not in categories.values():
+            raise ValidationError("la catégorie {0} n'existe.".format(self.category))
 
     def __repr__(self):
-        return '<id {}>'.format(self.id)
+        return "{0} ({1})\nPage wikipedia : {2}\nTaxonomie : {3}\nNom latin : {4}\nPage NCBI : {5}".format(
+            self.common_name.capitalize(), self.category.lower(), self.wiki, self.taxonomy, self.latin_name, self.NCBI)
 
     def serialize(self):
         return {
@@ -101,39 +116,35 @@ class Interaction(db.Model):
     def is_valid(self):
         specie_source = Specie.query.filter_by(name=self.source).first()
         if specie_source is None:
-            print_w("Source " + self.source + "' n'est pas dans le dictionnaire des espèces.")
-            return False
+            raise ValidationError("l'espèce source " + self.source + "' n'est pas dans le dictionnaire des espèces.")
 
         target_specie = Specie.query.filter_by(name=self.target).first()
         if target_specie is None:
-            print_w("Cible " + self.source + "' n'est pas dans le dictionnaire des espèces.")
-            return False
+            raise ValidationError("l'espèce cible " + self.target + "' n'est pas dans le dictionnaire des espèces.")
 
         if self.source == self.target:
-            print_w("La source ({0}) et la cible sont les mêmes espèces ({1})".format(self.source, self.target))
-            return False
+            raise ValidationError(
+                "l'espèce source ({0}) et la cible sont les mêmes espèces ({1})".format(self.source, self.target))
 
         if self.interaction not in reverse_interactions.keys():
-            print_w("Interaction '{0}' n'existe pas, seulement {1} sont possible".format(
+            raise ValidationError("l'nteraction '{0}' n'existe pas, seulement {1} sont possible.".format(
                 self.interaction, "|".join(reverse_interactions.keys())))
-            return False
 
         inter = reverse_interactions[self.interaction]
         cat_target = target_specie.category
         if ((cat_target in cat_animals) and abs(inter) != 2) or ((cat_target in cat_plants) and abs(inter) != 1):
-            print_w("Cible est '{0}', l'interaction {1} ne peut pas s'appliquer".format(cat_target, interaction_forward[
-                self.interaction]))
-            return False
+            raise ValidationError(
+                "l'espèce cible est '{0}', l'interaction {1} ne peut pas s'appliquer.".format(cat_target,
+                                                                                              interaction_forward[
+                                                                                                  self.interaction]))
 
         inter_db = Interaction.query.filter_by(source=self.source, target=self.target).first()
-        if inter_db is None:
-            return True
-        else:
-            print_w("L'interaction de {0} vers {1} existe déjà".format(self.source, self.target))
-            return False
+        if inter_db is not None:
+            raise ValidationError("l'interaction de {0} vers {1} existe déjà.".format(self.source, self.target))
 
     def __repr__(self):
-        return '<id {}>'.format(self.id)
+        return "{0} {2} {1}.\n{3}".format(self.source.capitalize(), self.target,
+                                          interaction_forward[self.interaction].lower(), self.references)
 
     def serialize(self):
         return {
