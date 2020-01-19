@@ -142,8 +142,6 @@ def render_index():
                 jsminified_file.write(jsminified)
                 jsminified_file.close()
                 print(OKBLUE + "Minifying " + js_path + ENDC)
-    else:
-        print(OKBLUE + ".js and .css not minified, use -c option if you wish to compress files." + ENDC)
 
     css = open("static/css/MonPotager." + minified + "css", "w")
     css.write(
