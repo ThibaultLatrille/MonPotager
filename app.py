@@ -174,11 +174,8 @@ def render_index():
 def create_entry():
     req = request.get_json()
     try:
-        name = req['scientiesp'] if req['scientiesp'] != "-" else req['namaesp']
+        name = req['namaesp']
         wikipedia = find_latin_name(name)
-        if req['scientiesp'] != "-":
-            for value in wikipedia.values():
-                value[0] = req['namaesp']
         taxonomic_dico = find_tax_id(wikipedia)
         sp = Specie(
             name=taxonomic_dico[name][0],

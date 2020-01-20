@@ -756,12 +756,10 @@ function swap() {
 // fonctions pour la prise en compte des formulaires
 function submit_specie() {
     var nameesp = document.getElementById("specieName");
-    var scientiesp = document.getElementById("myInput2");
     var catesp = document.getElementById("inputcat");
 
     var entryint = {
         namaesp: nameesp.value,
-        scientiesp: scientiesp.value,
         catesp: catesp.value
     };
 

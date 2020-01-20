@@ -73,6 +73,9 @@ class Specie(db.Model):
         self.NCBI = NCBI
 
     def is_valid(self):
+        if len(self.name) < 3:
+            raise ValidationError("le nom {0} est trop petit.".format(self.name))
+
         specie = Specie.query.filter_by(name=self.name).first()
         if specie is not None:
             raise ValidationError("l'espèce {0} existe déjà dans la base de données.".format(self.name))
