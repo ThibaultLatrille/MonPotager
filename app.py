@@ -178,8 +178,8 @@ def create_entry():
         wikipedia = find_latin_name(name)
         taxonomic_dico = find_tax_id(wikipedia)
         sp = Specie(
-            name=taxonomic_dico[name][0],
-            common_name=taxonomic_dico[name][0],
+            name=taxonomic_dico[name][0].strip(),
+            common_name=taxonomic_dico[name][0].strip(),
             category=req['catesp'],
             wiki=taxonomic_dico[name][1],
             taxonomy=taxonomic_dico[name][2],
