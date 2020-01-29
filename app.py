@@ -244,8 +244,7 @@ def favicon():
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
-@app.route(os.environ['SEED_PATH'])
-def seed_db():
+def reset_db():
     db.drop_all()
     db.create_all()
     db.session.query(Interaction).delete()
@@ -286,8 +285,12 @@ def seed_db():
                 db.session.commit()
             except Exception as e:
                 print(e)
-
     render_index()
+
+
+@app.route(os.environ['SEED_PATH'])
+def seed_db():
+    reset_db()
     return render_template('index.html')
 
 
