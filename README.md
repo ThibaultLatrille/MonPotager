@@ -62,13 +62,14 @@ pip3 install --user -r requirements.txt
 ```
 Create role and database in PostgreSQL
 ```
-sudo -u postgres psql --command "CREATE USER monpotager WITH SUPERUSER PASSWORD 'password';" && createdb -O monpotager monpotager
+sudo -u postgres psql --command "CREATE USER monpotager_user WITH CREATEDB PASSWORD 'password';"
+sudo -u postgres psql --command "CREATE DATABASE monpotager_db OWNER monpotager_user;"
 ```
 Define environnment variables.
 These lines can an also be added to your _~/.bashrc_ if your want them to be loaded at startup.
 ```
 export APP_SETTINGS="config.DevelopmentConfig"
-export DATABASE_URL="postgresql://monpotager:password@localhost/monpotager"
+export DATABASE_URL="postgresql://monpotager_user:password@localhost/monpotager_db"
 export SEED_PATH="/seed_path_reset_all_db"
 export SECRET_KEY_BASE="af686cd78d5d56cd7af6"
 ```
