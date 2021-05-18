@@ -3,7 +3,7 @@
  Mon Potager est une application permettant de simuler son potager en insérant les diverses espèces de fruits et légumes,
  et de savoir si les interactions seront favorables ou défavorables. Mon Potager permet également d'obtenir facilement des informations 
 sur la façon dont un parasite peut être éliminé par des plants compagnes.
-L'application est actuellement accessible sur [https://monpotager.org](https://monpotager.org).
+L'application est actuellement accessible sur [http://monpotagerorg.herokuapp.com/](http://monpotagerorg.herokuapp.com/).
 
 Le tableur en ligne qui initialise la base de données est ouvert aux suggestions, rendez-vous à :
  - [La base de données des espèces](https://docs.google.com/spreadsheets/d/1Wp_fomhElzCspAxgarp1BstonU0HGA_tNB_U2uNskw0/edit?usp=sharing#gid=537765681)
