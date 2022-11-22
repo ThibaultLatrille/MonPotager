@@ -3,6 +3,7 @@ import sys
 import csv
 import jinja2
 import sass
+import re
 from jsmin import jsmin
 from flask import Flask
 from flask import render_template, jsonify, request, make_response, send_from_directory
@@ -15,8 +16,14 @@ sys.path.insert(1, "static/")
 app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+uri = os.getenv("DATABASE_URL")
+# or other relevant config var
+if uri.startswith("postgres://"):
+    uri = uri.replace("postgres://", "postgresql://", 1)
+    app.config['SQLALCHEMY_DATABASE_URI'] = uri
+    
 db = SQLAlchemy(app)
-
+    
 from function_search_taxonomy import find_latin_name, find_tax_id
 from models import *
 
