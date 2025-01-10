@@ -3,12 +3,13 @@
  Mon Potager est une application permettant de simuler son potager en insérant les diverses espèces de fruits et légumes,
  et de savoir si les interactions seront favorables ou défavorables. Mon Potager permet également d'obtenir facilement des informations 
 sur la façon dont un parasite peut être éliminé par des plants compagnes.
-L'application est actuellement accessible sur [http://monpotagerorg.herokuapp.com/](http://monpotagerorg.herokuapp.com/).
 
 Le tableur en ligne qui initialise la base de données est ouvert aux suggestions, rendez-vous à :
  - [La base de données des espèces](https://docs.google.com/spreadsheets/d/1Wp_fomhElzCspAxgarp1BstonU0HGA_tNB_U2uNskw0/edit?usp=sharing#gid=537765681)
  - [La base de données des interactions](https://docs.google.com/spreadsheets/d/1Wp_fomhElzCspAxgarp1BstonU0HGA_tNB_U2uNskw0/edit?usp=sharing#gid=0537765681)
 
+L'application est actuellement accessible sur [https://thibaultlatrille.github.io/MonPotager/](https://thibaultlatrille.github.io/MonPotager/).
+L'application telle que déployée sur github n'a pas de back-end, et donc il n'est pas possible de rajouter de nouvelles espèces ou interactions à la base de données qui est donc statique, mais avec le code source disponible il est tout à fait possible de déployer sur heroku ou autre afin d'avoir sa propre base de données qui peut être mise à jour à la volée.
 
 # For developers 
 
