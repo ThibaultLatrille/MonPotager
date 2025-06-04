@@ -1,3 +1,4 @@
+import csv
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -252,3 +253,81 @@ def add_or_update_interaction(source, target, interaction, references="", weight
         db.session.rollback()
         print(f"Error processing interaction {source}-{target}: {e}")
     return None
+
+
+def prune_species():
+    # Remove species with no associations
+    print("Pruning species...")
+    species_with_associations = {assoc.source for assoc in db.session.query(Interaction).all()} | \
+                                {assoc.target for assoc in db.session.query(Interaction).all()}
+    all_species = db.session.query(Specie).all()
+    for specie in all_species:
+        if specie.name not in species_with_associations:
+            db.session.delete(specie)
+    db.session.commit()
+
+
+def prune_associations():
+    print("Pruning associations...")
+    # Remove the associations with weight = 0, invert interaction with negative weight
+    for assoc in db.session.query(Interaction).all():
+        if assoc.weight == 0:
+            db.session.delete(assoc)
+        elif assoc.weight < 0:
+            assoc.interaction = interactions[-reverse_interactions[assoc.interaction]]
+            assoc.weight = -assoc.weight
+            db.session.add(assoc)
+    db.session.commit()
+
+
+def prune_db():
+    prune_associations()
+    prune_species()
+
+
+def drop_db():
+    db.drop_all()
+    db.create_all()
+    db.session.query(Interaction).delete()
+    db.session.commit()
+    db.session.query(Specie).delete()
+    db.session.commit()
+
+
+def populate_db(especes_file, associations_file):
+    print("Populating database...")
+    with open(especes_file, 'r', newline='', encoding='utf-8') as csvfile:
+        speciesreader = csv.reader(csvfile, delimiter=',', quotechar='"')
+        next(speciesreader)
+        for line in speciesreader:
+            add_or_update_specie(name=line[7], common_name=line[0], category=line[1],
+                                 latin_name=line[4], wiki=line[2], taxonomy=line[3],
+                                 TaxID=line[5], NCBI=line[6])
+
+    with open(associations_file, 'r', newline='', encoding='utf-8') as csvfile:
+        associationsreader = csv.reader(csvfile, delimiter=',', quotechar='"')
+        next(associationsreader)
+        for source, assoc, target, references, weight, _ in associationsreader:
+            add_or_update_interaction(source=source, target=target,
+                                      interaction=interactions[description_interactions[assoc]],
+                                      references=references, weight=float(weight) if weight else 1.0)
+
+
+def save_db_as_csv(especes_file, associations_file):
+    print("Saving database to CSV files...")
+    with open(especes_file, 'w', newline='', encoding='utf-8') as csvfile:
+        specieswriter = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        specieswriter.writerow(
+            ['common_name', 'category', 'wiki', 'taxonomy', 'latin_name', 'TaxID', 'NCBI', 'name'])
+        for sp in db.session.query(Specie).order_by(Specie.common_name).all():
+            specieswriter.writerow(
+                [sp.common_name, sp.category, sp.wiki, sp.taxonomy, sp.latin_name, sp.TaxID, sp.NCBI, sp.name])
+
+    with open(associations_file, 'w', newline='', encoding='utf-8') as csvfile:
+        associationswriter = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        associationswriter.writerow(
+            ['espèce source', 'interaction', 'espèce cible', 'source', 'poids', "commentaire"])
+        for assoc in db.session.query(Interaction).order_by(Interaction.source, Interaction.target,
+                                                            Interaction.interaction).all():
+            i = interaction_forward[assoc.interaction].lower()
+            associationswriter.writerow([assoc.source, i, assoc.target, assoc.references, assoc.weight, ""])
