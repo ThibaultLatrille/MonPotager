@@ -3,29 +3,26 @@ import sys
 import csv
 import jinja2
 import sass
-import re
 from jsmin import jsmin
 from flask import Flask
 from flask import render_template, jsonify, request, make_response, send_from_directory
-from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from static.function_search_taxonomy import find_latin_name, find_tax_id
+from models import *
 
 os.makedirs("templates", exist_ok=True)
 sys.path.insert(1, "static/")
 
 app = Flask(__name__)
-app.config.from_object(os.environ['APP_SETTINGS'])
+app.config.from_object(os.environ['APP_SETTINGS'] if 'APP_SETTINGS' in os.environ else 'config.DevelopmentConfig')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-uri = os.getenv("DATABASE_URL")
-# or other relevant config var
+basedir = os.path.abspath(os.path.dirname(__file__))
+uri = os.getenv("DATABASE_URL") if 'DATABASE_URL' in os.environ else 'sqlite:///' + os.path.join(basedir, 'app.db')
 if uri.startswith("postgres://"):
     uri = uri.replace("postgres://", "postgresql://", 1)
-    app.config['SQLALCHEMY_DATABASE_URI'] = uri
-    
-db = SQLAlchemy(app)
-    
-from function_search_taxonomy import find_latin_name, find_tax_id
-from models import *
+app.config['SQLALCHEMY_DATABASE_URI'] = uri
+
+db.init_app(app)
 
 
 def generate_js(file_name):
@@ -132,7 +129,7 @@ def generate_js(file_name):
         categories_list += [(k, color[reverse_cat[k]]) for k in cat]
     return months, index_to_name, appartenance, examples, categories_list, sorted(
         [reverse_cat[cat] for cat in cat_plants]), sorted([reverse_cat[cat] for cat in cat_animals]), {
-               "backward": interaction_backward, "forward": interaction_forward}
+        "backward": interaction_backward, "forward": interaction_forward}
 
 
 def render_index():
@@ -251,7 +248,7 @@ def favicon():
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
-def reset_db():
+def drop_db():
     db.drop_all()
     db.create_all()
     db.session.query(Interaction).delete()
@@ -259,45 +256,100 @@ def reset_db():
     db.session.query(Specie).delete()
     db.session.commit()
 
-    with open('static/database/especes_v2.csv', 'r', newline='', encoding='utf-8') as csvfile:
+
+def populate_db(especes_file, associations_file):
+    print("Populating database...")
+    with open(especes_file, 'r', newline='', encoding='utf-8') as csvfile:
         speciesreader = csv.reader(csvfile, delimiter=',', quotechar='"')
         next(speciesreader)
         for line in speciesreader:
-            sp = Specie(
-                name=line[7],
-                common_name=line[0],
-                category=line[1],
-                wiki=line[2],
-                taxonomy=line[3],
-                latin_name=line[4],
-                TaxID=line[5],
-                NCBI=line[6],
-            )
-            try:
-                sp.is_valid()
-                db.session.add(sp)
-                db.session.commit()
-            except Exception as e:
-                print(e)
+            add_or_update_specie(name=line[7], common_name=line[0], category=line[1],
+                                 latin_name=line[4], wiki=line[2], taxonomy=line[3],
+                                 TaxID=line[5], NCBI=line[6])
 
-    with open('static/database/associations.csv', 'r', newline='', encoding='utf-8') as csvfile:
+    with open(associations_file, 'r', newline='', encoding='utf-8') as csvfile:
         associationsreader = csv.reader(csvfile, delimiter=',', quotechar='"')
         next(associationsreader)
-        for source, assoc, target, references, _, _ in associationsreader:
-            inter = Interaction(source=source, target=target, interaction=interactions[description_interactions[assoc]],
-                                references=references)
-            try:
-                inter.is_valid()
-                db.session.add(inter)
-                db.session.commit()
-            except Exception as e:
-                print(e)
+        for source, assoc, target, references, weight, _ in associationsreader:
+            add_or_update_interaction(source=source, target=target,
+                                      interaction=interactions[description_interactions[assoc]],
+                                      references=references, weight=float(weight) if weight else 1.0)
+
+
+def save_db_as_csv(especes_file, associations_file):
+    print("Saving database to CSV files...")
+    with open(especes_file, 'w', newline='', encoding='utf-8') as csvfile:
+        specieswriter = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        specieswriter.writerow(['common_name', 'category', 'wiki', 'taxonomy', 'latin_name', 'TaxID', 'NCBI', 'name'])
+        for sp in db.session.query(Specie).order_by(Specie.common_name).all():
+            specieswriter.writerow(
+                [sp.common_name, sp.category, sp.wiki, sp.taxonomy, sp.latin_name, sp.TaxID, sp.NCBI, sp.name])
+
+    with open(associations_file, 'w', newline='', encoding='utf-8') as csvfile:
+        associationswriter = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        associationswriter.writerow(['espèce source', 'interaction', 'espèce cible', 'source', 'poids', "commentaire"])
+        for assoc in db.session.query(Interaction).order_by(Interaction.source, Interaction.target, Interaction.interaction).all():
+            i = interaction_forward[assoc.interaction].lower()
+            associationswriter.writerow([assoc.source, i, assoc.target, assoc.references, assoc.weight, ""])
+
+
+def prune_species():
+    # Remove species with no associations
+    print("Pruning species...")
+    species_with_associations = {assoc.source for assoc in db.session.query(Interaction).all()} | \
+                                {assoc.target for assoc in db.session.query(Interaction).all()}
+    all_species = db.session.query(Specie).all()
+    for specie in all_species:
+        if specie.name not in species_with_associations:
+            db.session.delete(specie)
+    db.session.commit()
+
+
+def prune_associations():
+    print("Pruning associations...")
+    # Remove the associations with weight = 0, invert interaction with negative weight
+    for assoc in db.session.query(Interaction).all():
+        if assoc.weight == 0:
+            db.session.delete(assoc)
+        elif assoc.weight < 0:
+            assoc.interaction = interactions[-reverse_interactions[assoc.interaction]]
+            assoc.weight = -assoc.weight
+            db.session.add(assoc)
+    db.session.commit()
+
+
+def prune_db():
+    prune_associations()
+    prune_species()
+
+
+def update_ncbi_wiki():
+    print("Updating Wikipedia and NCBI links...")
+    for specie in db.session.query(Specie).all():
+        if not specie.wiki or not specie.NCBI:
+            wikipedia = find_latin_name(specie.common_name)
+            taxonomic_dico = find_tax_id(wikipedia)
+            specie.wiki = taxonomic_dico[specie.name][1]
+            specie.taxonomy = taxonomic_dico[specie.name][2]
+            if taxonomic_dico[specie.name][3] != "nom latin non trouvé":
+                specie.latin_name = taxonomic_dico[specie.name][3]
+            specie.TaxID = taxonomic_dico[specie.name][4]
+            specie.NCBI = "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=" + taxonomic_dico[specie.name][
+                4]
+            db.session.add(specie)
+            db.session.commit()
+
+
+def reset_db(especes_file, associations_file):
+    print("Resetting database...")
+    drop_db()
+    populate_db(especes_file, associations_file)
     render_index()
 
 
-@app.route(os.environ['SEED_PATH'])
+@app.route(os.environ['SEED_PATH'] if 'SEED_PATH' in os.environ else '/seed')
 def seed_db():
-    reset_db()
+    reset_db("static/database/especes_v2.csv", "static/database/associations.csv")
     return render_template('index.html')
 
 

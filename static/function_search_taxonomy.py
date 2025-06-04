@@ -72,7 +72,7 @@ def find_tax_id(dico_fr):
     dico = dict()
     for key, value in dico_fr.items():
         value = list(value)
-        Entrez.email = "theophile.tesseraud@gmail.com"  # Always tell NCBI who you are
+        Entrez.email = "thibault.latrille@gmail.com"  # Always tell NCBI who you are
         if value[3] == "nom latin non trouvé":
             value.append("")
             dico[key] = value
