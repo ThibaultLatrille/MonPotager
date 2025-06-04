@@ -26,32 +26,7 @@ cd MonPotager
 ```
 
 ## 1. Installation
-At this step, you may have to chose between either a blue or a red pill :pill:.
 
-With the blue pill, simply build the docker container and run the server inside the docker container.
-
-Or chose the red pill and install the requirements (Python3, PostgreSQL, _etc_).
-
-Blue pill is prefered is you want minimal conflict with your local system and just run the server.
-Red pill method is prefered if you plan to extensively use the application and tinker with the code.
-The two pills are mutually not exclusive, no overdose had ever been observed (though no statistical study had been performed).
-
-### 1.a. Blue pill - Docker
-A installation of Docker is required, see https://docs.docker.com/install/.
-
-In Ubuntu (>17.10) with snap pre-installed, one can simply install docker with: 
-```
-sudo snap install docker
-```
-Once installed, build and run the docker container with:
-```
-sh ./docker_build_run.sh 
-```
-Once this is done, MonPotager is up and running at [http://0.0.0.0:8000](http://0.0.0.0:8000)
-
-To note, the local folder MonPotager is kept synced within the docker container, meaning file changes are propagated inside the docker container (and vice-versa).
-
-### 1.b. Red pill - Installation on debian
 Install the dependencies:
 ```
 sudo apt install -qq -y python3 python3-dev python3-pip postgresql postgresql-client postgresql-contrib libpq-dev
@@ -60,29 +35,12 @@ Install python3 packages
 ```
 pip3 install --user -r requirements.txt
 ```
-Create role and database in PostgreSQL
-```
-sudo -u postgres psql --command "CREATE USER monpotager_user WITH CREATEDB PASSWORD 'password';"
-sudo -u postgres psql --command "CREATE DATABASE monpotager_db OWNER monpotager_user;"
-```
-Define environnment variables.
-These lines can an also be added to your _~/.bashrc_ if your want them to be loaded at startup.
-```
-export APP_SETTINGS="config.DevelopmentConfig"
-export DATABASE_URL="postgresql://monpotager_user:password@localhost/monpotager_db"
-export SEED_PATH="/seed_path_reset_all_db"
-export SECRET_KEY_BASE="af686cd78d5d56cd7af6"
-```
-Migrate database and seed
-```
-python3 manage.py db upgrade
-python3 -c 'import app; app.reset_db()'
-```
 Run server
 ```
 python3 app.py
 ```
-Once this is done, MonPotager is up and running at [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
+Once this is done, MonPotager is up and running at [http://127.0.0.1:5000/](http://127.0.0.1:5000/).
+To seed the database with the default data go to url [http://127.0.0.1:5000/seed](http://127.0.0.1:5000/seed), this will run the function `seed_db()` in `app.py` which will insert the data from into the database.
 
 ## 2. Add features or debug in the python scripts
 You made modifications this README.md, or you added new features.
