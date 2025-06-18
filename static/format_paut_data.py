@@ -2,6 +2,43 @@ import re
 import polars as pl
 from app import *
 
+
+# Function to load reference names from paut_references.csv
+def load_reference_names():
+    # Read paut_references.csv using polars
+    df = pl.read_csv('static/database/paut_references.csv', encoding='utf-8')
+
+    print("Loading reference names from paut_references.csv...")
+    print(f"Columns in paut_references.csv: {df.columns}")
+
+    # Create a dictionary mapping reference IDs to reference names
+    reference_map = {}
+    for row in df.to_dicts():
+        # The column names are different than expected
+        # 'Pages internet' contains the ID
+        # '' (empty string) contains the reference name
+        ref_id = row.get('Pages internet', '')
+        ref_name = row.get('', '')
+
+        # Skip header rows and empty rows
+        if ref_id and ref_name and ref_id != 'id' and ref_id != 'Ouvrages' and ref_id != 'Outlis et applications':
+            # Convert 'à faire' to numeric ID if possible, otherwise skip
+            if ref_id == 'à faire' or '(' in ref_id:
+                continue
+
+            try:
+                # Try to convert to integer to ensure it's a valid ID
+                int(ref_id)
+                reference_map[str(ref_id)] = f"\'{ref_name}\'"
+                print(f"Mapped reference ID {ref_id} to name: {ref_name}")
+            except ValueError:
+                # Skip if not a valid numeric ID
+                continue
+
+    print(f"Reference map: {reference_map}")
+    return reference_map
+
+
 # Dictionary to map interaction types
 interaction_mapping = {
     '+': 'pos',
@@ -70,6 +107,9 @@ def clean_associations_data():
     # Read paut_associations.csv using polars
     df = pl.read_csv('static/database/paut_associations.csv', encoding='utf-8')
 
+    # Load reference names
+    reference_map = load_reference_names()
+
     # Process each row
     for row in df.to_dicts():
         source_raw = row.get('crop1', '').strip()
@@ -86,7 +126,12 @@ def clean_associations_data():
         target = clean_name(target_raw).lower()
 
         interaction = interaction_mapping[interaction_type]
-        reference = f"Source {str(row.get('source', '')).strip()}"
+
+        # Get the source number and look up the reference name
+        source_num = str(row.get('source', '')).strip()
+        reference_name = reference_map.get(source_num, f"une autre source ({source_num})")
+        reference = f"{interaction_forward[interaction]} d'après {reference_name}"
+
         direction = str(row.get('sens', '')).strip()
         if direction == '':
             add_or_update_interaction(source=source, target=target, interaction=interaction,
@@ -110,7 +155,6 @@ def main():
         clean_associations_data()
         print(f"The database contains {Interaction.query.count()} associations.")
 
-        # How many interaction have a negative weight?
         negative_interactions = Interaction.query.filter(Interaction.weight <= 0).count()
         print(f"The database contains {negative_interactions} interactions with 0 or negative weight.")
         prune_associations()

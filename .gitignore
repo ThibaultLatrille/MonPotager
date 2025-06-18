@@ -16,4 +16,8 @@ __pycache__/
 *.so
 app.db
 instance/
+test_*.py
+static/database/sources
 templates/index.html
+/static/database/paut_formatted_*
+/static/database/merged_*

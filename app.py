@@ -250,18 +250,18 @@ def favicon():
 def update_ncbi_wiki():
     print("Updating Wikipedia and NCBI links...")
     for specie in db.session.query(Specie).all():
-        if not specie.wiki or not specie.NCBI:
-            wikipedia = find_latin_name(specie.common_name)
-            taxonomic_dico = find_tax_id(wikipedia)
-            specie.wiki = taxonomic_dico[specie.name][1]
-            specie.taxonomy = taxonomic_dico[specie.name][2]
-            if taxonomic_dico[specie.name][3] != "nom latin non trouvé":
-                specie.latin_name = taxonomic_dico[specie.name][3]
-            specie.TaxID = taxonomic_dico[specie.name][4]
-            specie.NCBI = "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=" + taxonomic_dico[specie.name][
-                4]
-            db.session.add(specie)
-            db.session.commit()
+        if specie.NCBI:
+            continue
+        wikipedia = find_latin_name(specie.common_name)
+        taxonomic_dico = find_tax_id(wikipedia)
+        specie.wiki = taxonomic_dico[specie.name][1]
+        specie.taxonomy = taxonomic_dico[specie.name][2]
+        if taxonomic_dico[specie.name][3] != "nom latin non trouvé":
+            specie.latin_name = taxonomic_dico[specie.name][3]
+        specie.TaxID = taxonomic_dico[specie.name][4]
+        specie.NCBI = "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=" + taxonomic_dico[specie.name][4]
+        db.session.add(specie)
+        db.session.commit()
 
 
 @app.route(os.environ['SEED_PATH'] if 'SEED_PATH' in os.environ else '/seed')

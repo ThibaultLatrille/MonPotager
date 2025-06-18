@@ -52,6 +52,8 @@ class AlreadyExistsError(Exception):
     def __init__(self, message):
         super().__init__(message)
 
+def clean_string(s: str) -> str:
+    return ' '.join(s.strip().split()) if s else ""
 
 class Specie(db.Model):
     __tablename__ = 'species'
@@ -70,15 +72,15 @@ class Specie(db.Model):
         try:
             taxId = int(TaxID)
         except ValueError:
-            taxId = 0
-        self.name = name
-        self.common_name = common_name
-        self.category = category
-        self.wiki = wiki
-        self.taxonomy = taxonomy
-        self.latin_name = latin_name
+            taxId = None
+        self.name = clean_string(name)
+        self.common_name = clean_string(common_name)
+        self.category = clean_string(category)
+        self.wiki = clean_string(wiki)
+        self.taxonomy = clean_string(taxonomy)
+        self.latin_name = clean_string(latin_name)
         self.TaxID = taxId
-        self.NCBI = NCBI
+        self.NCBI = clean_string(NCBI)
 
     def is_valid(self):
         if len(self.name) < 3:
@@ -113,6 +115,12 @@ class Specie(db.Model):
             'NCBI': self.NCBI
         }
 
+def most_complete(s1: str, s2: str) -> str:
+    if s1 == s2:
+        return s1
+    if len(s1) > len(s2):
+        return s1
+    return clean_string(s2)
 
 def add_or_update_specie(name, common_name, category, latin_name, wiki="", taxonomy="", TaxID="", NCBI=""):
     """
@@ -133,13 +141,13 @@ def add_or_update_specie(name, common_name, category, latin_name, wiki="", taxon
         existing_specie = Specie.query.filter_by(name=name).first()
         if existing_specie:
             try:
-                existing_specie.common_name = common_name
-                existing_specie.category = category
-                existing_specie.wiki = wiki
-                existing_specie.taxonomy = taxonomy
-                existing_specie.latin_name = latin_name
-                existing_specie.TaxID = TaxID
-                existing_specie.NCBI = NCBI
+                existing_specie.common_name = most_complete(existing_specie.common_name, common_name)
+                existing_specie.category = most_complete(existing_specie.category, category)
+                existing_specie.wiki = most_complete(existing_specie.wiki, wiki)
+                existing_specie.taxonomy = most_complete(existing_specie.taxonomy, taxonomy)
+                existing_specie.latin_name = most_complete(existing_specie.latin_name, latin_name)
+                existing_specie.TaxID = TaxID if TaxID else existing_specie.TaxID
+                existing_specie.NCBI = most_complete(existing_specie.NCBI, NCBI)
                 db.session.commit()
                 return existing_specie
             except ValidationError as e:
@@ -199,6 +207,8 @@ class Interaction(db.Model):
         """
         Update the interaction with another one, merging references and summing weights.
         """
+        if other.references in self.references:
+            raise ValidationError(f"Les références de l'interaction {self.source} -> {self.target} sont déjà présentes : {self.references}")
         if self.interaction == other.interaction:
             self.weight += other.weight
         elif (self.interaction != other.interaction) and (
@@ -211,7 +221,7 @@ class Interaction(db.Model):
         self.references += f", {other.references}"
 
     def __repr__(self):
-        s = f"Interaction de {self.source.capitalize()} vers {self.target} : {interaction_forward[self.interaction].lower()} ({self.weight})\n"
+        s = f"Interaction de {self.source} vers {self.target} : {interaction_forward[self.interaction].lower()} ({self.weight})\n"
         s += f"Références : {self.references}"
         return s
 
@@ -227,9 +237,6 @@ class Interaction(db.Model):
 
 
 def add_or_update_interaction(source, target, interaction, references="", weight=1.0):
-    """
-    Add a new interaction or update an existing one.
-    """
     inter = Interaction(source=source, target=target, interaction=interaction, references=references, weight=weight)
     try:
         inter.is_valid()
@@ -311,6 +318,59 @@ def populate_db(especes_file, associations_file):
             add_or_update_interaction(source=source, target=target,
                                       interaction=interactions[description_interactions[assoc]],
                                       references=references, weight=float(weight) if weight else 1.0)
+
+
+def remove_species(species_name):
+    print(f"Removing species '{species_name}'...")
+    species = Specie.query.filter_by(name=species_name).first()
+    if not species:
+        print(f"Species '{species_name}' not found.")
+        return False
+
+    # Remove all interactions where species_name is the source
+    for interaction in Interaction.query.filter_by(source=species_name).all():
+        db.session.delete(interaction)
+
+    # Remove all interactions where species_name is the target
+    for interaction in Interaction.query.filter_by(target=species_name).all():
+        db.session.delete(interaction)
+
+    # Delete the species
+    db.session.delete(species)
+    try:
+        db.session.commit()
+        return True
+    except Exception as e:
+        db.session.rollback()
+        print(f"Error removing species: {e}")
+        return False
+
+
+def merge_species(source_name, target_name):
+    print(f"Merging species '{source_name}' into '{target_name}'...")
+
+    # Check if both species exist
+    source_species = Specie.query.filter_by(name=source_name).first()
+    target_species = Specie.query.filter_by(name=target_name).first()
+
+    if not source_species or not target_species:
+        print(f"Source species '{source_name}' or target species '{target_name}' not found.")
+        return False
+
+    # Update all interactions where source_name is the source
+    source_interactions = Interaction.query.filter_by(source=source_name).all()
+    for interaction in source_interactions:
+        add_or_update_interaction(source=target_name, target=interaction.target, interaction=interaction.interaction,
+                                  references=interaction.references, weight=interaction.weight)
+
+    # Update all interactions where source_name is the target
+    target_interactions = Interaction.query.filter_by(target=source_name).all()
+    for interaction in target_interactions:
+        add_or_update_interaction(source=interaction.source, target=target_name, interaction=interaction.interaction,
+                                  references=interaction.references, weight=interaction.weight)
+    db.session.commit()
+    # Delete the source species
+    return remove_species(source_name)
 
 
 def save_db_as_csv(especes_file, associations_file):
