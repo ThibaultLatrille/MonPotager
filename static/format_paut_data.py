@@ -1,5 +1,10 @@
 import re
 import polars as pl
+import sys
+import os
+
+# Add the parent directory to sys.path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from app import *
 
 
@@ -30,12 +35,9 @@ def load_reference_names():
                 # Try to convert to integer to ensure it's a valid ID
                 int(ref_id)
                 reference_map[str(ref_id)] = f"\'{ref_name}\'"
-                print(f"Mapped reference ID {ref_id} to name: {ref_name}")
             except ValueError:
                 # Skip if not a valid numeric ID
                 continue
-
-    print(f"Reference map: {reference_map}")
     return reference_map
 
 
@@ -106,12 +108,20 @@ def clean_species_data():
 def clean_associations_data():
     # Read paut_associations.csv using polars
     df = pl.read_csv('static/database/paut_associations.csv', encoding='utf-8')
-
+    # Group by crop1, crop2, and source to remove duplicates
+    # Aggregate to keep the majority type (pos/neg)
+    unique_associations = df.group_by(['crop1', 'crop2', 'source']).agg(
+        pl.col('type').mode().first().alias('type'),
+        pl.col('Sens').mode().first().alias('Sens'),
+        pl.col('Reason').mode().first().alias('Reason')
+    ).sort(['crop1', 'crop2'])
+    print(f"Original associations count: {len(df)}")
+    print(f"Unique associations count after collapsing: {len(unique_associations)}")
     # Load reference names
     reference_map = load_reference_names()
 
     # Process each row
-    for row in df.to_dicts():
+    for row in unique_associations.to_dicts():
         source_raw = row.get('crop1', '').strip()
         target_raw = row.get('crop2', '').strip()
         interaction_type = str(row.get('type', '')).strip()
